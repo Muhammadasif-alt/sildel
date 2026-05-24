@@ -1,0 +1,86 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { useOurStory } from "@/content/our-story-provider";
+
+export function StoryHero() {
+  const data = useOurStory().hero;
+
+  return (
+    <section
+      id="story-hero"
+      className="relative w-full overflow-hidden isolate"
+      aria-labelledby="story-hero-heading"
+    >
+      {/* Background image */}
+      <StoryHeroBackground src={data.image} alt={data.imageAlt} />
+
+      {/* Gradient overlay */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/70"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-r from-black/55 to-transparent"
+      />
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-44 min-h-[80vh] flex flex-col justify-end">
+        <p className="text-xs tracking-[0.4em] uppercase text-primary mb-6">
+          {data.eyebrow}
+        </p>
+
+        <h1
+          id="story-hero-heading"
+          className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.02] text-white max-w-4xl mb-8"
+        >
+          {data.title}
+        </h1>
+
+        <div className="h-px w-16 bg-primary/80 mb-8" aria-hidden />
+
+        <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl">
+          {data.intro}
+        </p>
+      </div>
+
+      {/* Decorative scroll mark */}
+      <div
+        aria-hidden
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/60"
+      >
+        <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>
+        <span className="h-8 w-px bg-white/40" />
+      </div>
+    </section>
+  );
+}
+
+function StoryHeroBackground({ src, alt }: { src: string; alt: string }) {
+  const [errored, setErrored] = useState(false);
+
+  if (errored) {
+    return (
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,_oklch(0.32_0.07_75)_0%,_oklch(0.18_0.04_60)_45%,_oklch(0.1_0.02_50)_100%)]"
+        role="img"
+        aria-label={alt}
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      priority
+      sizes="100vw"
+      onError={() => setErrored(true)}
+      className="object-cover -z-10"
+    />
+  );
+}

@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Sildel — dual-theme tokens.
+  Default = light (warm cream + burnished gold).
+  .dark on <html> activates dark luxury (charcoal + champagne gold).
+*/
+
+:root {
+  /* Light theme (default) — pure white base, neutral greys, brand gold accent. */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.1 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.1 0 0);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.1 0 0);
+
+  --primary: oklch(0.6 0.13 75);
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.55 0.08 55);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.42 0 0);
+
+  --accent: oklch(0.96 0 0);
+  --accent-foreground: oklch(0.1 0 0);
+
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.93 0 0);
+  --ring: oklch(0.6 0.13 75 / 0.5);
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark theme — pure black base, neutral dark greys, brand gold accent. */
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+
+  --card: oklch(0.06 0 0);
+  --card-foreground: oklch(1 0 0);
+
+  --popover: oklch(0.06 0 0);
+  --popover-foreground: oklch(1 0 0);
+
+  --primary: oklch(0.78 0.11 80);
+  --primary-foreground: oklch(0.08 0 0);
+
+  --secondary: oklch(0.55 0.08 55);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.14 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+
+  --accent: oklch(0.18 0 0);
+  --accent-foreground: oklch(1 0 0);
+
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.22 0 0 / 0.6);
+  --input: oklch(0.22 0 0 / 0.5);
+  --ring: oklch(0.78 0.11 80 / 0.6);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-playfair), ui-serif, Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@keyframes slide-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

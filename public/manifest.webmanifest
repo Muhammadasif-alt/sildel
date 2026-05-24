@@ -1,0 +1,21 @@
+{
+  "name": "Sildel — We Think Cork",
+  "short_name": "Sildel",
+  "description": "Sildel crafts fine art and luxury home pieces from sustainably harvested Portuguese cork — signed, numbered, made in Esmoriz, Portugal.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "lang": "pt-PT",
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle", "art", "design"],
+  "icons": [
+    {
+      "src": "/images/og/sildel-logo-dark.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

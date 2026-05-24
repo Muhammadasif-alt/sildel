@@ -1,0 +1,15 @@
+import { configureStore } from "@reduxjs/toolkit";
+import themeReducer from "./theme-slice";
+import cartReducer from "./cart-slice";
+
+export const makeStore = () =>
+  configureStore({
+    reducer: {
+      theme: themeReducer,
+      cart: cartReducer,
+    },
+  });
+
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];

@@ -1,0 +1,227 @@
+export const ourStoryEn = {
+  hero: {
+    eyebrow: "Our Story",
+    title: "Slow craft, since the first oak.",
+    intro:
+      "Sildel was born from a Portuguese forest that has shaped families for centuries. We do not chase trends — we follow the bark.",
+    image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+    imageAlt: "Sildel atelier interior at golden hour — Portuguese craft in warm light.",
+  },
+
+  origin: {
+    eyebrow: "Origin",
+    title: "A studio rooted",
+    titleAccent: "in the cork oak.",
+    body: [
+      "Sildel began as a small atelier in the Alentejo region of Portugal, where cork oaks have been harvested for over two centuries. What started as a conversation between a designer and a master harvester became a studio committed to one material — cork — and one principle — patience.",
+      "Every Sildel piece carries the texture of a forest that grew long before us, and the hand of a craftsperson who learned this trade from their elders.",
+    ],
+    image: "/Slidel/Nano Banana 2 - Mid-shot of a master artisan at a workbench hand-sanding a cork sculpture_ warm tung_1.webp",
+    imageAlt: "A Sildel artisan hand-sanding a cork sculpture at the workbench.",
+    year: "Est. 2020",
+  },
+
+  symbol: {
+    eyebrow: "Our Symbol",
+    title: "The Iberian lynx —",
+    titleAccent: "guardian of the cork.",
+    body: [
+      "In the heart of the Iberian Peninsula, where cork oak trees stand majestically, Sildel was born — dedicated to honoring authentic cork. Nature and art intertwine here, just like the deep roots of the cork oak and the agility of the Iberian lynx, our symbol and inspiration.",
+      "The Iberian lynx, with its piercing gaze and graceful movements, roams the cork oak forests as a silent guardian of a unique ecosystem. It is in this environment — rich in biodiversity and history — that Sildel finds its essence.",
+      "At Sildel, we believe true art lies in honoring nature. The lynx, a symbol of resilience and rarity, reflects our commitment to preserving and elevating natural resources.",
+    ],
+    image: "/images/our-story/lynx.webp",
+    imageAlt: "The Iberian lynx — Sildel's symbol and guardian of the cork oak ecosystem.",
+    facts: [
+      { value: "≤ 1,500", label: "Lynx in the wild" },
+      { value: "Iberia", label: "Native habitat" },
+      { value: "Symbol", label: "Of Sildel" },
+    ],
+  },
+
+  heritage: {
+    eyebrow: "Heritage",
+    title: "Two centuries",
+    titleAccent: "of Portuguese cork.",
+    body:
+      "Portugal grows roughly half the world's cork — over 700,000 hectares of cork oak forest, protected by law since 1209. The tree gives its bark every nine years and lives for two centuries or more. Our craft is built on this rhythm.",
+    images: [
+      {
+        src: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+        alt: "Ancient Portuguese cork oak (Quercus suber) with bark recently harvested in the Alentejo.",
+        eyebrow: "The cork oak",
+        title: "Quercus suber, the patient giant.",
+        body:
+          "The Portuguese cork oak is protected by national law since 1209 — among the oldest tree-protection statutes in the world. Each tree gives bark for two centuries without ever being felled, anchoring the largest cork forest on earth.",
+        keywords: "Portuguese cork oak, Quercus suber, Alentejo, sustainable harvest",
+      },
+      {
+        src: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
+        alt: "Hands of a master cork harvester gripping the traditional curved descortiçador axe.",
+        eyebrow: "The descortiçador",
+        title: "A craft passed by hand.",
+        body:
+          "The descortiçador (master harvester) reads the trunk by feel — angle of the cut, sound of the blade, give of the bark. There is no machine for this. The skill is passed down inside families, generation to generation.",
+        keywords: "cork harvester, descortiçador, hand harvesting, Portuguese craft",
+      },
+      {
+        src: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+        alt: "Tall stacks of freshly harvested Portuguese cork sheets curing in the open air.",
+        eyebrow: "Air-cured for months",
+        title: "Time, the quiet ingredient.",
+        body:
+          "After harvest, the planks rest outdoors for at least six months — settling colour, grain, and density. Only after this slow cure does the cork become what artisans call &lsquo;amadia&rsquo;: even, dense, ready for sculpture.",
+        keywords: "amadia cork, cork curing, slow craft, natural material",
+      },
+      {
+        src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_1.webp",
+        alt: "Two young harvesters lifting the maiden bark off a 25-year-old Portuguese cork oak.",
+        eyebrow: "Once every nine years",
+        title: "The nine-year rhythm.",
+        body:
+          "The first bark is taken at year twenty-five. After that, the oak gives its bark once every nine years — for the rest of its two-century life. No tree is cut. Cork is one of very few materials harvested without harm.",
+        keywords: "nine-year harvest cycle, sustainable cork, cork oak lifespan",
+      },
+    ],
+    facts: [
+      { value: "1209", label: "First protection laws" },
+      { value: "9 yrs", label: "Between harvests" },
+      { value: "700k+", label: "Hectares of cork forest" },
+      { value: "50%", label: "Of the world's cork" },
+    ],
+  },
+
+  atelier: {
+    eyebrow: "The Atelier",
+    title: "Made by hand.",
+    titleAccent: "Always.",
+    body:
+      "Inside our studio, each treasure is shaped, sanded, and finished by a small team of artisans. No machines stand in for the human hand — only assist it. Every grain is read, every cut is felt.",
+    images: [
+      {
+        src: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s (1).webp",
+        alt: "Sildel atelier interior in Esmoriz at golden hour — warm sunlight on cork work in progress.",
+        eyebrow: "Inside the atelier",
+        title: "A small studio, by intention.",
+        body:
+          "Our Esmoriz atelier is deliberately small — a handful of artisans, hand tools, and a slow rhythm. Production stays under one hundred pieces a year so every silhouette gets the time it asks for.",
+        keywords: "Sildel atelier, Esmoriz Portugal, small-batch craft, slow production",
+      },
+      {
+        src: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_1.webp",
+        alt: "Hands of a Portuguese craftsman shaping a cork sculpture by hand under tungsten light.",
+        eyebrow: "Shaping by hand",
+        title: "Every grain, read by hand.",
+        body:
+          "Each block of amadia cork is shaped with hand chisels and rasps. Our artisans follow the grain rather than fight it — letting each silhouette emerge from what the bark already wants to be.",
+        keywords: "hand-finished cork, Portuguese craftsmanship, cork sculpture, hand tools",
+      },
+      {
+        src: "/Slidel/Nano Banana 2 - Overhead top-down view of an artisan workbench in low warm tungsten light_ hand tool_1.webp",
+        alt: "Overhead view of the artisan workbench — chisels, rasps, and cork pieces in warm tungsten light.",
+        eyebrow: "Signed and numbered",
+        title: "Finished with oil, ink, and a stamp.",
+        body:
+          "Once the silhouette is right, each piece is oiled, signed by the artisan, and stamped with its number in the edition. Nothing leaves the workbench until it has carried all four marks of a Sildel treasure.",
+        keywords: "signed and numbered cork art, limited edition, made in Portugal",
+      },
+    ],
+    steps: [
+      {
+        number: "01",
+        title: "Selecting",
+        body:
+          "Cork sheets are studied for grain, density, and tone. Only one in three sheets passes our hand-read.",
+      },
+      {
+        number: "02",
+        title: "Shaping",
+        body:
+          "Hand tools coax the silhouette from raw bark, refined until the form sits exactly as drawn.",
+      },
+      {
+        number: "03",
+        title: "Finishing",
+        body:
+          "Oil, signature, and number — then the piece rests until it's ready to leave the atelier.",
+      },
+    ],
+  },
+
+  founder: {
+    eyebrow: "From the CEO",
+    pullQuote: "I have a dream — to position cork next to a diamond.",
+    body: [
+      "More and more cork has been in the news and, as is well known, it is extremely relevant in strengthening Portugal's role abroad. Just consider that Portugal is the largest producer and processor of cork in the world.",
+      "This reality, for me, gave birth to a dream. A diamond is appreciated for its beauty and rarity. Cork is of transcendent beauty, and its natural qualities elevate it to the highest level of rarity.",
+      "Cork presents the colors of luxury — the golden, the beige, and the dark brown. We will turn it into timeless pieces filled with sophistication and refinement.",
+    ],
+    closing: "Therefore, I will not give up this dream.",
+    image: "/Slidel/ISABEL-01-2048x2048.webp",
+    imageAlt: "Isabel Silva, CEO and founder of Sildel.",
+    signature: {
+      name: "Isabel Silva",
+      role: "CEO & Founder",
+    },
+  },
+
+  values: {
+    eyebrow: "What We Believe",
+    title: "Slow is",
+    titleAccent: "the point.",
+    body:
+      "We make fewer pieces, deliberately. We refuse to scale at the cost of the forest, the craftsperson, or the object itself. A Sildel treasure should still be in a home — and a forest still standing — long after we are gone.",
+    pillars: [
+      {
+        index: "01",
+        title: "The Forest",
+        body:
+          "Protected cork oaks, harvested only every nine years. We take only what regenerates.",
+      },
+      {
+        index: "02",
+        title: "The Craftsperson",
+        body:
+          "A small atelier of artisans, paid fairly, working at the pace the material demands.",
+      },
+      {
+        index: "03",
+        title: "The Object",
+        body:
+          "Pieces signed, numbered, and made to outlast the trends they were never chasing.",
+      },
+    ],
+    quote:
+      "We don't make objects to fill rooms. We make heirlooms to outlast them.",
+    quoteAuthor: "— Sildel Atelier",
+  },
+
+  cta: {
+    eyebrow: "Continue",
+    title: "Step into",
+    titleAccent: "the treasures.",
+    body:
+      "Two paths from here — explore the collection of signed pieces, or read deeper into the material that shapes everything we make.",
+    destinations: [
+      {
+        eyebrow: "The Collection",
+        title: "See the treasures",
+        body: "Signed, numbered, made to outlast trends.",
+        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_1.webp",
+        imageAlt: "Editorial flat-lay of three sculptural Sildel cork art pieces.",
+        href: "/treasures",
+        cta: "Explore Treasures",
+      },
+      {
+        eyebrow: "The Material",
+        title: "About authentic cork",
+        body: "Two centuries of Portuguese tradition, in nine-year rhythms.",
+        image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_2.webp",
+        imageAlt: "Cork oak in the Portuguese forest after harvest.",
+        href: "/authentic-cork",
+        cta: "Learn About Cork",
+      },
+    ],
+    closingLine: "Designed in Portugal · Made by hand",
+  },
+};
