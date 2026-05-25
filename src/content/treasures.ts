@@ -21,6 +21,209 @@ export type Product = {
 /** Helper — keeps Nano Banana 2 paths readable. */
 const nb = (suffix: string) => `/Slidel/Nano Banana 2 - ${suffix}`;
 
+/** Real client product photography grouped by product (optimized to WebP). */
+const R = {
+  shell: [
+    "/products/SHELL_Fundo_BRANCO__MGL1443-4681c4db54.webp",
+    "/products/SHELL_Fundo_BRANCO__MGL1450-f3057aabb8.webp",
+    "/products/SHELL_Fundo_BRANCO__MGL1455-26cf0e7b47.webp",
+    "/products/SHELL_Fundo_BRANCO__MGL1461-53336b6129.webp",
+    "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
+    "/products/SHELL_Fundo_PRETO__MGL2125-34aa8893f9.webp",
+  ],
+  abyss: [
+    "/products/ABYSS_Fundo_BRANCO_15.01.01_FB-f5af59fe33.webp",
+    "/products/ABYSS_Fundo_BRANCO_15.01.03_FB-cddfcf3362.webp",
+    "/products/ABYSS_Fundo_BRANCO_15.02.02_FB-aa1ad105fa.webp",
+    "/products/ABYSS_Fundo_BRANCO_15.02.04_FB-278352fe8f.webp",
+    "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
+    "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
+  ],
+  alexis: [
+    "/products/ALEXIS_MV_1032-89d7df8a82.webp",
+    "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
+    "/products/ALEXIS_MV_1036-769ae6c3e3.webp",
+    "/products/ALEXIS_MV_1038-2d506fd45f.webp",
+    "/products/ALEXIS_MV_1040-a51cb78fea.webp",
+  ],
+  belize: [
+    "/products/BELIZE-fp_Fundo_BRANCO__MGL1410-0b939713cb.webp",
+    "/products/BELIZE-fp_Fundo_BRANCO__MGL1416-19244cdc35.webp",
+    "/products/BELIZE-fp_Fundo_BRANCO__MGL1421-626b2a8a40.webp",
+    "/products/BELIZE-fp_Fundo_BRANCO__MGL1430-a10010bbe9.webp",
+    "/products/BELIZE-fp_Fundo_PRETO__MGL2180-262f640287.webp",
+    "/products/BELIZE-fp_Fundo_PRETO__MGL2199-0252056e07.webp",
+  ],
+  bond: [
+    "/products/BOND__MGL9177-60b23d261e.webp",
+    "/products/BOND__MGL9181-67a8da8ab3.webp",
+    "/products/BOND__MGL9186-6b125ed646.webp",
+    "/products/BOND__MGL9188-0177d766f0.webp",
+    "/products/BOND__MGL9193-5f3b47100e.webp",
+    "/products/BOND__MGL9195-190f50c8c3.webp",
+  ],
+  carreDor: [
+    "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1481-fe89adcd19.webp",
+    "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1488-2721bf9ad5.webp",
+    "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1494-e73b3ecee6.webp",
+    "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1500-2c187a51db.webp",
+    "/products/CARR--D-OR-fp_Foto-pormenor-2ecd733ad3.webp",
+  ],
+  crescent: [
+    "/products/CRESCENT---S_CRESCENT-1330x300mm_Fundo-Branco_Horizontal-Est-6e506606c0.webp",
+    "/products/CRESCENT---S_CRESCENT-1330x300mm_Fundo-Branco_Vertical_fundo-5fbe20475c.webp",
+    "/products/CRESCENT---S_CRESCENT-1330x300mm_Fundo-Branco_Oval_fundo-bra-b996b95d0b.webp",
+    "/products/CRESCENT---S_CRESCENT-1080X300mm_Candeeiro-02_01-c0820e0484.webp",
+    "/products/CRESCENT---S_CRESCENT-1080X300mm_Candeeiro-02_02-752ba5aeaf.webp",
+    "/products/CRESCENT---S_CRESCENT-770X330mm_Candeeiro-01_01-12486ec135.webp",
+  ],
+  eclipseSilver: [
+    "/products/ECLIPSE_Fundo_BRANCO_silver_candeeiro-01_MV_0304-75113120f1.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_silver_candeeiro-01_MV_0308-66dd0f2166.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_silver_candeeiro-01_MV_0312-008dc2ff5c.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_silver_candeeiro-01_MV_0316-1b83fbbe89.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_silver_Candeeiro-02_MV_0337_1-e925f86f8b.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_silver_Candeeiro-02_MV_0343_1-15dc6599ce.webp",
+  ],
+  eclipseCopper: [
+    "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0380-copy_1-ee41ea0c3c.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0384-copy_1-09cda630c8.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0388-copy_1-0da38525f6.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0395-copy_1-a549ffef9b.webp",
+    "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0402-copy_1-9bcbc00811.webp",
+  ],
+  equilibrium: [
+    "/products/EQUILIBRIUM_Fundo_BRANCO_06_01_01_FB-c52dccae19.webp",
+    "/products/EQUILIBRIUM_Fundo_BRANCO_06_01_03_FB-d3356c1ebe.webp",
+    "/products/EQUILIBRIUM_Fundo_BRANCO_06_02_02_FB-1380484faf.webp",
+    "/products/EQUILIBRIUM_Fundo_BRANCO_06_02_04_FB-f0ae4e7955.webp",
+    "/products/EQUILIBRIUM_Fundo_PRETO_06_01_01_FP-43a9d577f5.webp",
+    "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
+  ],
+  fireflies: [
+    "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
+    "/products/FIREFLIES_Fundo_BRANCO_14_01_02_FB-d499e7453d.webp",
+    "/products/FIREFLIES_Fundo_BRANCO_14_01_03_FB-24e02f3d62.webp",
+    "/products/FIREFLIES_Fundo_BRANCO_14_01_04_FB-359839da1a.webp",
+    "/products/FIREFLIES_Fundo_PRETO_14_01_01_FP-5e1ef8617b.webp",
+    "/products/FIREFLIES_Fundo_PRETO_14_01_03_FP-851b2f0c1b.webp",
+  ],
+  gibraltar: [
+    "/products/GIBRALTAR__MGL1908-2076b50b77.webp",
+    "/products/GIBRALTAR__MGL1928-c6a5c16625.webp",
+    "/products/GIBRALTAR__MGL1944-6ce3f4ec67.webp",
+    "/products/GIBRALTAR__MGL1948-905af42cf2.webp",
+    "/products/GIBRALTAR__MGL1958-86488d82d6.webp",
+    "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
+  ],
+  halley: [
+    "/products/HALLEY-600X300mm_Fundo_BRANCO__MGL1545-83941ad66a.webp",
+    "/products/HALLEY-600X300mm_Fundo_BRANCO__MGL1548-7f794f0d05.webp",
+    "/products/HALLEY-600X300mm_Fundo_BRANCO__MGL1552-6112983d32.webp",
+    "/products/HALLEY-600X300mm_Fundo_BRANCO__MGL2500-copy-aa578be52d.webp",
+    "/products/HALLEY-600X300mm_Fundo_BRANCO__MGL2557-copy-08d1c9e6cf.webp",
+  ],
+  horizon: [
+    "/products/HORIZON_Fundo_BRANCO_16_01_02_FB-95d445ec87.webp",
+    "/products/HORIZON_Fundo_BRANCO_16_02_04_FB-37c6200ffc.webp",
+    "/products/HORIZON_Fundo_BRANCO_16_03_03_FB-d27d1a6f38.webp",
+    "/products/HORIZON_Fundo_BRANCO__MGL0462_1-9b8324db9e.webp",
+    "/products/HORIZON_Fundo_BRANCO__MGL0479_1-7d2957c1f3.webp",
+    "/products/HORIZON_Fundo_PRETO__MGL0462-feaa04fa7e.webp",
+  ],
+  hotSpring: [
+    "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-01_01-f3f538f873.webp",
+    "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-02_01-d107d61c38.webp",
+    "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-03_01-351270c93e.webp",
+    "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-04_01-b215692b34.webp",
+    "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-05_01-53066081dd.webp",
+    "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-06_01-14d2996be2.webp",
+  ],
+  island: [
+    "/products/ISLAND_Fundo_BRANCO_07_01_01_FB-2058bb9d73.webp",
+    "/products/ISLAND_Fundo_BRANCO_07_01_03_FB-3d96c062ce.webp",
+    "/products/ISLAND_Fundo_BRANCO_07_02_02_FB-a8dd9f005f.webp",
+    "/products/ISLAND_Fundo_BRANCO_07_02_04_FB-6db0a8007b.webp",
+    "/products/ISLAND_Fundo_PRETO_07_01_01_FP-5432cd5483.webp",
+    "/products/ISLAND_Fundo_PRETO_07_02_03_FP-8e5ac59496.webp",
+  ],
+  leafGolden: [
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Dourada_Candeeiro-01_Com-Luz-38d774b0b2.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Dourada_Candeeiro-01_Com-Luz-4948745cfb.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Dourada_Candeeiro-01_Com-Luz-b72939870d.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Dourada_Candeeiro-01_Com-Luz-81e1b353d9.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Dourada_Candeeiro-01_Com-Luz-abc5443138.webp",
+  ],
+  leafBrown: [
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Castanha_Candeeiro-01_Com-Lu-78589c0dbf.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Castanha_Candeeiro-01_Com-Lu-83b513cdef.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Castanha_Candeeiro-01_Com-Lu-63348b5257.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Castanha_Candeeiro-01_Com-Lu-3b1a4a97ab.webp",
+    "/products/LEAF-COLLECTION_Fundo_PRETO_Cor-Castanha_Candeeiro-01_Com-Lu-b41b8e922c.webp",
+  ],
+  marlin: [
+    "/products/MARLIN__MGL3894-34f50ad3af.webp",
+    "/products/MARLIN__MGL3897-c5f892862a.webp",
+    "/products/MARLIN__MGL3906-eaad08d828.webp",
+    "/products/MARLIN__MGL3910-3616b71bf4.webp",
+    "/products/MARLIN__MGL3918-d72f8f56a5.webp",
+    "/products/MARLIN__MGL3928-ab91d62840.webp",
+  ],
+  olympia: [
+    "/products/OLYMPIA_Fundo_BRANCO__MGL1561-8188616da7.webp",
+    "/products/OLYMPIA_Fundo_BRANCO__MGL1562-b36fbb95fb.webp",
+    "/products/OLYMPIA_Fundo_BRANCO__MGL1566-b75721294d.webp",
+    "/products/OLYMPIA_Fundo_PRETO__MGL3092-copy-c99a1dd822.webp",
+    "/products/OLYMPIA_Fundo_PRETO__MGL3110-copy-31bfa2746e.webp",
+  ],
+  shaleFlower: [
+    "/products/SHALE-COLLECTION_flower_Fundo_BRANCO_Candeeiro-01_Fundo-Bran-41ab0456a2.webp",
+    "/products/SHALE-COLLECTION_flower_Fundo_BRANCO_Candeeiro-01_Fundo-Bran-b6797962fb.webp",
+    "/products/SHALE-COLLECTION_flower_Fundo_BRANCO_Candeeiro-01_Fundo-Bran-12d33c69f4.webp",
+    "/products/SHALE-COLLECTION_flower_Fundo_BRANCO_Candeeiro-01_Fundo-Bran-f938df54a4.webp",
+    "/products/SHALE-COLLECTION_flower_Fundo_PRETO_Candeeiro-03_09_01_01_FP-30f39d7461.webp",
+    "/products/SHALE-COLLECTION_flower_Fundo_PRETO_Candeeiro-03_09_01_02_FP-a6601b31a6.webp",
+  ],
+  shaleGrey: [
+    "/products/SHALE-COLLECTION_grey_Fundo_BRANCO_Peca-01_06_01_03_FB_acess-6e5d563c27.webp",
+    "/products/SHALE-COLLECTION_grey_Fundo_BRANCO_Peca-01_06_01_04_FB_acess-bec176a33d.webp",
+    "/products/SHALE-COLLECTION_grey_Fundo_BRANCO_Peca-01_06_01_05_FB_acess-74a21a4c72.webp",
+    "/products/SHALE-COLLECTION_grey_Fundo_BRANCO_Peca-01_06_01_06_FB_acess-5f4f2fe91e.webp",
+    "/products/SHALE-COLLECTION_grey_Fundo_BRANCO_Peca-01__MGL1247-6de5724685.webp",
+    "/products/SHALE-COLLECTION_grey_Fundo_BRANCO_Peca-01__MGL1264-6a26edb352.webp",
+  ],
+  shaleRed: [
+    "/products/SHALE-COLLECTION_red_Fundo_BRANCO_Peca-01_05_01_03_FB_Acessa-8417c84549.webp",
+    "/products/SHALE-COLLECTION_red_Fundo_BRANCO_Peca-01_05_01_04_FB_Acessa-43845b2fc6.webp",
+    "/products/SHALE-COLLECTION_red_Fundo_BRANCO_Peca-01_05_01_05_FB_Acessa-fc33638c91.webp",
+    "/products/SHALE-COLLECTION_red_Fundo_BRANCO_Peca-01_05_01_06_FB_Acessa-b431b48845.webp",
+    "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
+  ],
+  shaleSilver: [
+    "/products/SHALE-COLLECTION_silver_Fundo_BRANCO_Peca-01_07_01_03_FB_ace-d14e23a6b7.webp",
+    "/products/SHALE-COLLECTION_silver_Fundo_BRANCO_Peca-01_07_01_04_FB_ace-c7736d4419.webp",
+    "/products/SHALE-COLLECTION_silver_Fundo_BRANCO_Peca-01_07_01_05_FB_ace-3f8dd6444b.webp",
+    "/products/SHALE-COLLECTION_silver_Fundo_BRANCO_Peca-01_07_01_06_FB_ace-067ff47905.webp",
+    "/products/SHALE-COLLECTION_silver_Fundo_BRANCO_Peca-01__MGL1307-f222b8c0ea.webp",
+    "/products/SHALE-COLLECTION_silver_Fundo_BRANCO_Peca-01__MGL1317-a7dd448152.webp",
+  ],
+  sideBySide: [
+    "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
+    "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1526-72b316664c.webp",
+    "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1528-5a0bdf50dd.webp",
+    "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1530-31f11ce399.webp",
+  ],
+  oscar: [
+    "/products/-SCAR_Fundo_BRANCO__MGL1387-797f9c1a2c.webp",
+    "/products/-SCAR_Fundo_BRANCO__MGL1393-398ec14e3a.webp",
+    "/products/-SCAR_Fundo_BRANCO__MGL1398-b68a5bd9c5.webp",
+    "/products/-SCAR_Fundo_BRANCO__MGL1402-54e41f1d23.webp",
+    "/products/-SCAR_Fundo_PRETO__MGL3061-de1ed8741d.webp",
+    "/products/-SCAR_Fundo_PRETO__MGL3075-167f26b7ef.webp",
+  ],
+};
+
 /** Reusable image groups (4 variants each unless noted). */
 const G = {
   shell: [
@@ -137,8 +340,8 @@ export const products: Product[] = [
       "Each piece, separate, ready to reinvent itself in new compositions and functions.",
       "SHELL is a visual poem, an expression of versatility in constant transformation.",
     ],
-    image: G.shell[0],
-    gallery: G.shell,
+    image: R.shell[0],
+    gallery: R.shell,
   },
   {
     slug: "abyss",
@@ -155,8 +358,8 @@ export const products: Product[] = [
       "The contrast between rough cork and polished marble underlines the dignity of each material.",
       "A unique sculptural object, signed and numbered, made to anchor a room.",
     ],
-    image: G.marblePedestal[0],
-    gallery: G.marblePedestal,
+    image: R.abyss[0],
+    gallery: R.abyss,
   },
   {
     slug: "alexis",
@@ -171,8 +374,8 @@ export const products: Product[] = [
     longDescription: [
       "Designed to live in considered homes — Alexis is a low table that converses with its surroundings rather than dominating them.",
     ],
-    image: G.sideTable,
-    gallery: [G.sideTable, ...G.flatlay.slice(0, 3)],
+    image: R.alexis[0],
+    gallery: R.alexis,
   },
   {
     slug: "granada",
@@ -207,8 +410,8 @@ export const products: Product[] = [
     material: "Authentic Cork on Stainless Steel",
     description:
       "Hot Spring is an earth-fired cork form rising from a slim steel stem — a sculptural object that doubles as a quiet sentinel in a room.",
-    image: G.shell[2],
-    gallery: [G.shell[2], G.shell[0], G.shell[1], G.marblePedestal[1]],
+    image: R.hotSpring[0],
+    gallery: R.hotSpring,
   },
   {
     slug: "bond",
@@ -220,8 +423,8 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Bond is a low cork table built from two raw cork slabs. It holds itself together with quiet tension — a piece that anchors a living room.",
-    image: G.sideTable,
-    gallery: [G.sideTable, G.flatlay[1], G.flatlay[3]],
+    image: R.bond[0],
+    gallery: R.bond,
   },
   {
     slug: "fireflies",
@@ -233,8 +436,8 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Fragments of cork bark suspended in a horizontal line — Fireflies is part wall-piece, part light, part poem.",
-    image: G.horizontalStrip[0],
-    gallery: G.horizontalStrip,
+    image: R.fireflies[0],
+    gallery: R.fireflies,
   },
   {
     slug: "eclipse",
@@ -246,8 +449,8 @@ export const products: Product[] = [
     material: "Authentic Cork on Brushed Steel / Copper",
     description:
       "Eclipse pairs raw cork rings with a brushed metal base — available in steel and copper finishes. A compact sculptural object.",
-    image: G.copperRings[0],
-    gallery: G.copperRings,
+    image: R.eclipseSilver[0],
+    gallery: R.eclipseSilver,
   },
   {
     slug: "island",
@@ -260,8 +463,8 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Island is a single, sweeping piece of cork bark suspended above a small marble plinth — a horizon you can hold.",
-    image: G.marblePedestal[3],
-    gallery: [G.marblePedestal[3], G.marblePedestal[2], G.shell[2], G.shell[1]],
+    image: R.island[0],
+    gallery: R.island,
   },
   {
     slug: "gibraltar",
@@ -273,8 +476,8 @@ export const products: Product[] = [
     material: "Authentic Cork and Tempered Glass",
     description:
       "Two slabs of cork bark support a sheet of tempered glass — a coffee table that feels half-found, half-made.",
-    image: G.sideTable,
-    gallery: [G.sideTable, "/Slidel/CRESCENT-1330X300MM-OVAL2-SILDEL-1024x683.webp", G.flatlay[2], G.flatlay[0]],
+    image: R.gibraltar[0],
+    gallery: R.gibraltar,
   },
   {
     slug: "crescent",
@@ -287,8 +490,8 @@ export const products: Product[] = [
     material: "Authentic Cork on Brass",
     description:
       "Crescent is a long horizontal chandelier — cork rings strung on a brass rail. A signature piece for a dining table or hallway.",
-    image: G.crescentReal[0],
-    gallery: [...G.crescentReal, G.horizontalLamp[0]],
+    image: R.crescent[0],
+    gallery: R.crescent,
   },
   {
     slug: "carre-dor",
@@ -301,8 +504,8 @@ export const products: Product[] = [
     material: "Authentic Cork and 24k Gold Leaf",
     description:
       "Carré d'Or lays 24-carat gold leaf against the authentic grain of Portuguese cork — geometry meets bark in a single, framed composition.",
-    image: G.goldenCork[0],
-    gallery: G.goldenCork,
+    image: R.carreDor[0],
+    gallery: R.carreDor,
   },
 
   /* ───────── Additional catalog from sildel.pt (prices, descriptions imported) ───────── */
@@ -321,8 +524,8 @@ export const products: Product[] = [
       "A refined masterpiece where functionality meets artistry.",
       "Approx. 9cm W × 22cm D × 9cm H, 0.6kg.",
     ],
-    image: G.copperRings[1],
-    gallery: [G.copperRings[1], G.copperRings[2], G.copperRings[3], G.copperRings[0]],
+    image: R.eclipseCopper[0],
+    gallery: R.eclipseCopper,
   },
   {
     slug: "side-by-side",
@@ -338,8 +541,8 @@ export const products: Product[] = [
       "W 122 × L 7 × H 47 cm, 2kg.",
       "Care: dust-proof cork; clean glass with microfiber, no abrasives.",
     ],
-    image: G.horizontalStrip[1],
-    gallery: [G.horizontalStrip[1], G.horizontalStrip[2], G.roundMirror[1], G.roundMirror[2]],
+    image: R.sideBySide[0],
+    gallery: R.sideBySide,
   },
   {
     slug: "shale-coast",
@@ -354,8 +557,8 @@ export const products: Product[] = [
     longDescription: [
       "31cm W × 9cm D × 14cm H (12.2\" × 3.5\" × 5.6\").",
     ],
-    image: G.horizontalLamp[0],
-    gallery: G.horizontalLamp,
+    image: R.shaleFlower[0],
+    gallery: R.shaleFlower,
   },
   {
     slug: "belize",
@@ -371,8 +574,8 @@ export const products: Product[] = [
     longDescription: [
       "W 74 × D 44 × H 29 cm (29.1\" × 17.3\" × 11.4\"), 5kg.",
     ],
-    image: G.vessel[0],
-    gallery: G.vessel,
+    image: R.belize[0],
+    gallery: R.belize,
   },
   {
     slug: "equilibrium",
@@ -388,8 +591,8 @@ export const products: Product[] = [
     longDescription: [
       "38W × 61D × 31H cm (15\" × 24\" × 12.2\"), 3kg.",
     ],
-    image: G.carraraComp[0],
-    gallery: G.carraraComp,
+    image: R.equilibrium[0],
+    gallery: R.equilibrium,
   },
   {
     slug: "shale",
@@ -401,8 +604,8 @@ export const products: Product[] = [
     material: "Authentic cork",
     description:
       "Thin cork layers meticulously pressed and arranged in varying lengths. The design expands into a rounded form — position upright or horizontal for direct or indirect light.",
-    image: G.verticalLamp[0],
-    gallery: G.verticalLamp,
+    image: R.shaleGrey[0],
+    gallery: R.shaleGrey,
   },
   {
     slug: "leaf-golden",
@@ -417,8 +620,8 @@ export const products: Product[] = [
     longDescription: [
       "20W × 18D × 42H cm, 2kg.",
     ],
-    image: G.goldenCork[0],
-    gallery: G.goldenCork,
+    image: R.leafGolden[0],
+    gallery: R.leafGolden,
   },
   {
     slug: "leaf-brown",
@@ -433,8 +636,8 @@ export const products: Product[] = [
     longDescription: [
       "20W × 18D × 42H cm, 2kg.",
     ],
-    image: G.brownCork[0],
-    gallery: G.brownCork,
+    image: R.leafBrown[0],
+    gallery: R.leafBrown,
   },
   {
     slug: "halley",
@@ -449,8 +652,8 @@ export const products: Product[] = [
     longDescription: [
       "38W × 61D × 31H cm.",
     ],
-    image: G.halleyReal[0],
-    gallery: [...G.halleyReal, G.roundMirror[0]],
+    image: R.halley[0],
+    gallery: R.halley,
   },
   {
     slug: "oscar",
@@ -465,8 +668,8 @@ export const products: Product[] = [
     longDescription: [
       "Approx. 42L × 42D × 47H cm (16.5\" × 16.5\" × 18.5\"), 5kg.",
     ],
-    image: G.noblePedestal[0],
-    gallery: G.noblePedestal,
+    image: R.oscar[0],
+    gallery: R.oscar,
   },
   {
     slug: "marlin",
@@ -482,8 +685,8 @@ export const products: Product[] = [
     longDescription: [
       "77W × 42D × 22H cm, 8kg.",
     ],
-    image: G.marlinSphere,
-    gallery: [G.marlinSphere, G.marblePedestal[1], G.marblePedestal[2], G.marblePedestal[3]],
+    image: R.marlin[0],
+    gallery: R.marlin,
   },
   {
     slug: "olympia",
@@ -498,8 +701,8 @@ export const products: Product[] = [
     longDescription: [
       "42W × 42D × 94H cm, 3kg.",
     ],
-    image: G.sideTable,
-    gallery: [G.sideTable, G.flatlay[0], G.flatlay[1], G.flatlay[2]],
+    image: R.olympia[0],
+    gallery: R.olympia,
   },
   {
     slug: "horizon",
@@ -515,8 +718,8 @@ export const products: Product[] = [
     longDescription: [
       "43W × 78D × 15H cm (16.9\" × 30.7\" × 5.9\"), 3kg.",
     ],
-    image: G.longConcave,
-    gallery: [G.longConcave, G.horizontalStrip[3], G.marblePedestal[3], G.shell[1]],
+    image: R.horizon[0],
+    gallery: R.horizon,
   },
   {
     slug: "shale-belly-red",
@@ -531,8 +734,8 @@ export const products: Product[] = [
     longDescription: [
       "W 16 × D 6 × H 28 cm, 0.5 kg.",
     ],
-    image: G.verticalLamp[1],
-    gallery: [G.verticalLamp[1], G.verticalLamp[2], G.verticalLamp[3], G.verticalLamp[0]],
+    image: R.shaleRed[0],
+    gallery: R.shaleRed,
   },
   {
     slug: "shale-belly-silver",
@@ -547,8 +750,8 @@ export const products: Product[] = [
     longDescription: [
       "W 16 × D 6 × H 28 cm (W 6.3\" × D 2.4\" × H 11\").",
     ],
-    image: G.verticalLamp[3],
-    gallery: [G.verticalLamp[3], G.verticalLamp[2], G.verticalLamp[1], G.verticalLamp[0]],
+    image: R.shaleSilver[0],
+    gallery: R.shaleSilver,
   },
   {
     slug: "vitaqua",
@@ -621,8 +824,8 @@ export const treasures = {
     titleAccent: "& numbered.",
     intro:
       "Every Sildel piece is a one-off — hand-finished, signed, and numbered in Portugal. These are the current treasures.",
-    image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
-    imageAlt: "A featured Sildel cork treasure under warm directional light.",
+    image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
+    imageAlt: "Sildel — authentic cork bark on a marble plinth, photographed in the atelier.",
     badge: { label: "Hand-finished", value: "in Portugal" },
   },
 
@@ -654,8 +857,8 @@ export const treasures = {
     titleAccent: "gold meets bark.",
     body:
       "Carré d'Or is our most quietly bold collection: 24-carat gold leaf laid against the authentic grain of Portuguese cork. Geometry meets bark — one limited edition at a time.",
-    image: "/Slidel/CRESCENT-1200X350MM-3-SILDEL-1024x683.webp",
-    imageAlt: "Carré d'Or — cork piece with gold leaf detail.",
+    image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1488-2721bf9ad5.webp",
+    imageAlt: "Carré d'Or — 24k gold leaf laid against the authentic grain of Portuguese cork.",
     specs: [
       { label: "Material", value: "Amadia cork + 24k gold leaf" },
       { label: "Finish", value: "Hand-laid in Portugal" },

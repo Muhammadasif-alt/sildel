@@ -40,3 +40,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw client photography (originals, ~2GB). Only the WebP-optimized output
+# under /public/products/ is committed; regenerate via:
+#   node scripts/optimize-fotos.mjs
+#   node scripts/rewrite-fotos-paths.mjs
+/public/FOTOS PRODUTO/
+/scripts/.fotos-mapping.json
