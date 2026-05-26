@@ -5,34 +5,22 @@
  */
 import type { Block, Locale } from "@/lib/blocks/types";
 import { loc, str, list, itemStr, pickFromItem } from "./block-utils";
-import { HeroShop } from "@/components/home/hero-shop";
 import { ShopCategories } from "@/components/home/shop-categories";
 import { FeaturedTreasures } from "@/components/home/featured-treasures";
 import { WhySildel } from "@/components/home/why-sildel";
 import { BrandVideo } from "@/components/home/brand-video";
 import { Sustainability } from "@/components/home/sustainability";
 import { Newsletter } from "@/components/home/newsletter";
+import { CategorySlider } from "@/components/home/category-slider";
+import { getHome } from "@/content/home";
 
-export function HomeHeroShopBlock({ block, locale }: { block: Block; locale: Locale }) {
-  const data = {
-    eyebrow: loc(block, "eyebrow", locale),
-    titleLines: [
-      loc(block, "titleLine1", locale),
-      loc(block, "titleLine2", locale),
-      loc(block, "titleLine3", locale),
-    ].filter(Boolean),
-    description: loc(block, "description", locale),
-    ctaPrimary: loc(block, "ctaPrimary", locale),
-    ctaSecondary: loc(block, "ctaSecondary", locale),
-    socialProof: loc(block, "socialProof", locale),
-    featuredLabel: loc(block, "featuredLabel", locale),
-    bottomStrip: {
-      left: loc(block, "stripLeft", locale),
-      middle: loc(block, "stripMiddle", locale),
-      right: loc(block, "stripRight", locale),
-    },
-  };
-  return <HeroShop data={data} />;
+// Founder feedback (Isabel) asked us to mirror quintadeadorigo.com's
+// colored category slider as the home hero. The CMS block keeps its old
+// shape (heroShop fields) for backwards compatibility, but is rendered as
+// CategorySlider pulling its panel data from the locale-aware home content.
+export function HomeHeroShopBlock({ block: _block, locale }: { block: Block; locale: Locale }) {
+  const content = getHome(locale);
+  return <CategorySlider data={content.categorySlider} />;
 }
 
 export function HomeShopCategoriesBlock({ block, locale }: { block: Block; locale: Locale }) {

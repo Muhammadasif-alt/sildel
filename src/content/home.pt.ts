@@ -85,7 +85,7 @@ export const homePt = {
     headline: "Não matamos árvores,",
     headlineAccent: "damos-lhes vida.",
     body:
-      "A cortiça é retirada da casca do sobreiro — a árvore continua a viver, a respirar e a regenerar-se. Cada peça Sildel nasce de uma floresta que se torna mais forte a cada colheita.",
+      "Cada peça é um testemunho da renovação da natureza. Não cortamos sobreiros; ao colher a cortiça, libertamos a árvore para se regenerar, florescendo com uma nova camada de vida. Assim, cada tesouro celebra a resiliência e o ciclo eterno da terra.",
     image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
     imageAlt: "Casca de sobreiro a ser colhida numa floresta portuguesa.",
     stats: [
@@ -179,6 +179,46 @@ export const homePt = {
       middle: "Assinado · Numerado · Único",
       right: "Envio para Todo o Mundo",
     },
+  },
+
+  categorySlider: {
+    eyebrow: "As Colecções",
+    title: "Não vendemos produtos.",
+    titleAccent: "Criamos tesouros.",
+    body:
+      "Quatro colecções — cada uma assinada, numerada e acabada à mão no nosso atelier do Alentejo.",
+    ctaLabel: "Descobrir",
+    dragHint: "Arraste para descobrir",
+    panels: [
+      {
+        slug: "sculpture",
+        label: "Escultura",
+        productSlug: "abyss",
+        bg: "#171513",
+        textOnBg: "light" as const,
+      },
+      {
+        slug: "tables",
+        label: "Mesas",
+        productSlug: "bond",
+        bg: "#c8b094",
+        textOnBg: "dark" as const,
+      },
+      {
+        slug: "lighting",
+        label: "Iluminação",
+        productSlug: "crescent",
+        bg: "#8b5a3c",
+        textOnBg: "light" as const,
+      },
+      {
+        slug: "fine-arts",
+        label: "Belas Artes",
+        productSlug: "carre-dor",
+        bg: "#b9985f",
+        textOnBg: "light" as const,
+      },
+    ],
   },
 
   shopCategoriesSection: {

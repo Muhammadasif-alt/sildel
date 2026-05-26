@@ -85,7 +85,7 @@ export const homeEn = {
     headline: "We do not kill trees,",
     headlineAccent: "we give them life.",
     body:
-      "Cork is harvested from the bark of the oak — the tree keeps living, breathing, and regenerating. Each Sildel piece is born from a forest that grows stronger with every harvest.",
+      "Each piece is a testament to nature's renewal. We don't cut down cork oak trees; by harvesting the cork, we set the tree free to regenerate, flourishing with a new layer of life. Thus, every treasure is a celebration of resilience and the eternal cycle of the earth.",
     image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
     imageAlt: "Ancient Portuguese cork oak tree with bark recently harvested.",
     stats: [
@@ -179,6 +179,46 @@ export const homeEn = {
       middle: "Signed · Numbered · One of One",
       right: "Worldwide Shipping",
     },
+  },
+
+  categorySlider: {
+    eyebrow: "The Collections",
+    title: "We do not sell products.",
+    titleAccent: "We create treasures.",
+    body:
+      "Four collections — each one signed, numbered, and finished by hand in our Alentejo atelier.",
+    ctaLabel: "Discover",
+    dragHint: "Drag to discover",
+    panels: [
+      {
+        slug: "sculpture",
+        label: "Sculpture",
+        productSlug: "abyss",
+        bg: "#171513",
+        textOnBg: "light" as const,
+      },
+      {
+        slug: "tables",
+        label: "Tables",
+        productSlug: "bond",
+        bg: "#c8b094",
+        textOnBg: "dark" as const,
+      },
+      {
+        slug: "lighting",
+        label: "Lighting",
+        productSlug: "crescent",
+        bg: "#8b5a3c",
+        textOnBg: "light" as const,
+      },
+      {
+        slug: "fine-arts",
+        label: "Fine Arts",
+        productSlug: "carre-dor",
+        bg: "#b9985f",
+        textOnBg: "light" as const,
+      },
+    ],
   },
 
   shopCategoriesSection: {
