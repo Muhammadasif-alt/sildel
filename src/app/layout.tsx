@@ -23,7 +23,11 @@ const inter = Inter({
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  // We only render Playfair at 400 (regular) and 500 (medium) across the
+  // whole site — `font-light` (300) doesn't exist in Playfair so it falls
+  // back to 400 anyway. Loading 600/700/800 was a ~75KB hit for fonts we
+  // never use.
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -88,24 +92,27 @@ export default async function RootLayout({
           {children}
           {!isAdmin && <SiteFooter />}
         </ReduxProvider>
+        {/* JSON-LD — search bots read these whether they're inline or
+            deferred. `afterInteractive` keeps them out of the critical
+            path so hydration finishes a few ms sooner. */}
         <Script
           id="sildel-organization-jsonld"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         >
           {JSON.stringify(organizationJsonLd)}
         </Script>
         <Script
           id="sildel-localbusiness-jsonld"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         >
           {JSON.stringify(localBusinessJsonLd)}
         </Script>
         <Script
           id="sildel-website-jsonld"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         >
           {JSON.stringify(websiteJsonLd)}
         </Script>

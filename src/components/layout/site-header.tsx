@@ -41,24 +41,31 @@ export async function SiteHeader() {
           className="group flex items-center"
           aria-label={`${siteConfig.name} ${ui.nav.home}`}
         >
-          {/* Dark-glyph logo for light theme */}
+          {/* Both logos ship in the same page so the theme can swap them
+              without a hydration flash. Only ONE is visible at a time, so
+              only one needs `priority`. We pick the dark-glyph (light-theme)
+              variant because the no-flash inline script defaults to dark BUT
+              ships .dark on <html> *after* parse — meaning the first paint
+              briefly shows the light variant. Picking the dark glyph as the
+              priority candidate also makes browsers preload the smaller of
+              the two PNGs since they're identical in dimensions. */}
           <Image
             src={logoDark}
             alt={`${siteConfig.name} — ${siteConfig.tagline}`}
             width={197}
             height={200}
             priority
-            quality={95}
+            fetchPriority="high"
+            quality={82}
             className="h-12 w-auto md:h-14 transition-opacity group-hover:opacity-75 dark:hidden"
           />
-          {/* White-glyph logo for dark theme */}
           <Image
             src={logoLight}
             alt={`${siteConfig.name} — ${siteConfig.tagline}`}
             width={197}
             height={200}
-            priority
-            quality={95}
+            loading="eager"
+            quality={82}
             className="hidden h-12 w-auto md:h-14 transition-opacity group-hover:opacity-75 dark:block"
           />
         </Link>

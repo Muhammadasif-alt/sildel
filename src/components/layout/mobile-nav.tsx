@@ -95,7 +95,7 @@ export function MobileNav() {
               width={197}
               height={200}
               priority
-              quality={95}
+              quality={82}
               className="h-10 w-auto dark:hidden"
             />
             <Image
@@ -104,7 +104,7 @@ export function MobileNav() {
               width={197}
               height={200}
               priority
-              quality={95}
+              quality={82}
               className="hidden h-10 w-auto dark:block"
             />
           </Link>

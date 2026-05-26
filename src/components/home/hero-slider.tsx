@@ -133,7 +133,14 @@ function HeroImageLayer({
           alt={alt}
           fill
           priority={priority}
+          // Cap srcset at 1920 — the hero is full-bleed but our deviceSizes
+          // ladder already includes 1920 as the largest variant. The browser
+          // picks the correct one based on viewport width.
           sizes="100vw"
+          // First slide is the LCP candidate on home — `high` tells the
+          // browser to fetch it before lazy images further down the page.
+          fetchPriority={priority ? "high" : "auto"}
+          quality={priority ? 85 : 80}
           onError={() => setErrored(true)}
           className={cn(
             "object-cover object-center ease-out",

@@ -224,7 +224,12 @@ export function HeroShop({ data: dataProp }: { data?: HomeContent["heroShop"] } 
                   alt={slide.name}
                   fill
                   priority={i === 0}
-                  sizes="(min-width: 1024px) 540px, (min-width: 640px) 80vw, 100vw"
+                  // Slider frame caps at max-w-md (~28rem ≈ 448px) on mobile,
+                  // max-w-none + half the grid (~540px) on lg+. Below sm the
+                  // panel still respects max-w-md, so 100vw is wasteful —
+                  // 90vw matches the actual rendered width with safety.
+                  sizes="(min-width: 1024px) 540px, (min-width: 640px) 440px, 90vw"
+                  quality={82}
                   className="object-cover"
                 />
               </motion.div>
