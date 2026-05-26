@@ -116,7 +116,7 @@ export function ProductGrid() {
             No treasures in this collection yet.
           </p>
         ) : (
-          <div className="flex flex-col gap-24 md:gap-32 lg:gap-40">
+          <div className="flex flex-col gap-12 md:gap-16 lg:gap-20">
             {rows.map((row, rowIdx) =>
               row.length === 1 ? (
                 <WideRow
@@ -152,46 +152,48 @@ function WideRow({
       aria-label={`${product.name} — ${product.tagline}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <div
-        className={cn(
-          "flex flex-col items-center gap-8 md:gap-12 lg:gap-16",
-          labelSide === "left"
-            ? "md:flex-row-reverse"
-            : "md:flex-row",
-        )}
-      >
-        <div className="relative w-full md:w-2/3 aspect-[16/10] overflow-hidden bg-muted/30">
-          <Image
-            src={product.image}
-            alt={`${product.name} — ${product.tagline}`}
-            fill
-            sizes="(min-width: 768px) 66vw, 100vw"
-            className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
-          />
-        </div>
-
+      {/* Card frame — soft tonal background + hairline border so the
+          image + text below clearly belong together. */}
+      <article className="rounded-md border border-border/60 bg-card/60 p-6 md:p-10 lg:p-14 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
         <div
           className={cn(
-            "w-full md:w-1/3",
-            labelSide === "left" ? "md:text-right" : "md:text-left",
+            "flex flex-col items-center gap-8 md:gap-12 lg:gap-16",
+            labelSide === "left" ? "md:flex-row-reverse" : "md:flex-row",
           )}
         >
-          <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] text-foreground transition-opacity group-hover:opacity-80">
-            {product.name}
-          </h3>
-          {product.badge && (
-            <p className="mt-4 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-              {product.badge}
+          <div className="relative w-full md:w-2/3 aspect-[16/10] overflow-hidden bg-muted/40 rounded-sm">
+            <Image
+              src={product.image}
+              alt={`${product.name} — ${product.tagline}`}
+              fill
+              sizes="(min-width: 768px) 60vw, 100vw"
+              className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
+            />
+          </div>
+
+          <div
+            className={cn(
+              "w-full md:w-1/3",
+              labelSide === "left" ? "md:text-right" : "md:text-left",
+            )}
+          >
+            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] text-foreground">
+              {product.name}
+            </h3>
+            {product.badge && (
+              <p className="mt-4 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+                {product.badge}
+              </p>
+            )}
+            <p className="mt-6 text-base text-muted-foreground">
+              {product.tagline}
             </p>
-          )}
-          <p className="mt-6 text-base text-muted-foreground max-w-xs md:max-w-none md:ml-0 mx-auto">
-            {product.tagline}
-          </p>
-          <p className="mt-6 font-serif text-xl text-foreground">
-            {formatPrice(product.priceCents, product.currency)}
-          </p>
+            <p className="mt-6 font-serif text-xl text-foreground">
+              {formatPrice(product.priceCents, product.currency)}
+            </p>
+          </div>
         </div>
-      </div>
+      </article>
     </Link>
   );
 }
@@ -200,7 +202,7 @@ function WideRow({
 
 function PairRow({ pair }: { pair: Product[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 lg:gap-24">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
       {pair.map((product) => (
         <Link
           key={product.slug}
@@ -208,29 +210,33 @@ function PairRow({ pair }: { pair: Product[] }) {
           aria-label={`${product.name} — ${product.tagline}`}
           className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
         >
-          <div className="relative aspect-square w-full overflow-hidden bg-muted/30">
-            <Image
-              src={product.image}
-              alt={`${product.name} — ${product.tagline}`}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
-            />
-          </div>
+          {/* Card frame — same treatment as wide rows so the listing
+              reads as a single visual rhythm. */}
+          <article className="h-full rounded-md border border-border/60 bg-card/60 p-6 md:p-8 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
+            <div className="relative aspect-square w-full overflow-hidden bg-muted/40 rounded-sm">
+              <Image
+                src={product.image}
+                alt={`${product.name} — ${product.tagline}`}
+                fill
+                sizes="(min-width: 768px) 45vw, 100vw"
+                className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+              />
+            </div>
 
-          <div className="mt-8 text-center">
-            <h3 className="font-serif text-3xl md:text-4xl font-light leading-tight text-foreground transition-opacity group-hover:opacity-80">
-              {product.name}
-            </h3>
-            {product.badge && (
-              <p className="mt-3 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-                {product.badge}
+            <div className="mt-8 text-center">
+              <h3 className="font-serif text-3xl md:text-4xl font-light leading-tight text-foreground">
+                {product.name}
+              </h3>
+              {product.badge && (
+                <p className="mt-3 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+                  {product.badge}
+                </p>
+              )}
+              <p className="mt-4 font-serif text-lg text-foreground">
+                {formatPrice(product.priceCents, product.currency)}
               </p>
-            )}
-            <p className="mt-4 font-serif text-lg text-foreground">
-              {formatPrice(product.priceCents, product.currency)}
-            </p>
-          </div>
+            </div>
+          </article>
         </Link>
       ))}
     </div>

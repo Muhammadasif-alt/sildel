@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Award, Check, Mail, MapPin, ShoppingBag, Truck } from "lucide-react";
+import { ArrowLeft, Award, Check, Mail, MapPin, Truck } from "lucide-react";
 import {
   buildBreadcrumbJsonLd,
   buildMetadata,
@@ -163,105 +163,6 @@ export default async function ProductPage({ params }: Params) {
           </div>
         </nav>
 
-        {/* ─────────── HERO ─────────── */}
-        <section
-          aria-labelledby="product-hero-heading"
-          className="relative w-full overflow-hidden isolate"
-        >
-          {/* Background image */}
-          <Image
-            src={product.image}
-            alt={`${product.name} — ${product.tagline}`}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover -z-10"
-          />
-
-          {/* Gradient overlays for legibility */}
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/75"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-r from-black/65 to-transparent"
-          />
-
-          {/* Content — left-aligned, bottom-anchored like Treasures hero */}
-          <div className="relative z-10 mx-auto max-w-[1600px] px-6 py-32 lg:px-12 lg:py-44 min-h-[80vh] flex flex-col justify-end">
-            <div className="flex items-center gap-4 mb-8">
-              <span aria-hidden className="h-px w-10 bg-primary" />
-              <p className="text-xs tracking-[0.45em] uppercase text-primary font-medium">
-                {product.category}
-              </p>
-            </div>
-
-            <h1
-              id="product-hero-heading"
-              className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1.02] text-white max-w-4xl mb-4"
-            >
-              {product.name}
-            </h1>
-
-            <p className="font-serif italic text-primary text-2xl md:text-3xl lg:text-4xl font-light leading-snug max-w-3xl mb-10">
-              {product.tagline}
-            </p>
-
-            <div aria-hidden className="h-px w-16 bg-primary/80 mb-8" />
-
-            {/* Description preview */}
-            <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-2xl mb-10">
-              {product.description}
-            </p>
-
-            {/* Price + signed line */}
-            <div className="flex flex-wrap items-end gap-5 sm:gap-8 mb-10">
-              <span className="font-serif text-4xl md:text-5xl font-light text-white">
-                {formatPrice(product.priceCents, product.currency)}
-              </span>
-              <span aria-hidden className="hidden sm:inline-block h-8 w-px bg-white/30" />
-              <span className="text-[10px] tracking-[0.4em] uppercase text-white/70">
-                {i18n.signedNumbered}
-              </span>
-            </div>
-
-            {/* Badge + CTAs */}
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="#cart-section"
-                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-7 py-4 rounded-sm text-xs tracking-[0.35em] uppercase font-medium hover:bg-primary/90 transition-colors"
-              >
-                <ShoppingBag className="h-4 w-4" />
-                {locale === "pt" ? "Adquirir esta peça" : "Acquire this piece"}
-              </Link>
-              <Link
-                href="#story-section"
-                className="text-xs tracking-[0.3em] uppercase text-white hover:text-primary transition-colors border-b border-white/40 hover:border-primary pb-1"
-              >
-                {locale === "pt" ? "Saber mais" : "Learn more"}
-              </Link>
-              {product.badge && (
-                <span className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm ring-1 ring-white/30 rounded-sm px-5 py-3">
-                  <span aria-hidden className="inline-block size-1.5 rounded-full bg-primary" />
-                  <span className="text-[10px] tracking-[0.35em] uppercase text-primary">
-                    {product.badge}
-                  </span>
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Scroll indicator (matches Treasures hero) */}
-          <div
-            aria-hidden
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/60"
-          >
-            <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>
-            <span className="h-8 w-px bg-white/40" />
-          </div>
-        </section>
-
         {/* ─────────── CART / ADD-TO-CART ─────────── */}
         <section
           id="cart-section"
@@ -280,34 +181,34 @@ export default async function ProductPage({ params }: Params) {
               />
             </div>
 
-            {/* Buy panel */}
+            {/* Buy panel — single source of truth for product detail.
+                One primary CTA (Add to cart). No duplicate hero above. */}
             <div className="flex flex-col">
-              <p className="text-xs tracking-[0.4em] uppercase text-primary mb-4">
-                {i18n.overview}
+              <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
+                {product.category}
               </p>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.05] mb-5">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-4">
                 {product.name}
-              </h2>
+              </h1>
+              <p className="font-serif italic text-xl md:text-2xl text-foreground/70 leading-snug mb-10 max-w-xl">
+                {product.tagline}
+              </p>
 
-              {/* Price + material */}
-              <div className="flex flex-wrap items-end justify-between gap-4 border-y border-border/60 py-6 mb-10">
-                <div>
-                  <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">
-                    {i18n.price}
-                  </p>
-                  <div className="font-serif text-4xl md:text-5xl font-light text-foreground leading-none">
-                    {formatPrice(product.priceCents, product.currency)}
-                  </div>
+              {/* Price */}
+              <div className="border-y border-border/60 py-7 mb-10">
+                <p className="text-[10px] tracking-[0.32em] uppercase text-muted-foreground mb-3">
+                  {i18n.price}
+                </p>
+                <div className="font-serif text-4xl md:text-5xl font-light text-foreground leading-none">
+                  {formatPrice(product.priceCents, product.currency)}
                 </div>
                 {product.material && (
-                  <div className="text-right">
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">
+                  <p className="mt-5 text-sm text-muted-foreground">
+                    <span className="text-[10px] tracking-[0.32em] uppercase mr-3">
                       {i18n.material}
-                    </p>
-                    <p className="font-serif text-base md:text-lg text-foreground/85 max-w-xs">
-                      {product.material}
-                    </p>
-                  </div>
+                    </span>
+                    {product.material}
+                  </p>
                 )}
               </div>
 
@@ -324,8 +225,8 @@ export default async function ProductPage({ params }: Params) {
                 </div>
               )}
 
-              {/* Add to cart */}
-              <div className="mb-10">
+              {/* Single primary CTA — Add to cart */}
+              <div className="mb-12">
                 <AddToCartButton
                   slug={product.slug}
                   name={product.name}
@@ -338,25 +239,19 @@ export default async function ProductPage({ params }: Params) {
                 />
               </div>
 
-              {/* Trust strip */}
-              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <li className="group flex flex-col items-start gap-2 rounded-sm border border-border bg-card p-4 transition-colors hover:border-primary/60">
-                  <Award className="h-5 w-5 text-primary" aria-hidden />
-                  <span className="text-[11px] tracking-[0.2em] uppercase text-foreground leading-snug">
-                    {i18n.signedNumbered}
-                  </span>
+              {/* Trust strip — inline list, no boxed cards. Less chrome. */}
+              <ul className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-8 border-t border-border/60">
+                <li className="inline-flex items-center gap-3 text-[11px] tracking-[0.28em] uppercase text-muted-foreground">
+                  <Award className="h-4 w-4" aria-hidden strokeWidth={1.5} />
+                  <span>{i18n.signedNumbered}</span>
                 </li>
-                <li className="group flex flex-col items-start gap-2 rounded-sm border border-border bg-card p-4 transition-colors hover:border-primary/60">
-                  <MapPin className="h-5 w-5 text-primary" aria-hidden />
-                  <span className="text-[11px] tracking-[0.2em] uppercase text-foreground leading-snug">
-                    {i18n.madeInPortugal}
-                  </span>
+                <li className="inline-flex items-center gap-3 text-[11px] tracking-[0.28em] uppercase text-muted-foreground">
+                  <MapPin className="h-4 w-4" aria-hidden strokeWidth={1.5} />
+                  <span>{i18n.madeInPortugal}</span>
                 </li>
-                <li className="group flex flex-col items-start gap-2 rounded-sm border border-border bg-card p-4 transition-colors hover:border-primary/60">
-                  <Truck className="h-5 w-5 text-primary" aria-hidden />
-                  <span className="text-[11px] tracking-[0.2em] uppercase text-foreground leading-snug">
-                    {i18n.freeShipping}
-                  </span>
+                <li className="inline-flex items-center gap-3 text-[11px] tracking-[0.28em] uppercase text-muted-foreground">
+                  <Truck className="h-4 w-4" aria-hidden strokeWidth={1.5} />
+                  <span>{i18n.freeShipping}</span>
                 </li>
               </ul>
             </div>
