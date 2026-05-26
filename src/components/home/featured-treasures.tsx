@@ -65,9 +65,10 @@ export function FeaturedTreasures({
                 href={`/treasures/${p.slug}`}
                 className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                {/* Card frame matches the /treasures listing so the home page
-                    teaser and the catalogue read as one visual system. */}
-                <article className="h-full rounded-md border border-border/60 bg-card/60 p-5 sm:p-6 md:p-8 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
+                {/* Card frame — uses muted bg + full-opacity border so the
+                    card is visible in both light and dark themes (in light
+                    mode `--card` is almost white-on-white otherwise). */}
+                <article className="h-full rounded-md border border-border bg-muted/60 p-5 sm:p-6 md:p-8 shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:border-foreground/40 group-hover:bg-muted group-hover:shadow-xl">
                   <div className="relative aspect-square w-full overflow-hidden bg-muted/40 rounded-sm">
                     <Image
                       src={p.image}
