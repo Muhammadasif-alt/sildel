@@ -18,16 +18,16 @@ export function ProductGallery({ images, alt, badge }: Props) {
   const showThumbs = images.length > 1;
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* Main image — fills the square fully, no padding */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-muted ring-1 ring-border/60 shadow-xl shadow-foreground/5">
+    <div className="flex flex-col gap-5">
+      {/* Main image — object-contain so nothing gets cropped */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted/40">
         <AnimatePresence mode="wait">
           <motion.div
             key={images[active]}
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.02 }}
-            transition={{ duration: 0.5, ease: EASE }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
             className="absolute inset-0"
           >
             <Image
@@ -36,13 +36,13 @@ export function ProductGallery({ images, alt, badge }: Props) {
               fill
               priority={active === 0}
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="object-contain"
             />
           </motion.div>
         </AnimatePresence>
 
         {badge && (
-          <span className="absolute top-5 left-5 z-10 inline-flex items-center gap-2 bg-primary text-primary-foreground px-3 py-1.5 text-[10px] tracking-[0.3em] uppercase rounded-sm shadow-sm">
+          <span className="absolute top-5 left-5 z-10 inline-flex items-center gap-2 bg-foreground text-background px-3 py-1.5 text-[10px] tracking-[0.32em] uppercase">
             {badge}
           </span>
         )}
@@ -59,10 +59,8 @@ export function ProductGallery({ images, alt, badge }: Props) {
                 aria-label={`Show image ${i + 1} of ${images.length}`}
                 aria-current={i === active}
                 className={cn(
-                  "relative block h-20 w-20 overflow-hidden rounded-sm border bg-muted transition-all",
-                  i === active
-                    ? "border-primary ring-2 ring-primary/30"
-                    : "border-border hover:border-primary/60",
+                  "relative block h-20 w-20 overflow-hidden bg-muted/40 transition-opacity",
+                  i === active ? "opacity-100" : "opacity-60 hover:opacity-100",
                 )}
               >
                 <Image
@@ -70,8 +68,14 @@ export function ProductGallery({ images, alt, badge }: Props) {
                   alt=""
                   fill
                   sizes="80px"
-                  className="object-cover"
+                  className="object-contain"
                 />
+                {i === active && (
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-px bg-foreground"
+                  />
+                )}
               </button>
             </li>
           ))}

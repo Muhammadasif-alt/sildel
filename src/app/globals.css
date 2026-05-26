@@ -8,67 +8,76 @@
 */
 
 :root {
-  /* Light theme (default) — pure white base, neutral greys, brand gold accent. */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.1 0 0);
+  /* Light theme (default) — refined off-white base, deep ink foreground,
+     a single restrained gold accent reserved for select moments only.
+     Inspired by quiet-luxury references (quintadeadorigo.com / Loro Piana). */
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.16 0 0);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.1 0 0);
+  --card-foreground: oklch(0.16 0 0);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.1 0 0);
+  --popover-foreground: oklch(0.16 0 0);
 
-  --primary: oklch(0.6 0.13 75);
-  --primary-foreground: oklch(1 0 0);
+  /* Primary = deep ink (used for CTAs, accents). Gold is reserved for
+     limited "featured" badges via --accent-gold below. */
+  --primary: oklch(0.16 0 0);
+  --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.55 0.08 55);
+  --secondary: oklch(0.55 0.04 60);
   --secondary-foreground: oklch(1 0 0);
 
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.42 0 0);
+  --muted: oklch(0.965 0 0);
+  --muted-foreground: oklch(0.45 0 0);
 
-  --accent: oklch(0.96 0 0);
-  --accent-foreground: oklch(0.1 0 0);
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.16 0 0);
+
+  /* Single reserved gold accent — used sparingly (badges, decorative rules). */
+  --accent-gold: oklch(0.62 0.11 78);
 
   --destructive: oklch(0.55 0.18 25);
   --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.93 0 0);
-  --ring: oklch(0.6 0.13 75 / 0.5);
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.95 0 0);
+  --ring: oklch(0.16 0 0 / 0.4);
 
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 }
 
 .dark {
-  /* Dark theme — pure black base, neutral dark greys, brand gold accent. */
-  --background: oklch(0 0 0);
-  --foreground: oklch(1 0 0);
+  /* Dark theme — deep ink base, soft cream foreground, same restrained palette. */
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.97 0 0);
 
-  --card: oklch(0.06 0 0);
-  --card-foreground: oklch(1 0 0);
+  --card: oklch(0.1 0 0);
+  --card-foreground: oklch(0.97 0 0);
 
-  --popover: oklch(0.06 0 0);
-  --popover-foreground: oklch(1 0 0);
+  --popover: oklch(0.1 0 0);
+  --popover-foreground: oklch(0.97 0 0);
 
-  --primary: oklch(0.78 0.11 80);
-  --primary-foreground: oklch(0.08 0 0);
+  --primary: oklch(0.97 0 0);
+  --primary-foreground: oklch(0.1 0 0);
 
-  --secondary: oklch(0.55 0.08 55);
+  --secondary: oklch(0.55 0.04 60);
   --secondary-foreground: oklch(1 0 0);
 
-  --muted: oklch(0.14 0 0);
+  --muted: oklch(0.16 0 0);
   --muted-foreground: oklch(0.72 0 0);
 
   --accent: oklch(0.18 0 0);
-  --accent-foreground: oklch(1 0 0);
+  --accent-foreground: oklch(0.97 0 0);
+
+  --accent-gold: oklch(0.74 0.1 80);
 
   --destructive: oklch(0.55 0.18 25);
   --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.22 0 0 / 0.6);
-  --input: oklch(0.22 0 0 / 0.5);
-  --ring: oklch(0.78 0.11 80 / 0.6);
+  --border: oklch(0.22 0 0 / 0.7);
+  --input: oklch(0.22 0 0 / 0.6);
+  --ring: oklch(0.97 0 0 / 0.4);
 }
 
 @theme inline {
@@ -113,6 +122,9 @@
   html {
     scroll-behavior: smooth;
     color-scheme: light;
+    /* Bump root font size — Sildel buyers skew 45+, so 17px body is
+       more comfortable than the browser default 16px without breaking layouts. */
+    font-size: 17px;
   }
 
   html.dark {
@@ -123,6 +135,8 @@
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -130,12 +144,21 @@
 
   h1, h2, h3, h4, h5 {
     font-family: var(--font-playfair), ui-serif, Georgia, serif;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+    font-weight: 300;
+  }
+
+  /* Slightly heavier weight on small uppercase labels improves legibility
+     at the tight tracking we use across the site. */
+  .tracking-\[0\.32em\],
+  .tracking-\[0\.35em\],
+  .tracking-\[0\.4em\] {
+    font-weight: 500;
   }
 
   ::selection {
-    background: var(--primary);
-    color: var(--primary-foreground);
+    background: var(--foreground);
+    color: var(--background);
   }
 }
 

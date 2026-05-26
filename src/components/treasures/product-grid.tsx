@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { formatPrice, type Product } from "@/content/treasures";
 import { useTreasures } from "@/content/treasures-provider";
@@ -52,26 +52,25 @@ export function ProductGrid() {
       aria-labelledby="product-grid-heading"
     >
       <div ref={topRef} className="mx-auto max-w-[1480px] px-6 py-20 lg:px-12 lg:py-28">
-        <div className="max-w-3xl mx-auto text-center mb-14 lg:mb-16">
-          <p className="text-xs tracking-[0.4em] uppercase text-primary mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+          <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
             {data.eyebrow}
           </p>
           <h2
             id="product-grid-heading"
-            className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]"
+            className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1]"
           >
             {data.title}{" "}
-            <span className="italic text-primary">{data.titleAccent}</span>
+            <span className="italic">{data.titleAccent}</span>
           </h2>
-          <div className="mx-auto h-px w-16 bg-primary/60 my-8" aria-hidden />
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+          <p className="mt-8 text-muted-foreground text-base md:text-lg leading-relaxed">
             {data.body}
           </p>
         </div>
 
-        {/* Filter tabs */}
+        {/* Filter tabs — minimal underline style */}
         <div
-          className="flex flex-wrap items-center justify-center gap-3 mb-12 lg:mb-14"
+          className="flex flex-wrap items-center justify-center gap-8 md:gap-10 mb-16 lg:mb-20"
           role="tablist"
           aria-label="Filter by category"
         >
@@ -85,22 +84,20 @@ export function ProductGrid() {
                 aria-selected={active}
                 onClick={() => setActiveSlug(cat.slug)}
                 className={cn(
-                  "inline-flex items-center gap-2 rounded-sm border px-5 py-2.5 transition-all duration-300",
+                  "relative pb-2 text-[11px] tracking-[0.32em] uppercase transition-colors",
                   active
-                    ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/10"
-                    : "border-border bg-card text-foreground hover:border-primary hover:text-primary"
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
+                {cat.label}
                 <span
                   aria-hidden
                   className={cn(
-                    "inline-block size-1.5 rounded-full",
-                    active ? "bg-primary-foreground" : "bg-primary/60"
+                    "absolute left-0 right-0 -bottom-0.5 h-px bg-foreground transition-opacity",
+                    active ? "opacity-100" : "opacity-0"
                   )}
                 />
-                <span className="text-[10px] tracking-[0.3em] uppercase font-medium whitespace-nowrap">
-                  {cat.label}
-                </span>
               </button>
             );
           })}
@@ -112,14 +109,11 @@ export function ProductGrid() {
           </p>
         ) : (
           <>
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
               {paged.map((item, i) => {
                 const globalIndex = (safePage - 1) * PAGE_SIZE + i + 1;
                 return (
-                  <li
-                    key={item.slug}
-                    className={cn(i % 3 === 1 && "lg:mt-12")}
-                  >
+                  <li key={item.slug}>
                     <ProductCard product={item} index={globalIndex} />
                   </li>
                 );
@@ -156,30 +150,29 @@ function Pagination({
   return (
     <nav
       aria-label="Pagination"
-      className="mt-14 lg:mt-16 flex flex-wrap items-center justify-center gap-2"
+      className="mt-20 lg:mt-24 flex items-center justify-center gap-6 md:gap-8"
     >
       <button
         type="button"
         onClick={() => onChange(page - 1)}
         disabled={page <= 1}
         className={cn(
-          "inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 transition-all",
-          "border-border bg-card text-foreground hover:border-primary hover:text-primary",
-          "disabled:opacity-40 disabled:hover:border-border disabled:hover:text-foreground disabled:cursor-not-allowed",
+          "inline-flex items-center gap-2 text-[11px] tracking-[0.32em] uppercase text-muted-foreground transition-colors",
+          "hover:text-foreground disabled:opacity-30 disabled:hover:text-muted-foreground disabled:cursor-not-allowed",
         )}
         aria-label="Previous page"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
-        <span className="text-[10px] tracking-[0.3em] uppercase font-medium">Prev</span>
+        <span>Prev</span>
       </button>
 
-      <ul className="flex items-center gap-2" role="list">
+      <ul className="flex items-center gap-5" role="list">
         {pages.map((p, i) =>
           p === "…" ? (
             <li
               key={`gap-${i}`}
               aria-hidden
-              className="px-2 text-muted-foreground select-none"
+              className="text-muted-foreground/60 select-none"
             >
               …
             </li>
@@ -190,13 +183,19 @@ function Pagination({
                 onClick={() => onChange(p)}
                 aria-current={p === page ? "page" : undefined}
                 className={cn(
-                  "inline-flex h-10 min-w-10 items-center justify-center rounded-sm border px-3 text-sm font-medium transition-all",
+                  "relative text-sm transition-colors",
                   p === page
-                    ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                    : "border-border bg-card text-foreground hover:border-primary hover:text-primary",
+                    ? "text-foreground font-medium"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {p}
+                {p === page && (
+                  <span
+                    aria-hidden
+                    className="absolute left-0 right-0 -bottom-1.5 h-px bg-foreground"
+                  />
+                )}
               </button>
             </li>
           ),
@@ -208,13 +207,12 @@ function Pagination({
         onClick={() => onChange(page + 1)}
         disabled={page >= totalPages}
         className={cn(
-          "inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 transition-all",
-          "border-border bg-card text-foreground hover:border-primary hover:text-primary",
-          "disabled:opacity-40 disabled:hover:border-border disabled:hover:text-foreground disabled:cursor-not-allowed",
+          "inline-flex items-center gap-2 text-[11px] tracking-[0.32em] uppercase text-muted-foreground transition-colors",
+          "hover:text-foreground disabled:opacity-30 disabled:hover:text-muted-foreground disabled:cursor-not-allowed",
         )}
         aria-label="Next page"
       >
-        <span className="text-[10px] tracking-[0.3em] uppercase font-medium">Next</span>
+        <span>Next</span>
         <ArrowRight className="h-3.5 w-3.5" />
       </button>
     </nav>
@@ -233,7 +231,7 @@ function buildPageList(current: number, total: number): (number | "…")[] {
   return out;
 }
 
-function ProductCard({ product, index }: { product: Product; index: number }) {
+function ProductCard({ product }: { product: Product; index: number }) {
   const [errored, setErrored] = useState(false);
 
   return (
@@ -241,21 +239,14 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       href={`/treasures/${product.slug}`}
       aria-label={`${product.name} — ${product.tagline}`}
       className={cn(
-        "group relative block overflow-hidden rounded-sm border border-border bg-card",
-        "transition-all duration-300",
-        "hover:border-primary hover:shadow-2xl hover:shadow-primary/10",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        "group block",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       )}
     >
-      <span
-        aria-hidden
-        className="absolute top-0 left-0 z-20 h-px w-0 bg-primary transition-all duration-500 group-hover:w-full"
-      />
-
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
         {errored ? (
           <div
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-secondary)_0%,_var(--color-muted)_55%,_var(--color-background)_100%)]"
+            className="absolute inset-0 bg-muted"
             role="img"
             aria-label={product.name}
           />
@@ -264,69 +255,25 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             src={product.image}
             alt={`${product.name} — ${product.tagline}`}
             fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 768px) 50vw, 100vw"
             onError={() => setErrored(true)}
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
           />
         )}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/15 transition-colors duration-500"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent"
-        />
-
-        {/* Category pill */}
-        <span className="absolute top-5 left-5 inline-flex items-center bg-background/80 backdrop-blur-sm text-foreground px-3 py-1 text-[10px] tracking-[0.3em] uppercase rounded-sm">
-          {product.category}
-        </span>
-
-        {/* Badge / Number pill */}
-        {product.badge ? (
-          <span className="absolute top-5 right-5 inline-flex items-center bg-primary text-primary-foreground px-3 py-1 text-[10px] tracking-[0.3em] uppercase rounded-sm">
-            {product.badge}
-          </span>
-        ) : (
-          <span className="absolute top-5 right-5 inline-flex items-center bg-foreground/80 text-background backdrop-blur-sm px-3 py-1 text-[10px] tracking-[0.3em] uppercase rounded-sm">
-            № {String(index).padStart(2, "0")}
-          </span>
-        )}
-
-        {/* Hover reveal: View button */}
-        <div className="absolute inset-x-0 bottom-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <span className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 text-[10px] tracking-[0.3em] uppercase font-medium rounded-sm">
-            View
-            <ArrowUpRight className="h-3 w-3" />
-          </span>
-        </div>
       </div>
 
-      <div className="p-5 lg:p-7">
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <h3 className="font-serif text-2xl lg:text-3xl font-light leading-tight text-foreground">
-              {product.name}
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              {product.tagline}
-            </p>
-          </div>
-          <ArrowUpRight
-            aria-hidden
-            className="mt-2 h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:-translate-y-1 group-hover:translate-x-1"
-          />
+      <div className="pt-6 lg:pt-8 flex items-baseline justify-between gap-6">
+        <div className="min-w-0">
+          <h3 className="font-serif text-2xl lg:text-3xl font-light leading-tight text-foreground">
+            {product.name}
+          </h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {product.tagline}
+          </p>
         </div>
-
-        <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between">
-          <span className="font-serif text-xl text-primary">
-            {formatPrice(product.priceCents, product.currency)}
-          </span>
-          <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-            Signed & numbered
-          </span>
-        </div>
+        <span className="font-serif text-lg lg:text-xl text-foreground shrink-0">
+          {formatPrice(product.priceCents, product.currency)}
+        </span>
       </div>
     </Link>
   );

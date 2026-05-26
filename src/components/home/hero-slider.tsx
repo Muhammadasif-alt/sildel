@@ -51,20 +51,15 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
         />
       ))}
 
-      {/* Dual gradient overlays — readability + cinema feel */}
+      {/* Single soft overlay — readable text, photo still breathes */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"
+        className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10"
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-10 min-h-[100svh] flex flex-col justify-center">
+      <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 min-h-[100svh] flex flex-col justify-center">
         <div className="max-w-2xl">
-          {/* Animated copy — fades and slides up on slide change */}
           {slides.map((slide, i) => (
             <div
               key={slide.id}
@@ -76,36 +71,25 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
               )}
               aria-hidden={i !== index}
             >
-              <div className="flex items-center gap-4 mb-8">
-                <span className="h-px w-10 bg-primary" aria-hidden />
-                <p className="text-xs tracking-[0.45em] uppercase text-primary font-medium">
-                  {slide.eyebrow}
-                </p>
-              </div>
+              <p className="text-[11px] tracking-[0.45em] uppercase text-white/80 mb-8">
+                {slide.eyebrow}
+              </p>
 
-              <h1 className="font-serif text-white text-6xl md:text-7xl lg:text-8xl font-light leading-[0.95] mb-2 tracking-tight">
-                {slide.title}
+              <h1 className="font-serif text-white text-5xl md:text-7xl lg:text-8xl font-light leading-[1.02] mb-10 tracking-tight">
+                {slide.title}{" "}
+                <span className="italic">{slide.titleAccent}</span>
               </h1>
-              <h2 className="font-serif italic text-primary text-6xl md:text-7xl lg:text-8xl font-light leading-[0.95] mb-10">
-                {slide.titleAccent}
-              </h2>
 
-              <div className="h-px w-20 bg-primary/70 mb-10" aria-hidden />
-
-              <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-lg mb-12">
+              <p className="text-white/85 text-lg md:text-xl leading-relaxed max-w-xl mb-12">
                 {slide.description}
               </p>
 
               <Link
                 href={slide.cta.href}
-                className="group inline-flex items-center gap-3"
+                className="group inline-flex items-center gap-3 text-[11px] tracking-[0.4em] uppercase text-white pb-2 border-b border-white/40 hover:border-white transition-colors"
               >
-                <span className="inline-flex items-center justify-center bg-primary text-primary-foreground px-6 lg:px-8 py-3 lg:py-4 text-xs tracking-[0.35em] uppercase font-medium rounded-sm transition-colors group-hover:bg-primary/90">
-                  {slide.cta.label}
-                </span>
-                <span className="inline-flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-sm border border-primary text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
+                <span>{slide.cta.label}</span>
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </Link>
             </div>
           ))}
@@ -141,12 +125,12 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
                   <span
                     aria-hidden
                     key={index /* re-trigger animation on slide change */}
-                    className="absolute inset-y-0 left-0 bg-primary animate-[heroProgress_7000ms_linear_forwards]"
+                    className="absolute inset-y-0 left-0 bg-white animate-[heroProgress_7000ms_linear_forwards]"
                     style={{ animationDuration: `${AUTOPLAY_MS}ms` }}
                   />
                 )}
                 {i === index && paused && (
-                  <span aria-hidden className="absolute inset-0 bg-primary" />
+                  <span aria-hidden className="absolute inset-0 bg-white" />
                 )}
               </button>
             ))}
@@ -212,10 +196,10 @@ function HeroImageLayer({
           sizes="100vw"
           onError={() => setErrored(true)}
           className={cn(
-            "object-cover ease-out",
-            // Slow Ken Burns — 10s zoom on active slide, reset for inactive
+            "object-cover object-center ease-out",
+            // Gentler Ken Burns so products don't get over-cropped
             active
-              ? "scale-110 [transition:transform_10000ms_ease-out]"
+              ? "scale-105 [transition:transform_12000ms_ease-out]"
               : "scale-100 [transition:transform_0ms]"
           )}
         />
