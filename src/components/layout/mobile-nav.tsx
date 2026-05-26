@@ -90,12 +90,22 @@ export function MobileNav() {
             aria-label={`${siteConfig.name} home`}
           >
             <Image
-              src="/images/og/sildel-logo-dark.png"
+              src="/brand/sildel-logo-dark-trim.webp"
               alt={siteConfig.name}
-              width={140}
-              height={56}
+              width={197}
+              height={200}
               priority
-              className="h-8 w-auto dark:invert"
+              quality={95}
+              className="h-10 w-auto dark:hidden"
+            />
+            <Image
+              src="/brand/sildel-logo-light-trim.webp"
+              alt={siteConfig.name}
+              width={197}
+              height={200}
+              priority
+              quality={95}
+              className="hidden h-10 w-auto dark:block"
             />
           </Link>
           <button

@@ -28,24 +28,38 @@ export async function SiteHeader() {
         { label: ui.nav.treasures, href: "/treasures" },
       ];
 
-  const logoUrl = settings.brand.logoDarkUrl || "/images/og/sildel-logo-dark.png";
+  // High-res logos lifted from sildel.pt and re-rendered into themed variants.
+  // We render BOTH and toggle visibility via class so there's no theme flash.
+  const logoDark = settings.brand.logoDarkUrl || "/brand/sildel-logo-dark-trim.webp";
+  const logoLight = "/brand/sildel-logo-light-trim.webp";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-24 max-w-[1600px] items-center justify-between px-6 lg:px-12">
         <Link
           href="/"
           className="group flex items-center"
           aria-label={`${siteConfig.name} ${ui.nav.home}`}
         >
+          {/* Dark-glyph logo for light theme */}
           <Image
-            src={logoUrl}
+            src={logoDark}
             alt={`${siteConfig.name} — ${siteConfig.tagline}`}
-            width={200}
-            height={80}
+            width={197}
+            height={200}
             priority
-            quality={100}
-            className="h-10 w-auto md:h-12 transition-opacity group-hover:opacity-75 dark:invert"
+            quality={95}
+            className="h-12 w-auto md:h-14 transition-opacity group-hover:opacity-75 dark:hidden"
+          />
+          {/* White-glyph logo for dark theme */}
+          <Image
+            src={logoLight}
+            alt={`${siteConfig.name} — ${siteConfig.tagline}`}
+            width={197}
+            height={200}
+            priority
+            quality={95}
+            className="hidden h-12 w-auto md:h-14 transition-opacity group-hover:opacity-75 dark:block"
           />
         </Link>
 

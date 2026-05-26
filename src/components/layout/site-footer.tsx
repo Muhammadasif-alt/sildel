@@ -61,7 +61,8 @@ export async function SiteFooter() {
     { label: ui.footer.legalLinks.shipping, href: "/shipping" },
   ];
 
-  const logoUrl = settings.brand.logoDarkUrl || "/images/og/sildel-logo-dark.png";
+  const logoDark = settings.brand.logoDarkUrl || "/brand/sildel-logo-dark-trim.webp";
+  const logoLight = "/brand/sildel-logo-light-trim.webp";
   const tagline = pickLocalized(settings.brand.tagline, locale) || ui.footer.tagline;
   const footerTagline = pickLocalized(settings.footer.tagline, locale);
   const email = settings.contact.email || siteConfig.contact.email;
@@ -84,11 +85,18 @@ export async function SiteFooter() {
           <div className="sm:col-span-2 lg:col-span-4">
             <Link href="/" aria-label={`${siteConfig.name} home`} className="inline-block">
               <Image
-                src={logoUrl}
+                src={logoDark}
                 alt={`${siteConfig.name} — ${siteConfig.tagline}`}
-                width={200}
-                height={80}
-                className="h-12 w-auto dark:invert"
+                width={197}
+                height={200}
+                className="h-14 w-auto dark:hidden"
+              />
+              <Image
+                src={logoLight}
+                alt={`${siteConfig.name} — ${siteConfig.tagline}`}
+                width={197}
+                height={200}
+                className="hidden h-14 w-auto dark:block"
               />
             </Link>
             <p className="mt-7 max-w-md font-serif text-lg font-light leading-snug text-foreground sm:text-xl text-balance">
