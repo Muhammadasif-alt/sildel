@@ -113,13 +113,13 @@ export function ShopCategories({
                 href={`/treasures?category=${cat.slug}`}
                 className="group block"
               >
-                <div className="relative aspect-[4/5] overflow-hidden bg-muted/40">
+                <div className="relative aspect-square overflow-hidden bg-muted/40">
                   <Image
                     src={cat.image}
                     alt={cat.label}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                    className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                   />
                 </div>
 

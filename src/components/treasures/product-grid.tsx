@@ -68,9 +68,9 @@ export function ProductGrid() {
           </p>
         </div>
 
-        {/* Filter tabs — minimal underline style */}
+        {/* Filter tabs — rounded pills, active is solid black, others outlined. */}
         <div
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-10 mb-16 lg:mb-20"
+          className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-14 lg:mb-16"
           role="tablist"
           aria-label="Filter by category"
         >
@@ -84,20 +84,16 @@ export function ProductGrid() {
                 aria-selected={active}
                 onClick={() => setActiveSlug(cat.slug)}
                 className={cn(
-                  "relative pb-2 text-[11px] tracking-[0.32em] uppercase transition-colors",
+                  "inline-flex items-center rounded-full px-5 md:px-6 py-2.5 md:py-3",
+                  "text-[11px] tracking-[0.32em] uppercase font-medium",
+                  "border transition-all duration-300 ease-out",
+                  "hover:-translate-y-0.5 cursor-pointer",
                   active
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-foreground text-background border-foreground shadow-sm"
+                    : "bg-transparent text-foreground border-border hover:border-foreground hover:bg-foreground hover:text-background"
                 )}
               >
                 {cat.label}
-                <span
-                  aria-hidden
-                  className={cn(
-                    "absolute left-0 right-0 -bottom-0.5 h-px bg-foreground transition-opacity",
-                    active ? "opacity-100" : "opacity-0"
-                  )}
-                />
               </button>
             );
           })}
@@ -150,15 +146,19 @@ function Pagination({
   return (
     <nav
       aria-label="Pagination"
-      className="mt-20 lg:mt-24 flex items-center justify-center gap-6 md:gap-8"
+      className="mt-16 lg:mt-20 flex flex-wrap items-center justify-center gap-3 md:gap-4"
     >
       <button
         type="button"
         onClick={() => onChange(page - 1)}
         disabled={page <= 1}
         className={cn(
-          "inline-flex items-center gap-2 text-[11px] tracking-[0.32em] uppercase text-muted-foreground transition-colors",
-          "hover:text-foreground disabled:opacity-30 disabled:hover:text-muted-foreground disabled:cursor-not-allowed",
+          "inline-flex items-center gap-2 rounded-full px-5 py-3",
+          "text-[11px] tracking-[0.32em] uppercase font-medium",
+          "bg-foreground text-background border border-foreground",
+          "transition-all duration-300 ease-out hover:-translate-y-0.5",
+          "hover:bg-transparent hover:text-foreground",
+          "disabled:opacity-30 disabled:pointer-events-none disabled:cursor-not-allowed",
         )}
         aria-label="Previous page"
       >
@@ -166,13 +166,13 @@ function Pagination({
         <span>Prev</span>
       </button>
 
-      <ul className="flex items-center gap-5" role="list">
+      <ul className="flex items-center gap-2" role="list">
         {pages.map((p, i) =>
           p === "…" ? (
             <li
               key={`gap-${i}`}
               aria-hidden
-              className="text-muted-foreground/60 select-none"
+              className="px-1 text-muted-foreground/60 select-none"
             >
               …
             </li>
@@ -183,19 +183,14 @@ function Pagination({
                 onClick={() => onChange(p)}
                 aria-current={p === page ? "page" : undefined}
                 className={cn(
-                  "relative text-sm transition-colors",
+                  "inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm",
+                  "border transition-all duration-300 ease-out hover:-translate-y-0.5",
                   p === page
-                    ? "text-foreground font-medium"
-                    : "text-muted-foreground hover:text-foreground",
+                    ? "bg-foreground text-background border-foreground font-medium"
+                    : "bg-transparent text-foreground border-border hover:border-foreground hover:bg-foreground hover:text-background",
                 )}
               >
                 {p}
-                {p === page && (
-                  <span
-                    aria-hidden
-                    className="absolute left-0 right-0 -bottom-1.5 h-px bg-foreground"
-                  />
-                )}
               </button>
             </li>
           ),
@@ -207,8 +202,12 @@ function Pagination({
         onClick={() => onChange(page + 1)}
         disabled={page >= totalPages}
         className={cn(
-          "inline-flex items-center gap-2 text-[11px] tracking-[0.32em] uppercase text-muted-foreground transition-colors",
-          "hover:text-foreground disabled:opacity-30 disabled:hover:text-muted-foreground disabled:cursor-not-allowed",
+          "inline-flex items-center gap-2 rounded-full px-5 py-3",
+          "text-[11px] tracking-[0.32em] uppercase font-medium",
+          "bg-foreground text-background border border-foreground",
+          "transition-all duration-300 ease-out hover:-translate-y-0.5",
+          "hover:bg-transparent hover:text-foreground",
+          "disabled:opacity-30 disabled:pointer-events-none disabled:cursor-not-allowed",
         )}
         aria-label="Next page"
       >
@@ -243,7 +242,7 @@ function ProductCard({ product }: { product: Product; index: number }) {
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       )}
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+      <div className="relative aspect-square w-full overflow-hidden bg-muted/40">
         {errored ? (
           <div
             className="absolute inset-0 bg-muted"
@@ -257,7 +256,7 @@ function ProductCard({ product }: { product: Product; index: number }) {
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
             onError={() => setErrored(true)}
-            className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+            className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
           />
         )}
       </div>
