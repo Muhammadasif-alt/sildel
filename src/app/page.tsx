@@ -3,6 +3,10 @@ import { buildMetadata, buildVideoJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/common/json-ld";
 import { siteConfig } from "@/lib/site-config";
 
+// ISR — serve a cached HTML for one hour. Admin "save" actions call
+// revalidatePath() so editorial changes still land immediately.
+export const revalidate = 3600;
+
 export const metadata = buildMetadata({
   // Home: no title prefix — buildMetadata adds the brand+tagline default.
   description:

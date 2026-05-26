@@ -1,6 +1,8 @@
 import { buildMetadata } from "@/lib/seo";
 import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 
+export const revalidate = 3600;
+
 export const metadata = buildMetadata({
   title: "Journal — Notes from the Sildel Atelier in Portugal",
   description:

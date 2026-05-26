@@ -3,6 +3,8 @@ import { ComingSoon } from "@/components/common/coming-soon";
 import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 import { getPageBlocks } from "@/lib/content/page-blocks";
 
+export const revalidate = 3600;
+
 export const metadata = buildMetadata({
   title: "Privacy Policy",
   description:

@@ -13,6 +13,8 @@ const PAGE_PATH = "/our-story";
 const DATE_PUBLISHED = "2024-01-01T00:00:00Z";
 const DATE_MODIFIED = "2026-05-19T00:00:00Z";
 
+export const revalidate = 3600;
+
 export const metadata = buildMetadata({
   title: "Our Story — A Portuguese Cork Atelier in Esmoriz",
   description:

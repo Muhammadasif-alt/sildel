@@ -12,6 +12,8 @@ const PAGE_PATH = "/treasures";
 const DATE_PUBLISHED = "2024-01-01T00:00:00Z";
 const DATE_MODIFIED = "2026-05-19T00:00:00Z";
 
+export const revalidate = 3600;
+
 export const metadata = buildMetadata({
   title: "Treasures — The Sildel Collection",
   description:

@@ -20,6 +20,8 @@ import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content/blog"
 import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const posts = await getAllPosts();
   return posts.map((p) => ({ slug: p.slug }));

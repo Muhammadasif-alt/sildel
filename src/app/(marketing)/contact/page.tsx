@@ -9,6 +9,8 @@ import { JsonLd } from "@/components/common/json-ld";
 import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 import { ContactMap } from "@/components/contact/contact-map";
 
+export const revalidate = 3600;
+
 export const metadata = buildMetadata({
   title: "Contact — Sildel Atelier, Esmoriz, Portugal",
   description:

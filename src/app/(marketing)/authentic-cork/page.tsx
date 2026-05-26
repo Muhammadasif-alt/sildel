@@ -14,6 +14,8 @@ const PAGE_PATH = "/authentic-cork";
 const DATE_PUBLISHED = "2024-01-01T00:00:00Z";
 const DATE_MODIFIED = "2026-05-19T00:00:00Z";
 
+export const revalidate = 3600;
+
 export const metadata = buildMetadata({
   title: "Authentic Cork — What Cork Is, and Why It Matters",
   description:
