@@ -30,19 +30,22 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = buildMetadata();
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
+  // Dark is the default theme — set the OS chrome (mobile status bar etc)
+  // to match so the page never flashes a light bar over a black surface.
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
+  colorScheme: "dark",
 };
 
+// Default theme is DARK (per founder direction). The "dark" class is applied
+// to <html> immediately, before paint, unless the user has previously opted
+// into the light theme. This avoids a flash of light theme on first paint.
 const noFlashScript = `
 (function(){try{
   var t=localStorage.getItem('sildel-theme');
-  if(t==='dark')document.documentElement.classList.add('dark');
-}catch(e){}})();
+  if(t!=='light')document.documentElement.classList.add('dark');
+}catch(e){document.documentElement.classList.add('dark');}})();
 `;
 
 export default async function RootLayout({

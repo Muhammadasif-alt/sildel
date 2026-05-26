@@ -48,18 +48,21 @@
 }
 
 .dark {
-  /* Dark theme — deep ink base, soft cream foreground, same restrained palette. */
-  --background: oklch(0.08 0 0);
+  /* Dark theme — pure black surface, off-white foreground. Buttons stay
+     deep-ink with cream text so a "black button on black page" stands
+     out only by the cream label + subtle border, matching the founder's
+     ask for buttons to read as black not cream. */
+  --background: oklch(0.06 0 0);
   --foreground: oklch(0.97 0 0);
 
-  --card: oklch(0.1 0 0);
+  --card: oklch(0.09 0 0);
   --card-foreground: oklch(0.97 0 0);
 
-  --popover: oklch(0.1 0 0);
+  --popover: oklch(0.09 0 0);
   --popover-foreground: oklch(0.97 0 0);
 
-  --primary: oklch(0.97 0 0);
-  --primary-foreground: oklch(0.1 0 0);
+  --primary: oklch(0.06 0 0);
+  --primary-foreground: oklch(0.97 0 0);
 
   --secondary: oklch(0.55 0.04 60);
   --secondary-foreground: oklch(1 0 0);
@@ -121,14 +124,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: light;
+    /* Default scheme is dark — set at the root so the OS native scrollbars +
+       form controls render dark on first paint, before React hydrates. */
+    color-scheme: dark;
     /* Bump root font size — Sildel buyers skew 45+, so 17px body is
        more comfortable than the browser default 16px without breaking layouts. */
     font-size: 17px;
   }
 
-  html.dark {
-    color-scheme: dark;
+  html:not(.dark) {
+    color-scheme: light;
   }
 
   body {
@@ -160,9 +165,105 @@
     background: var(--foreground);
     color: var(--background);
   }
+
+  /* Global motion baseline — anything interactive eases in/out smoothly.
+     Links and buttons get color/border/background transitions for free
+     so we don't have to repeat them on every component. */
+  a, button, [role="button"] {
+    transition:
+      color 250ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 250ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 250ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 250ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  img {
+    transition: opacity 250ms ease;
+  }
+
+  /* Solid CTAs default to deep ink in light theme and cream-on-ink in dark
+     theme; the dark-bg / cream-text inversion is the most-recognisable
+     "Sildel button" look. */
+  .btn-primary,
+  button[data-variant="primary"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--foreground);
+    color: var(--background);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--foreground);
+  }
+  .btn-primary:hover,
+  button[data-variant="primary"]:hover {
+    background: transparent;
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  /* Subtle lift on hover — apply via class="hover-lift" to anything */
+  .hover-lift {
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Slow image zoom — apply to <Image> wrappers */
+  .hover-zoom img {
+    transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hover-zoom:hover img {
+    transform: scale(1.035);
+  }
+
+  /* Underline-grow link style — for "DISCOVER" type CTAs */
+  .link-grow {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+  }
+  .link-grow::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform-origin: left center;
+    transform: scaleX(0.4);
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-grow:hover::after {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes slide-fill {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Honour reduced-motion preferences — disable transitions for users
+   who've opted out at the OS level. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

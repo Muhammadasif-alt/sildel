@@ -19,8 +19,11 @@ export function ProductGallery({ images, alt, badge }: Props) {
 
   return (
     <div className="flex flex-col gap-5">
-      {/* Main image — object-contain so nothing gets cropped */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted/40">
+      {/* Main image — square frame fits both landscape and portrait photos
+          without cropping (object-contain). Client photos are mostly wide
+          landscape product shots; a square accommodates them while still
+          giving portrait-style images breathing room. */}
+      <div className="relative aspect-square w-full overflow-hidden bg-muted/40">
         <AnimatePresence mode="wait">
           <motion.div
             key={images[active]}

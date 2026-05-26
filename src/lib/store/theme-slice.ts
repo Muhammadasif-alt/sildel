@@ -8,7 +8,10 @@ interface ThemeState {
   theme: Theme;
 }
 
-const initialState: ThemeState = { theme: "light" };
+// Default theme is "dark" — matches the no-flash <script> in app/layout.tsx
+// which applies the .dark class to <html> on first paint unless the user
+// previously opted into light.
+const initialState: ThemeState = { theme: "dark" };
 
 const themeSlice = createSlice({
   name: "theme",
