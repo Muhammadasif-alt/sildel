@@ -11,16 +11,15 @@ import { WhySildel } from "@/components/home/why-sildel";
 import { BrandVideo } from "@/components/home/brand-video";
 import { Sustainability } from "@/components/home/sustainability";
 import { Newsletter } from "@/components/home/newsletter";
-import { CategorySlider } from "@/components/home/category-slider";
+import { HeroSlider } from "@/components/home/hero-slider";
 import { getHome } from "@/content/home";
 
-// Founder feedback (Isabel) asked us to mirror quintadeadorigo.com's
-// colored category slider as the home hero. The CMS block keeps its old
-// shape (heroShop fields) for backwards compatibility, but is rendered as
-// CategorySlider pulling its panel data from the locale-aware home content.
+// Home hero — fullbleed photo slider with infinite autoplay loop.
+// CMS heroShop fields are bypassed in favour of the locale-aware heroSlider
+// content (Nano Banana editorial shots + one-line copy per slide).
 export function HomeHeroShopBlock({ block: _block, locale }: { block: Block; locale: Locale }) {
   const content = getHome(locale);
-  return <CategorySlider data={content.categorySlider} />;
+  return <HeroSlider slides={content.heroSlider} />;
 }
 
 export function HomeShopCategoriesBlock({ block, locale }: { block: Block; locale: Locale }) {

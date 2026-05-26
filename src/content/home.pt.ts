@@ -9,8 +9,8 @@ export const homePt = {
       titleAccent: "Cortiça.",
       description:
         "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável — artesanato lento, assinado e numerado.",
-      image: "/products/BOND__MGL9181-67a8da8ab3.webp",
-      imageAlt: "Bond — mesa escultural em cortiça, fotografada no atelier Sildel.",
+      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
+      imageAlt: "Arte escultural em cortiça sob luz quente direccional.",
       cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
     },
     {
@@ -19,8 +19,8 @@ export const homePt = {
       title: "Carré",
       titleAccent: "d'Or.",
       description: "Folha de ouro sobre cortiça autêntica — geometria em diálogo silencioso.",
-      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1488-2721bf9ad5.webp",
-      imageAlt: "Carré d'Or — folha de ouro sobre cortiça portuguesa autêntica.",
+      image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_3.webp",
+      imageAlt: "Carré d'Or — peça escultural em cortiça sobre plinto de mármore.",
       cta: { label: "Descobrir Carré d'Or", href: "/treasures#carre-dor" },
     },
     {
@@ -29,8 +29,8 @@ export const homePt = {
       title: "Coleção",
       titleAccent: "Eclipse.",
       description: "Formas esculturais em cortiça que guardam o calor da floresta.",
-      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0388-copy_1-0da38525f6.webp",
-      imageAlt: "Coleção Eclipse — cortiça e cobre em forma escultural.",
+      image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_2.webp",
+      imageAlt: "Composição editorial de três objectos esculturais em cortiça.",
       cta: { label: "Ver Eclipse", href: "/treasures#eclipse" },
     },
     {
@@ -39,8 +39,8 @@ export const homePt = {
       title: "Gibraltar",
       titleAccent: "em cortiça.",
       description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
-      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
-      imageAlt: "Gibraltar — suportes de cortiça sob vidro temperado, em ambiente.",
+      image: "/Slidel/Nano Banana 2 - A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_1.png",
+      imageAlt: "Gibraltar — forma esculpida em cortiça sobre plinto de mármore.",
       cta: { label: "Explorar Gibraltar", href: "/treasures#gibraltar" },
     },
   ] satisfies HeroSlide[],

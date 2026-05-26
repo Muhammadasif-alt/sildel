@@ -9,8 +9,8 @@ export const homeEn = {
       titleAccent: "Cork.",
       description:
         "Sculptural treasures shaped from sustainably harvested Portuguese cork — slow craft, signed and numbered.",
-      image: "/products/BOND__MGL9181-67a8da8ab3.webp",
-      imageAlt: "Bond — a sculptural cork table photographed in the Sildel atelier.",
+      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
+      imageAlt: "Sculptural cork art under warm directional light.",
       cta: { label: "See All Treasures", href: "/treasures" },
     },
     {
@@ -19,8 +19,8 @@ export const homeEn = {
       title: "Carré",
       titleAccent: "d'Or.",
       description: "Gold leaf against authentic cork — geometry in quiet conversation.",
-      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1488-2721bf9ad5.webp",
-      imageAlt: "Carré d'Or — gold leaf against authentic Portuguese cork.",
+      image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_3.webp",
+      imageAlt: "Carré d'Or — sculptural cork piece on a marble pedestal.",
       cta: { label: "Discover Carré d'Or", href: "/treasures#carre-dor" },
     },
     {
@@ -29,8 +29,8 @@ export const homeEn = {
       title: "Eclipse",
       titleAccent: "Collection.",
       description: "Sculptural cork forms that hold the warmth of the forest.",
-      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0388-copy_1-0da38525f6.webp",
-      imageAlt: "Eclipse Collection — cork meets copper in a sculptural lamp.",
+      image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_2.webp",
+      imageAlt: "Editorial flat-lay of sculptural cork art objects.",
       cta: { label: "View Eclipse", href: "/treasures#eclipse" },
     },
     {
@@ -39,8 +39,8 @@ export const homeEn = {
       title: "Gibraltar",
       titleAccent: "in cork.",
       description: "A defining silhouette — elegant lines designed to last decades.",
-      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
-      imageAlt: "Gibraltar — cork supports under tempered glass, photographed in situ.",
+      image: "/Slidel/Nano Banana 2 - A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_1.png",
+      imageAlt: "Gibraltar — noble carved cork form on a marble pedestal.",
       cta: { label: "Explore Gibraltar", href: "/treasures#gibraltar" },
     },
   ] satisfies HeroSlide[],

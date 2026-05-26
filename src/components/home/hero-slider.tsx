@@ -16,6 +16,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
   const total = slides.length;
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Modulo wraparound so the slider loops forever — visitor never hits an end.
   const goTo = useCallback(
     (next: number) => setIndex(((next % total) + total) % total),
     [total]
@@ -29,8 +30,6 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, [index, paused, next]);
-
-  const active = slides[index];
 
   return (
     <section
@@ -96,65 +95,6 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
         </div>
       </div>
 
-      {/* Bottom rail — slide indicators + counter + slide title preview */}
-      <div className="absolute bottom-0 inset-x-0 z-10 border-t border-white/15 backdrop-blur-sm bg-black/20">
-        <div className="mx-auto max-w-[1600px] px-6 lg:px-10 py-5 flex items-center justify-between gap-6">
-          {/* Dot indicators with progress fill */}
-          <div className="flex items-center gap-3 lg:gap-4" role="tablist">
-            {slides.map((slide, i) => (
-              <button
-                key={slide.id}
-                type="button"
-                role="tab"
-                aria-selected={i === index}
-                aria-label={`Slide ${i + 1}: ${slide.title} ${slide.titleAccent}`}
-                onClick={() => goTo(i)}
-                className={cn(
-                  "group relative h-px transition-all duration-500",
-                  i === index ? "w-14 lg:w-20" : "w-6 lg:w-10"
-                )}
-              >
-                <span
-                  aria-hidden
-                  className={cn(
-                    "absolute inset-0 transition-colors",
-                    i === index ? "bg-white/25" : "bg-white/30 group-hover:bg-white/60"
-                  )}
-                />
-                {i === index && !paused && (
-                  <span
-                    aria-hidden
-                    key={index /* re-trigger animation on slide change */}
-                    className="absolute inset-y-0 left-0 bg-white animate-[heroProgress_7000ms_linear_forwards]"
-                    style={{ animationDuration: `${AUTOPLAY_MS}ms` }}
-                  />
-                )}
-                {i === index && paused && (
-                  <span aria-hidden className="absolute inset-0 bg-white" />
-                )}
-              </button>
-            ))}
-          </div>
-
-          <div className="hidden md:block text-xs tracking-[0.4em] uppercase text-white/70">
-            {active.titleAccent.replace(/[.,]/g, "")}
-          </div>
-
-          <div className="text-xs tracking-[0.4em] uppercase text-white/90 font-medium">
-            {String(index + 1).padStart(2, "0")}
-            <span className="text-white/40 mx-2">/</span>
-            <span className="text-white/40">{String(total).padStart(2, "0")}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Inline keyframes for the progress bar */}
-      <style>{`
-        @keyframes heroProgress {
-          from { width: 0%; }
-          to { width: 100%; }
-        }
-      `}</style>
     </section>
   );
 }
