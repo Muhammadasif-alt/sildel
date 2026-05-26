@@ -111,31 +111,35 @@ export function ShopCategories({
             >
               <Link
                 href={`/treasures?category=${cat.slug}`}
-                className="group block"
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                <div className="relative aspect-square overflow-hidden bg-muted/40">
-                  <Image
-                    src={cat.image}
-                    alt={cat.label}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
-
-                <div className="mt-6 flex items-baseline justify-between gap-4">
-                  <div className="min-w-0">
-                    <h3 className="font-serif text-2xl lg:text-3xl font-light text-foreground">
-                      {cat.label}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {cat.tagline}
-                    </p>
+                {/* Card frame — same recipe as the featured-treasures cards
+                    so every product surface on home reads as one system. */}
+                <article className="h-full rounded-md border border-border bg-muted/60 p-5 sm:p-6 md:p-8 shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:border-foreground/40 group-hover:bg-muted group-hover:shadow-xl">
+                  <div className="relative aspect-square w-full overflow-hidden bg-background/60 rounded-sm">
+                    <Image
+                      src={cat.image}
+                      alt={cat.label}
+                      fill
+                      sizes="(min-width: 768px) 45vw, 100vw"
+                      className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                    />
                   </div>
-                  <span className="shrink-0 text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
-                    {cat.count} {data.piecesSuffix}
-                  </span>
-                </div>
+
+                  <div className="mt-6 md:mt-8 flex items-baseline justify-between gap-4">
+                    <div className="min-w-0">
+                      <h3 className="font-serif text-2xl lg:text-3xl font-light text-foreground">
+                        {cat.label}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        {cat.tagline}
+                      </p>
+                    </div>
+                    <span className="shrink-0 text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
+                      {cat.count} {data.piecesSuffix}
+                    </span>
+                  </div>
+                </article>
               </Link>
             </motion.div>
           ))}
