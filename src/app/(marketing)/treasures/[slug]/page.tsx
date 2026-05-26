@@ -102,10 +102,11 @@ export default async function ProductPage({ params }: Params) {
 
   const extras = getProductExtras(slug, locale);
 
-  // Up to 3 "you may also like" picks, excluding self
+  // Up to 2 "you may also like" picks — paired layout matches the /treasures
+  // listing (one-wide / two-paired), keeps the bottom of the page tight.
   const related = localizedProducts
     .filter((p) => p.slug !== product.slug)
-    .slice(0, 3);
+    .slice(0, 2);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { label: locale === "pt" ? "Início" : "Home", href: "/" },
@@ -415,57 +416,60 @@ export default async function ProductPage({ params }: Params) {
         {/* ─────────── You may also like ─────────── */}
         {related.length > 0 && (
           <section className="relative w-full bg-muted/30 border-t border-border/60">
-            <div className="mx-auto max-w-[1480px] px-6 py-20 lg:px-12 lg:py-24">
-              <div className="flex items-end justify-between gap-6 mb-10 lg:mb-12">
-                <div>
-                  <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
-                    {i18n.youMayLike}
-                  </p>
-                  <h2 className="font-serif text-3xl md:text-4xl font-light leading-tight">
-                    {i18n.moreTreasures}
-                  </h2>
-                </div>
-                <Link
-                  href="/treasures"
-                  className="hidden sm:inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-foreground hover:text-primary transition-colors"
-                >
-                  {ui.common.viewAll}
-                </Link>
+            <div className="mx-auto max-w-[1480px] px-6 py-12 lg:px-12 lg:py-16">
+              <div className="text-center mb-10 lg:mb-12">
+                <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-3">
+                  {i18n.youMayLike}
+                </p>
+                <h2 className="font-serif text-3xl md:text-4xl font-light leading-tight">
+                  {i18n.moreTreasures}
+                </h2>
               </div>
 
-              <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
                 {related.map((p) => (
                   <li key={p.slug}>
                     <Link
                       href={`/treasures/${p.slug}`}
-                      className="group block overflow-hidden rounded-sm border border-border bg-card transition-all hover:border-primary hover:shadow-xl hover:shadow-primary/5"
+                      className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
                     >
-                      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
-                        <Image
-                          src={p.image}
-                          alt={p.name}
-                          fill
-                          sizes="(min-width: 768px) 33vw, 100vw"
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="p-5">
-                        <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">
-                          {p.category}
-                        </p>
-                        <div className="flex items-end justify-between gap-2">
-                          <h3 className="font-serif text-xl lg:text-2xl font-light leading-tight">
+                      {/* Same card frame as /treasures listing so the
+                          cross-sell row reads as part of one system. */}
+                      <article className="h-full rounded-md border border-border/60 bg-card/60 p-5 sm:p-6 md:p-8 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
+                        <div className="relative aspect-square w-full overflow-hidden bg-muted/40 rounded-sm">
+                          <Image
+                            src={p.image}
+                            alt={p.name}
+                            fill
+                            sizes="(min-width: 768px) 45vw, 100vw"
+                            className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                          />
+                        </div>
+                        <div className="mt-6 md:mt-8 text-center">
+                          <p className="text-[10px] tracking-[0.32em] uppercase text-muted-foreground mb-2">
+                            {p.category}
+                          </p>
+                          <h3 className="font-serif text-2xl md:text-3xl font-light leading-tight text-foreground">
                             {p.name}
                           </h3>
-                          <span className="font-serif text-base text-primary">
+                          <p className="mt-3 font-serif text-lg text-foreground">
                             {formatPrice(p.priceCents, p.currency)}
-                          </span>
+                          </p>
                         </div>
-                      </div>
+                      </article>
                     </Link>
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-12 lg:mt-14 flex justify-center">
+                <Link
+                  href="/treasures"
+                  className="group inline-flex items-center gap-3 bg-foreground text-background border border-foreground rounded-full px-7 md:px-9 py-3 md:py-3.5 text-[11px] tracking-[0.32em] uppercase font-medium transition-all duration-300 ease-out hover:bg-transparent hover:text-foreground hover:-translate-y-0.5"
+                >
+                  {ui.common.viewAll}
+                </Link>
+              </div>
             </div>
           </section>
         )}
