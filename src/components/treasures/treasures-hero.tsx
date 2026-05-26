@@ -14,41 +14,40 @@ export function TreasuresHero() {
       aria-labelledby="treasures-hero-heading"
     >
       <HeroBackground src={data.image} alt={data.imageAlt} />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/75" />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/65 to-transparent" />
+      {/* Slightly stronger overlay so the type stays legible no matter
+          which client photo we drop in behind it. */}
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/80" />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-44 min-h-[80vh] flex flex-col justify-end">
         <div className="flex items-center gap-4 mb-8">
-          <span className="h-px w-10 bg-primary" aria-hidden />
-          <p className="text-xs tracking-[0.45em] uppercase text-primary font-medium">
+          <span className="h-px w-10 bg-white/70" aria-hidden />
+          <p className="text-xs tracking-[0.45em] uppercase text-white/85 font-medium">
             {data.eyebrow}
           </p>
         </div>
 
         <h1
           id="treasures-hero-heading"
-          className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.02] text-white max-w-4xl mb-2"
+          className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.02] text-white max-w-4xl mb-3"
         >
-          {data.title}
+          {data.title}{" "}
+          <span className="italic text-white/95">{data.titleAccent}</span>
         </h1>
-        <h2 className="font-serif italic text-primary text-5xl md:text-6xl lg:text-7xl font-light leading-[1.02] mb-8">
-          {data.titleAccent}
-        </h2>
 
-        <div className="h-px w-16 bg-primary/80 mb-8" aria-hidden />
+        <div className="h-px w-16 bg-white/50 mb-8 mt-6" aria-hidden />
 
         <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl mb-10">
           {data.intro}
         </p>
 
-        {/* Hero badge — different per page */}
-        <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm ring-1 ring-white/30 rounded-sm px-5 py-3 self-start">
-          <span className="inline-block size-1.5 rounded-full bg-primary" aria-hidden />
-          <span className="text-[10px] tracking-[0.35em] uppercase text-white/90">
+        {/* Hero badge — solid pill, matches the rest of the redesign */}
+        <div className="inline-flex items-center gap-3 bg-white/95 text-black rounded-full px-5 py-2.5 self-start">
+          <span className="text-[10px] tracking-[0.32em] uppercase font-medium">
             {data.badge.label}
           </span>
-          <span className="text-white/40">·</span>
-          <span className="text-[10px] tracking-[0.35em] uppercase text-primary">
+          <span className="text-black/30">·</span>
+          <span className="text-[10px] tracking-[0.32em] uppercase font-medium">
             {data.badge.value}
           </span>
         </div>

@@ -48,10 +48,12 @@
 }
 
 .dark {
-  /* Dark theme — pure black surface, off-white foreground. Buttons stay
-     deep-ink with cream text so a "black button on black page" stands
-     out only by the cream label + subtle border, matching the founder's
-     ask for buttons to read as black not cream. */
+  /* Dark theme — pure black surface, off-white foreground.
+     --primary stays cream in dark mode (the "accent" semantic) so
+     text-primary / bg-primary stay legible against the black canvas.
+     Buttons reach for --foreground/--background directly instead of
+     --primary, so the founder's "black button" ask is satisfied without
+     making every primary-tinted bit of text invisible. */
   --background: oklch(0.06 0 0);
   --foreground: oklch(0.97 0 0);
 
@@ -61,8 +63,8 @@
   --popover: oklch(0.09 0 0);
   --popover-foreground: oklch(0.97 0 0);
 
-  --primary: oklch(0.06 0 0);
-  --primary-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.97 0 0);
+  --primary-foreground: oklch(0.08 0 0);
 
   --secondary: oklch(0.55 0.04 60);
   --secondary-foreground: oklch(1 0 0);
