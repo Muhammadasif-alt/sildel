@@ -188,14 +188,17 @@ export function WhySildel({
           })}
         </div>
 
-        {/* Stats banner */}
+        {/* Stats banner — text colour intentionally `text-background` so the
+            numerals invert against `bg-foreground` in both themes. Using
+            `text-primary` here breaks: in dark mode --primary === --foreground
+            (cream-on-cream), in light mode they're both near-black. */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
           className="mt-20 overflow-hidden rounded-3xl bg-foreground text-background shadow-2xl shadow-foreground/20"
         >
-          <div className="grid grid-cols-2 gap-px bg-foreground/20 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-px bg-background/20 md:grid-cols-4">
             {data.stats.map((s, i) => (
               <motion.div
                 key={i}
@@ -206,12 +209,16 @@ export function WhySildel({
                   delay: 0.85 + i * 0.08,
                   ease: EASE,
                 }}
-                className="bg-foreground px-6 py-10 text-center md:py-12"
+                className="group bg-foreground px-6 py-10 text-center transition-colors duration-500 md:py-12 hover:bg-foreground/95"
               >
-                <span className="block font-serif text-5xl font-light leading-none text-primary md:text-6xl">
+                <span className="block font-serif text-5xl font-light leading-none text-background md:text-6xl">
                   <Counter to={s.value} suffix={s.suffix} />
                 </span>
-                <span className="mt-3 block text-[10px] uppercase tracking-[0.32em] text-background/70">
+                <span
+                  aria-hidden
+                  className="mx-auto mt-4 block h-px w-8 bg-background/40 transition-all duration-500 group-hover:w-12 group-hover:bg-background/70"
+                />
+                <span className="mt-4 block text-[10px] uppercase tracking-[0.32em] text-background/75">
                   {s.label}
                 </span>
               </motion.div>
