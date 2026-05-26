@@ -18,6 +18,27 @@ export type Product = {
   gallery?: string[]; // additional images for the detail page
 };
 
+/**
+ * Slugs that should render full-width on the treasures index page.
+ * Mirrors the old sildel.pt magazine layout — pieces alternate between
+ * full-width hero rows and paired rows so each treasure has room to breathe.
+ */
+export const WIDE_TREASURE_SLUGS = new Set<string>([
+  "granada",
+  "hot-spring",
+  "eclipse-copper",
+  "island",
+  "crescent",
+  "leaf-golden",
+  "marlin",
+  "shale-belly-red",
+  "vitavele",
+]);
+
+export function isWideTreasure(slug: string): boolean {
+  return WIDE_TREASURE_SLUGS.has(slug);
+}
+
 /** Helper — keeps Nano Banana 2 paths readable. */
 const nb = (suffix: string) => `/Slidel/Nano Banana 2 - ${suffix}`;
 

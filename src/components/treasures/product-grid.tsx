@@ -1,49 +1,62 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { formatPrice, type Product } from "@/content/treasures";
+import {
+  formatPrice,
+  isWideTreasure,
+  type Product,
+} from "@/content/treasures";
 import { useTreasures } from "@/content/treasures-provider";
 
-const PAGE_SIZE = 6;
-
+/**
+ * Treasures index — magazine-style layout inspired by the old sildel.pt
+ *
+ * Pattern (per Isabel's feedback): products marked as "wide" in the catalog
+ * get a full-width row with the name large beside the image. Everything else
+ * pairs up two-per-row. Pagination is dropped — visitors scroll the whole
+ * collection in one column, which matches the old site and reads more
+ * like a magazine than a search results page.
+ */
 export function ProductGrid() {
   const { content, products } = useTreasures();
   const data = content.products;
   const categories = content.categories.items;
   const [activeSlug, setActiveSlug] = useState<string>("all");
-  const [page, setPage] = useState(1);
-  const topRef = useRef<HTMLDivElement | null>(null);
 
   const filtered = useMemo<Product[]>(() => {
     if (activeSlug === "all") return products;
     return products.filter(
-      (p) => p.category.toLowerCase() === activeSlug.replace(/-/g, " ")
+      (p) => p.category.toLowerCase() === activeSlug.replace(/-/g, " "),
     );
   }, [activeSlug, products]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const safePage = Math.min(page, totalPages);
-  const paged = useMemo(() => {
-    const start = (safePage - 1) * PAGE_SIZE;
-    return filtered.slice(start, start + PAGE_SIZE);
-  }, [filtered, safePage]);
-
-  // Reset to page 1 when category changes
-  useEffect(() => {
-    setPage(1);
-  }, [activeSlug]);
-
-  function goToPage(next: number) {
-    const clamped = Math.max(1, Math.min(totalPages, next));
-    setPage(clamped);
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Pre-bake the row pattern: wide products take a row alone, narrow
+  // products pair up. If a narrow product has no narrow neighbour to its
+  // right, it occupies a full row too.
+  const rows = useMemo<Product[][]>(() => {
+    const out: Product[][] = [];
+    let i = 0;
+    while (i < filtered.length) {
+      const cur = filtered[i];
+      if (isWideTreasure(cur.slug)) {
+        out.push([cur]);
+        i++;
+        continue;
+      }
+      const next = filtered[i + 1];
+      if (next && !isWideTreasure(next.slug)) {
+        out.push([cur, next]);
+        i += 2;
+      } else {
+        out.push([cur]);
+        i++;
+      }
     }
-  }
+    return out;
+  }, [filtered]);
 
   return (
     <section
@@ -51,7 +64,7 @@ export function ProductGrid() {
       className="relative w-full bg-background"
       aria-labelledby="product-grid-heading"
     >
-      <div ref={topRef} className="mx-auto max-w-[1480px] px-6 py-20 lg:px-12 lg:py-28">
+      <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-12 lg:py-28">
         <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
           <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
             {data.eyebrow}
@@ -60,17 +73,16 @@ export function ProductGrid() {
             id="product-grid-heading"
             className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1]"
           >
-            {data.title}{" "}
-            <span className="italic">{data.titleAccent}</span>
+            {data.title} <span className="italic">{data.titleAccent}</span>
           </h2>
           <p className="mt-8 text-muted-foreground text-base md:text-lg leading-relaxed">
             {data.body}
           </p>
         </div>
 
-        {/* Filter tabs — rounded pills, active is solid black, others outlined. */}
+        {/* Filter row — kept minimal so the catalogue itself is the focus. */}
         <div
-          className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-14 lg:mb-16"
+          className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-20 lg:mb-24"
           role="tablist"
           aria-label="Filter by category"
         >
@@ -89,8 +101,8 @@ export function ProductGrid() {
                   "border transition-all duration-300 ease-out",
                   "hover:-translate-y-0.5 cursor-pointer",
                   active
-                    ? "bg-foreground text-background border-foreground shadow-sm"
-                    : "bg-transparent text-foreground border-border hover:border-foreground hover:bg-foreground hover:text-background"
+                    ? "bg-foreground text-background border-foreground"
+                    : "bg-transparent text-foreground border-border hover:border-foreground hover:bg-foreground hover:text-background",
                 )}
               >
                 {cat.label}
@@ -104,176 +116,123 @@ export function ProductGrid() {
             No treasures in this collection yet.
           </p>
         ) : (
-          <>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
-              {paged.map((item, i) => {
-                const globalIndex = (safePage - 1) * PAGE_SIZE + i + 1;
-                return (
-                  <li key={item.slug}>
-                    <ProductCard product={item} index={globalIndex} />
-                  </li>
-                );
-              })}
-            </ul>
-
-            {totalPages > 1 && (
-              <Pagination
-                page={safePage}
-                totalPages={totalPages}
-                onChange={goToPage}
-              />
+          <div className="flex flex-col gap-24 md:gap-32 lg:gap-40">
+            {rows.map((row, rowIdx) =>
+              row.length === 1 ? (
+                <WideRow
+                  key={row[0].slug}
+                  product={row[0]}
+                  // Alternate label side on full-width rows so consecutive
+                  // wide pieces feel composed rather than stacked.
+                  labelSide={rowIdx % 2 === 0 ? "right" : "left"}
+                />
+              ) : (
+                <PairRow key={row.map((r) => r.slug).join("-")} pair={row} />
+              ),
             )}
-          </>
+          </div>
         )}
       </div>
     </section>
   );
 }
 
-/* ────────────────── Pagination ────────────────── */
+/* ────────────────── Wide (single-column) row ────────────────── */
 
-function Pagination({
-  page,
-  totalPages,
-  onChange,
+function WideRow({
+  product,
+  labelSide,
 }: {
-  page: number;
-  totalPages: number;
-  onChange: (n: number) => void;
+  product: Product;
+  labelSide: "left" | "right";
 }) {
-  const pages = useMemo(() => buildPageList(page, totalPages), [page, totalPages]);
-
-  return (
-    <nav
-      aria-label="Pagination"
-      className="mt-16 lg:mt-20 flex flex-wrap items-center justify-center gap-3 md:gap-4"
-    >
-      <button
-        type="button"
-        onClick={() => onChange(page - 1)}
-        disabled={page <= 1}
-        className={cn(
-          "inline-flex items-center gap-2 rounded-full px-5 py-3",
-          "text-[11px] tracking-[0.32em] uppercase font-medium",
-          "bg-foreground text-background border border-foreground",
-          "transition-all duration-300 ease-out hover:-translate-y-0.5",
-          "hover:bg-transparent hover:text-foreground",
-          "disabled:opacity-30 disabled:pointer-events-none disabled:cursor-not-allowed",
-        )}
-        aria-label="Previous page"
-      >
-        <ArrowLeft className="h-3.5 w-3.5" />
-        <span>Prev</span>
-      </button>
-
-      <ul className="flex items-center gap-2" role="list">
-        {pages.map((p, i) =>
-          p === "…" ? (
-            <li
-              key={`gap-${i}`}
-              aria-hidden
-              className="px-1 text-muted-foreground/60 select-none"
-            >
-              …
-            </li>
-          ) : (
-            <li key={p}>
-              <button
-                type="button"
-                onClick={() => onChange(p)}
-                aria-current={p === page ? "page" : undefined}
-                className={cn(
-                  "inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm",
-                  "border transition-all duration-300 ease-out hover:-translate-y-0.5",
-                  p === page
-                    ? "bg-foreground text-background border-foreground font-medium"
-                    : "bg-transparent text-foreground border-border hover:border-foreground hover:bg-foreground hover:text-background",
-                )}
-              >
-                {p}
-              </button>
-            </li>
-          ),
-        )}
-      </ul>
-
-      <button
-        type="button"
-        onClick={() => onChange(page + 1)}
-        disabled={page >= totalPages}
-        className={cn(
-          "inline-flex items-center gap-2 rounded-full px-5 py-3",
-          "text-[11px] tracking-[0.32em] uppercase font-medium",
-          "bg-foreground text-background border border-foreground",
-          "transition-all duration-300 ease-out hover:-translate-y-0.5",
-          "hover:bg-transparent hover:text-foreground",
-          "disabled:opacity-30 disabled:pointer-events-none disabled:cursor-not-allowed",
-        )}
-        aria-label="Next page"
-      >
-        <span>Next</span>
-        <ArrowRight className="h-3.5 w-3.5" />
-      </button>
-    </nav>
-  );
-}
-
-function buildPageList(current: number, total: number): (number | "…")[] {
-  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
-  const out: (number | "…")[] = [1];
-  const start = Math.max(2, current - 1);
-  const end = Math.min(total - 1, current + 1);
-  if (start > 2) out.push("…");
-  for (let i = start; i <= end; i++) out.push(i);
-  if (end < total - 1) out.push("…");
-  out.push(total);
-  return out;
-}
-
-function ProductCard({ product }: { product: Product; index: number }) {
-  const [errored, setErrored] = useState(false);
-
   return (
     <Link
       href={`/treasures/${product.slug}`}
       aria-label={`${product.name} — ${product.tagline}`}
-      className={cn(
-        "group block",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-      )}
+      className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <div className="relative aspect-square w-full overflow-hidden bg-muted/40">
-        {errored ? (
-          <div
-            className="absolute inset-0 bg-muted"
-            role="img"
-            aria-label={product.name}
-          />
-        ) : (
+      <div
+        className={cn(
+          "flex flex-col items-center gap-8 md:gap-12 lg:gap-16",
+          labelSide === "left"
+            ? "md:flex-row-reverse"
+            : "md:flex-row",
+        )}
+      >
+        <div className="relative w-full md:w-2/3 aspect-[16/10] overflow-hidden bg-muted/30">
           <Image
             src={product.image}
             alt={`${product.name} — ${product.tagline}`}
             fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            onError={() => setErrored(true)}
-            className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+            sizes="(min-width: 768px) 66vw, 100vw"
+            className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
           />
-        )}
-      </div>
+        </div>
 
-      <div className="pt-6 lg:pt-8 flex items-baseline justify-between gap-6">
-        <div className="min-w-0">
-          <h3 className="font-serif text-2xl lg:text-3xl font-light leading-tight text-foreground">
+        <div
+          className={cn(
+            "w-full md:w-1/3",
+            labelSide === "left" ? "md:text-right" : "md:text-left",
+          )}
+        >
+          <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] text-foreground transition-opacity group-hover:opacity-80">
             {product.name}
           </h3>
-          <p className="mt-2 text-sm text-muted-foreground">
+          {product.badge && (
+            <p className="mt-4 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+              {product.badge}
+            </p>
+          )}
+          <p className="mt-6 text-base text-muted-foreground max-w-xs md:max-w-none md:ml-0 mx-auto">
             {product.tagline}
           </p>
+          <p className="mt-6 font-serif text-xl text-foreground">
+            {formatPrice(product.priceCents, product.currency)}
+          </p>
         </div>
-        <span className="font-serif text-lg lg:text-xl text-foreground shrink-0">
-          {formatPrice(product.priceCents, product.currency)}
-        </span>
       </div>
     </Link>
+  );
+}
+
+/* ────────────────── Paired (two-column) row ────────────────── */
+
+function PairRow({ pair }: { pair: Product[] }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 lg:gap-24">
+      {pair.map((product) => (
+        <Link
+          key={product.slug}
+          href={`/treasures/${product.slug}`}
+          aria-label={`${product.name} — ${product.tagline}`}
+          className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+        >
+          <div className="relative aspect-square w-full overflow-hidden bg-muted/30">
+            <Image
+              src={product.image}
+              alt={`${product.name} — ${product.tagline}`}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+            />
+          </div>
+
+          <div className="mt-8 text-center">
+            <h3 className="font-serif text-3xl md:text-4xl font-light leading-tight text-foreground transition-opacity group-hover:opacity-80">
+              {product.name}
+            </h3>
+            {product.badge && (
+              <p className="mt-3 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+                {product.badge}
+              </p>
+            )}
+            <p className="mt-4 font-serif text-lg text-foreground">
+              {formatPrice(product.priceCents, product.currency)}
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
   );
 }
