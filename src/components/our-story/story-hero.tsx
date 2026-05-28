@@ -59,49 +59,29 @@ export function StoryHero() {
   );
 }
 
-const HERO_VIDEO = "/video/our-story-bg.mp4";
-
 function StoryHeroBackground({ src, alt }: { src: string; alt: string }) {
-  const [imgErrored, setImgErrored] = useState(false);
-  const [videoErrored, setVideoErrored] = useState(false);
+  const [errored, setErrored] = useState(false);
+
+  if (errored) {
+    return (
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,_oklch(0.32_0.07_75)_0%,_oklch(0.18_0.04_60)_45%,_oklch(0.1_0.02_50)_100%)]"
+        role="img"
+        aria-label={alt}
+      />
+    );
+  }
 
   return (
-    <div aria-hidden className="absolute inset-0 -z-10 bg-foreground">
-      {/* Poster image paints instantly (and is the still fallback if the
-          video can't load); the video fades in over it once playing. */}
-      {imgErrored ? (
-        <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_oklch(0.32_0.07_75)_0%,_oklch(0.18_0.04_60)_45%,_oklch(0.1_0.02_50)_100%)]"
-          role="img"
-          aria-label={alt}
-        />
-      ) : (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          priority
-          sizes="100vw"
-          onError={() => setImgErrored(true)}
-          className="object-cover"
-        />
-      )}
-
-      {!videoErrored && (
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={src}
-          aria-label={alt}
-          onError={() => setVideoErrored(true)}
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-      )}
-    </div>
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      priority
+      sizes="100vw"
+      onError={() => setErrored(true)}
+      className="object-cover -z-10"
+    />
   );
 }
