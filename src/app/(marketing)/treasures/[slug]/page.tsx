@@ -368,20 +368,16 @@ export default async function ProductPage({ params }: Params) {
                   ))}
                 </ul>
 
-                {/* Contact CTA */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                {/* Single CTA — "Add to cart" is already the primary action
+                    in the buy panel above, so this section just offers the
+                    one distinct path: talk to us about the piece. */}
+                <div>
                   <Link
                     href="/contact"
                     className="inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 py-4 rounded-sm text-xs tracking-[0.35em] uppercase font-medium hover:bg-primary/90 transition-colors"
                   >
                     <Mail className="h-4 w-4" />
                     {extras.story.ctaLabel}
-                  </Link>
-                  <Link
-                    href="#cart-section"
-                    className="text-xs tracking-[0.3em] uppercase text-foreground hover:text-primary transition-colors border-b border-primary/40 hover:border-primary pb-1"
-                  >
-                    {locale === "pt" ? "Adquirir agora" : "Or acquire now"}
                   </Link>
                 </div>
               </div>
