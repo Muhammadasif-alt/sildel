@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Moon, Sun, User, LogOut, ChevronDown, UserCircle2 } from "lucide-react";
-import { useAdminTheme } from "./theme-provider";
+import { User, LogOut, ChevronDown, UserCircle2 } from "lucide-react";
 
 const PAGE_TITLES: { match: RegExp; title: string }[] = [
   { match: /^\/admin\/blogs\/new$/, title: "New blog post" },
@@ -46,7 +45,6 @@ export function AdminTopbar({
   displayName?: string;
   avatarUrl?: string;
 }) {
-  const { theme, toggle } = useAdminTheme();
   const pathname = usePathname();
   const pageTitle = titleFromPath(pathname);
   const [open, setOpen] = useState(false);
@@ -111,20 +109,6 @@ export function AdminTopbar({
       </div>
 
       <div className="flex items-center gap-3">
-        {/* Theme toggle */}
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary/50 hover:text-primary"
-        >
-          {theme === "dark" ? (
-            <Sun className="h-4 w-4" strokeWidth={1.6} />
-          ) : (
-            <Moon className="h-4 w-4" strokeWidth={1.6} />
-          )}
-        </button>
-
         {/* Profile dropdown */}
         <div ref={ref} className="relative">
           <button

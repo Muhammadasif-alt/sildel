@@ -8,7 +8,6 @@ import { getSiteSettings } from "@/lib/content/site-settings";
 import { pickLocalized } from "@/lib/blocks/types";
 import { LanguageToggle } from "./language-toggle";
 import { MobileNav } from "./mobile-nav";
-import { ThemeToggle } from "./theme-toggle";
 import { CartButton } from "./cart-button";
 
 export async function SiteHeader() {
@@ -28,10 +27,10 @@ export async function SiteHeader() {
         { label: ui.nav.treasures, href: "/treasures" },
       ];
 
-  // High-res logos lifted from sildel.pt and re-rendered into themed variants.
-  // We render BOTH and toggle visibility via class so there's no theme flash.
-  const logoDark = settings.brand.logoDarkUrl || "/brand/sildel-logo-dark-trim.webp";
-  const logoLight = "/brand/sildel-logo-light-trim.webp";
+  // Single tan theme → the black-glyph logo sits on the warm cork header,
+  // exactly like the Instagram identity (black logo on camel). No themed
+  // variant swap needed.
+  const logo = settings.brand.logoDarkUrl || "/brand/sildel-logo-dark-trim.webp";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-md">
@@ -41,32 +40,16 @@ export async function SiteHeader() {
           className="group flex items-center"
           aria-label={`${siteConfig.name} ${ui.nav.home}`}
         >
-          {/* Both logos ship in the same page so the theme can swap them
-              without a hydration flash. Only ONE is visible at a time, so
-              only one needs `priority`. We pick the dark-glyph (light-theme)
-              variant because the no-flash inline script defaults to dark BUT
-              ships .dark on <html> *after* parse — meaning the first paint
-              briefly shows the light variant. Picking the dark glyph as the
-              priority candidate also makes browsers preload the smaller of
-              the two PNGs since they're identical in dimensions. */}
+          {/* Black-glyph logo on the warm cork header — the Instagram look. */}
           <Image
-            src={logoDark}
+            src={logo}
             alt={`${siteConfig.name} — ${siteConfig.tagline}`}
             width={197}
             height={200}
             priority
             fetchPriority="high"
             quality={82}
-            className="h-12 w-auto md:h-14 transition-opacity group-hover:opacity-75 dark:hidden"
-          />
-          <Image
-            src={logoLight}
-            alt={`${siteConfig.name} — ${siteConfig.tagline}`}
-            width={197}
-            height={200}
-            loading="eager"
-            quality={82}
-            className="hidden h-12 w-auto md:h-14 transition-opacity group-hover:opacity-75 dark:block"
+            className="h-12 w-auto md:h-14 transition-opacity group-hover:opacity-75"
           />
         </Link>
 
@@ -84,8 +67,6 @@ export async function SiteHeader() {
 
         <div className="flex items-center gap-3 md:gap-6">
           <LanguageToggle className="hidden md:flex" />
-
-          <ThemeToggle />
 
           <Link
             href="/account"

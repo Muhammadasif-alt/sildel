@@ -62,7 +62,6 @@ export async function SiteFooter() {
   ];
 
   const logoDark = settings.brand.logoDarkUrl || "/brand/sildel-logo-dark-trim.webp";
-  const logoLight = "/brand/sildel-logo-light-trim.webp";
   const tagline = pickLocalized(settings.brand.tagline, locale) || ui.footer.tagline;
   const footerTagline = pickLocalized(settings.footer.tagline, locale);
   const email = settings.contact.email || siteConfig.contact.email;
@@ -89,14 +88,7 @@ export async function SiteFooter() {
                 alt={`${siteConfig.name} — ${siteConfig.tagline}`}
                 width={197}
                 height={200}
-                className="h-14 w-auto dark:hidden"
-              />
-              <Image
-                src={logoLight}
-                alt={`${siteConfig.name} — ${siteConfig.tagline}`}
-                width={197}
-                height={200}
-                className="hidden h-14 w-auto dark:block"
+                className="h-14 w-auto"
               />
             </Link>
             <p className="mt-7 max-w-md font-serif text-lg font-light leading-snug text-foreground sm:text-xl text-balance">

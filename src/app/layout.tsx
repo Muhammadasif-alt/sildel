@@ -34,23 +34,13 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = buildMetadata();
 
 export const viewport: Viewport = {
-  // Dark is the default theme — set the OS chrome (mobile status bar etc)
-  // to match so the page never flashes a light bar over a black surface.
-  themeColor: "#000000",
+  // Single warm cork/tan theme — set the OS chrome (mobile status bar etc)
+  // to the brand camel so it blends with the page on first paint.
+  themeColor: "#C9A57C",
   width: "device-width",
   initialScale: 1,
-  colorScheme: "dark",
+  colorScheme: "light",
 };
-
-// Default theme is DARK (per founder direction). The "dark" class is applied
-// to <html> immediately, before paint, unless the user has previously opted
-// into the light theme. This avoids a flash of light theme on first paint.
-const noFlashScript = `
-(function(){try{
-  var t=localStorage.getItem('sildel-theme');
-  if(t!=='light')document.documentElement.classList.add('dark');
-}catch(e){document.documentElement.classList.add('dark');}})();
-`;
 
 export default async function RootLayout({
   children,
@@ -79,12 +69,6 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://i.ytimg.com" />
         <link rel="dns-prefetch" href="https://maps.google.com" />
-
-        {/* Runs before hydration to apply dark class — prevents the brief
-            light-theme flash for users on dark mode. */}
-        <Script id="sildel-no-flash" strategy="beforeInteractive">
-          {noFlashScript}
-        </Script>
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ReduxProvider>

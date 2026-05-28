@@ -2,87 +2,54 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Sildel — dual-theme tokens.
-  Default = light (warm cream + burnished gold).
-  .dark on <html> activates dark luxury (charcoal + champagne gold).
+  Sildel — single brand theme.
+  Warm cork/camel tan + black ink, matching the Instagram identity
+  (@sildel.wethinkcork). There is no dark mode: the `.dark` class is never
+  applied, so any leftover `dark:` Tailwind variants stay inert and the
+  `:root` tokens below drive the whole site + admin.
 */
 
 :root {
-  /* Light theme (default) — refined off-white base, deep ink foreground,
-     a single restrained gold accent reserved for select moments only.
-     Inspired by quiet-luxury references (quintadeadorigo.com / Loro Piana). */
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.16 0 0);
+  /* Brand camel/cork tan base with near-black ink foreground.
+     The logo square on Instagram is ~#C9A57C; the page base is lifted a
+     touch lighter so long-form text stays comfortable while still clearly
+     reading as the same cork family. */
+  --background: oklch(0.8 0.043 74);
+  --foreground: oklch(0.22 0.012 60);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0 0);
+  /* Cards lift off the tan base with a lighter warm cream surface. */
+  --card: oklch(0.87 0.035 76);
+  --card-foreground: oklch(0.22 0.012 60);
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0 0);
+  --popover: oklch(0.89 0.03 76);
+  --popover-foreground: oklch(0.22 0.012 60);
 
-  /* Primary = deep ink (used for CTAs, accents). Gold is reserved for
-     limited "featured" badges via --accent-gold below. */
-  --primary: oklch(0.16 0 0);
-  --primary-foreground: oklch(0.99 0 0);
+  /* Primary = black ink. Buttons + CTAs are black with tan text, exactly
+     like the logo (black glyph on camel). */
+  --primary: oklch(0.22 0.012 60);
+  --primary-foreground: oklch(0.89 0.04 76);
 
-  --secondary: oklch(0.55 0.04 60);
-  --secondary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.42 0.035 58);
+  --secondary-foreground: oklch(0.95 0.02 78);
 
-  --muted: oklch(0.965 0 0);
-  --muted-foreground: oklch(0.45 0 0);
+  --muted: oklch(0.84 0.038 74);
+  --muted-foreground: oklch(0.4 0.02 58);
 
-  --accent: oklch(0.95 0 0);
-  --accent-foreground: oklch(0.16 0 0);
+  --accent: oklch(0.83 0.045 73);
+  --accent-foreground: oklch(0.22 0.012 60);
 
-  /* Single reserved gold accent — used sparingly (badges, decorative rules). */
-  --accent-gold: oklch(0.62 0.11 78);
+  /* No gold in the Instagram identity — the former gold accent now resolves
+     to black ink so any component still referencing it stays on-brand. */
+  --accent-gold: oklch(0.22 0.012 60);
 
-  --destructive: oklch(0.55 0.18 25);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: oklch(0.52 0.19 25);
+  --destructive-foreground: oklch(0.98 0.01 80);
 
-  --border: oklch(0.92 0 0);
-  --input: oklch(0.95 0 0);
-  --ring: oklch(0.16 0 0 / 0.4);
+  --border: oklch(0.66 0.04 70);
+  --input: oklch(0.72 0.04 72);
+  --ring: oklch(0.22 0.012 60 / 0.45);
 
   --radius: 0.25rem;
-}
-
-.dark {
-  /* Dark theme — pure black surface, off-white foreground.
-     --primary stays cream in dark mode (the "accent" semantic) so
-     text-primary / bg-primary stay legible against the black canvas.
-     Buttons reach for --foreground/--background directly instead of
-     --primary, so the founder's "black button" ask is satisfied without
-     making every primary-tinted bit of text invisible. */
-  --background: oklch(0.06 0 0);
-  --foreground: oklch(0.97 0 0);
-
-  --card: oklch(0.09 0 0);
-  --card-foreground: oklch(0.97 0 0);
-
-  --popover: oklch(0.09 0 0);
-  --popover-foreground: oklch(0.97 0 0);
-
-  --primary: oklch(0.97 0 0);
-  --primary-foreground: oklch(0.08 0 0);
-
-  --secondary: oklch(0.55 0.04 60);
-  --secondary-foreground: oklch(1 0 0);
-
-  --muted: oklch(0.16 0 0);
-  --muted-foreground: oklch(0.72 0 0);
-
-  --accent: oklch(0.18 0 0);
-  --accent-foreground: oklch(0.97 0 0);
-
-  --accent-gold: oklch(0.74 0.1 80);
-
-  --destructive: oklch(0.55 0.18 25);
-  --destructive-foreground: oklch(1 0 0);
-
-  --border: oklch(0.22 0 0 / 0.7);
-  --input: oklch(0.22 0 0 / 0.6);
-  --ring: oklch(0.97 0 0 / 0.4);
 }
 
 @theme inline {
@@ -126,16 +93,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Default scheme is dark — set at the root so the OS native scrollbars +
-       form controls render dark on first paint, before React hydrates. */
-    color-scheme: dark;
+    /* Single light/tan theme — native scrollbars + form controls render
+       light to match the warm cork canvas. */
+    color-scheme: light;
     /* Bump root font size — Sildel buyers skew 45+, so 17px body is
        more comfortable than the browser default 16px without breaking layouts. */
     font-size: 17px;
-  }
-
-  html:not(.dark) {
-    color-scheme: light;
   }
 
   body {

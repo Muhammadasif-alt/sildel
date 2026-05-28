@@ -2,7 +2,7 @@
  * Admin layout — sidebar + topbar shell. The login page bypasses the shell by
  * checking the pathname header set by proxy.ts.
  */
-import { cookies, headers } from "next/headers";
+import { headers } from "next/headers";
 import { requireAdmin } from "@/lib/auth/admin";
 import { getAdminProfile } from "@/lib/auth/admin-profile";
 import { AdminSidebar } from "@/components/admin/sidebar";
@@ -22,8 +22,9 @@ export default async function AdminLayout({
   const pathname = (await headers()).get("x-sildel-pathname") ?? "";
   const isLoginPage = pathname === "/admin/login";
 
-  const themeCookie = (await cookies()).get("sildel-admin-theme")?.value;
-  const theme: "light" | "dark" = themeCookie === "light" ? "light" : "dark";
+  // Single tan theme across the whole product — admin matches the public
+  // site (warm cork + black ink), no dark mode.
+  const theme = "light" as const;
 
   // Login page: themed shell, no sidebar/topbar.
   if (isLoginPage) {
