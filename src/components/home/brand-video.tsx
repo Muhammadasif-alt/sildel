@@ -48,7 +48,10 @@ export function BrandVideo({ data: dataProp }: { data?: HomeContent["brandVideo"
       {/* Foreground content */}
       <div className="relative z-10 mx-auto max-w-[1600px] px-6 py-32 md:py-40 lg:px-10 lg:py-48 min-h-[80vh] flex items-center">
         <div className="max-w-3xl mx-auto text-center text-white">
-          <p className="text-xs tracking-[0.4em] uppercase text-primary mb-6">
+          {/* All accent text stays light here — this sits over a dark cork
+              video, so the brand's black `--primary` ink would be invisible.
+              Title accent + rule + eyebrow use white/cream instead. */}
+          <p className="text-xs tracking-[0.4em] uppercase text-white/75 mb-6 drop-shadow-[0_1px_10px_rgba(0,0,0,0.6)]">
             {data.eyebrow}
           </p>
           <h2
@@ -57,9 +60,9 @@ export function BrandVideo({ data: dataProp }: { data?: HomeContent["brandVideo"
           >
             {data.title}
             <br />
-            <span className="italic text-primary">{data.titleAccent}</span>
+            <span className="italic text-white/90">{data.titleAccent}</span>
           </h2>
-          <div className="mx-auto h-px w-16 bg-primary/70 my-8" aria-hidden />
+          <div className="mx-auto h-px w-16 bg-white/50 my-8" aria-hidden />
           <p className="text-base md:text-lg leading-relaxed text-white/85 mb-10 drop-shadow-[0_1px_12px_rgba(0,0,0,0.6)]">
             {data.body}
           </p>
@@ -70,18 +73,20 @@ export function BrandVideo({ data: dataProp }: { data?: HomeContent["brandVideo"
             aria-label={`Play full video: ${data.title}`}
             className={cn(
               "group inline-flex items-center gap-4 rounded-full",
-              "bg-primary text-primary-foreground",
+              // Cream/white pill with dark text pops on the dark video and
+              // mirrors the rest of the dark-hero CTAs across the site.
+              "bg-white text-foreground",
               "pl-2 pr-7 py-2",
-              "shadow-xl shadow-primary/30",
-              "transition-all duration-300 hover:scale-[1.03] hover:shadow-primary/50",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              "shadow-xl shadow-black/30",
+              "transition-all duration-300 hover:scale-[1.03] hover:shadow-black/50",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
             )}
           >
-            <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+            <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-foreground/10 text-foreground">
               <Play className="h-5 w-5 ml-0.5 fill-current" strokeWidth={0} />
               <span
                 aria-hidden
-                className="absolute inset-0 rounded-full ring-2 ring-white/30 animate-ping"
+                className="absolute inset-0 rounded-full ring-2 ring-foreground/25 animate-ping"
               />
             </span>
             <span className="text-xs tracking-[0.3em] uppercase">
