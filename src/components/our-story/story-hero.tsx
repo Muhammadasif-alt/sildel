@@ -13,7 +13,8 @@ export function StoryHero() {
       className="relative w-full overflow-hidden isolate"
       aria-labelledby="story-hero-heading"
     >
-      {/* Background image */}
+      {/* Full-cover background video (muted, looped, autoplay) with the
+          editorial image as poster + fallback. */}
       <StoryHeroBackground src={data.image} alt={data.imageAlt} />
 
       {/* Gradient overlay */}
@@ -27,19 +28,19 @@ export function StoryHero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-44 min-h-[80vh] flex flex-col justify-end">
-        <p className="text-xs tracking-[0.4em] uppercase text-primary mb-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-44 min-h-[88vh] flex flex-col justify-end">
+        <p className="text-xs tracking-[0.4em] uppercase text-white/75 mb-6 drop-shadow-[0_1px_10px_rgba(0,0,0,0.6)]">
           {data.eyebrow}
         </p>
 
         <h1
           id="story-hero-heading"
-          className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.02] text-white max-w-4xl mb-8"
+          className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.02] text-white max-w-4xl mb-8 drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]"
         >
           {data.title}
         </h1>
 
-        <div className="h-px w-16 bg-primary/80 mb-8" aria-hidden />
+        <div className="h-px w-16 bg-white/60 mb-8" aria-hidden />
 
         <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl">
           {data.intro}
@@ -58,29 +59,49 @@ export function StoryHero() {
   );
 }
 
-function StoryHeroBackground({ src, alt }: { src: string; alt: string }) {
-  const [errored, setErrored] = useState(false);
+const HERO_VIDEO = "/video/our-story-bg.mp4";
 
-  if (errored) {
-    return (
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,_oklch(0.32_0.07_75)_0%,_oklch(0.18_0.04_60)_45%,_oklch(0.1_0.02_50)_100%)]"
-        role="img"
-        aria-label={alt}
-      />
-    );
-  }
+function StoryHeroBackground({ src, alt }: { src: string; alt: string }) {
+  const [imgErrored, setImgErrored] = useState(false);
+  const [videoErrored, setVideoErrored] = useState(false);
 
   return (
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      priority
-      sizes="100vw"
-      onError={() => setErrored(true)}
-      className="object-cover -z-10"
-    />
+    <div aria-hidden className="absolute inset-0 -z-10 bg-foreground">
+      {/* Poster image paints instantly (and is the still fallback if the
+          video can't load); the video fades in over it once playing. */}
+      {imgErrored ? (
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_oklch(0.32_0.07_75)_0%,_oklch(0.18_0.04_60)_45%,_oklch(0.1_0.02_50)_100%)]"
+          role="img"
+          aria-label={alt}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority
+          sizes="100vw"
+          onError={() => setImgErrored(true)}
+          className="object-cover"
+        />
+      )}
+
+      {!videoErrored && (
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={src}
+          aria-label={alt}
+          onError={() => setVideoErrored(true)}
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+      )}
+    </div>
   );
 }
