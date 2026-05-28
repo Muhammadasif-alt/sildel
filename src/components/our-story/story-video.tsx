@@ -1,9 +1,12 @@
 import type { Locale } from "@/lib/i18n/config";
 
 /**
- * Our Story — split feature section: looping cork-craft video on one side,
- * editorial copy on the other. Pure server component: the <video> autoplay
- * attributes are static HTML, so no client JS is needed.
+ * Our Story — full-bleed cinematic video section, same treatment as the home
+ * page brand video: the cork-craft clip fills the whole section as the
+ * background, with the copy centred on top over a dark gradient.
+ *
+ * Pure server component: the <video> autoplay attributes are static HTML, so
+ * no client JS is needed.
  */
 const VIDEO_SRC = "/video/our-story-bg.mp4";
 const POSTER =
@@ -28,47 +31,41 @@ export function StoryVideo({ locale }: { locale: Locale }) {
   return (
     <section
       aria-labelledby="story-video-heading"
-      className="relative w-full bg-muted/30 border-y border-border/60"
+      className="relative isolate w-full overflow-hidden border-y border-border/60"
     >
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 items-stretch lg:grid-cols-2">
-        {/* Video side */}
-        <div className="relative min-h-[56vh] lg:min-h-[640px] overflow-hidden bg-foreground">
-          <video
-            className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={POSTER}
-            aria-label={isPt ? "Vídeo do atelier Sildel" : "Sildel atelier video"}
-          >
-            <source src={VIDEO_SRC} type="video/mp4" />
-          </video>
-          {/* Soft edge so the video melts into the tan content side on lg. */}
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 hidden lg:block bg-gradient-to-r from-transparent via-transparent to-muted/30"
-          />
-        </div>
+      {/* Full-bleed background video */}
+      <div aria-hidden className="absolute inset-0 z-0 bg-foreground">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={POSTER}
+        >
+          <source src={VIDEO_SRC} type="video/mp4" />
+        </video>
+        {/* Cinematic overlay so the copy stays readable on any frame. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.4)_80%)]" />
+      </div>
 
-        {/* Content side */}
-        <div className="flex flex-col justify-center px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
-          <p className="mb-6 text-xs tracking-[0.4em] uppercase text-primary">
-            {t.eyebrow}
-          </p>
-          <h2
-            id="story-video-heading"
-            className="font-serif text-4xl font-light leading-[1.05] md:text-5xl lg:text-6xl"
-          >
-            {t.title}{" "}
-            <span className="italic text-primary">{t.titleAccent}</span>
-          </h2>
-          <div className="my-8 h-px w-16 bg-primary/50" aria-hidden />
-          <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            {t.body}
-          </p>
-        </div>
+      {/* Centred content */}
+      <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center px-6 py-24 text-center text-white md:min-h-[80vh] md:py-32 lg:py-40">
+        <p className="mb-6 text-xs uppercase tracking-[0.4em] text-white/75 drop-shadow-[0_1px_10px_rgba(0,0,0,0.6)]">
+          {t.eyebrow}
+        </p>
+        <h2
+          id="story-video-heading"
+          className="font-serif text-4xl font-light leading-[1.05] drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)] md:text-5xl lg:text-6xl"
+        >
+          {t.title} <span className="italic">{t.titleAccent}</span>
+        </h2>
+        <div className="my-8 h-px w-16 bg-white/50" aria-hidden />
+        <p className="max-w-xl text-base leading-relaxed text-white/85 drop-shadow-[0_1px_12px_rgba(0,0,0,0.6)] md:text-lg">
+          {t.body}
+        </p>
       </div>
     </section>
   );
