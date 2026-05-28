@@ -23,7 +23,7 @@ export function ProductGallery({ images, alt, badge }: Props) {
           without cropping (object-contain). Client photos are mostly wide
           landscape product shots; a square accommodates them while still
           giving portrait-style images breathing room. */}
-      <div className="relative aspect-square w-full overflow-hidden bg-muted/40">
+      <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-white">
         <AnimatePresence mode="wait">
           <motion.div
             key={images[active]}
@@ -62,7 +62,7 @@ export function ProductGallery({ images, alt, badge }: Props) {
                 aria-label={`Show image ${i + 1} of ${images.length}`}
                 aria-current={i === active}
                 className={cn(
-                  "relative block h-20 w-20 overflow-hidden bg-muted/40 transition-opacity",
+                  "relative block h-20 w-20 overflow-hidden rounded-sm bg-white transition-opacity",
                   i === active ? "opacity-100" : "opacity-60 hover:opacity-100",
                 )}
               >

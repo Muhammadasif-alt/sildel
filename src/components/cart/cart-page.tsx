@@ -121,7 +121,7 @@ export function CartPageClient({ locale }: { locale: Locale }) {
                 >
                   <Link
                     href={`/treasures/${item.slug}`}
-                    className="group/img relative aspect-square w-full sm:w-32 lg:w-36 shrink-0 overflow-hidden rounded-sm bg-gradient-to-br from-muted via-background to-muted ring-1 ring-border/60"
+                    className="group/img relative aspect-square w-full sm:w-32 lg:w-36 shrink-0 overflow-hidden rounded-sm bg-white ring-1 ring-border/60"
                   >
                     <span
                       aria-hidden

@@ -116,7 +116,7 @@ export function ShopCategories({
                 {/* Card frame — same recipe as the featured-treasures cards
                     so every product surface on home reads as one system. */}
                 <article className="h-full rounded-md border border-border bg-muted/60 p-5 sm:p-6 md:p-8 shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:border-foreground/40 group-hover:bg-muted group-hover:shadow-xl">
-                  <div className="relative aspect-square w-full overflow-hidden bg-background/60 rounded-sm">
+                  <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
                     <Image
                       src={cat.image}
                       alt={cat.label}

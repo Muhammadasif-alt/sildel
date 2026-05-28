@@ -161,7 +161,7 @@ function WideRow({
             labelSide === "left" ? "md:flex-row-reverse" : "md:flex-row",
           )}
         >
-          <div className="relative w-full md:w-2/3 aspect-[16/10] overflow-hidden bg-muted/40 rounded-sm">
+          <div className="relative w-full md:w-2/3 aspect-[16/10] overflow-hidden bg-white rounded-sm">
             <Image
               src={product.image}
               alt={`${product.name} — ${product.tagline}`}
@@ -213,7 +213,7 @@ function PairRow({ pair }: { pair: Product[] }) {
           {/* Card frame — same treatment as wide rows so the listing
               reads as a single visual rhythm. */}
           <article className="h-full rounded-md border border-border/60 bg-card/60 p-6 md:p-8 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
-            <div className="relative aspect-square w-full overflow-hidden bg-muted/40 rounded-sm">
+            <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
               <Image
                 src={product.image}
                 alt={`${product.name} — ${product.tagline}`}

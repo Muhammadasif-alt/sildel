@@ -436,7 +436,7 @@ export default async function ProductPage({ params }: Params) {
                       {/* Same card frame as /treasures listing so the
                           cross-sell row reads as part of one system. */}
                       <article className="h-full rounded-md border border-border/60 bg-card/60 p-5 sm:p-6 md:p-8 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
-                        <div className="relative aspect-square w-full overflow-hidden bg-muted/40 rounded-sm">
+                        <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
                           <Image
                             src={p.image}
                             alt={p.name}

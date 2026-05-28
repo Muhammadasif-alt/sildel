@@ -69,7 +69,7 @@ export function FeaturedTreasures({
                     card is visible in both light and dark themes (in light
                     mode `--card` is almost white-on-white otherwise). */}
                 <article className="h-full rounded-md border border-border bg-muted/60 p-5 sm:p-6 md:p-8 shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:border-foreground/40 group-hover:bg-muted group-hover:shadow-xl">
-                  <div className="relative aspect-square w-full overflow-hidden bg-muted/40 rounded-sm">
+                  <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
                     <Image
                       src={p.image}
                       alt={p.name}
