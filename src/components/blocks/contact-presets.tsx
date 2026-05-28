@@ -145,7 +145,7 @@ export function ContactFormBlock({ block, locale }: { block: Block; locale: Loca
         </div>
 
         <aside className="lg:sticky lg:top-28 lg:self-start">
-          <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-xl shadow-foreground/5">
+          <div className="overflow-hidden rounded-none border border-border bg-card shadow-xl shadow-foreground/5">
             <div className="relative aspect-[16/9]">
               <Image
                 src={cardImage}
@@ -259,7 +259,7 @@ export function ContactVisitBlock({ block, locale }: { block: Block; locale: Loc
       className="relative w-full bg-background py-20 lg:py-28"
     >
       <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
-        <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-2xl shadow-foreground/10">
+        <div className="overflow-hidden rounded-none border border-border bg-card shadow-2xl shadow-foreground/10">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="relative min-h-[320px] lg:min-h-[480px]">
               <Image

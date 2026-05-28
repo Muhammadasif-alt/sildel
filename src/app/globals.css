@@ -49,7 +49,10 @@
   --input: oklch(0.72 0.04 72);
   --ring: oklch(0.22 0.012 60 / 0.45);
 
-  --radius: 0.25rem;
+  /* Founder direction: straight corners everywhere for harmony. Zeroing the
+     radius token flattens every token-based rounded-sm/md/lg/xl across the
+     site in one place. Circular controls (rounded-full) are unaffected. */
+  --radius: 0rem;
 }
 
 @theme inline {
@@ -84,10 +87,11 @@
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  /* All straight — see --radius note above. */
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: var(--radius);
 }
 
 @layer base {

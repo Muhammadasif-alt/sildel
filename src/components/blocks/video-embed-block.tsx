@@ -24,7 +24,7 @@ export function VideoEmbedBlock({ block, locale }: { block: Block; locale: Local
           </div>
         )}
 
-        <div className="aspect-video overflow-hidden rounded-2xl bg-muted">
+        <div className="aspect-video overflow-hidden rounded-none bg-muted">
           {v?.kind === "youtube" || v?.kind === "vimeo" ? (
             <iframe
               src={v.src}

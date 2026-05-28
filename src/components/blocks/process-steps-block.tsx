@@ -38,11 +38,11 @@ export function ProcessStepsBlock({ block, locale }: { block: Block; locale: Loc
                 }
               >
                 {img ? (
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-none bg-muted">
                     <Image src={img} alt={title} fill className="object-cover" sizes="(min-width:1024px) 50vw, 100vw" />
                   </div>
                 ) : (
-                  <div className="aspect-[4/3] rounded-2xl bg-muted" />
+                  <div className="aspect-[4/3] rounded-none bg-muted" />
                 )}
                 <div>
                   <span className="text-[10px] font-medium uppercase tracking-[0.32em] text-primary/80">

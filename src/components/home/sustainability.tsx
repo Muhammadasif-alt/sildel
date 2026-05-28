@@ -95,7 +95,7 @@ export function Sustainability({ data: dataProp }: { data?: HomeContent["sustain
               }
             >
               {/* Image card */}
-              <div className="relative overflow-hidden rounded-2xl ring-1 ring-border/70 shadow-xl shadow-foreground/5 transition-all duration-500 group-hover:shadow-foreground/15 group-hover:-translate-y-1">
+              <div className="relative overflow-hidden rounded-none ring-1 ring-border/70 shadow-xl shadow-foreground/5 transition-all duration-500 group-hover:shadow-foreground/15 group-hover:-translate-y-1">
                 <div className="relative aspect-[4/5] w-full bg-muted">
                   <Image
                     src={step.image}
@@ -155,7 +155,7 @@ export function Sustainability({ data: dataProp }: { data?: HomeContent["sustain
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.85, ease: EASE }}
-          className="mt-24 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-xl shadow-foreground/5 lg:mt-28"
+          className="mt-24 overflow-hidden rounded-none border border-border/70 bg-card shadow-xl shadow-foreground/5 lg:mt-28"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left — image */}

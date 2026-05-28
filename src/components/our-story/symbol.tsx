@@ -93,7 +93,7 @@ function LynxImage({ src, alt }: { src: string; alt: string }) {
       {/* Offset gold frame */}
       <div
         aria-hidden
-        className="absolute -inset-3 rounded-2xl border border-primary/30"
+        className="absolute -inset-3 rounded-none border border-primary/30"
       />
       <span
         aria-hidden
@@ -107,7 +107,7 @@ function LynxImage({ src, alt }: { src: string; alt: string }) {
       {/* Editorial portrait card — tall 4/5 with warm earth backdrop */}
       <div
         className={cn(
-          "relative aspect-[4/5] w-full overflow-hidden rounded-2xl",
+          "relative aspect-[4/5] w-full overflow-hidden rounded-none",
           "bg-gradient-to-br from-foreground via-foreground/95 to-foreground/85",
           "ring-1 ring-border shadow-2xl shadow-foreground/20",
           "transition-transform duration-700 ease-out hover:scale-[1.02]",

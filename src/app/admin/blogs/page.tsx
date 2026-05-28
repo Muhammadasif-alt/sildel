@@ -29,14 +29,14 @@ export default async function AdminBlogsPage() {
       </header>
 
       {blogs.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
+        <div className="rounded-none border border-dashed border-border bg-card p-12 text-center">
           <Newspaper className="mx-auto mb-3 h-8 w-8 text-muted-foreground" strokeWidth={1.4} />
           <p className="text-sm text-muted-foreground">
             No blog posts yet — create your first one.
           </p>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-border bg-card">
+        <div className="overflow-hidden rounded-none border border-border bg-card">
           <table className="w-full text-left text-sm">
             <thead className="bg-muted/40 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               <tr>

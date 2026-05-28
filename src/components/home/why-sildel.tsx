@@ -138,7 +138,7 @@ export function WhySildel({
                 }
               >
                 {/* Image with overlay icon + index */}
-                <div className="relative overflow-hidden rounded-3xl ring-1 ring-border/70 shadow-xl shadow-foreground/5 transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-foreground/15 group-hover:ring-primary/40">
+                <div className="relative overflow-hidden rounded-none ring-1 ring-border/70 shadow-xl shadow-foreground/5 transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-foreground/15 group-hover:ring-primary/40">
                   <div className="relative aspect-[4/5] bg-muted">
                     <Image
                       src={p.image}
@@ -155,7 +155,7 @@ export function WhySildel({
                   </div>
 
                   {/* Top-left icon chip */}
-                  <span className="absolute top-5 left-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-card/95 text-primary shadow-lg backdrop-blur-sm transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <span className="absolute top-5 left-5 inline-flex h-12 w-12 items-center justify-center rounded-none bg-card/95 text-primary shadow-lg backdrop-blur-sm transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground">
                     <Icon className="h-5 w-5" strokeWidth={1.4} />
                   </span>
 
@@ -196,7 +196,7 @@ export function WhySildel({
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
-          className="mt-20 overflow-hidden rounded-3xl bg-foreground text-background shadow-2xl shadow-foreground/20"
+          className="mt-20 overflow-hidden rounded-none bg-foreground text-background shadow-2xl shadow-foreground/20"
         >
           <div className="grid grid-cols-2 gap-px bg-background/20 md:grid-cols-4">
             {data.stats.map((s, i) => (

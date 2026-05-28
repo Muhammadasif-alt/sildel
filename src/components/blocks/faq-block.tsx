@@ -25,7 +25,7 @@ export function FaqBlock({ block, locale }: { block: Block; locale: Locale }) {
         )}
 
         {items.length > 0 && (
-          <div className="divide-y divide-border/60 rounded-2xl border border-border bg-card">
+          <div className="divide-y divide-border/60 rounded-none border border-border bg-card">
             {items.map((it, i) => (
               <details key={i} className="group p-5">
                 <summary className="cursor-pointer list-none font-medium text-foreground transition-colors hover:text-primary">

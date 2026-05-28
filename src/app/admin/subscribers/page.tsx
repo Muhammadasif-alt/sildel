@@ -15,7 +15,7 @@ export default async function AdminSubscribersPage() {
         </p>
       </header>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-card">
+      <div className="overflow-hidden rounded-none border border-border bg-card">
         {subscribers.length === 0 ? (
           <p className="px-6 py-16 text-center text-sm text-muted-foreground">
             No subscribers yet — they'll appear here as people sign up.

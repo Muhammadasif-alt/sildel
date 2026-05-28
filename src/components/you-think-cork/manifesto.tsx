@@ -87,11 +87,11 @@ function ManifestoImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative mx-auto mb-12 w-full max-w-lg">
       {/* Offset gold frame + corner brackets */}
-      <span aria-hidden className="pointer-events-none absolute -inset-2 rounded-2xl border border-primary/30" />
+      <span aria-hidden className="pointer-events-none absolute -inset-2 rounded-none border border-primary/30" />
       <span aria-hidden className="pointer-events-none absolute -top-2 -left-2 h-5 w-5 border-l-2 border-t-2 border-primary" />
       <span aria-hidden className="pointer-events-none absolute -bottom-2 -right-2 h-5 w-5 border-b-2 border-r-2 border-primary" />
 
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-border bg-foreground shadow-xl shadow-foreground/10">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none ring-1 ring-border bg-foreground shadow-xl shadow-foreground/10">
         {errored ? (
           <div
             className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_oklch(0.45_0.08_75)_0%,_oklch(0.25_0.04_60)_55%,_oklch(0.12_0.02_50)_100%)]"

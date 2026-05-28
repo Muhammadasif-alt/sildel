@@ -174,7 +174,7 @@ export function ContactMap({ locale }: { locale: Locale }) {
           </div>
 
           {/* Embedded Google Map */}
-          <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-muted shadow-2xl shadow-foreground/10">
+          <div className="relative overflow-hidden rounded-none border border-border/60 bg-muted shadow-2xl shadow-foreground/10">
             <div
               className="relative w-full"
               style={{ aspectRatio: "4 / 5" }}

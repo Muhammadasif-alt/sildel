@@ -30,7 +30,7 @@ export function PageHeaderBlock({ block, locale }: { block: Block; locale: Local
           </div>
         )}
         {image && (
-          <div className="mt-10 overflow-hidden rounded-2xl">
+          <div className="mt-10 overflow-hidden rounded-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={image} alt={imageAlt} className="h-auto w-full" />
           </div>

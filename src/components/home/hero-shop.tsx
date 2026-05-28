@@ -204,7 +204,7 @@ export function HeroShop({ data: dataProp }: { data?: HomeContent["heroShop"] } 
             initial={{ y: 0 }}
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative aspect-square overflow-hidden rounded-[2rem] bg-muted shadow-2xl shadow-foreground/10"
+            className="relative aspect-square overflow-hidden rounded-none bg-muted shadow-2xl shadow-foreground/10"
           >
             {/* Stack all slides; cross-fade by toggling opacity. No blank gap. */}
             {SLIDES.map((slide, i) => (
@@ -273,7 +273,7 @@ export function HeroShop({ data: dataProp }: { data?: HomeContent["heroShop"] } 
             >
               <Link
                 href={`/treasures/${current.slug}`}
-                className="group flex items-center gap-4 rounded-2xl bg-card/95 p-3 pr-6 shadow-2xl ring-1 ring-border backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-foreground/15"
+                className="group flex items-center gap-4 rounded-none bg-card/95 p-3 pr-6 shadow-2xl ring-1 ring-border backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-foreground/15"
               >
                 <span className="relative h-14 w-14 overflow-hidden rounded-xl bg-muted">
                   <Image

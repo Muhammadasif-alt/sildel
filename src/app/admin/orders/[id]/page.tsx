@@ -38,7 +38,7 @@ export default async function AdminOrderDetailPage({ params }: RouteContext) {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Items */}
-        <section className="rounded-2xl border border-neutral-800 bg-neutral-900/40 lg:col-span-2">
+        <section className="rounded-none border border-neutral-800 bg-neutral-900/40 lg:col-span-2">
           <h2 className="border-b border-neutral-800 px-6 py-4 text-xs uppercase tracking-[0.22em] text-neutral-500">
             Items
           </h2>
@@ -78,7 +78,7 @@ export default async function AdminOrderDetailPage({ params }: RouteContext) {
 
         {/* Customer + shipping + payment */}
         <aside className="space-y-6">
-          <section className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+          <section className="rounded-none border border-neutral-800 bg-neutral-900/40 p-6">
             <h2 className="mb-4 text-xs uppercase tracking-[0.22em] text-neutral-500">
               Customer
             </h2>
@@ -91,7 +91,7 @@ export default async function AdminOrderDetailPage({ params }: RouteContext) {
             )}
           </section>
 
-          <section className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+          <section className="rounded-none border border-neutral-800 bg-neutral-900/40 p-6">
             <h2 className="mb-4 text-xs uppercase tracking-[0.22em] text-neutral-500">
               Ship to
             </h2>
@@ -102,7 +102,7 @@ export default async function AdminOrderDetailPage({ params }: RouteContext) {
             <p className="text-sm text-neutral-300">{order.shipping.country}</p>
           </section>
 
-          <section className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6">
+          <section className="rounded-none border border-neutral-800 bg-neutral-900/40 p-6">
             <h2 className="mb-4 text-xs uppercase tracking-[0.22em] text-neutral-500">
               Payment
             </h2>

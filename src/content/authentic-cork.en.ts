@@ -79,17 +79,17 @@ export const authenticCorkEn = {
     steps: [
       {
         number: "01",
-        title: "First stripping",
-        body: "At year 25 — the maiden harvest. This first bark is rougher, used for floors and insulation.",
+        title: "Virgin cork",
+        body: "At year 25 — the tree's first harvest. This virgin cork is rougher, used for floors and insulation.",
       },
       {
         number: "02",
-        title: "Reproduction harvest",
-        body: "Year 34 — the bark is more even. We start to listen for what becomes a Sildel treasure.",
+        title: "Secondary cork",
+        body: "Year 34 — the second harvest. The bark is more even, but not yet ready for sculpture.",
       },
       {
         number: "03",
-        title: "Amadia (mature) cork",
+        title: "Amadia cork",
         body: "Year 43 onward — fine, even, dense. The bark our pieces are born from.",
       },
     ],

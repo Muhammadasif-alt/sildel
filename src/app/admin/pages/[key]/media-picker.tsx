@@ -75,7 +75,7 @@ export function MediaPicker({
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 p-4">
-      <div className="flex h-[80vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-xl">
+      <div className="flex h-[80vh] w-full max-w-5xl flex-col overflow-hidden rounded-none border border-border bg-card text-card-foreground shadow-xl">
         <header className="flex items-center justify-between border-b border-border px-6 py-4">
           <div>
             <h2 className="font-serif text-xl text-foreground">Media library</h2>

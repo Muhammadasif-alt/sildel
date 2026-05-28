@@ -72,7 +72,7 @@ export default async function AdminOrdersPage({
         ))}
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-card">
+      <div className="overflow-hidden rounded-none border border-border bg-card">
         {orders.length === 0 ? (
           <p className="px-6 py-16 text-center text-sm text-muted-foreground">
             No orders match this filter.

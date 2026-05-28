@@ -114,7 +114,7 @@ function FounderPortrait({
       {/* Decorative offset frame */}
       <div
         aria-hidden
-        className="absolute -inset-3 rounded-2xl border border-primary/30"
+        className="absolute -inset-3 rounded-none border border-primary/30"
       />
       <span
         aria-hidden
@@ -128,7 +128,7 @@ function FounderPortrait({
       {/* Portrait card — tall editorial crop */}
       <div
         className={cn(
-          "relative aspect-[4/5] w-full overflow-hidden rounded-2xl",
+          "relative aspect-[4/5] w-full overflow-hidden rounded-none",
           "ring-1 ring-border bg-foreground",
           "shadow-2xl shadow-foreground/20",
         )}

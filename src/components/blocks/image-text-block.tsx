@@ -20,11 +20,11 @@ export function ImageTextBlock({ block, locale }: { block: Block; locale: Locale
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-20 md:py-24 lg:grid-cols-2 lg:gap-16 lg:px-10">
         <div className={imageOnRight ? "order-1" : "order-1 lg:order-2"}>
           {image ? (
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-muted">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-none bg-muted">
               <Image src={image} alt={imageAlt} fill className="object-cover" sizes="(min-width:1024px) 50vw, 100vw" />
             </div>
           ) : (
-            <div className="aspect-[4/5] w-full rounded-2xl bg-muted" />
+            <div className="aspect-[4/5] w-full rounded-none bg-muted" />
           )}
         </div>
         <div className={imageOnRight ? "order-2" : "order-2 lg:order-1"}>

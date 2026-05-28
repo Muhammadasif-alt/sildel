@@ -62,7 +62,7 @@ export function ProductForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="space-y-6 rounded-2xl border border-border bg-card p-6 md:p-8"
+      className="space-y-6 rounded-none border border-border bg-card p-6 md:p-8"
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <Field label="Slug *" name="slug" defaultValue={initial?.slug} placeholder="shell" />

@@ -261,7 +261,7 @@ export default async function PostPage({ params }: Params) {
                 {related.map((r) => (
                   <li key={r.slug}>
                     <Link href={`/blog/${r.slug}`} className="group block">
-                      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted ring-1 ring-border/70 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-foreground/10 group-hover:ring-primary/40">
+                      <div className="relative aspect-[4/5] overflow-hidden rounded-none bg-muted ring-1 ring-border/70 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-foreground/10 group-hover:ring-primary/40">
                         <Image
                           src={r.image}
                           alt={r.imageAlt}

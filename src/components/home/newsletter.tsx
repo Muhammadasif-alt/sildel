@@ -49,7 +49,7 @@ export function Newsletter({ data: dataProp }: { data?: HomeContent["newsletter"
       aria-labelledby="newsletter-heading"
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-        <div className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-2xl shadow-foreground/10">
+        <div className="overflow-hidden rounded-none border border-border/70 bg-card shadow-2xl shadow-foreground/10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr]">
             {/* Left — atmospheric atelier image */}
             <div className="relative min-h-[340px] lg:min-h-[560px]">

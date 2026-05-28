@@ -564,7 +564,7 @@ function BlockPicker({
 
   const overlay = (
     <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/70 p-4">
-      <div className="flex max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-2xl">
+      <div className="flex max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-none border border-border bg-card text-card-foreground shadow-2xl">
         <header className="flex items-center justify-between border-b border-border px-6 py-4">
           <div>
             <h2 className="font-serif text-xl text-foreground">Add a section</h2>

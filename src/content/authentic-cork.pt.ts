@@ -61,7 +61,7 @@ export const authenticCorkPt = {
     title: "Uma vez a cada",
     titleAccent: "nove anos.",
     body:
-      "Colher cortiça é um ofício passado de geração em geração. A primeira extracção acontece quando a árvore tem 25 anos. A casca cresce de novo, e é colhida outra vez — a cada nove anos — durante dois séculos.",
+      "Colher cortiça é um ofício passado de geração em geração. A primeira colheita — a cortiça virgem — acontece quando a árvore tem 25 anos. A casca cresce de novo, e é colhida outra vez — a cada nove anos — durante dois séculos.",
     images: [
       {
         src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_2.webp",
@@ -79,17 +79,17 @@ export const authenticCorkPt = {
     steps: [
       {
         number: "01",
-        title: "Primeira extracção",
-        body: "Aos 25 anos — a colheita inaugural. Esta primeira casca é mais rude, usada para pavimentos e isolamento.",
+        title: "Cortiça virgem",
+        body: "Aos 25 anos — a primeira colheita da árvore. Esta cortiça virgem é mais rude, usada para pavimentos e isolamento.",
       },
       {
         number: "02",
-        title: "Colheita de reprodução",
-        body: "Ano 34 — a casca é mais regular. Começamos a escutar o que se tornará um tesouro Sildel.",
+        title: "Cortiça secundária",
+        body: "Ano 34 — a segunda colheita. A casca é mais regular, mas ainda não está pronta para escultura.",
       },
       {
         number: "03",
-        title: "Cortiça amadia (madura)",
+        title: "Cortiça amadia",
         body: "A partir do ano 43 — fina, regular, densa. A casca de onde nascem as nossas peças.",
       },
     ],

@@ -171,8 +171,8 @@ export default async function ProductPage({ params }: Params) {
           className="relative w-full bg-background"
         >
           <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-20 px-6 py-16 lg:px-12 lg:py-24 items-start">
-            {/* Gallery */}
-            <div className="lg:sticky lg:top-28">
+            {/* Gallery — continuous vertical stack */}
+            <div>
               <ProductGallery
                 images={(product.gallery && product.gallery.length > 0)
                   ? product.gallery
@@ -182,9 +182,9 @@ export default async function ProductPage({ params }: Params) {
               />
             </div>
 
-            {/* Buy panel — single source of truth for product detail.
+            {/* Buy panel — sticks in view while the image column scrolls.
                 One primary CTA (Add to cart). No duplicate hero above. */}
-            <div className="flex flex-col">
+            <div className="flex flex-col lg:sticky lg:top-28 lg:self-start">
               <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
                 {product.category}
               </p>

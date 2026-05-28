@@ -18,7 +18,7 @@ export function TestimonialsBlock({ block, locale }: { block: Block; locale: Loc
           {items.map((it, i) => {
             const avatar = itemStr(it, "avatar");
             return (
-              <figure key={i} className="rounded-2xl border border-border bg-card p-6 md:p-7">
+              <figure key={i} className="rounded-none border border-border bg-card p-6 md:p-7">
                 <blockquote className="font-serif text-base italic leading-relaxed text-foreground md:text-lg">
                   &ldquo;{pickFromItem(it, "quote", locale)}&rdquo;
                 </blockquote>

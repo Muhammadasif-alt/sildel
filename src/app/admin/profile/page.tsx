@@ -31,13 +31,13 @@ export default async function AdminProfilePage({ searchParams }: Params) {
 
       <form action={saveProfile} className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_2fr]">
         {/* Avatar + meta */}
-        <div className="space-y-5 rounded-2xl border border-border bg-card p-6">
+        <div className="space-y-5 rounded-none border border-border bg-card p-6">
           <h2 className="font-serif text-xl text-foreground">Photo</h2>
           <AvatarUpload currentUrl={profile.avatarUrl} initials={initials} />
         </div>
 
         {/* Editable details */}
-        <div className="rounded-2xl border border-border bg-card p-6">
+        <div className="rounded-none border border-border bg-card p-6">
           <h2 className="mb-5 font-serif text-xl text-foreground">Account</h2>
 
           <div className="mb-5">

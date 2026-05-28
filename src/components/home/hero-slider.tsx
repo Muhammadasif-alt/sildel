@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { HeroSlide } from "@/content/home";
 
@@ -22,6 +22,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
     [total]
   );
   const next = useCallback(() => goTo(index + 1), [goTo, index]);
+  const prev = useCallback(() => goTo(index - 1), [goTo, index]);
 
   useEffect(() => {
     if (paused) return;
@@ -50,51 +51,107 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
         />
       ))}
 
-      {/* Single soft overlay — readable text, photo still breathes */}
+      {/* Overlays — left wash for the copy + a bottom wash so the lower
+          band where the text now lives stays legible without sitting over
+          the centre of the piece. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10"
+        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
       />
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 min-h-[100svh] flex flex-col justify-center">
-        <div className="max-w-2xl">
-          {slides.map((slide, i) => (
-            <div
-              key={slide.id}
-              className={cn(
-                "transition-all duration-700 ease-out",
-                i === index
-                  ? "opacity-100 translate-y-0 relative"
-                  : "opacity-0 translate-y-4 absolute pointer-events-none inset-0"
-              )}
-              aria-hidden={i !== index}
-            >
-              <p className="text-[11px] tracking-[0.45em] uppercase text-white/80 mb-8">
-                {slide.eyebrow}
-              </p>
-
-              <h1 className="font-serif text-white text-5xl md:text-7xl lg:text-8xl font-light leading-[1.02] mb-10 tracking-tight">
-                {slide.title}{" "}
-                <span className="italic">{slide.titleAccent}</span>
-              </h1>
-
-              <p className="text-white/85 text-lg md:text-xl leading-relaxed max-w-xl mb-12">
-                {slide.description}
-              </p>
-
-              <Link
-                href={slide.cta.href}
-                className="group inline-flex items-center gap-3 text-[11px] tracking-[0.4em] uppercase text-white pb-2 border-b border-white/40 hover:border-white transition-colors"
+      {/* Content — anchored to the lower band so the piece above stays clear */}
+      <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 min-h-[100svh] flex flex-col justify-end pb-20 lg:pb-24">
+        <div className="flex items-end justify-between gap-8">
+          {/* Copy (bottom-left) */}
+          <div className="max-w-2xl">
+            {slides.map((slide, i) => (
+              <div
+                key={slide.id}
+                className={cn(
+                  "transition-all duration-700 ease-out",
+                  i === index
+                    ? "opacity-100 translate-y-0 relative"
+                    : "opacity-0 translate-y-4 absolute pointer-events-none inset-0"
+                )}
+                aria-hidden={i !== index}
               >
-                <span>{slide.cta.label}</span>
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </Link>
-            </div>
-          ))}
+                <p className="text-[11px] tracking-[0.45em] uppercase text-white/80 mb-6">
+                  {slide.eyebrow}
+                </p>
+
+                <h1 className="font-serif text-white text-4xl md:text-6xl lg:text-7xl font-light leading-[1.04] mb-6 tracking-tight">
+                  {slide.title}{" "}
+                  <span className="italic">{slide.titleAccent}</span>
+                </h1>
+
+                <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl mb-8">
+                  {slide.description}
+                </p>
+
+                <Link
+                  href={slide.cta.href}
+                  className="group inline-flex items-center gap-3 text-[11px] tracking-[0.4em] uppercase text-white pb-2 border-b border-white/40 hover:border-white transition-colors"
+                >
+                  <span>{slide.cta.label}</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* Navigation (bottom-right) — always clickable, fills the empty
+              right side. Prev / counter / next. */}
+          <div className="hidden sm:flex items-center gap-5 shrink-0 pb-1">
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous slide"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors hover:bg-white hover:text-black"
+            >
+              <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
+            </button>
+            <span className="text-xs tracking-[0.3em] text-white/80 tabular-nums">
+              {String(index + 1).padStart(2, "0")}
+              <span className="text-white/40"> / {String(total).padStart(2, "0")}</span>
+            </span>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next slide"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors hover:bg-white hover:text-black"
+            >
+              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile navigation — centered row under the copy */}
+        <div className="mt-8 flex sm:hidden items-center justify-center gap-6">
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous slide"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-white"
+          >
+            <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
+          </button>
+          <span className="text-xs tracking-[0.3em] text-white/80 tabular-nums">
+            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </span>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next slide"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-white"
+          >
+            <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+          </button>
         </div>
       </div>
-
     </section>
   );
 }

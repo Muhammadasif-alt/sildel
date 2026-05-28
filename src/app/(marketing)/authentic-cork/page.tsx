@@ -98,7 +98,7 @@ export default async function AuthenticCorkPage() {
           steps: [
             {
               name: "Maturação do sobreiro",
-              text: "O sobreiro cresce durante 25 anos antes da primeira extração — só depois a casca exterior está pronta para ser retirada com segurança.",
+              text: "O sobreiro cresce durante 25 anos antes da primeira colheita (a cortiça virgem) — só depois a casca exterior está pronta para ser retirada com segurança.",
             },
             {
               name: "Extração manual com machado",

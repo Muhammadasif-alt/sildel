@@ -154,7 +154,7 @@ function HeroCopy({
 function HeroMedia({ image, alt, video }: { image: string; alt: string; video: ReturnType<typeof videoEmbedUrl> }) {
   if (video?.kind === "youtube" || video?.kind === "vimeo") {
     return (
-      <div className="aspect-video overflow-hidden rounded-2xl bg-muted">
+      <div className="aspect-video overflow-hidden rounded-none bg-muted">
         <iframe
           src={video.src}
           className="h-full w-full"
@@ -169,7 +169,7 @@ function HeroMedia({ image, alt, video }: { image: string; alt: string; video: R
     return (
       <video
         src={video.src}
-        className="aspect-video w-full rounded-2xl object-cover"
+        className="aspect-video w-full rounded-none object-cover"
         autoPlay
         muted
         loop
@@ -179,7 +179,7 @@ function HeroMedia({ image, alt, video }: { image: string; alt: string; video: R
   }
   if (image) {
     return (
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-muted">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-none bg-muted">
         <Image src={image} alt={alt} fill className="object-cover" sizes="(min-width:1024px) 50vw, 100vw" />
       </div>
     );

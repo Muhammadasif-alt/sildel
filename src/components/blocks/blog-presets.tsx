@@ -72,7 +72,7 @@ export async function BlogFeaturedBlock({
       <div className="mx-auto max-w-[1480px] px-6 lg:px-12">
         <Link
           href={`/blog/${featured.slug}`}
-          className="group grid grid-cols-1 items-center gap-8 overflow-hidden rounded-3xl border border-border bg-card shadow-xl shadow-foreground/5 transition-all duration-500 hover:shadow-2xl hover:shadow-foreground/10 lg:grid-cols-2 lg:gap-0"
+          className="group grid grid-cols-1 items-center gap-8 overflow-hidden rounded-none border border-border bg-card shadow-xl shadow-foreground/5 transition-all duration-500 hover:shadow-2xl hover:shadow-foreground/10 lg:grid-cols-2 lg:gap-0"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[420px]">
             <Image
@@ -177,7 +177,7 @@ export async function BlogGridBlock({
 function PostCard({ post, locale }: { post: Post; locale: Locale }) {
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted ring-1 ring-border/70 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-foreground/10 group-hover:ring-primary/40">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-none bg-muted ring-1 ring-border/70 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-foreground/10 group-hover:ring-primary/40">
         <Image
           src={post.image}
           alt={post.imageAlt}

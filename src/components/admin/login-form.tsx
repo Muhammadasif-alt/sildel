@@ -40,7 +40,7 @@ export function AdminLoginForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-2xl border border-border bg-card p-8 shadow-2xl"
+      className="rounded-none border border-border bg-card p-8 shadow-2xl"
     >
       <label className="mb-5 block">
         <span className="mb-2 block text-xs uppercase tracking-[0.22em] text-muted-foreground">

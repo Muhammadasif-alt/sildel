@@ -54,7 +54,7 @@ export default async function AdminDashboardPage() {
             <Link
               key={s.label}
               href={s.href}
-              className="group rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-accent/40"
+              className="group rounded-none border border-border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-accent/40"
             >
               <div className="mb-4 flex items-center justify-between">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -75,7 +75,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Recent orders */}
-      <section className="rounded-2xl border border-border bg-card">
+      <section className="rounded-none border border-border bg-card">
         <header className="flex items-center justify-between border-b border-border px-6 py-4">
           <h2 className="font-serif text-xl text-foreground">Recent orders</h2>
           <Link

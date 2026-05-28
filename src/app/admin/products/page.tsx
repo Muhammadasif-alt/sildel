@@ -28,7 +28,7 @@ export default async function AdminProductsPage() {
         </Link>
       </header>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-card">
+      <div className="overflow-hidden rounded-none border border-border bg-card">
         {products.length === 0 ? (
           <p className="px-6 py-16 text-center text-sm text-muted-foreground">
             No products yet. Click <em>Add product</em> or run <code>npm run seed</code>.

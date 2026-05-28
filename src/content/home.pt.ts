@@ -25,8 +25,8 @@ export const homePt = {
     },
     {
       id: "eclipse",
-      eyebrow: "Nova Coleção",
-      title: "Coleção",
+      eyebrow: "Nova Colecção",
+      title: "Colecção",
       titleAccent: "Eclipse.",
       description: "Formas esculturais em cortiça que guardam o calor da floresta.",
       image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_2.webp",
@@ -46,7 +46,7 @@ export const homePt = {
   ] satisfies HeroSlide[],
 
   collections: {
-    eyebrow: "As Nossas Coleções",
+    eyebrow: "As Nossas Colecções",
     title: "Tesouros, assinados",
     titleAccent: "e numerados.",
     body:
@@ -85,7 +85,7 @@ export const homePt = {
     headline: "Não matamos árvores,",
     headlineAccent: "damos-lhes vida.",
     body:
-      "Cada peça é um testemunho da renovação da natureza. Não cortamos sobreiros; ao colher a cortiça, libertamos a árvore para se regenerar, florescendo com uma nova camada de vida. Assim, cada tesouro celebra a resiliência e o ciclo eterno da terra.",
+      "Cada peça é um testemunho da renovação da natureza. Não cortamos sobreiros; ao colher a cortiça, libertamos a árvore para se regenerar e florescer com uma nova camada de vida. Assim, cada tesouro celebra a resiliência e o ciclo eterno da terra.",
     image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
     imageAlt: "Casca de sobreiro a ser colhida numa floresta portuguesa.",
     stats: [
@@ -99,7 +99,7 @@ export const homePt = {
   sustainability: {
     eyebrow: "Cortiça Autêntica",
     title: "Ofício honesto,",
-    titleAccent: "colhido sem dano.",
+    titleAccent: "sem ferir a árvore.",
     body:
       "Cada peça Sildel começa nos sobreirais de Portugal — ecossistemas protegidos onde as mesmas árvores são colhidas a cada nove anos, sem nunca serem abatidas.",
     image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_4.webp",
@@ -155,7 +155,7 @@ export const homePt = {
     title: "Mantenha-se perto",
     titleAccent: "do ofício.",
     body:
-      "Novas coleções, histórias do atelier e convites discretos — uma vez por mês, nunca mais.",
+      "Novas colecções, histórias do atelier e convites discretos — uma vez por mês, nunca mais.",
     placeholder: "O seu endereço de email",
     cta: "Subscrever",
     loadingLabel: "A enviar…",
@@ -239,7 +239,7 @@ export const homePt = {
   featuredTreasuresSection: {
     eyebrow: "As Peças desta Estação",
     title: "Tesouros, prontos a",
-    titleAccent: "colecionar.",
+    titleAccent: "coleccionar.",
     viewAll: "Ver todos os tesouros",
     viewTreasure: "Ver tesouro",
   },
