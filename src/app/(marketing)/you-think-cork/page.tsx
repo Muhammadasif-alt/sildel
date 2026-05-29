@@ -229,7 +229,7 @@ export default async function YouThinkCorkPage() {
 
         {/* ─────────── Partnerships ─────────── */}
         <div className="border-t border-border/60">
-          <PartnersSection locale={locale} />
+          <PartnersSection locale={locale} variant="alt" />
         </div>
 
         {/* ─────────── Contact CTA + form ─────────── */}

@@ -13,7 +13,8 @@ export type Partner = {
   layout: "split" | "products";
   transparent: boolean;
   paragraphs: string[];
-  images: PartnerImage[];
+  images: PartnerImage[]; // shown on /partners
+  imagesAlt: PartnerImage[]; // shown on You Think Cork — kept disjoint, never duplicated
 };
 
 export type PartnersContent = {

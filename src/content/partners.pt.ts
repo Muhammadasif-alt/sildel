@@ -23,10 +23,14 @@ export const partnersPt: PartnersContent = {
       ],
       images: [
         { src: "/partners-web/porcel/porcel-1.webp" },
-        { src: "/partners-web/porcel/porcel-2.webp" },
-        { src: "/partners-web/porcel/porcel-4.webp" },
-        { src: "/partners-web/porcel/porcel-5.webp" },
         { src: "/partners-web/porcel/porcel-3.webp" },
+        { src: "/partners-web/porcel/porcel-4.webp" },
+        { src: "/partners-web/porcel/porcel-7.webp" },
+      ],
+      imagesAlt: [
+        { src: "/partners-web/porcel/porcel-2.webp" },
+        { src: "/partners-web/porcel/porcel-5.webp" },
+        { src: "/partners-web/porcel/porcel-6.webp" },
       ],
     },
     {
@@ -48,6 +52,12 @@ export const partnersPt: PartnersContent = {
         { src: "/partners-web/lightenjin/corklux-iii.webp", caption: "CORKLUX III" },
         { src: "/partners-web/lightenjin/corklux-tangram.webp", caption: "CORKLUX Tangram" },
       ],
+      imagesAlt: [
+        { src: "/partners-web/lightenjin/corklux-i-b.webp", caption: "CORKLUX I" },
+        { src: "/partners-web/lightenjin/corklux-ii-b.webp", caption: "CORKLUX II" },
+        { src: "/partners-web/lightenjin/corklux-iii-b.webp", caption: "CORKLUX III" },
+        { src: "/partners-web/lightenjin/corklux-tangram-b.webp", caption: "CORKLUX Tangram" },
+      ],
     },
     {
       slug: "festival-mental",
@@ -66,7 +76,12 @@ export const partnersPt: PartnersContent = {
         { src: "/partners-web/festival-mental/fm-1.webp" },
         { src: "/partners-web/festival-mental/fm-2.webp" },
         { src: "/partners-web/festival-mental/fm-3.webp" },
+      ],
+      imagesAlt: [
         { src: "/partners-web/festival-mental/fm-5.webp" },
+        { src: "/partners-web/festival-mental/fm-6.webp" },
+        { src: "/partners-web/festival-mental/fm-7.webp" },
+        { src: "/partners-web/festival-mental/fm-8.webp" },
       ],
     },
   ],
