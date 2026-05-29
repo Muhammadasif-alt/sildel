@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import {
   buildMetadata,
@@ -14,6 +15,8 @@ const PAGE_PATH = "/partners";
 const DATE_PUBLISHED = "2026-05-29T00:00:00Z";
 const DATE_MODIFIED = "2026-05-29T00:00:00Z";
 const HERO_IMAGE = "/partners-web/porcel/porcel-1.webp";
+const HERO_BG =
+  "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp";
 
 export const revalidate = 3600;
 
@@ -78,16 +81,29 @@ export default async function PartnersPage() {
     <>
       <JsonLd data={[breadcrumbs, aboutPage]} />
       <main className="flex flex-col flex-1 bg-background text-foreground">
-        {/* Hero */}
-        <section className="relative w-full border-b border-border/40">
-          <div className="mx-auto max-w-[1480px] px-6 lg:px-12 py-16 lg:py-24">
-            <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
+        {/* Hero — full-bleed atelier backdrop with white text */}
+        <section className="relative w-full overflow-hidden isolate border-b border-border/40">
+          <Image
+            src={HERO_BG}
+            alt=""
+            aria-hidden
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover -z-10"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/65 to-black/40"
+          />
+          <div className="relative z-10 mx-auto flex min-h-[55vh] max-w-[1480px] flex-col justify-center px-6 py-24 lg:px-12 lg:py-36">
+            <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-white/70">
               {t.eyebrow}
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-8">
+            <h1 className="mb-8 font-serif text-4xl font-light leading-[1.05] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)] md:text-5xl lg:text-6xl">
               {t.title}
             </h1>
-            <p className="max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground">
+            <p className="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
               {t.body}
             </p>
           </div>
