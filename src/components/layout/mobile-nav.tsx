@@ -11,7 +11,6 @@ import { readLocale } from "@/lib/i18n/use-locale";
 import { getUi } from "@/lib/i18n/ui";
 import type { Locale } from "@/lib/i18n/config";
 import { LanguageToggle } from "./language-toggle";
-import { WhatsAppLink } from "./whatsapp-link";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -153,7 +152,6 @@ export function MobileNav() {
         <div className="shrink-0 border-t border-border bg-background px-6 py-6 space-y-5">
           <div className="flex items-center justify-between gap-3">
             <LanguageToggle />
-            <WhatsAppLink locale={locale} />
           </div>
           {siteConfig.contact.email && (
             <a

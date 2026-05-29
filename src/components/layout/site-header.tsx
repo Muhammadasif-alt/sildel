@@ -8,7 +8,6 @@ import { getSiteSettings } from "@/lib/content/site-settings";
 import { pickLocalized } from "@/lib/blocks/types";
 import { LanguageToggle } from "./language-toggle";
 import { MobileNav } from "./mobile-nav";
-import { WhatsAppLink } from "./whatsapp-link";
 
 export async function SiteHeader() {
   const locale = await getLocale();
@@ -65,9 +64,7 @@ export async function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 md:gap-5">
-          <WhatsAppLink locale={locale} />
-
+        <div className="flex items-center gap-3 md:gap-6">
           <LanguageToggle className="hidden md:flex" />
 
           <Link

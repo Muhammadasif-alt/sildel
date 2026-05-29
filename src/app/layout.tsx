@@ -11,6 +11,7 @@ import {
 } from "@/lib/seo";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { ReduxProvider } from "@/lib/store/provider";
 import { getLocale } from "@/lib/i18n/get-locale";
 
@@ -75,6 +76,7 @@ export default async function RootLayout({
           {!isAdmin && <SiteHeader />}
           {children}
           {!isAdmin && <SiteFooter />}
+          {!isAdmin && <WhatsAppFloat locale={locale} />}
         </ReduxProvider>
         {/* JSON-LD — search bots read these whether they're inline or
             deferred. `afterInteractive` keeps them out of the critical

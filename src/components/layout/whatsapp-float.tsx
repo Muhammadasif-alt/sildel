@@ -16,16 +16,11 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 /**
- * Click-to-chat link that opens WhatsApp with a pre-filled greeting to the
- * owner. Works in both server and client trees (plain anchor, no hooks).
+ * Floating WhatsApp button — fixed bottom-right on every public page, the
+ * recognisable green chat bubble. Opens WhatsApp with a pre-filled greeting
+ * to the owner. Plain anchor, so it works in the server tree.
  */
-export function WhatsAppLink({
-  locale,
-  className,
-}: {
-  locale: Locale;
-  className?: string;
-}) {
+export function WhatsAppFloat({ locale }: { locale: Locale }) {
   const isPt = locale === "pt";
   const message = isPt
     ? "Olá Sildel! Vi o vosso site e gostaria de saber mais sobre as vossas peças."
@@ -40,12 +35,9 @@ export function WhatsAppLink({
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className={
-        className ??
-        "inline-flex h-10 w-10 items-center justify-center text-[#25D366] transition-opacity hover:opacity-75"
-      }
+      className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/25 transition-transform duration-200 ease-out hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      <WhatsAppIcon className="h-[19px] w-[19px]" />
+      <WhatsAppIcon className="h-7 w-7" />
     </a>
   );
 }
