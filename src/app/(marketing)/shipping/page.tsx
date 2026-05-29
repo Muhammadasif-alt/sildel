@@ -1,7 +1,9 @@
 import { buildMetadata } from "@/lib/seo";
-import { ComingSoon } from "@/components/common/coming-soon";
 import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 import { getPageBlocks } from "@/lib/content/page-blocks";
+import { LegalPage } from "@/components/legal/legal-page";
+import { getShipping } from "@/content/legal";
+import { getLocale } from "@/lib/i18n/get-locale";
 
 export const revalidate = 3600;
 
@@ -47,14 +49,6 @@ export default async function ShippingPage() {
       </main>
     );
   }
-  return (
-    <ComingSoon
-      eyebrow="Shipping"
-      title="Free shipping,"
-      titleAccent="worldwide."
-      body="Every Sildel treasure ships free, anywhere in the world. Each piece is hand-packed in our Portuguese atelier and dispatched with full tracking and insurance. Detailed shipping policy coming soon."
-      primaryCta={{ label: "See the Collection", href: "/treasures" }}
-      secondaryCta={{ label: "Contact us", href: "/contact" }}
-    />
-  );
+  const locale = await getLocale();
+  return <LegalPage doc={getShipping(locale)} />;
 }

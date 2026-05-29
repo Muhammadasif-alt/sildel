@@ -1,14 +1,16 @@
 import { buildMetadata } from "@/lib/seo";
-import { ComingSoon } from "@/components/common/coming-soon";
 import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 import { getPageBlocks } from "@/lib/content/page-blocks";
+import { LegalPage } from "@/components/legal/legal-page";
+import { getPrivacy } from "@/content/legal";
+import { getLocale } from "@/lib/i18n/get-locale";
 
 export const revalidate = 3600;
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
   description:
-    "How Sildel handles your data, your inbox, and your trust.",
+    "How Sildel handles your data, your inbox, and your trust — and our cookies policy.",
   path: "/privacy",
   noIndex: true,
 });
@@ -22,14 +24,6 @@ export default async function PrivacyPage() {
       </main>
     );
   }
-  return (
-    <ComingSoon
-      eyebrow="Privacy"
-      title="Your data,"
-      titleAccent="our promise."
-      body="We are finalizing the full privacy policy. We respect your inbox and your information — we share neither, and we keep only what is necessary to ship your treasures."
-      primaryCta={{ label: "Contact us", href: "/contact" }}
-      secondaryCta={{ label: "Terms of Service", href: "/terms" }}
-    />
-  );
+  const locale = await getLocale();
+  return <LegalPage doc={getPrivacy(locale)} />;
 }

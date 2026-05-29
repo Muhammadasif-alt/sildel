@@ -48,6 +48,7 @@ export async function SiteFooter() {
           heading: locale === "pt" ? "Apoio" : "Help",
           links: [
             { label: ui.nav.contact, href: "/contact" },
+            { label: ui.footer.helpLinks.faq, href: "/faq" },
             { label: ui.nav.blog, href: "/blog" },
             { label: ui.footer.legalLinks.shipping, href: "/shipping" },
             { label: ui.footer.legalLinks.terms, href: "/terms" },

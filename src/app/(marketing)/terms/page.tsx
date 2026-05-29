@@ -1,14 +1,16 @@
 import { buildMetadata } from "@/lib/seo";
-import { ComingSoon } from "@/components/common/coming-soon";
 import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 import { getPageBlocks } from "@/lib/content/page-blocks";
+import { LegalPage } from "@/components/legal/legal-page";
+import { getTerms } from "@/content/legal";
+import { getLocale } from "@/lib/i18n/get-locale";
 
 export const revalidate = 3600;
 
 export const metadata = buildMetadata({
-  title: "Terms of Service",
+  title: "Terms & Conditions",
   description:
-    "The terms that govern your use of sildel.pt and any treasure ordered from us.",
+    "The general conditions of sale that govern your use of sildel.pt and any treasure ordered from us.",
   path: "/terms",
   noIndex: true,
 });
@@ -22,14 +24,6 @@ export default async function TermsPage() {
       </main>
     );
   }
-  return (
-    <ComingSoon
-      eyebrow="Legal"
-      title="Terms"
-      titleAccent="of Service."
-      body="Our full terms of service are being finalized. In the meantime, please contact us for any questions about your treasure or order."
-      primaryCta={{ label: "Contact us", href: "/contact" }}
-      secondaryCta={{ label: "Privacy Policy", href: "/privacy" }}
-    />
-  );
+  const locale = await getLocale();
+  return <LegalPage doc={getTerms(locale)} />;
 }
