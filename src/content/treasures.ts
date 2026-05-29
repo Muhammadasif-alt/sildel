@@ -899,7 +899,7 @@ export const treasures = {
       { title: "Numbered", body: "Each treasure is numbered within its edition." },
       {
         title: "Made in Portugal",
-        body: "Designed and finished in our Alentejo atelier.",
+        body: "Designed and finished in our atelier in northern Portugal.",
       },
       {
         title: "Authentic cork",
@@ -1227,7 +1227,7 @@ export const treasuresPt = {
       { title: "Numerado", body: "Cada tesouro é numerado dentro da sua edição." },
       {
         title: "Feito em Portugal",
-        body: "Desenhado e acabado no nosso atelier do Alentejo.",
+        body: "Desenhado e acabado no nosso atelier no norte de Portugal.",
       },
       {
         title: "Cortiça autêntica",

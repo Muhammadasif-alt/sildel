@@ -34,9 +34,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = buildMetadata();
 
 export const viewport: Viewport = {
-  // Single warm cork/tan theme — set the OS chrome (mobile status bar etc)
-  // to the brand camel so it blends with the page on first paint.
-  themeColor: "#C9A57C",
+  // White + Gold theme — OS chrome (mobile status bar etc) matches the warm
+  // white canvas on first paint.
+  themeColor: "#FBFAF8",
   width: "device-width",
   initialScale: 1,
   colorScheme: "light",

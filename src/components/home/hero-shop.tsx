@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import { ArrowRight, Award, Hammer, Play, Star, Truck } from "lucide-react";
-import { products, formatPrice } from "@/content/treasures";
+import { products } from "@/content/treasures";
 import { home, type HomeContent } from "@/content/home";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -290,9 +290,6 @@ export function HeroShop({ data: dataProp }: { data?: HomeContent["heroShop"] } 
                   </span>
                   <span className="mt-0.5 block font-serif text-lg leading-tight">
                     {current.name}
-                  </span>
-                  <span className="mt-0.5 block text-sm font-medium text-primary">
-                    {formatPrice(current.priceCents)}
                   </span>
                 </span>
                 <ArrowRight

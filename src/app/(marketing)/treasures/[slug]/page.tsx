@@ -10,7 +10,6 @@ import {
   buildFaqJsonLd,
 } from "@/lib/seo";
 import {
-  formatPrice,
   products,
   getFindProduct,
   getProducts,
@@ -19,8 +18,8 @@ import { getProductExtras } from "@/content/product-extras";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getUi } from "@/lib/i18n/ui";
 import { JsonLd } from "@/components/common/json-ld";
-import { AddToCartButton } from "@/components/treasures/add-to-cart-button";
 import { ProductGallery } from "@/components/treasures/product-gallery";
+import { UseCases } from "@/components/treasures/use-cases";
 import { ProductFaqs } from "@/components/treasures/product-faqs";
 
 export function generateStaticParams() {
@@ -131,6 +130,12 @@ export default async function ProductPage({ params }: Params) {
     allTreasures: locale === "pt" ? "Todos os Tesouros" : "All Treasures",
     overview: locale === "pt" ? "Visão geral" : "Overview",
     price: locale === "pt" ? "Preço" : "Price",
+    priceOnRequest: locale === "pt" ? "Preço sob consulta" : "Price on request",
+    priceNote:
+      locale === "pt"
+        ? "Cada peça é única. Contacte-nos para disponibilidade e valor."
+        : "Each piece is one of a kind. Contact us for availability and price.",
+    enquire: locale === "pt" ? "Falar sobre esta peça" : "Enquire about this piece",
     material: locale === "pt" ? "Material" : "Material",
     benefitsEyebrow: locale === "pt" ? "Porquê esta peça" : "Why this piece",
     benefitsTitle: locale === "pt" ? "Feita para" : "Made to",
@@ -195,14 +200,17 @@ export default async function ProductPage({ params }: Params) {
                 {product.tagline}
               </p>
 
-              {/* Price */}
+              {/* Price on request — luxury enquiry model (no public price) */}
               <div className="border-y border-border/60 py-7 mb-10">
                 <p className="text-[10px] tracking-[0.32em] uppercase text-muted-foreground mb-3">
                   {i18n.price}
                 </p>
-                <div className="font-serif text-4xl md:text-5xl font-light text-foreground leading-none">
-                  {formatPrice(product.priceCents, product.currency)}
+                <div className="font-serif text-3xl md:text-4xl font-light text-foreground leading-none">
+                  {i18n.priceOnRequest}
                 </div>
+                <p className="mt-4 text-sm text-muted-foreground max-w-md">
+                  {i18n.priceNote}
+                </p>
                 {product.material && (
                   <p className="mt-5 text-sm text-muted-foreground">
                     <span className="text-[10px] tracking-[0.32em] uppercase mr-3">
@@ -226,18 +234,15 @@ export default async function ProductPage({ params }: Params) {
                 </div>
               )}
 
-              {/* Single primary CTA — Add to cart */}
+              {/* Single primary CTA — enquire (no cart; price on request) */}
               <div className="mb-12">
-                <AddToCartButton
-                  slug={product.slug}
-                  name={product.name}
-                  priceCents={product.priceCents}
-                  image={product.image}
-                  labels={{
-                    addToCart: ui.common.addToCart,
-                    added: ui.common.added,
-                  }}
-                />
+                <Link
+                  href={`/contact?piece=${encodeURIComponent(product.name)}`}
+                  className="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-foreground text-background px-9 py-4 text-xs tracking-[0.32em] uppercase font-medium transition-colors hover:bg-foreground/90"
+                >
+                  <Mail className="h-4 w-4" aria-hidden strokeWidth={1.5} />
+                  {i18n.enquire}
+                </Link>
               </div>
 
               {/* Trust strip — inline list, no boxed cards. Less chrome. */}
@@ -385,6 +390,9 @@ export default async function ProductPage({ params }: Params) {
           </div>
         </section>
 
+        {/* ─────────── Use cases — where it lives ─────────── */}
+        <UseCases locale={locale} productName={product.name} />
+
         {/* ─────────── FAQs ─────────── */}
         <section
           aria-labelledby="faq-heading"
@@ -448,8 +456,8 @@ export default async function ProductPage({ params }: Params) {
                           <h3 className="font-serif text-2xl md:text-3xl font-light leading-tight text-foreground">
                             {p.name}
                           </h3>
-                          <p className="mt-3 font-serif text-lg text-foreground">
-                            {formatPrice(p.priceCents, p.currency)}
+                          <p className="mt-3 text-sm text-muted-foreground">
+                            {p.tagline}
                           </p>
                         </div>
                       </article>

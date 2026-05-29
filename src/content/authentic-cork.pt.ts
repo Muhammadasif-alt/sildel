@@ -84,7 +84,7 @@ export const authenticCorkPt = {
       },
       {
         number: "02",
-        title: "Cortiça secundária",
+        title: "Cortiça secundeira",
         body: "Ano 34 — a segunda colheita. A casca é mais regular, mas ainda não está pronta para escultura.",
       },
       {

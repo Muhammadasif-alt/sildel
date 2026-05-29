@@ -13,7 +13,7 @@ export const ourStoryEn = {
     title: "A studio rooted",
     titleAccent: "in the cork oak.",
     body: [
-      "Sildel began as a small atelier in the Alentejo region of Portugal, where cork oaks have been harvested for over two centuries. What started as a conversation between a designer and a master harvester became a studio committed to one material — cork — and one principle — patience.",
+      "Sildel began as a small atelier in northern Portugal, devoted to cork that has been harvested for over two centuries in Portugal's oak forests. What started as a conversation between a designer and a master harvester became a studio committed to one material — cork — and one principle — patience.",
       "Every Sildel piece carries the texture of a forest that grew long before us, and the hand of a craftsperson who learned this trade from their elders.",
     ],
     image: "/Slidel/Nano Banana 2 - Mid-shot of a master artisan at a workbench hand-sanding a cork sculpture_ warm tung_1.webp",

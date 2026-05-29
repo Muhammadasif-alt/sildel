@@ -175,7 +175,7 @@ export const homeEn = {
     socialProof: "Loved by collectors in 30+ countries",
     featuredLabel: "Featured",
     bottomStrip: {
-      left: "Hand-finished · Alentejo",
+      left: "Hand-finished · Northern Portugal",
       middle: "Signed · Numbered · One of One",
       right: "Worldwide Shipping",
     },
@@ -186,7 +186,7 @@ export const homeEn = {
     title: "We do not sell products.",
     titleAccent: "We create treasures.",
     body:
-      "Four collections — each one signed, numbered, and finished by hand in our Alentejo atelier.",
+      "Four collections — each one signed, numbered, and finished by hand in our atelier in northern Portugal.",
     ctaLabel: "Discover",
     dragHint: "Drag to discover",
     panels: [
@@ -226,7 +226,7 @@ export const homeEn = {
     title: "Find your",
     titleAccent: "treasure.",
     body:
-      "Four collections — each one signed, numbered, and finished in our Alentejo atelier.",
+      "Four collections — each one signed, numbered, and finished in our atelier in northern Portugal.",
     piecesSuffix: "pieces",
     categories: {
       sculpture: { label: "Sculpture", tagline: "Forms shaped by hand" },
@@ -265,7 +265,7 @@ export const homeEn = {
       {
         index: "02",
         title: "Made in Portugal.",
-        body: "Cork harvested from Alentejo oak forests, finished in our atelier outside Lisbon — a craft tradition that's been honed for centuries.",
+        body: "Cork harvested from Alentejo oak forests, finished in our atelier in northern Portugal — a craft tradition that's been honed for centuries.",
       },
       {
         index: "03",

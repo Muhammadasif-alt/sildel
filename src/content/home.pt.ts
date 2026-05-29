@@ -175,7 +175,7 @@ export const homePt = {
     socialProof: "Apreciado por coleccionadores em mais de 30 países",
     featuredLabel: "Destaque",
     bottomStrip: {
-      left: "Acabado à mão · Alentejo",
+      left: "Acabado à mão · Norte de Portugal",
       middle: "Assinado · Numerado · Único",
       right: "Envio para Todo o Mundo",
     },
@@ -186,7 +186,7 @@ export const homePt = {
     title: "Não vendemos produtos.",
     titleAccent: "Criamos tesouros.",
     body:
-      "Quatro colecções — cada uma assinada, numerada e acabada à mão no nosso atelier do Alentejo.",
+      "Quatro colecções — cada uma assinada, numerada e acabada à mão no nosso atelier no norte de Portugal.",
     ctaLabel: "Descobrir",
     dragHint: "Arraste para descobrir",
     panels: [
@@ -226,7 +226,7 @@ export const homePt = {
     title: "Encontre o seu",
     titleAccent: "tesouro.",
     body:
-      "Quatro colecções — cada uma assinada, numerada e acabada no nosso atelier do Alentejo.",
+      "Quatro colecções — cada uma assinada, numerada e acabada no nosso atelier no norte de Portugal.",
     piecesSuffix: "peças",
     categories: {
       sculpture: { label: "Escultura", tagline: "Formas moldadas à mão" },
@@ -265,7 +265,7 @@ export const homePt = {
       {
         index: "02",
         title: "Feito em Portugal.",
-        body: "Cortiça colhida nos sobreirais do Alentejo, acabada no nosso atelier perto de Lisboa — uma tradição artesanal aperfeiçoada há séculos.",
+        body: "Cortiça colhida nos sobreirais do Alentejo, acabada no nosso atelier no norte de Portugal — uma tradição artesanal aperfeiçoada há séculos.",
       },
       {
         index: "03",

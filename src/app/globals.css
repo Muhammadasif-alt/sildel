@@ -2,52 +2,49 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Sildel — single brand theme.
-  Warm cork/camel tan + black ink, matching the Instagram identity
-  (@sildel.wethinkcork). There is no dark mode: the `.dark` class is never
-  applied, so any leftover `dark:` Tailwind variants stay inert and the
-  `:root` tokens below drive the whole site + admin.
+  Sildel — single brand theme: White + Gold (founder direction, 2026-05-29).
+  Warm white canvas, deep charcoal ink for body text, and a burnished gold
+  reserved as the accent (--primary): eyebrows, hairline rules, badges, and
+  select CTAs. Solid buttons stay charcoal (bg-foreground) so gold never
+  overwhelms. There is no dark mode — `.dark` is never applied, so any
+  leftover `dark:` variants stay inert.
 */
 
 :root {
-  /* Brand camel/cork tan base with near-black ink foreground.
-     The logo square on Instagram is ~#C9A57C; the page base is lifted a
-     touch lighter so long-form text stays comfortable while still clearly
-     reading as the same cork family. */
-  --background: oklch(0.8 0.043 74);
-  --foreground: oklch(0.22 0.012 60);
+  /* Warm white canvas + deep warm charcoal ink. */
+  --background: oklch(0.985 0.004 85);
+  --foreground: oklch(0.2 0.006 60);
 
-  /* Cards lift off the tan base with a lighter warm cream surface. */
-  --card: oklch(0.87 0.035 76);
-  --card-foreground: oklch(0.22 0.012 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.006 60);
 
-  --popover: oklch(0.89 0.03 76);
-  --popover-foreground: oklch(0.22 0.012 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.006 60);
 
-  /* Primary = black ink. Buttons + CTAs are black with tan text, exactly
-     like the logo (black glyph on camel). */
-  --primary: oklch(0.22 0.012 60);
-  --primary-foreground: oklch(0.89 0.04 76);
+  /* Primary = burnished gold — the brand accent. Used for eyebrows, rules,
+     badges and accent CTAs. Deep enough (L 0.55) to stay legible as small
+     text on white; gold buttons carry dark text via --primary-foreground. */
+  --primary: oklch(0.55 0.1 76);
+  --primary-foreground: oklch(0.18 0.005 60);
 
-  --secondary: oklch(0.42 0.035 58);
-  --secondary-foreground: oklch(0.95 0.02 78);
+  --secondary: oklch(0.45 0.03 70);
+  --secondary-foreground: oklch(0.99 0 0);
 
-  --muted: oklch(0.84 0.038 74);
-  --muted-foreground: oklch(0.4 0.02 58);
+  --muted: oklch(0.965 0.005 85);
+  --muted-foreground: oklch(0.44 0.012 70);
 
-  --accent: oklch(0.83 0.045 73);
-  --accent-foreground: oklch(0.22 0.012 60);
+  --accent: oklch(0.95 0.014 84);
+  --accent-foreground: oklch(0.2 0.006 60);
 
-  /* No gold in the Instagram identity — the former gold accent now resolves
-     to black ink so any component still referencing it stays on-brand. */
-  --accent-gold: oklch(0.22 0.012 60);
+  /* Gold accent token — same burnished gold as --primary. */
+  --accent-gold: oklch(0.6 0.11 78);
 
   --destructive: oklch(0.52 0.19 25);
-  --destructive-foreground: oklch(0.98 0.01 80);
+  --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.66 0.04 70);
-  --input: oklch(0.72 0.04 72);
-  --ring: oklch(0.22 0.012 60 / 0.45);
+  --border: oklch(0.89 0.008 80);
+  --input: oklch(0.93 0.006 82);
+  --ring: oklch(0.55 0.1 76 / 0.45);
 
   /* Founder direction: straight corners everywhere for harmony. Zeroing the
      radius token flattens every token-based rounded-sm/md/lg/xl across the

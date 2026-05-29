@@ -13,7 +13,7 @@ export const ourStoryPt = {
     title: "Um estúdio com raízes",
     titleAccent: "no sobreiro.",
     body: [
-      "A Sildel começou como um pequeno atelier no Alentejo, em Portugal, onde os sobreiros são colhidos há mais de dois séculos. O que nasceu como uma conversa entre um designer e um mestre descortiçador tornou-se um estúdio dedicado a um material — a cortiça — e a um princípio — a paciência.",
+      "A Sildel começou como um pequeno atelier no norte de Portugal, dedicado à cortiça colhida há mais de dois séculos nos sobreirais portugueses. O que nasceu como uma conversa entre um designer e um mestre descortiçador tornou-se um estúdio dedicado a um material — a cortiça — e a um princípio — a paciência.",
       "Cada peça Sildel guarda a textura de uma floresta que cresceu muito antes de nós, e a mão de um artesão que aprendeu este ofício com os seus mais velhos.",
     ],
     image: "/Slidel/Nano Banana 2 - Mid-shot of a master artisan at a workbench hand-sanding a cork sculpture_ warm tung_1.webp",

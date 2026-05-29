@@ -97,9 +97,9 @@ const PLACEMENT_PT: Record<string, string> = {
 function materialNote(p: Product, locale: Locale): string {
   const mat = p.material ?? (locale === "pt" ? "Cortiça autêntica" : "Authentic cork");
   if (locale === "pt") {
-    return `${mat}. Cada peça é trabalhada à mão no nosso atelier no Alentejo — o grão, a cor e o peso variam ligeiramente de peça para peça.`;
+    return `${mat}. Cada peça é trabalhada à mão no nosso atelier no norte de Portugal — o grão, a cor e o peso variam ligeiramente de peça para peça.`;
   }
-  return `${mat}. Each piece is hand-worked in our Alentejo atelier — the grain, color, and weight vary slightly from piece to piece.`;
+  return `${mat}. Each piece is hand-worked in our atelier in northern Portugal — the grain, color, and weight vary slightly from piece to piece.`;
 }
 
 export function getProductExtras(slug: string, locale: Locale): ProductExtras {
@@ -129,7 +129,7 @@ function buildEn(slug: string, name: string, product: Product | undefined): Prod
       q: "What is it made of?",
       a: product
         ? materialNote(product, "en")
-        : "Authentic Portuguese cork, hand-worked in our Alentejo atelier.",
+        : "Authentic Portuguese cork, hand-worked in our atelier in northern Portugal.",
     },
     {
       q: "Is each piece truly unique?",
@@ -150,7 +150,7 @@ function buildEn(slug: string, name: string, product: Product | undefined): Prod
     eyebrow: "About this piece",
     title: `More about ${name}`,
     paragraphs: [
-      `${name} begins as a piece of raw bark — harvested by hand from a cork oak in Portugal's Alentejo region and carried back to our atelier outside Lisbon. ${product?.description ?? ""}`.trim(),
+      `${name} begins as a piece of raw bark — harvested by hand from a cork oak in Portugal's Alentejo region and carried back to our atelier in northern Portugal. ${product?.description ?? ""}`.trim(),
       product?.longDescription?.length
         ? product.longDescription.join(" ")
         : `Every step is slow. The bark cures for months before it is even handled, then a single artisan shapes, sands, and finishes the piece — pressing the brass stamp that gives it a number, a date, and a signature. ${name} is the result of that patience.`,
@@ -158,7 +158,7 @@ function buildEn(slug: string, name: string, product: Product | undefined): Prod
     ],
     highlights: [
       `Material — ${material}`,
-      "Hand-finished in our Alentejo atelier",
+      "Hand-finished in our atelier in northern Portugal",
       "Signed and numbered within its edition",
       "Free worldwide shipping from Portugal",
     ],
@@ -187,7 +187,7 @@ function buildPt(slug: string, name: string, product: Product | undefined): Prod
       q: "De que é feita?",
       a: product
         ? materialNote(product, "pt")
-        : "Cortiça portuguesa autêntica, trabalhada à mão no nosso atelier no Alentejo.",
+        : "Cortiça portuguesa autêntica, trabalhada à mão no nosso atelier no norte de Portugal.",
     },
     {
       q: "Cada peça é mesmo única?",
@@ -208,7 +208,7 @@ function buildPt(slug: string, name: string, product: Product | undefined): Prod
     eyebrow: "Sobre esta peça",
     title: `Mais sobre ${name}`,
     paragraphs: [
-      `${name} começa como um pedaço de casca em bruto — colhida à mão de um sobreiro na região do Alentejo, em Portugal, e trazida para o nosso atelier nos arredores de Lisboa. ${product?.description ?? ""}`.trim(),
+      `${name} começa como um pedaço de casca em bruto — colhida à mão de um sobreiro na região do Alentejo, em Portugal, e trazida para o nosso atelier no norte de Portugal. ${product?.description ?? ""}`.trim(),
       product?.longDescription?.length
         ? product.longDescription.join(" ")
         : `Cada passo é lento. A casca cura durante meses antes de sequer ser manuseada, depois um único artesão molda, lixa e termina a peça — carimbando o número, a data e a assinatura. ${name} é o resultado dessa paciência.`,
@@ -216,7 +216,7 @@ function buildPt(slug: string, name: string, product: Product | undefined): Prod
     ],
     highlights: [
       `Material — ${material}`,
-      "Acabada à mão no nosso atelier do Alentejo",
+      "Acabada à mão no nosso atelier no norte de Portugal",
       "Assinada e numerada dentro da sua edição",
       "Envio gratuito para todo o mundo a partir de Portugal",
     ],

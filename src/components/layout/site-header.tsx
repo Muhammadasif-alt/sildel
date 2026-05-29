@@ -8,7 +8,6 @@ import { getSiteSettings } from "@/lib/content/site-settings";
 import { pickLocalized } from "@/lib/blocks/types";
 import { LanguageToggle } from "./language-toggle";
 import { MobileNav } from "./mobile-nav";
-import { CartButton } from "./cart-button";
 
 export async function SiteHeader() {
   const locale = await getLocale();
@@ -75,8 +74,6 @@ export async function SiteHeader() {
           >
             <User className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </Link>
-
-          <CartButton />
 
           <MobileNav />
         </div>

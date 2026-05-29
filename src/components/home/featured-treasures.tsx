@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import { products, formatPrice } from "@/content/treasures";
+import { products } from "@/content/treasures";
 import { home, type HomeContent } from "@/content/home";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -85,9 +85,6 @@ export function FeaturedTreasures({
                     </h3>
                     <p className="mt-3 text-sm text-muted-foreground">
                       {p.tagline}
-                    </p>
-                    <p className="mt-4 font-serif text-lg md:text-xl text-foreground">
-                      {formatPrice(p.priceCents)}
                     </p>
                   </div>
                 </article>

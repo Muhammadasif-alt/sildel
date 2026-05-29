@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
-  formatPrice,
   isWideTreasure,
   type Product,
 } from "@/content/treasures";
@@ -188,9 +187,6 @@ function WideRow({
             <p className="mt-6 text-base text-muted-foreground">
               {product.tagline}
             </p>
-            <p className="mt-6 font-serif text-xl text-foreground">
-              {formatPrice(product.priceCents, product.currency)}
-            </p>
           </div>
         </div>
       </article>
@@ -232,8 +228,8 @@ function PairRow({ pair }: { pair: Product[] }) {
                   {product.badge}
                 </p>
               )}
-              <p className="mt-4 font-serif text-lg text-foreground">
-                {formatPrice(product.priceCents, product.currency)}
+              <p className="mt-3 text-sm text-muted-foreground">
+                {product.tagline}
               </p>
             </div>
           </article>
