@@ -18,6 +18,7 @@ import { getProductExtras } from "@/content/product-extras";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getUi } from "@/lib/i18n/ui";
 import { JsonLd } from "@/components/common/json-ld";
+import { ProductHero } from "@/components/treasures/product-hero";
 import { ProductGallery } from "@/components/treasures/product-gallery";
 import { UseCases } from "@/components/treasures/use-cases";
 import { ProductFaqs } from "@/components/treasures/product-faqs";
@@ -169,10 +170,21 @@ export default async function ProductPage({ params }: Params) {
           </div>
         </nav>
 
-        {/* ─────────── CART / ADD-TO-CART ─────────── */}
+        {/* ─────────── HERO ─────────── */}
+        <ProductHero
+          category={product.category}
+          name={product.name}
+          tagline={product.tagline}
+          image={product.image}
+          priceOnRequest={i18n.priceOnRequest}
+          enquireLabel={i18n.enquire}
+          enquireHref={`/contact?piece=${encodeURIComponent(product.name)}`}
+        />
+
+        {/* ─────────── GALLERY + DETAILS ─────────── */}
         <section
           id="cart-section"
-          aria-label={locale === "pt" ? "Adicionar ao carrinho" : "Add to cart"}
+          aria-label={locale === "pt" ? "A peça" : "The piece"}
           className="relative w-full bg-background"
         >
           <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-20 px-6 py-16 lg:px-12 lg:py-24 items-start">
@@ -187,17 +199,12 @@ export default async function ProductPage({ params }: Params) {
               />
             </div>
 
-            {/* Buy panel — sticks in view while the image column scrolls.
-                One primary CTA (Add to cart). No duplicate hero above. */}
+            {/* Details panel — sticks in view while the image column scrolls.
+                Name + tagline already live in the hero above, so this leads
+                with the overview and the enquiry details. */}
             <div className="flex flex-col lg:sticky lg:top-28 lg:self-start">
-              <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
-                {product.category}
-              </p>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-4">
-                {product.name}
-              </h1>
-              <p className="font-serif italic text-xl md:text-2xl text-foreground/70 leading-snug mb-10 max-w-xl">
-                {product.tagline}
+              <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
+                {i18n.overview}
               </p>
 
               {/* Price on request — luxury enquiry model (no public price) */}

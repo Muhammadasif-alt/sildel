@@ -27,6 +27,8 @@ export const siteConfig = {
     email: "sildel@sildel.pt",
     phone: "+351 911 015 388",
     phoneHref: "+351911015388",
+    // wa.me requires the number in international format with no "+" or spaces.
+    whatsapp: "351911015388",
     phoneNote: {
       en: "Cost of a call to the mobile network according to your tariff.",
       pt: "Custo de chamada para a rede móvel de acordo com a sua tarifa.",

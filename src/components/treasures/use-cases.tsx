@@ -57,25 +57,30 @@ export function UseCases({
           </p>
         </div>
 
-        {/* 5-image grid — 2-up on mobile, 3-up on md, 5-up on lg. */}
-        <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5">
+        {/* Editorial mosaic — a large feature image anchors the composition,
+            with the rest woven around it. Never a flat row of five.
+            Mobile: feature spans full width, the other four pair up.
+            lg: 3-col grid where the feature occupies a 2×2 block. */}
+        <ul className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-3 lg:auto-rows-[260px]">
           {USE_CASE_IMAGES.map((src, i) => (
             <li
               key={i}
-              className={
-                // First image takes a wider/taller feature cell on larger screens.
-                i === 0 ? "col-span-2 md:col-span-1" : ""
-              }
+              className={[
+                "group relative overflow-hidden border border-border/60 bg-muted",
+                "aspect-[4/5] lg:aspect-auto",
+                i === 0 ? "col-span-2 lg:col-span-2 lg:row-span-2" : "",
+                i === 4 ? "lg:col-span-2" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
-              <div className="group relative aspect-[3/4] w-full overflow-hidden border border-border/60 bg-muted">
-                <Image
-                  src={src}
-                  alt={`${productName} — ${isPt ? "em contexto" : "in context"} ${i + 1}`}
-                  fill
-                  sizes="(min-width: 1024px) 20vw, (min-width: 768px) 33vw, 50vw"
-                  className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                />
-              </div>
+              <Image
+                src={src}
+                alt={`${productName} — ${isPt ? "em contexto" : "in context"} ${i + 1}`}
+                fill
+                sizes="(min-width: 1024px) 40vw, 50vw"
+                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+              />
             </li>
           ))}
         </ul>
