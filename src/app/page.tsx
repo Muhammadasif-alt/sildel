@@ -2,6 +2,8 @@ import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 import { buildMetadata, buildVideoJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/common/json-ld";
 import { siteConfig } from "@/lib/site-config";
+import { getLocale } from "@/lib/i18n/get-locale";
+import { PartnersStrip } from "@/components/partners/partners-strip";
 
 // ISR — serve a cached HTML for one hour. Admin "save" actions call
 // revalidatePath() so editorial changes still land immediately.
@@ -44,11 +46,13 @@ const videoJsonLd = buildVideoJsonLd({
 });
 
 export default async function HomePage() {
+  const locale = await getLocale();
   return (
     <>
       <JsonLd data={[videoJsonLd]} />
       <main className="flex flex-1 flex-col">
         <BlocksRenderer pageKey="home" />
+        <PartnersStrip locale={locale} />
       </main>
     </>
   );

@@ -40,6 +40,7 @@ export async function SiteFooter() {
             { label: ui.nav.ourStory, href: "/our-story" },
             { label: ui.nav.authenticCork, href: "/authentic-cork" },
             { label: ui.nav.youThinkCork, href: "/you-think-cork" },
+            { label: locale === "pt" ? "Parcerias" : "Partnerships", href: "/partners" },
             { label: ui.nav.treasures, href: "/treasures" },
           ],
         },

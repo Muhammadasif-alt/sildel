@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/site-config";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
 import { ContactForm } from "@/components/contact/contact-form";
+import { PartnersSection } from "@/components/partners/partners-section";
 
 /**
  * /you-think-cork — direct mirror of the live sildel.pt page.
@@ -225,6 +226,11 @@ export default async function YouThinkCorkPage() {
             </ul>
           </div>
         </section>
+
+        {/* ─────────── Partnerships ─────────── */}
+        <div className="border-t border-border/60">
+          <PartnersSection locale={locale} />
+        </div>
 
         {/* ─────────── Contact CTA + form ─────────── */}
         <section

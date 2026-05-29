@@ -47,3 +47,8 @@ next-env.d.ts
 #   node scripts/rewrite-fotos-paths.mjs
 /public/FOTOS PRODUTO/
 /scripts/.fotos-mapping.json
+
+# Raw partner material (client drop, ~430MB). Only the WebP-optimized output
+# under /public/partners-web/ is committed; regenerate via:
+#   node scripts/optimize-partners.mjs
+/public/PARTNERS/

@@ -9,6 +9,7 @@ import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
 import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
 import { StoryVideo } from "@/components/our-story/story-video";
+import { PartnersStrip } from "@/components/partners/partners-strip";
 
 const PAGE_PATH = "/our-story";
 const DATE_PUBLISHED = "2024-01-01T00:00:00Z";
@@ -80,6 +81,7 @@ export default async function OurStoryPage() {
       <main className="flex flex-col flex-1">
         <BlocksRenderer pageKey="our-story" />
         <StoryVideo locale={locale} />
+        <PartnersStrip locale={locale} />
       </main>
     </>
   );
