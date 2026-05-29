@@ -5,6 +5,42 @@ import { useRef, useState, useTransition } from "react";
 import { Upload, X, UserCircle2 } from "lucide-react";
 import { removeAvatar } from "@/app/admin/profile/actions";
 
+const MAX_SOURCE_BYTES = 8 * 1024 * 1024; // reject huge originals before resizing
+const ALLOWED = ["image/png", "image/jpeg", "image/webp", "image/gif"];
+
+/**
+ * Downscale the picked image to a small square-ish data URL using a canvas.
+ * Keeps what we store in MongoDB tiny (~tens of KB) and avoids any
+ * server-side image library or filesystem writes.
+ */
+function fileToResizedDataUrl(file: File, max = 400): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new window.Image();
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const scale = Math.min(1, max / Math.max(img.width, img.height));
+      const w = Math.max(1, Math.round(img.width * scale));
+      const h = Math.max(1, Math.round(img.height * scale));
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        reject(new Error("Could not process image."));
+        return;
+      }
+      ctx.drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL("image/jpeg", 0.85));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Could not read image."));
+    };
+    img.src = url;
+  });
+}
+
 export function AvatarUpload({
   currentUrl,
   initials,
@@ -13,18 +49,31 @@ export function AvatarUpload({
   initials: string;
 }) {
   const [preview, setPreview] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [removing, startRemove] = useTransition();
 
-  function onPick(e: React.ChangeEvent<HTMLInputElement>) {
+  async function onPick(e: React.ChangeEvent<HTMLInputElement>) {
+    setError(null);
     const file = e.target.files?.[0];
     if (!file) {
       setPreview(null);
       return;
     }
-    const reader = new FileReader();
-    reader.onload = () => setPreview(typeof reader.result === "string" ? reader.result : null);
-    reader.readAsDataURL(file);
+    if (!ALLOWED.includes(file.type)) {
+      setError("Use a PNG, JPG, WebP, or GIF image.");
+      return;
+    }
+    if (file.size > MAX_SOURCE_BYTES) {
+      setError("Image too large — max 8 MB.");
+      return;
+    }
+    try {
+      const dataUrl = await fileToResizedDataUrl(file);
+      setPreview(dataUrl);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not process image.");
+    }
   }
 
   function onRemove() {
@@ -37,9 +86,13 @@ export function AvatarUpload({
   }
 
   const displayed = preview ?? currentUrl;
+  const isDataUrl = displayed.startsWith("data:");
 
   return (
     <div className="flex items-center gap-5">
+      {/* The resized data URL rides along with the form submit. */}
+      <input type="hidden" name="avatarData" value={preview ?? ""} />
+
       <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border bg-primary/10">
         {displayed ? (
           <Image
@@ -48,7 +101,7 @@ export function AvatarUpload({
             fill
             sizes="96px"
             className="object-cover"
-            unoptimized={preview !== null}
+            unoptimized={isDataUrl}
           />
         ) : (
           <span className="flex h-full w-full items-center justify-center font-medium uppercase tracking-wider text-primary">
@@ -64,7 +117,6 @@ export function AvatarUpload({
           <input
             ref={inputRef}
             type="file"
-            name="avatar"
             accept="image/png,image/jpeg,image/webp,image/gif"
             onChange={onPick}
             className="hidden"
@@ -81,9 +133,13 @@ export function AvatarUpload({
             {removing ? "Removing…" : "Remove photo"}
           </button>
         )}
-        <p className="text-[11px] text-muted-foreground/80">
-          PNG, JPG, WebP, or GIF · max 4 MB
-        </p>
+        {error ? (
+          <p className="text-[11px] text-destructive">{error}</p>
+        ) : (
+          <p className="text-[11px] text-muted-foreground/80">
+            PNG, JPG, WebP, or GIF · max 8 MB
+          </p>
+        )}
       </div>
     </div>
   );

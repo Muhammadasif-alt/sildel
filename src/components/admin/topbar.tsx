@@ -128,6 +128,7 @@ export function AdminTopbar({
                   fill
                   sizes="36px"
                   className="object-cover"
+                  unoptimized={avatarUrl.startsWith("data:")}
                 />
               ) : (
                 initials
@@ -156,6 +157,7 @@ export function AdminTopbar({
                       fill
                       sizes="44px"
                       className="object-cover"
+                      unoptimized={avatarUrl.startsWith("data:")}
                     />
                   ) : (
                     <UserCircle2 className="h-6 w-6" strokeWidth={1.6} />

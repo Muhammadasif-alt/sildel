@@ -2,8 +2,10 @@
  * AdminProfile — per-admin (single-admin model: keyed by env email) profile
  * customization: display name + avatar URL.
  *
- * Avatar files live under `/public/uploads/admin/` and the stored value is the
- * web-accessible path (e.g. `/uploads/admin/avatar-1716000000.png`).
+ * The avatar is stored inline as a small resized data URL (image is shrunk
+ * client-side before upload). This keeps it filesystem-free so it works on
+ * read-only serverless hosts like Vercel. Older records may still hold a
+ * legacy `/uploads/admin/...` path until the photo is re-uploaded.
  */
 import mongoose, { Schema, Model, InferSchemaType } from "mongoose";
 
