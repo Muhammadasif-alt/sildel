@@ -39,7 +39,7 @@ export const homeEn = {
       title: "Gibraltar",
       titleAccent: "in cork.",
       description: "A defining silhouette — elegant lines designed to last decades.",
-      image: "/Slidel/Nano Banana 2 - A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_1.png",
+      image: "/Slidel/Nano Banana 2 - A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_1.webp",
       imageAlt: "Gibraltar — noble carved cork form on a marble pedestal.",
       cta: { label: "Explore Gibraltar", href: "/treasures#gibraltar" },
     },

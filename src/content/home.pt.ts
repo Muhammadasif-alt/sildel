@@ -39,7 +39,7 @@ export const homePt = {
       title: "Gibraltar",
       titleAccent: "em cortiça.",
       description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
-      image: "/Slidel/Nano Banana 2 - A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_1.png",
+      image: "/Slidel/Nano Banana 2 - A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_1.webp",
       imageAlt: "Gibraltar — forma esculpida em cortiça sobre plinto de mármore.",
       cta: { label: "Explorar Gibraltar", href: "/treasures#gibraltar" },
     },
