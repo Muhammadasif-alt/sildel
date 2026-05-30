@@ -231,6 +231,16 @@
   to   { transform: translateX(-50%); }
 }
 
+/* Authentic Cork — slow Ken Burns drift on the workshop hero image.
+   Hoisted out of the component (was an inline <style> tag re-emitted
+   on every render) so the rule is parsed once and the keyframe stays
+   cacheable alongside the rest of the stylesheet. */
+@keyframes kenBurns {
+  0%   { transform: scale(1)    translate(0, 0); }
+  50%  { transform: scale(1.07) translate(-1%, -1.5%); }
+  100% { transform: scale(1.12) translate(1%, 1%); }
+}
+
 /* Honour reduced-motion preferences — disable transitions for users
    who've opted out at the OS level. */
 @media (prefers-reduced-motion: reduce) {

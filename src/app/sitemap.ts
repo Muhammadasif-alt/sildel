@@ -13,7 +13,9 @@ const STATIC_ROUTES: {
   { path: "/our-story", changeFrequency: "monthly", priority: 0.85 },
   { path: "/authentic-cork", changeFrequency: "monthly", priority: 0.85 },
   { path: "/you-think-cork", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/partners", changeFrequency: "monthly", priority: 0.7 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/faq", changeFrequency: "monthly", priority: 0.65 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.6 },
   { path: "/shipping", changeFrequency: "monthly", priority: 0.5 },
 ];

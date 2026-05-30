@@ -82,6 +82,7 @@ export default async function AuthenticCorkPage() {
     image: authenticCork.hero.image,
     datePublished: DATE_PUBLISHED,
     dateModified: DATE_MODIFIED,
+    locale,
   });
 
   // HowTo — the cork harvest process. Bilingual content, picked by locale.

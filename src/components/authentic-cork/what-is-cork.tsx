@@ -112,23 +112,15 @@ function KenBurnsImage({ src, alt }: { src: string; alt: string }) {
     );
   }
 
+  // kenBurns keyframe lives in globals.css so it isn't re-emitted on each render.
   return (
-    <>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="(min-width: 1024px) 50vw, 100vw"
-        onError={() => setErrored(true)}
-        className="object-cover animate-[kenBurns_18s_ease-in-out_infinite_alternate]"
-      />
-      <style>{`
-        @keyframes kenBurns {
-          0%   { transform: scale(1)    translate(0, 0); }
-          50%  { transform: scale(1.07) translate(-1%, -1.5%); }
-          100% { transform: scale(1.12) translate(1%, 1%); }
-        }
-      `}</style>
-    </>
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      onError={() => setErrored(true)}
+      className="object-cover animate-[kenBurns_18s_ease-in-out_infinite_alternate]"
+    />
   );
 }

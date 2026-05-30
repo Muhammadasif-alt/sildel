@@ -331,6 +331,10 @@ type AboutPageJsonLdInput = {
   image?: string;
   datePublished?: string;
   dateModified?: string;
+  // Caller passes the page's active locale so the JSON-LD's inLanguage
+  // matches what's actually rendered — otherwise Google sees mismatched
+  // hints between the page body and the structured data.
+  locale?: "en" | "pt";
 };
 
 export function buildAboutPageJsonLd({
@@ -340,6 +344,7 @@ export function buildAboutPageJsonLd({
   image,
   datePublished,
   dateModified,
+  locale = "en",
 }: AboutPageJsonLdInput) {
   return {
     "@context": "https://schema.org",
@@ -348,7 +353,7 @@ export function buildAboutPageJsonLd({
     url: new URL(path, siteConfig.url).toString(),
     name,
     description,
-    inLanguage: "en-US",
+    inLanguage: locale === "pt" ? "pt-PT" : "en-US",
     isPartOf: {
       "@type": "WebSite",
       name: siteConfig.name,

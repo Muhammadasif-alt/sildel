@@ -62,6 +62,7 @@ export default async function PartnersPage() {
     image: HERO_IMAGE,
     datePublished: DATE_PUBLISHED,
     dateModified: DATE_MODIFIED,
+    locale,
   });
 
   const t = {

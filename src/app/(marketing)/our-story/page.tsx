@@ -73,6 +73,7 @@ export default async function OurStoryPage() {
     image: ourStory.hero.image,
     datePublished: DATE_PUBLISHED,
     dateModified: DATE_MODIFIED,
+    locale,
   });
 
   return (

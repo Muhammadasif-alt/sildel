@@ -74,6 +74,7 @@ export default async function YouThinkCorkPage() {
     image: HERO_IMAGE,
     datePublished: DATE_PUBLISHED,
     dateModified: DATE_MODIFIED,
+    locale,
   });
 
   const t = {
