@@ -167,9 +167,11 @@ export function WhySildel({
                     {p.index}
                   </span>
 
-                  {/* Bottom content on image */}
+                  {/* Bottom content on image — white over the dark gradient
+                      so the heading reads on every photo (text-primary-foreground
+                      is near-black in the White+Gold theme and disappears here). */}
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    <h3 className="font-serif text-2xl text-primary-foreground md:text-3xl">
+                    <h3 className="font-serif text-2xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] md:text-3xl">
                       {p.title}
                     </h3>
                     <span
