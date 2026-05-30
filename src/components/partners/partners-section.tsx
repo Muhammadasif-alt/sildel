@@ -2,6 +2,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
 import { getPartners, type Partner, type PartnerImage } from "@/content/partners";
+import { InteractiveFeature } from "./interactive-feature";
+import { MarqueeRow } from "./marquee-row";
 
 /**
  * Full "Collaborations" section — one editorial band per partner. Used on the
@@ -9,7 +11,6 @@ import { getPartners, type Partner, type PartnerImage } from "@/content/partners
  *
  * `variant` selects which photo set to show so the two pages never share an
  * image: "primary" (the /partners set) or "alt" (the You Think Cork set).
- * Pass showHeader={false} when the page supplies its own hero/heading above.
  */
 export function PartnersSection({
   locale,
@@ -71,21 +72,32 @@ function PartnerBand({
   flip: boolean;
 }) {
   const images = variant === "alt" ? partner.imagesAlt : partner.images;
+  const isFestival = partner.slug === "festival-mental";
   const isProducts = partner.layout === "products";
 
   return (
-    <article className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    // items-stretch so the media column tracks the text column's height.
+    <article className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
       {/* Media */}
-      <div className={cn(flip ? "lg:order-2" : "lg:order-1")}>
-        {isProducts ? (
-          <ProductGrid images={images} name={partner.name} />
-        ) : (
-          <FeatureImage images={images} name={partner.name} />
-        )}
+      <div className={cn("flex", flip ? "lg:order-2" : "lg:order-1")}>
+        <div className="w-full">
+          {isFestival ? (
+            <MarqueeRow images={images} name={partner.name} />
+          ) : isProducts ? (
+            <ProductGrid images={images} name={partner.name} />
+          ) : (
+            <InteractiveFeature images={images} name={partner.name} />
+          )}
+        </div>
       </div>
 
       {/* Text */}
-      <div className={cn(flip ? "lg:order-1" : "lg:order-2")}>
+      <div
+        className={cn(
+          "flex flex-col justify-center",
+          flip ? "lg:order-1" : "lg:order-2",
+        )}
+      >
         <p className="text-[11px] tracking-[0.4em] uppercase text-primary mb-5">
           {partner.kicker}
         </p>
@@ -104,44 +116,6 @@ function PartnerBand({
         </div>
       </div>
     </article>
-  );
-}
-
-/** Split layout — a tall feature photo with a thin gallery of the rest below. */
-function FeatureImage({ images, name }: { images: PartnerImage[]; name: string }) {
-  const [feature, ...rest] = images;
-  const thumbs = rest.slice(0, 4);
-
-  return (
-    <div>
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] border border-border/60 bg-muted shadow-sm">
-        <Image
-          src={feature.src}
-          alt={`${name} × Sildel`}
-          fill
-          sizes="(min-width: 1024px) 45vw, 100vw"
-          className="object-cover"
-        />
-      </div>
-      {thumbs.length > 0 && (
-        <ul className={cn("mt-3 grid gap-3", thumbs.length >= 3 ? "grid-cols-3" : "grid-cols-2")}>
-          {thumbs.map((img, i) => (
-            <li
-              key={i}
-              className="relative aspect-square w-full overflow-hidden rounded-[14px] border border-border/60 bg-muted"
-            >
-              <Image
-                src={img.src}
-                alt={`${name} × Sildel`}
-                fill
-                sizes="(min-width: 1024px) 15vw, 30vw"
-                className="object-cover"
-              />
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
   );
 }
 
