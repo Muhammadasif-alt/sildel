@@ -9,8 +9,8 @@ export const homePt = {
       titleAccent: "Cortiça.",
       description:
         "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável — artesanato lento, assinado e numerado.",
-      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
-      imageAlt: "Arte escultural em cortiça sob luz quente direccional.",
+      image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
+      imageAlt: "Abyss — casca de cortiça portuguesa em bruto sobre um plinto de mármore branco.",
       cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
     },
     {

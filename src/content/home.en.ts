@@ -9,8 +9,8 @@ export const homeEn = {
       titleAccent: "Cork.",
       description:
         "Sculptural treasures shaped from sustainably harvested Portuguese cork — slow craft, signed and numbered.",
-      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
-      imageAlt: "Sculptural cork art under warm directional light.",
+      image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
+      imageAlt: "Abyss — raw Portuguese cork bark resting on a white marble plinth.",
       cta: { label: "See All Treasures", href: "/treasures" },
     },
     {
