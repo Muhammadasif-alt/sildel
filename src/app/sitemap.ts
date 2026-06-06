@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { products } from "@/content/treasures";
+import { AWARD_SLUGS } from "@/content/awards";
 import { getAllPosts } from "@/lib/content/blog";
 
 const STATIC_ROUTES: {
@@ -52,6 +53,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   }));
 
+  // Every award detail page (3 international distinctions)
+  const awardEntries: MetadataRoute.Sitemap = AWARD_SLUGS.map((slug) => ({
+    url: new URL(`/awards/${slug}`, siteConfig.url).toString(),
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+    alternates: {
+      languages: {
+        "en-US": new URL(`/awards/${slug}`, siteConfig.url).toString(),
+        "pt-PT": new URL(`/awards/${slug}`, siteConfig.url).toString(),
+      },
+    },
+  }));
+
   // Every published blog post (DB + hardcoded fallback)
   let postEntries: MetadataRoute.Sitemap = [];
   try {
@@ -73,5 +88,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // failing the entire sitemap.
   }
 
-  return [...staticEntries, ...productEntries, ...postEntries];
+  return [...staticEntries, ...productEntries, ...awardEntries, ...postEntries];
 }
