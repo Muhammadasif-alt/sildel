@@ -46,6 +46,18 @@ export type AwardDetail = {
   heroSubtitle: string;
   /** Public source link (e.g. luxurimag.com listing) — null if pending. */
   sourceLink?: { label: string; href: string };
+  /**
+   * The actual award badge / banner / certificate visual issued by the
+   * publication. Omitted for awards where no event-specific visual exists
+   * (e.g. the Luxuri listing only carries the Sildel brand logo, so the
+   * credential section falls back to a typographic treatment).
+   */
+  credential?: {
+    image: string;
+    imageAlt: string;
+    /** Short caption shown below the badge — what the visual actually is. */
+    caption: string;
+  };
   /** Overview band — image on one side, content on the other. */
   overview: {
     eyebrow: string;
@@ -96,6 +108,12 @@ export type AwardsContent = {
   viewListing: string;
   /** "View detail" label on home cards (links to /awards/[slug]). */
   viewDetail: string;
+  /** Eyebrow above the credential section ("The Recognition"). */
+  credentialEyebrow: string;
+  /** Heading inside the credential card ("The official badge", etc.). */
+  credentialTitle: string;
+  /** Fallback line for awards with no badge image (e.g. Luxuri). */
+  credentialPendingNote: string;
 };
 
 /* ─────────────────────────────────────────────────────── EN ─────────── */
@@ -110,6 +128,10 @@ const awardsEn: AwardsContent = {
   },
   viewListing: "View listing",
   viewDetail: "Read more",
+  credentialEyebrow: "The recognition",
+  credentialTitle: "Official issuer credential",
+  credentialPendingNote:
+    "Public visual identity is still pending — listing carries the brand identifier only.",
   awards: [
     {
       slug: "iea-2026",
@@ -138,6 +160,13 @@ const awardsEn: AwardsContent = {
           "A Sildel craftsman shaping a cork sculpture in the atelier under warm tungsten light.",
         heroSubtitle:
           "Corporate LiveWire Innovation & Excellence Awards 2026",
+        credential: {
+          image: "/Award/image001.jpg",
+          imageAlt:
+            "Corporate LiveWire Innovation & Excellence Awards — 2026 Winner badge issued to Sildel.",
+          caption:
+            "The 2026 Winner seal issued by Corporate LiveWire's awards team.",
+        },
         overview: {
           eyebrow: "About the recognition",
           title: "Named for design that doesn't repeat itself.",
@@ -226,6 +255,13 @@ const awardsEn: AwardsContent = {
           "An ancient Portuguese cork oak tree with bark recently harvested — the source of every Sildel piece.",
         heroSubtitle:
           "LUXlife Home & Garden Awards 2026 — Portugal",
+        credential: {
+          image: "/Award/unnamed.jpg",
+          imageAlt:
+            "LUXlife Home & Garden Awards 2026 — congratulations banner from the editor.",
+          caption:
+            "The 2026 Home & Garden Awards congratulations banner from LUXlife.",
+        },
         overview: {
           eyebrow: "About the recognition",
           title: "A craft that gives the tree life, not takes it.",
@@ -394,6 +430,10 @@ const awardsPt: AwardsContent = {
   },
   viewListing: "Ver listagem",
   viewDetail: "Saber mais",
+  credentialEyebrow: "A distinção",
+  credentialTitle: "Credencial oficial da publicação",
+  credentialPendingNote:
+    "A identidade visual pública ainda está pendente — a listagem apresenta apenas o identificador da marca.",
   awards: [
     {
       slug: "iea-2026",
@@ -422,6 +462,13 @@ const awardsPt: AwardsContent = {
           "Artesão Sildel a moldar uma escultura em cortiça no atelier sob luz quente de tungsténio.",
         heroSubtitle:
           "Corporate LiveWire Innovation & Excellence Awards 2026",
+        credential: {
+          image: "/Award/image001.jpg",
+          imageAlt:
+            "Selo de vencedor Corporate LiveWire Innovation & Excellence Awards 2026 atribuído à Sildel.",
+          caption:
+            "Selo oficial de Vencedor 2026 emitido pela equipa de prémios da Corporate LiveWire.",
+        },
         overview: {
           eyebrow: "Sobre a distinção",
           title: "Distinguidos por um design que não se repete.",
@@ -511,6 +558,13 @@ const awardsPt: AwardsContent = {
           "Um sobreiro português ancião com a cortiça recém-extraída — a origem de cada peça Sildel.",
         heroSubtitle:
           "LUXlife Home & Garden Awards 2026 — Portugal",
+        credential: {
+          image: "/Award/unnamed.jpg",
+          imageAlt:
+            "LUXlife Home & Garden Awards 2026 — faixa de felicitações da redacção.",
+          caption:
+            "Faixa de felicitações dos Home & Garden Awards 2026 emitida pela LUXlife.",
+        },
         overview: {
           eyebrow: "Sobre a distinção",
           title: "Um ofício que dá vida à árvore, em vez de a abater.",

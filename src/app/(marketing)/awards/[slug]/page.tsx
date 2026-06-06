@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Award as AwardIcon } from "lucide-react";
 import {
   buildMetadata,
   buildBreadcrumbJsonLd,
@@ -13,6 +13,7 @@ import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
 import {
   findAward,
+  getAwards,
   AWARD_SLUGS,
   type Award,
   type AwardPortfolioCard,
@@ -75,11 +76,20 @@ export default async function AwardDetailPage({ params }: PageProps) {
     locale,
   });
 
+  const { credentialEyebrow, credentialTitle, credentialPendingNote } =
+    getAwards(locale);
+
   return (
     <>
       <JsonLd data={[breadcrumbs, aboutPage]} />
       <main className="flex flex-1 flex-col bg-background text-foreground">
         <AwardHero award={award} backLabel={AWARDS_LABEL} />
+        <AwardCredential
+          award={award}
+          eyebrow={credentialEyebrow}
+          title={credentialTitle}
+          pendingNote={credentialPendingNote}
+        />
         <AwardOverview award={award} />
         <AwardPortfolio award={award} />
         <AwardCta
@@ -157,6 +167,148 @@ function AwardHero({ award, backLabel }: { award: Award; backLabel: string }) {
             <span aria-hidden>←</span>
             <span>{backLabel}</span>
           </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────── Credential ───────────── */
+/* The actual badge / banner issued by the publication. Awards without a
+   distinct visual identity (e.g. Luxuri's listing only carries the brand
+   logo) fall back to a typographic credential. */
+
+function AwardCredential({
+  award,
+  eyebrow,
+  title,
+  pendingNote,
+}: {
+  award: Award;
+  eyebrow: string;
+  title: string;
+  pendingNote: string;
+}) {
+  const { credential } = award.detail;
+
+  return (
+    <section
+      aria-labelledby={`credential-${award.slug}`}
+      className="relative w-full border-b border-border/60 bg-muted/30"
+    >
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 px-6 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:px-12 lg:py-20">
+        {/* Badge — actual visual the publication issued. */}
+        <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden border border-border bg-white p-6 shadow-sm lg:p-10">
+          {/* Decorative gold corner marks — museum-pedestal feel. */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute left-3 top-3 h-4 w-4 border-l border-t border-primary"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute right-3 top-3 h-4 w-4 border-r border-t border-primary"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute left-3 bottom-3 h-4 w-4 border-l border-b border-primary"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-primary"
+          />
+
+          {credential ? (
+            <div className="relative h-full w-full">
+              <Image
+                src={credential.image}
+                alt={credential.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 600px, 90vw"
+                className="object-contain"
+              />
+            </div>
+          ) : (
+            <div className="flex flex-col items-center gap-4 px-6 text-center">
+              <AwardIcon
+                className="h-12 w-12 text-primary"
+                strokeWidth={1.25}
+                aria-hidden
+              />
+              <p className="font-serif text-3xl font-light italic text-foreground">
+                {award.year}
+              </p>
+              <p className="text-[11px] uppercase tracking-[0.32em] text-foreground/70">
+                {award.issuer}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Caption — credential identity, year, issuer, optional CTA. */}
+        <div className="max-w-xl">
+          <p
+            id={`credential-${award.slug}`}
+            className="mb-4 text-[11px] uppercase tracking-[0.4em] text-primary"
+          >
+            {eyebrow}
+          </p>
+          <h2 className="font-serif text-2xl font-light leading-snug text-foreground md:text-3xl lg:text-4xl">
+            {title}
+          </h2>
+
+          <dl className="mt-8 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+                {award.org.includes("·") ? award.org : "Awards"}
+              </dt>
+              <dd className="mt-1.5 font-serif text-lg italic text-foreground">
+                {award.org}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+                Issued by
+              </dt>
+              <dd className="mt-1.5 font-serif text-lg italic text-foreground">
+                {award.issuer}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+                Year
+              </dt>
+              <dd className="mt-1.5 font-serif text-lg italic text-foreground tabular-nums">
+                {award.year}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+                Recipient
+              </dt>
+              <dd className="mt-1.5 font-serif text-lg italic text-foreground">
+                Sildel — We Think Cork
+              </dd>
+            </div>
+          </dl>
+
+          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+            {credential ? credential.caption : pendingNote}
+          </p>
+
+          {award.detail.sourceLink && (
+            <a
+              href={award.detail.sourceLink.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-8 inline-flex items-center gap-2 border border-foreground/30 px-6 py-3 text-[11px] uppercase tracking-[0.32em] text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+            >
+              {award.detail.sourceLink.label}
+              <ArrowUpRight
+                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                strokeWidth={1.5}
+              />
+            </a>
+          )}
         </div>
       </div>
     </section>
