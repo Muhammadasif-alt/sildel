@@ -71,17 +71,38 @@ export const partnersEn: PartnersContent = {
         "Festival Mental is a Portuguese festival of mental health — cinema, arts and conversation. For its ninth and tenth editions, Sildel was invited to create the festival's official trophy.",
         "Sculpted entirely from genuine cork, each trophy is a small monument: warm, tactile and unrepeatable — a fitting symbol for a festival about care, placed in the hands of the voices that carry it forward.",
       ],
+      // First image of each array = hero shown beside the text. The rest
+      // populate the gallery grid below. Both variants now draw from the
+      // full archive of trophy photographs (IX edition 2025 + X edition
+      // 2026), curated so no shot appears on both /partners and
+      // /you-think-cork.
       images: [
-        { src: "/partners-web/festival-mental/fm-4.webp" },
-        { src: "/partners-web/festival-mental/fm-1.webp" },
-        { src: "/partners-web/festival-mental/fm-2.webp" },
-        { src: "/partners-web/festival-mental/fm-3.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-01.webp" }, // HERO — trophy portrait
+        { src: "/partners-web/festival-mental/fm-2026-04.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-14.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-08.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-13.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-08.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-01.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-06.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-10.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-09.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-12.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-18.webp" },
       ],
       imagesAlt: [
-        { src: "/partners-web/festival-mental/fm-5.webp" },
-        { src: "/partners-web/festival-mental/fm-6.webp" },
-        { src: "/partners-web/festival-mental/fm-7.webp" },
-        { src: "/partners-web/festival-mental/fm-8.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-15.webp" }, // HERO — recipients + banner
+        { src: "/partners-web/festival-mental/fm-2025-02.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-05.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-10.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-13.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-19.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-02.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-03.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-05.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-09.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-11.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-12.webp" },
       ],
     },
   ],

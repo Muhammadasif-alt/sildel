@@ -71,17 +71,38 @@ export const partnersPt: PartnersContent = {
         "O Festival Mental é um festival português dedicado à saúde mental — cinema, artes e conversa. Para a sua nona e décima edições, a Sildel foi convidada a criar o troféu oficial do festival.",
         "Esculpido inteiramente em cortiça genuína, cada troféu é um pequeno monumento: quente, táctil e irrepetível — um símbolo justo para um festival que fala de cuidado, colocado nas mãos das vozes que o levam mais longe.",
       ],
+      // A primeira imagem de cada array é o "hero" mostrado ao lado do
+      // texto. As restantes preenchem a grelha de galeria abaixo. Ambas
+      // as variantes vêm agora do arquivo completo de fotografias do
+      // troféu (IX edição 2025 + X edição 2026), curadas de forma a que
+      // nenhuma fotografia apareça em /partners e /you-think-cork.
       images: [
-        { src: "/partners-web/festival-mental/fm-4.webp" },
-        { src: "/partners-web/festival-mental/fm-1.webp" },
-        { src: "/partners-web/festival-mental/fm-2.webp" },
-        { src: "/partners-web/festival-mental/fm-3.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-01.webp" }, // HERO — retrato do troféu
+        { src: "/partners-web/festival-mental/fm-2026-04.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-14.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-08.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-13.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-08.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-01.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-06.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-10.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-09.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-12.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-18.webp" },
       ],
       imagesAlt: [
-        { src: "/partners-web/festival-mental/fm-5.webp" },
-        { src: "/partners-web/festival-mental/fm-6.webp" },
-        { src: "/partners-web/festival-mental/fm-7.webp" },
-        { src: "/partners-web/festival-mental/fm-8.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-15.webp" }, // HERO — premiados e banner
+        { src: "/partners-web/festival-mental/fm-2025-02.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-05.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-10.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-13.webp" },
+        { src: "/partners-web/festival-mental/fm-2025-19.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-02.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-03.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-05.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-09.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-11.webp" },
+        { src: "/partners-web/festival-mental/fm-2026-12.webp" },
       ],
     },
   ],
