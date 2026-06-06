@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/common/json-ld";
 import { siteConfig } from "@/lib/site-config";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { PartnersStrip } from "@/components/partners/partners-strip";
+import { Awards } from "@/components/home/awards";
 
 // ISR — serve a cached HTML for one hour. Admin "save" actions call
 // revalidatePath() so editorial changes still land immediately.
@@ -52,6 +53,7 @@ export default async function HomePage() {
       <JsonLd data={[videoJsonLd]} />
       <main className="flex flex-1 flex-col">
         <BlocksRenderer pageKey="home" />
+        <Awards locale={locale} />
         <PartnersStrip locale={locale} />
       </main>
     </>
