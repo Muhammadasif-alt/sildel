@@ -223,14 +223,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Partners — Festival Mental film-strip marquee. The track is rendered
-   twice; animating to -50% lines the second copy onto the first for a
-   seamless infinite loop. */
-@keyframes partners-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 /* Authentic Cork — slow Ken Burns drift on the workshop hero image.
    Hoisted out of the component (was an inline <style> tag re-emitted
    on every render) so the rule is parsed once and the keyframe stays

@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/config";
 import { getPartners, type Partner, type PartnerImage } from "@/content/partners";
 import { InteractiveFeature } from "./interactive-feature";
-import { MarqueeRow } from "./marquee-row";
 
 /**
  * Full "Collaborations" section — one editorial band per partner. Used on the
@@ -48,14 +47,27 @@ export function PartnersSection({
         )}
 
         <div className="flex flex-col gap-20 lg:gap-28">
-          {partners.map((partner, i) => (
-            <PartnerBand
-              key={partner.slug}
-              partner={partner}
-              variant={variant}
-              flip={i % 2 === 1}
-            />
-          ))}
+          {partners.map((partner, i) => {
+            const flip = i % 2 === 1;
+            if (partner.slug === "festival-mental") {
+              return (
+                <FestivalMentalBand
+                  key={partner.slug}
+                  partner={partner}
+                  variant={variant}
+                  flip={flip}
+                />
+              );
+            }
+            return (
+              <PartnerBand
+                key={partner.slug}
+                partner={partner}
+                variant={variant}
+                flip={flip}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
@@ -72,7 +84,6 @@ function PartnerBand({
   flip: boolean;
 }) {
   const images = variant === "alt" ? partner.imagesAlt : partner.images;
-  const isFestival = partner.slug === "festival-mental";
   const isProducts = partner.layout === "products";
 
   return (
@@ -81,9 +92,7 @@ function PartnerBand({
       {/* Media */}
       <div className={cn("flex", flip ? "lg:order-2" : "lg:order-1")}>
         <div className="w-full">
-          {isFestival ? (
-            <MarqueeRow images={images} name={partner.name} />
-          ) : isProducts ? (
+          {isProducts ? (
             <ProductGrid images={images} name={partner.name} />
           ) : (
             <InteractiveFeature images={images} name={partner.name} />
@@ -115,6 +124,89 @@ function PartnerBand({
           ))}
         </div>
       </div>
+    </article>
+  );
+}
+
+/**
+ * Festival Mental — editorial layout. Hero image + text band on top, gallery
+ * grid below. Replaced the prior auto-scrolling marquee per founder direction
+ * (founder felt the marquee read as a generic slider, not a curated archive).
+ */
+function FestivalMentalBand({
+  partner,
+  variant,
+  flip,
+}: {
+  partner: Partner;
+  variant: "primary" | "alt";
+  flip: boolean;
+}) {
+  const images = variant === "alt" ? partner.imagesAlt : partner.images;
+  const [heroImage, ...galleryImages] = images;
+
+  return (
+    <article className="flex flex-col gap-10 lg:gap-14">
+      {/* Hero band — single image + text */}
+      <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className={cn("flex", flip ? "lg:order-2" : "lg:order-1")}>
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] border border-border/60 bg-muted lg:min-h-[520px]">
+            {heroImage && (
+              <Image
+                src={heroImage.src}
+                alt={`${partner.name} — official cork trophy ceremony`}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            )}
+          </div>
+        </div>
+
+        <div
+          className={cn(
+            "flex flex-col justify-center",
+            flip ? "lg:order-1" : "lg:order-2",
+          )}
+        >
+          <p className="text-[11px] tracking-[0.4em] uppercase text-primary mb-5">
+            {partner.kicker}
+          </p>
+          <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.05] text-foreground">
+            {partner.name}
+          </h3>
+          {partner.note && (
+            <p className="mt-4 text-[10px] tracking-[0.32em] uppercase text-muted-foreground">
+              {partner.note}
+            </p>
+          )}
+          <div className="mt-7 space-y-4 text-base leading-relaxed text-muted-foreground">
+            {partner.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Gallery grid below — square thumbnails, hover-zoom */}
+      {galleryImages.length > 0 && (
+        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:gap-6">
+          {galleryImages.map((img, i) => (
+            <li
+              key={i}
+              className="relative aspect-square overflow-hidden rounded-[20px] border border-border/60 bg-muted"
+            >
+              <Image
+                src={img.src}
+                alt={`${partner.name} — ${i + 2}`}
+                fill
+                sizes="(min-width: 1024px) 25vw, 33vw"
+                className="object-cover transition-transform duration-[1000ms] ease-out hover:scale-[1.04]"
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </article>
   );
 }
