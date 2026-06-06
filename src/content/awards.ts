@@ -8,14 +8,17 @@
  *  - LUXlife (AI Publishing) — Home & Garden Awards 2026
  *    ("Sustainable Cork Design & Craftsmanship Company of the Year — Portugal"),
  *    confirmed 7 April 2026.
- *  - Luxuri Magazine — Awards 2025 listing
- *    (luxurimag.com/award-winner-2025/sildel-we-think-cork/),
+ *  - Luxuri Magazine — Awards 2025
+ *    ("Iberian Cork Artistry Brand of the Year — Porto 2025"),
+ *    public listing at luxurimag.com/award-winner-2025/sildel-we-think-cork/,
  *    confirmed 12 February 2026.
  *
  * Isabel took the complimentary / free package for all three — no purchased
  * trophies — so the on-site framing stays factual: "named", "recognised",
- * "featured". Avoid superlatives until a category title is confirmed in
- * writing (the Luxuri one in particular has no documented category).
+ * "featured". The CLW and LUXlife public announcements are still pending
+ * (LUXlife June 2026; CLW with the next Global Awards Winners Guide), so
+ * those two cards currently reference the email-confirmed category titles
+ * only. The Luxuri card links out to the publicly live listing.
  */
 
 import type { Locale } from "@/lib/i18n/config";
@@ -74,8 +77,8 @@ const awardsEn: AwardsContent = {
     {
       slug: "luxuri-2025",
       year: "2025",
-      title: "Sildel — We Think Cork",
-      org: "Luxuri Awards",
+      title: "Iberian Cork Artistry Brand of the Year",
+      org: "Luxuri Awards — Porto 2025",
       issuer: "Luxuri Magazine",
       link: "https://www.luxurimag.com/award-winner-2025/sildel-we-think-cork/",
     },
@@ -116,8 +119,8 @@ const awardsPt: AwardsContent = {
     {
       slug: "luxuri-2025",
       year: "2025",
-      title: "Sildel — We Think Cork",
-      org: "Luxuri Awards",
+      title: "Marca do Ano em Arte da Cortiça Ibérica",
+      org: "Luxuri Awards — Porto 2025",
       issuer: "Luxuri Magazine",
       link: "https://www.luxurimag.com/award-winner-2025/sildel-we-think-cork/",
     },
