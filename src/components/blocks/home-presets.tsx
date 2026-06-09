@@ -14,12 +14,12 @@ import { Newsletter } from "@/components/home/newsletter";
 import { HeroSlider } from "@/components/home/hero-slider";
 import { getHome } from "@/content/home";
 
-// Home hero — editorial cream-stage slider (text + product) with a static
-// four-pillar feature strip beneath. CMS heroShop fields are bypassed in
-// favour of the locale-aware heroSlider + heroFeatures content.
+// Home hero — fullbleed photo slider with infinite autoplay loop.
+// CMS heroShop fields are bypassed in favour of the locale-aware heroSlider
+// content (Nano Banana editorial shots + one-line copy per slide).
 export function HomeHeroShopBlock({ block: _block, locale }: { block: Block; locale: Locale }) {
   const content = getHome(locale);
-  return <HeroSlider slides={content.heroSlider} features={content.heroFeatures} />;
+  return <HeroSlider slides={content.heroSlider} />;
 }
 
 export function HomeShopCategoriesBlock({ block, locale }: { block: Block; locale: Locale }) {
