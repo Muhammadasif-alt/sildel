@@ -245,44 +245,19 @@ const R = {
   ],
 };
 
-/** Reusable image groups (4 variants each unless noted). */
+/**
+ * Reusable Nano Banana image groups (4 variants each). Only the three sets
+ * referenced by products below survive — the rest were defined for products
+ * that have since been wired through R (real client photos) and were dead
+ * code. Removed June 2026 during the /Slidel/ audit; their orphaned files
+ * were deleted in the same pass.
+ */
 const G = {
-  shell: [
-    nb("Sculptural cork art object_ soft directional warm light from upper left_matte black_3.webp"),
-    nb("Sculptural cork art object_ soft directional warm light from upper left_matte black_4.webp"),
-    nb("Sculptural cork art object_ soft directional warm light from upper left_matte black.webp"),
-    nb("Sculptural cork art object_ soft directional warm light from upper left_matte black_1.webp"),
-    nb("Sculptural cork art object_ soft directional warm light from upper left_matte black_2.webp"),
-  ],
-  marblePedestal: [
-    nb("A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_1.webp"),
-    nb("A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_2.webp"),
-    nb("A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_3.webp"),
-    nb("A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp"),
-  ],
   flatlay: [
     nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_1.webp"),
     nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_2.webp"),
     nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_3.webp"),
     nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_4.webp"),
-  ],
-  copperRings: [
-    nb("Two stacked rings of authentic Portuguese cork bark connected by a polishedcopper-fi_1.webp"),
-    nb("Two stacked rings of authentic Portuguese cork bark connected by a polishedcopper-fi_2.webp"),
-    nb("Two stacked rings of authentic Portuguese cork bark connected by a polishedcopper-fi_3.webp"),
-    nb("Two stacked rings of authentic Portuguese cork bark connected by a polishedcopper-fi_4.webp"),
-  ],
-  horizontalStrip: [
-    nb("A long horizontal artwork one slim strip of authentic Portuguese cork bark_visible n_1.webp"),
-    nb("A long horizontal artwork one slim strip of authentic Portuguese cork bark_visible n_2.webp"),
-    nb("A long horizontal artwork one slim strip of authentic Portuguese cork bark_visible n_3.webp"),
-    nb("A long horizontal artwork one slim strip of authentic Portuguese cork bark_visible n_4.webp"),
-  ],
-  roundMirror: [
-    nb("A round mirror set inside an authentic Portuguese cork frame with a flowing_tail_ ex_1.webp"),
-    nb("A round mirror set inside an authentic Portuguese cork frame with a flowing_tail_ ex_2.webp"),
-    nb("A round mirror set inside an authentic Portuguese cork frame with a flowing_tail_ ex_3.webp"),
-    nb("A round mirror set inside an authentic Portuguese cork frame with a flowing_tail_ ex_4.webp"),
   ],
   vessel: [
     nb("A large open vessel _ a piece of organic Portuguese cork bark with visiblenatural ai_1.webp"),
@@ -290,58 +265,11 @@ const G = {
     nb("A large open vessel _ a piece of organic Portuguese cork bark with visiblenatural ai_3.webp"),
     nb("A large open vessel _ a piece of organic Portuguese cork bark with visiblenatural ai_4.webp"),
   ],
-  carraraComp: [
-    nb("Sculptural composition authentic Portuguese cork form on a white Carrara marblebase__1.webp"),
-    nb("Sculptural composition authentic Portuguese cork form on a white Carrara marblebase__2.webp"),
-    nb("Sculptural composition authentic Portuguese cork form on a white Carrara marblebase__3.webp"),
-    nb("Sculptural composition authentic Portuguese cork form on a white Carrara marblebase__4.webp"),
-  ],
-  verticalLamp: [
-    nb("A tall vertical sculptural lamp made of meticulously pressed thin strips ofauthentic_1.webp"),
-    nb("A tall vertical sculptural lamp made of meticulously pressed thin strips ofauthentic_2.webp"),
-    nb("A tall vertical sculptural lamp made of meticulously pressed thin strips ofauthentic_3.webp"),
-    nb("A tall vertical sculptural lamp made of meticulously pressed thin strips ofauthentic_4.webp"),
-  ],
   horizontalLamp: [
     nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_1.webp"),
     nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_2.webp"),
     nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_3.webp"),
     nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_4.webp"),
-  ],
-  goldenCork: [
-    nb("A small cubic white marble base topped with golden-toned authentic Portuguesecork st_1.webp"),
-    nb("A small cubic white marble base topped with golden-toned authentic Portuguesecork st_2.webp"),
-    nb("A small cubic white marble base topped with golden-toned authentic Portuguesecork st_3.webp"),
-    nb("A small cubic white marble base topped with golden-toned authentic Portuguesecork st_4.webp"),
-  ],
-  brownCork: [
-    nb("Same composition as Leaf Golden but with deep warm brown authentic cork stripscascad_1.webp"),
-    nb("Same composition as Leaf Golden but with deep warm brown authentic cork stripscascad_2.webp"),
-    nb("Same composition as Leaf Golden but with deep warm brown authentic cork stripscascad_3.webp"),
-    nb("Same composition as Leaf Golden but with deep warm brown authentic cork stripscascad_4.webp"),
-  ],
-  noblePedestal: [
-    nb("A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_1.webp"),
-    nb("A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_2.webp"),
-    nb("A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_3.webp"),
-    nb("A substantial cubic white marble pedestal supporting a noble carved form ofauthentic_4.webp"),
-  ],
-  longConcave: nb("A long horizontal sculpture _ a white marble cube base meeting a long concaveauthent.webp"),
-  sideTable: nb("A tall slim side table _ sleek black steel rectangular frame holding twohorizontal a.webp"),
-  marlinSphere: nb("Sculptural composition round white marble base supporting an asymmetric concaveauthe.webp"),
-  crescentReal: [
-    "/Slidel/CRESCENT-1330X300MM-VERTICAL2-SILDEL-scaled.webp",
-    "/Slidel/CRESCENT-1330X300MM-HORIZONTAL2-SILDEL-scaled.webp",
-    "/Slidel/CRESCENT-1330X300MM-OVAL2-SILDEL-1024x683.webp",
-    "/Slidel/CRESCENT-1080X300MM-1-SILDEL-1024x683.webp",
-    "/Slidel/CRESCENT-1080X300MM-2-SILDEL-1024x683.webp",
-    "/Slidel/CRESCENT-1000X250MM-1-SILDEL-1024x683.webp",
-  ],
-  halleyReal: [
-    "/Slidel/HALLEY-1-SILDEL-e1715502470328.webp",
-    "/Slidel/HALLEY-SILDEL-1-scaled.webp",
-    "/Slidel/HALLEY-SILDEL-2.webp",
-    "/Slidel/HALLEY-SILDEL-3-scaled.webp",
   ],
 };
 

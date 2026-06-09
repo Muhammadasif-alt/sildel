@@ -13,41 +13,40 @@ function countOf(category: string): number {
   return products.filter((p) => p.category === category).length;
 }
 
-// Hero photo per category — sourced from the catalog's real client photos
-// (no AI placeholders), picked for the strongest single-frame representation.
+/**
+ * Hero photo per category. Founder direction (June 2026): use the editorial
+ * "Ehance Slidel" series — cork pieces shot in Portuguese atelier scenes
+ * (lime-wash walls, arched alcoves, olive branches, golden-hour light) — so
+ * each category card reads as a museum moment rather than a catalogue tile.
+ * The fallback (a plain Shell white-bg shot) is retained in case any of the
+ * enhanced files is missing during dev.
+ */
 const CATEGORY_KEYS = [
   {
     slug: "sculpture",
     productCategory: "Sculpture",
     dictKey: "sculpture",
-    productSlug: "abyss",
+    image: "/Slidel/enhance/enhance-sculpture-01.webp",
   },
   {
     slug: "tables",
     productCategory: "Tables",
     dictKey: "tables",
-    productSlug: "bond",
+    image: "/Slidel/enhance/enhance-tables-02.webp",
   },
   {
     slug: "lighting",
     productCategory: "Lighting",
     dictKey: "lighting",
-    productSlug: "crescent",
+    image: "/Slidel/enhance/enhance-lighting-01.webp",
   },
   {
     slug: "fine-arts",
     productCategory: "Fine Arts",
     dictKey: "fineArts",
-    productSlug: "carre-dor",
+    image: "/Slidel/enhance/enhance-fine-arts-01.webp",
   },
 ] as const;
-
-function imageFor(slug: string): string {
-  return (
-    products.find((p) => p.slug === slug)?.image ??
-    "/products/SHELL_Fundo_BRANCO__MGL1443-4681c4db54.webp"
-  );
-}
 
 export function ShopCategories({
   data: dataProp,
@@ -60,7 +59,7 @@ export function ShopCategories({
     slug: c.slug,
     label: data.categories[c.dictKey].label,
     tagline: data.categories[c.dictKey].tagline,
-    image: imageFor(c.productSlug),
+    image: c.image,
     count: countOf(c.productCategory),
   }));
 
