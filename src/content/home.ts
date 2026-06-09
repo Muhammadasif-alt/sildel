@@ -20,6 +20,14 @@ export type HeroSlide = {
   cta: { label: string; href: string };
 };
 
+/** Static feature pillars shown beneath the hero — brand pillars
+ *  that stay constant while slides rotate. */
+export type HeroFeaturePillar = {
+  icon: "leaf" | "hand" | "shield" | "sparkles";
+  label: string;
+  body: string;
+};
+
 export type HomeContent = typeof homeEn;
 
 export function getHome(locale: Locale): HomeContent {

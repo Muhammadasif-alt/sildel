@@ -1,17 +1,20 @@
-import type { HeroSlide } from "./home";
+import type { HeroSlide, HeroFeaturePillar } from "./home";
 
 export const homePt = {
+  /* Hero editorial — paleta creme clara, layout assimétrico (texto +
+     produto), com tira estática de quatro pilares por baixo. Direção da
+     fundadora (Junho 2026) após referência ao estilo Dehleez. */
   heroSlider: [
     {
       id: "fine-arts",
-      eyebrow: "Belas Artes",
-      title: "Pensamos em",
-      titleAccent: "Cortiça.",
+      eyebrow: "Natureza. Trabalhada.",
+      title: "Beleza Natural.",
+      titleAccent: "Elegância Intemporal.",
       description:
-        "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável — artesanato lento, assinado e numerado.",
-      image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
+        "Esculpido à mão pela natureza, aperfeiçoado para trazer calor, textura e autenticidade ao seu espaço.",
+      image: "/products/ABYSS_Fundo_BRANCO_15.01.01_FB-f5af59fe33.webp",
       imageAlt: "Abyss — casca de cortiça portuguesa em bruto sobre um plinto de mármore branco.",
-      cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
+      cta: { label: "Descobrir agora", href: "/treasures" },
     },
     {
       id: "carre-dor",
@@ -35,15 +38,40 @@ export const homePt = {
     },
     {
       id: "gibraltar",
-      eyebrow: "Assinatura",
-      title: "Gibraltar",
-      titleAccent: "em cortiça.",
-      description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
-      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
-      imageAlt: "Gibraltar — mesa de centro em cortiça num interior português.",
+      eyebrow: "Peça de Assinatura",
+      title: "Gibraltar.",
+      titleAccent: "Uma silhueta marcante.",
+      description:
+        "Duas placas de cortiça suportam vidro temperado — uma mesa de centro feita para durar décadas, pelas mesmas mãos que moldam todas as peças Sildel.",
+      image: "/products/GIBRALTAR__MGL1908-2076b50b77.webp",
+      imageAlt: "Gibraltar — suportes de cortiça sob vidro temperado.",
       cta: { label: "Explorar Gibraltar", href: "/treasures#gibraltar" },
     },
   ] satisfies HeroSlide[],
+
+  /* Quatro pilares de marca — estáticos por baixo do hero rotativo. */
+  heroFeatures: [
+    {
+      icon: "leaf",
+      label: "100% Natural",
+      body: "Puro. Autêntico. Sustentável.",
+    },
+    {
+      icon: "hand",
+      label: "Feito à mão",
+      body: "Artesanato único em cada peça.",
+    },
+    {
+      icon: "shield",
+      label: "Duradouro",
+      body: "Feito para durar. Construído pela natureza.",
+    },
+    {
+      icon: "sparkles",
+      label: "Design Único",
+      body: "Nenhuma peça é igual a outra.",
+    },
+  ] as ReadonlyArray<HeroFeaturePillar>,
 
   collections: {
     eyebrow: "As Nossas Colecções",

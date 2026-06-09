@@ -1,17 +1,21 @@
-import type { HeroSlide } from "./home";
+import type { HeroSlide, HeroFeaturePillar } from "./home";
 
 export const homeEn = {
+  /* Editorial hero — light cream stage, asymmetric text + product, with a
+     static four-pillar feature strip beneath. Founder direction (June 2026)
+     after a Dehleez-style reference: every slide reads as a museum moment
+     rather than a full-bleed cinematic banner. */
   heroSlider: [
     {
       id: "fine-arts",
-      eyebrow: "Fine Arts",
-      title: "We Think",
-      titleAccent: "Cork.",
+      eyebrow: "Nature. Crafted.",
+      title: "Natural Beauty.",
+      titleAccent: "Timeless Elegance.",
       description:
-        "Sculptural treasures shaped from sustainably harvested Portuguese cork — slow craft, signed and numbered.",
-      image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
+        "Handcrafted by nature, perfected to bring warmth, texture, and authenticity to your space.",
+      image: "/products/ABYSS_Fundo_BRANCO_15.01.01_FB-f5af59fe33.webp",
       imageAlt: "Abyss — raw Portuguese cork bark resting on a white marble plinth.",
-      cta: { label: "See All Treasures", href: "/treasures" },
+      cta: { label: "Discover now", href: "/treasures" },
     },
     {
       id: "carre-dor",
@@ -35,15 +39,40 @@ export const homeEn = {
     },
     {
       id: "gibraltar",
-      eyebrow: "Signature",
-      title: "Gibraltar",
-      titleAccent: "in cork.",
-      description: "A defining silhouette — elegant lines designed to last decades.",
-      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
-      imageAlt: "Gibraltar — cork coffee table styled in a Portuguese interior.",
+      eyebrow: "Signature Piece",
+      title: "Gibraltar.",
+      titleAccent: "A defining silhouette.",
+      description:
+        "Two cork slabs hold tempered glass — a coffee table shaped to last decades, by the same hands that shaped every Sildel piece.",
+      image: "/products/GIBRALTAR__MGL1908-2076b50b77.webp",
+      imageAlt: "Gibraltar — cork supports under tempered glass.",
       cta: { label: "Explore Gibraltar", href: "/treasures#gibraltar" },
     },
   ] satisfies HeroSlide[],
+
+  /* Four brand pillars — static below the rotating hero. */
+  heroFeatures: [
+    {
+      icon: "leaf",
+      label: "100% Natural",
+      body: "Pure. Authentic. Sustainable.",
+    },
+    {
+      icon: "hand",
+      label: "Handcrafted",
+      body: "Unique craftsmanship in every piece.",
+    },
+    {
+      icon: "shield",
+      label: "Durable & Strong",
+      body: "Made to last. Built by nature.",
+    },
+    {
+      icon: "sparkles",
+      label: "Unique Design",
+      body: "No two pieces are ever the same.",
+    },
+  ] as ReadonlyArray<HeroFeaturePillar>,
 
   collections: {
     eyebrow: "Our Collections",
