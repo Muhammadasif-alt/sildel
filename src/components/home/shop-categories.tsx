@@ -18,15 +18,15 @@ function countOf(category: string): number {
  * "Ehance Slidel" series — cork pieces shot in Portuguese atelier scenes
  * (lime-wash walls, arched alcoves, olive branches, golden-hour light) — so
  * each category card reads as a museum moment rather than a catalogue tile.
- * The fallback (a plain Shell white-bg shot) is retained in case any of the
- * enhanced files is missing during dev.
+ * Indices chosen to avoid repetition with the hero slider, treasure detail
+ * heroes, and the Why-Choose band.
  */
 const CATEGORY_KEYS = [
   {
     slug: "sculpture",
     productCategory: "Sculpture",
     dictKey: "sculpture",
-    image: "/Slidel/enhance/enhance-sculpture-01.webp",
+    image: "/Slidel/enhance/enhance-sculpture-05.webp",
   },
   {
     slug: "tables",
@@ -38,13 +38,13 @@ const CATEGORY_KEYS = [
     slug: "lighting",
     productCategory: "Lighting",
     dictKey: "lighting",
-    image: "/Slidel/enhance/enhance-lighting-01.webp",
+    image: "/Slidel/enhance/enhance-lighting-04.webp",
   },
   {
     slug: "fine-arts",
     productCategory: "Fine Arts",
     dictKey: "fineArts",
-    image: "/Slidel/enhance/enhance-fine-arts-01.webp",
+    image: "/Slidel/enhance/enhance-fine-arts-03.webp",
   },
 ] as const;
 
@@ -96,7 +96,10 @@ export function ShopCategories({
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:gap-14">
+        {/* 3-column grid (founder direction, June 2026). Image fills card
+            edge-to-edge — no inner white frame. Title + tagline + count
+            sit on the cream card below the image. Shadow lifts on hover. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {cats.map((cat, i) => (
             <motion.div
               key={cat.slug}
@@ -110,33 +113,36 @@ export function ShopCategories({
             >
               <Link
                 href={`/treasures?category=${cat.slug}`}
-                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                {/* Card frame — same recipe as the featured-treasures cards
-                    so every product surface on home reads as one system. */}
-                <article className="h-full rounded-md border border-border bg-muted/60 p-5 sm:p-6 md:p-8 shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:border-foreground/40 group-hover:bg-muted group-hover:shadow-xl">
-                  <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
+                <article className="flex h-full flex-col overflow-hidden bg-card shadow-[0_8px_30px_-8px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.28)]">
+                  {/* Full-bleed atelier scene — object-cover so the image
+                      fills the frame edge-to-edge, no inner whitespace. */}
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
                     <Image
                       src={cat.image}
                       alt={cat.label}
                       fill
-                      sizes="(min-width: 768px) 45vw, 100vw"
-                      className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                      sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
+                      className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                     />
                   </div>
 
-                  <div className="mt-6 md:mt-8 flex items-baseline justify-between gap-4">
-                    <div className="min-w-0">
-                      <h3 className="font-serif text-2xl lg:text-3xl font-light text-foreground">
+                  {/* Card foot — title left, count right, tagline below. No
+                      CTA button per founder direction; the whole card is
+                      already a link. */}
+                  <div className="flex flex-1 flex-col px-6 py-7 md:px-8 md:py-8">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-3xl">
                         {cat.label}
                       </h3>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        {cat.tagline}
-                      </p>
+                      <span className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                        {cat.count} {data.piecesSuffix}
+                      </span>
                     </div>
-                    <span className="shrink-0 text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
-                      {cat.count} {data.piecesSuffix}
-                    </span>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                      {cat.tagline}
+                    </p>
                   </div>
                 </article>
               </Link>
