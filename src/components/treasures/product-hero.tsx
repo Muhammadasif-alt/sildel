@@ -36,7 +36,7 @@ export function ProductHero({
   return (
     <section
       aria-labelledby="product-hero-heading"
-      className="relative w-full overflow-hidden isolate min-h-[88svh] bg-[#15110d]"
+      className="relative w-full overflow-hidden isolate min-h-[70svh] md:min-h-[88svh] bg-[#15110d]"
     >
       {/* Single full-bleed image — slow Ken Burns on mount. */}
       <Image
@@ -61,7 +61,7 @@ export function ProductHero({
       />
 
       {/* Content — anchored bottom-left, same rhythm as the home hero. */}
-      <div className="relative z-10 mx-auto flex min-h-[88svh] max-w-[1600px] flex-col justify-end px-6 pb-20 pt-32 lg:px-12 lg:pb-24 lg:pt-40">
+      <div className="relative z-10 mx-auto flex min-h-[70svh] md:min-h-[88svh] max-w-[1600px] flex-col justify-end px-6 pb-20 pt-32 lg:px-12 lg:pb-24 lg:pt-40">
         <div className="max-w-2xl">
           <p className="mb-6 text-[11px] uppercase tracking-[0.45em] text-white/80">
             {category}

@@ -340,10 +340,9 @@ export const products: Product[] = [
     longDescription: [
       "Each cork tile is hand-cut and placed to honor its natural grain. The resulting surface is warm, soft, and unrepeatable.",
     ],
-    image: "/Slidel/enhance/enhance-tables-05.webp",
+    image: "/images/treasures/granada.webp",
     gallery: [
-      "/Slidel/enhance/enhance-tables-05.webp",
-      "/Slidel/enhance/enhance-tables-04.webp",
+      "/images/treasures/granada.webp",
       G.flatlay[0],
       G.flatlay[2],
     ],
@@ -390,7 +389,7 @@ export const products: Product[] = [
   },
   {
     slug: "eclipse",
-    name: "Eclipse",
+    name: "Eclipse Silver",
     tagline: "Cork on brushed steel and copper",
     category: "Sculpture",
     priceCents: 40200,
@@ -540,7 +539,7 @@ export const products: Product[] = [
     longDescription: [
       "38W × 61D × 31H cm (15\" × 24\" × 12.2\"), 3kg.",
     ],
-    image: "/Slidel/enhance/enhance-misc-28.webp",
+    image: R.equilibrium[0],
     gallery: R.equilibrium,
   },
   {
@@ -634,7 +633,7 @@ export const products: Product[] = [
     longDescription: [
       "77W × 42D × 22H cm, 8kg.",
     ],
-    image: "/Slidel/enhance/enhance-misc-15.webp",
+    image: R.marlin[0],
     gallery: R.marlin,
   },
   {
