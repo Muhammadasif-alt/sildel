@@ -88,7 +88,10 @@ function PartnerBand({
 
   return (
     // items-stretch so the media column tracks the text column's height.
-    <article className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
+    <article
+      id={partner.slug}
+      className="scroll-mt-24 grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-16"
+    >
       {/* Media */}
       <div className={cn("flex", flip ? "lg:order-2" : "lg:order-1")}>
         <div className="w-full">
