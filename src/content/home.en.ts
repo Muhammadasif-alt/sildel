@@ -1,6 +1,10 @@
 import type { HeroSlide } from "./home";
 
 export const homeEn = {
+  /* Hero slider — enhanced editorial atelier shots (founder direction,
+     June 2026). Each slide pairs a collection with a wide cinematic
+     interior frame from the /Slidel/enhance/ series so the whole reel
+     reads as one moodboard rather than a mix of studio + ambient. */
   heroSlider: [
     {
       id: "fine-arts",
@@ -9,8 +13,8 @@ export const homeEn = {
       titleAccent: "Cork.",
       description:
         "Sculptural treasures shaped from sustainably harvested Portuguese cork — slow craft, signed and numbered.",
-      image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
-      imageAlt: "Abyss — raw Portuguese cork bark resting on a white marble plinth.",
+      image: "/Slidel/enhance/enhance-sculpture-04.webp",
+      imageAlt: "Sildel cork sculpture in a sun-lit Portuguese atelier interior.",
       cta: { label: "See All Treasures", href: "/treasures" },
     },
     {
@@ -19,7 +23,7 @@ export const homeEn = {
       title: "Carré",
       titleAccent: "d'Or.",
       description: "Gold leaf against authentic cork — geometry in quiet conversation.",
-      image: "/products/CARR--D-OR-fp_Foto-pormenor-2ecd733ad3.webp",
+      image: "/Slidel/enhance/enhance-carre-dor-01.webp",
       imageAlt: "Carré d'Or — 24k gold leaf against the authentic grain of Portuguese cork.",
       cta: { label: "Discover Carré d'Or", href: "/treasures#carre-dor" },
     },
@@ -29,8 +33,8 @@ export const homeEn = {
       title: "Eclipse",
       titleAccent: "Collection.",
       description: "Sculptural cork forms that hold the warmth of the forest.",
-      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0395-copy_1-a549ffef9b.webp",
-      imageAlt: "Eclipse — authentic cork rings on a copper-finish base.",
+      image: "/Slidel/enhance/enhance-lighting-03.webp",
+      imageAlt: "Eclipse — cork lighting in a softly-lit Portuguese atelier.",
       cta: { label: "View Eclipse", href: "/treasures#eclipse" },
     },
     {
@@ -39,8 +43,8 @@ export const homeEn = {
       title: "Gibraltar",
       titleAccent: "in cork.",
       description: "A defining silhouette — elegant lines designed to last decades.",
-      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
-      imageAlt: "Gibraltar — cork coffee table styled in a Portuguese interior.",
+      image: "/Slidel/enhance/enhance-tables-01.webp",
+      imageAlt: "Gibraltar — Sildel cork table in a warm Portuguese atelier interior.",
       cta: { label: "Explore Gibraltar", href: "/treasures#gibraltar" },
     },
   ] satisfies HeroSlide[],

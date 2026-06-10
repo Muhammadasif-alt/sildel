@@ -1,6 +1,10 @@
 import type { HeroSlide } from "./home";
 
 export const homePt = {
+  /* Slider de abertura — fotografias editoriais "Ehance Slidel" (direcção
+     da fundadora, Junho 2026). Cada slide combina uma colecção com um
+     interior cinematográfico, para que todo o reel leia como um único
+     moodboard em vez de uma mistura de estúdio + ambiente. */
   heroSlider: [
     {
       id: "fine-arts",
@@ -9,8 +13,8 @@ export const homePt = {
       titleAccent: "Cortiça.",
       description:
         "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável — artesanato lento, assinado e numerado.",
-      image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
-      imageAlt: "Abyss — casca de cortiça portuguesa em bruto sobre um plinto de mármore branco.",
+      image: "/Slidel/enhance/enhance-sculpture-04.webp",
+      imageAlt: "Escultura em cortiça Sildel num interior de atelier português banhado pela luz solar.",
       cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
     },
     {
@@ -19,7 +23,7 @@ export const homePt = {
       title: "Carré",
       titleAccent: "d'Or.",
       description: "Folha de ouro sobre cortiça autêntica — geometria em diálogo silencioso.",
-      image: "/products/CARR--D-OR-fp_Foto-pormenor-2ecd733ad3.webp",
+      image: "/Slidel/enhance/enhance-carre-dor-01.webp",
       imageAlt: "Carré d'Or — folha de ouro de 24 quilates sobre o grão autêntico da cortiça portuguesa.",
       cta: { label: "Descobrir Carré d'Or", href: "/treasures#carre-dor" },
     },
@@ -29,8 +33,8 @@ export const homePt = {
       title: "Colecção",
       titleAccent: "Eclipse.",
       description: "Formas esculturais em cortiça que guardam o calor da floresta.",
-      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0395-copy_1-a549ffef9b.webp",
-      imageAlt: "Eclipse — anéis de cortiça autêntica sobre base com acabamento em cobre.",
+      image: "/Slidel/enhance/enhance-lighting-03.webp",
+      imageAlt: "Eclipse — candeeiro de cortiça num atelier português suavemente iluminado.",
       cta: { label: "Ver Eclipse", href: "/treasures#eclipse" },
     },
     {
@@ -39,8 +43,8 @@ export const homePt = {
       title: "Gibraltar",
       titleAccent: "em cortiça.",
       description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
-      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
-      imageAlt: "Gibraltar — mesa de centro em cortiça num interior português.",
+      image: "/Slidel/enhance/enhance-tables-01.webp",
+      imageAlt: "Gibraltar — mesa de centro em cortiça num atelier português acolhedor.",
       cta: { label: "Explorar Gibraltar", href: "/treasures#gibraltar" },
     },
   ] satisfies HeroSlide[],
