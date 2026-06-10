@@ -78,7 +78,7 @@ export function ShopCategories({
       aria-labelledby="shop-categories-heading"
       className="relative bg-background py-24 lg:py-32"
     >
-      <div ref={ref} className="mx-auto max-w-[1600px] px-6 lg:px-10">
+      <div ref={ref} className="w-full px-6 lg:px-12 xl:px-16">
         <div className="mb-16 lg:mb-20 flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
           <motion.div
             initial={{ opacity: 0, y: 24 }}

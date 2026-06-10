@@ -10,10 +10,16 @@ import { home, type HomeContent } from "@/content/home";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-// Featured pieces on the home page — two hero pieces only. The rest of the
-// catalogue lives on /treasures; a centred "view all" button below sends
-// shoppers there. Founder asked for the home to read as a teaser, not a grid.
-const FEATURED_SLUGS = ["carre-dor", "crescent"];
+/**
+ * Featured pieces on the home page — three signature treasures, one per
+ * main category, so the home reads as a teaser of the catalogue.
+ * Founder direction (June 2026): match the Shop Categories card language
+ * one section above — rounded-2xl, layered shadow, full-bleed atelier
+ * image (object-cover), no inner white frame, name + small tagline below.
+ * Wider container (1800 px) and 3-column grid so cards read bigger on
+ * desktop.
+ */
+const FEATURED_SLUGS = ["carre-dor", "crescent", "abyss"];
 
 const featured = FEATURED_SLUGS.map((slug) =>
   products.find((p) => p.slug === slug),
@@ -31,7 +37,7 @@ export function FeaturedTreasures({
       aria-labelledby="featured-treasures-heading"
       className="relative bg-background py-24 lg:py-32"
     >
-      <div ref={ref} className="mx-auto max-w-[1600px] px-6 lg:px-12">
+      <div ref={ref} className="w-full px-6 lg:px-12 xl:px-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -49,7 +55,7 @@ export function FeaturedTreasures({
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {featured.map((p, i) => (
             <motion.div
               key={p.slug}
@@ -63,27 +69,26 @@ export function FeaturedTreasures({
             >
               <Link
                 href={`/treasures/${p.slug}`}
-                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                {/* Card frame — uses muted bg + full-opacity border so the
-                    card is visible in both light and dark themes (in light
-                    mode `--card` is almost white-on-white otherwise). */}
-                <article className="h-full rounded-md border border-border bg-muted/60 p-5 sm:p-6 md:p-8 shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:border-foreground/40 group-hover:bg-muted group-hover:shadow-xl">
-                  <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.22)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.32)]">
+                  {/* Full-bleed atelier scene — object-cover so the image
+                      fills the frame edge-to-edge with no inner white. */}
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
                     <Image
                       src={p.image}
                       alt={p.name}
                       fill
-                      sizes="(min-width: 768px) 45vw, 100vw"
-                      className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                      sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
+                      className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                     />
                   </div>
 
-                  <div className="mt-6 md:mt-8 text-center">
-                    <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-foreground">
+                  <div className="flex flex-1 flex-col px-6 py-7 md:px-8 md:py-8">
+                    <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-3xl">
                       {p.name}
                     </h3>
-                    <p className="mt-3 text-sm text-muted-foreground">
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                       {p.tagline}
                     </p>
                   </div>
@@ -93,7 +98,8 @@ export function FeaturedTreasures({
           ))}
         </div>
 
-        {/* Single centred CTA — drives the rest of the catalogue. */}
+        {/* Single centred CTA — dark inset, same language as the rest of
+            the marketing CTAs (no pill, no gold). */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -102,7 +108,7 @@ export function FeaturedTreasures({
         >
           <Link
             href="/treasures"
-            className="group inline-flex items-center gap-3 bg-foreground text-background border border-foreground rounded-full px-7 md:px-9 py-3 md:py-3.5 text-[11px] tracking-[0.32em] uppercase font-medium transition-all duration-300 ease-out hover:bg-transparent hover:text-foreground hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-3 bg-foreground px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-background transition-colors hover:bg-foreground/85"
           >
             {data.viewAll}
             <ArrowRight
