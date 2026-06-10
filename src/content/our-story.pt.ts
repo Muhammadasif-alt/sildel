@@ -30,8 +30,17 @@ export const ourStoryPt = {
       "O lince ibérico, com o seu olhar penetrante e movimentos graciosos, percorre os sobreirais como um guardião silencioso de um ecossistema único. É neste ambiente — rico em biodiversidade e história — que a Sildel encontra a sua essência.",
       "Na Sildel, acreditamos que a verdadeira arte está em honrar a natureza. O lince, símbolo de resiliência e raridade, reflecte o nosso compromisso em preservar e elevar os recursos naturais.",
     ],
-    image: "/images/our-story/lynx.webp",
+    image: "/images/our-story/lynx-01.webp",
     imageAlt: "O lince ibérico — símbolo da Sildel e guardião do sobreiral.",
+    images: [
+      { src: "/images/our-story/lynx-01.webp", alt: "Retrato de estúdio de um lince ibérico sobre uma base de cortiça polida." },
+      { src: "/images/our-story/lynx-02.webp", alt: "Retrato de estúdio de um lince ibérico, perfil sentado." },
+      { src: "/images/our-story/lynx-03.webp", alt: "Retrato de estúdio de um lince ibérico, vista de três quartos." },
+      { src: "/images/our-story/lynx-04.webp", alt: "Retrato de estúdio de um lince ibérico, olhar em frente." },
+      { src: "/images/our-story/lynx-05.webp", alt: "Lince ibérico num sobreiral português." },
+      { src: "/images/our-story/lynx-06.webp", alt: "Lince ibérico entre sobreiros no Alentejo." },
+      { src: "/images/our-story/lynx-07.webp", alt: "Retrato editorial de um lince ibérico, vista de três quartos." },
+    ],
     facts: [
       { value: "≤ 1.500", label: "Linces na natureza" },
       { value: "Ibéria", label: "Habitat natural" },

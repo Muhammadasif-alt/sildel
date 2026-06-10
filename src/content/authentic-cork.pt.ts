@@ -72,7 +72,7 @@ export const authenticCorkPt = {
         alt: "Mãos curtidas do mestre descortiçador a empunhar o machado curvo — o corte inaugural.",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_1.webp",
+        src: "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_ warm_1.webp",
         alt: "Mãos a seleccionar uma peça de cortiça amadia fina e regular.",
       },
     ],

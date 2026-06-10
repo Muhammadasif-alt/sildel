@@ -72,7 +72,7 @@ export const authenticCorkEn = {
         alt: "Master cork harvester's weathered hands with a curved axe — the maiden cut.",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_1.webp",
+        src: "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_ warm_1.webp",
         alt: "Hands selecting a piece of fine even amadia cork bark.",
       },
     ],

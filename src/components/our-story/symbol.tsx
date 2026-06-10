@@ -1,12 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useOurStory } from "@/content/our-story-provider";
 
+const AUTOPLAY_MS = 5000;
+
 export function BrandSymbol() {
   const data = useOurStory().symbol;
+
+  // Founder added a 7-shot lynx series (Studio → Forest → Editorial) — use
+  // them as a slow cross-fade. Falls back to the single hero image for any
+  // locale that hasn't migrated yet.
+  const slides: readonly { src: string; alt: string }[] =
+    (data as { images?: readonly { src: string; alt: string }[] }).images ?? [
+      { src: data.image, alt: data.imageAlt },
+    ];
 
   return (
     <section
@@ -73,9 +83,9 @@ export function BrandSymbol() {
             </ul>
           </div>
 
-          {/* LYNX IMAGE — right */}
+          {/* LYNX IMAGE SLIDER — right */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-            <LynxImage src={data.image} alt={data.imageAlt} />
+            <LynxSlider slides={slides} />
           </div>
         </div>
       </div>
@@ -83,14 +93,36 @@ export function BrandSymbol() {
   );
 }
 
-/* ────────────────────── Lynx editorial portrait — magazine card with frame */
+/* ────────────────────── Lynx editorial portrait — cross-fade slider */
 
-function LynxImage({ src, alt }: { src: string; alt: string }) {
-  const [errored, setErrored] = useState(false);
+function LynxSlider({
+  slides,
+}: {
+  slides: readonly { src: string; alt: string }[];
+}) {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = slides.length;
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (paused || total < 2) return;
+    timerRef.current = setTimeout(
+      () => setIndex((i) => (i + 1) % total),
+      AUTOPLAY_MS,
+    );
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [index, paused, total]);
 
   return (
-    <div className="relative w-full max-w-md lg:max-w-lg">
-      {/* Offset gold frame */}
+    <div
+      className="relative w-full max-w-md lg:max-w-lg"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Offset gold frame + corner brackets */}
       <div
         aria-hidden
         className="absolute -inset-3 rounded-none border border-primary/30"
@@ -104,33 +136,25 @@ function LynxImage({ src, alt }: { src: string; alt: string }) {
         className="absolute -bottom-3 -right-3 h-6 w-6 border-b-2 border-r-2 border-primary"
       />
 
-      {/* Editorial portrait card — tall 4/5 with warm earth backdrop */}
+      {/* Editorial portrait card */}
       <div
         className={cn(
           "relative aspect-[4/5] w-full overflow-hidden rounded-none",
           "bg-gradient-to-br from-foreground via-foreground/95 to-foreground/85",
           "ring-1 ring-border shadow-2xl shadow-foreground/20",
-          "transition-transform duration-700 ease-out hover:scale-[1.02]",
         )}
+        aria-roledescription={total > 1 ? "carousel" : undefined}
+        aria-label={total > 1 ? "Iberian lynx — portrait series" : undefined}
       >
-        {errored ? (
-          <div
-            className="absolute inset-0 flex items-center justify-center"
-            role="img"
-            aria-label={alt}
-          >
-            <span className="font-serif text-3xl text-primary">L. pardinus</span>
-          </div>
-        ) : (
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes="(min-width: 1024px) 32rem, 28rem"
-            onError={() => setErrored(true)}
-            className="object-cover object-center"
+        {slides.map((slide, i) => (
+          <LynxLayer
+            key={slide.src}
+            src={slide.src}
+            alt={slide.alt}
+            active={i === index}
+            priority={i === 0}
           />
-        )}
+        ))}
 
         {/* Bottom gradient + species label */}
         <span
@@ -145,12 +169,85 @@ function LynxImage({ src, alt }: { src: string; alt: string }) {
             Iberian lynx
           </p>
         </div>
+
+        {/* Slide indicator pips */}
+        {total > 1 && (
+          <div
+            className="absolute top-5 right-5 flex items-center gap-1.5"
+            role="tablist"
+            aria-label="Choose slide"
+          >
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={i === index}
+                aria-label={`Show portrait ${i + 1} of ${total}`}
+                onClick={() => setIndex(i)}
+                className={cn(
+                  "h-px transition-all duration-500 cursor-pointer",
+                  i === index
+                    ? "w-6 bg-primary"
+                    : "w-3 bg-white/50 hover:bg-white/80",
+                )}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Small habitat caption below the card */}
+      {/* Caption below */}
       <p className="mt-5 text-center text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
         Native to Iberia · Guardian of the cork oak
       </p>
+    </div>
+  );
+}
+
+function LynxLayer({
+  src,
+  alt,
+  active,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  active: boolean;
+  priority: boolean;
+}) {
+  const [errored, setErrored] = useState(false);
+
+  return (
+    <div
+      className={cn(
+        "absolute inset-0 transition-opacity duration-[1200ms] ease-out",
+        active ? "opacity-100" : "opacity-0 pointer-events-none",
+      )}
+      aria-hidden={!active}
+    >
+      {errored ? (
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          role="img"
+          aria-label={alt}
+        >
+          <span className="font-serif text-3xl text-primary">L. pardinus</span>
+        </div>
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          sizes="(min-width: 1024px) 32rem, 28rem"
+          onError={() => setErrored(true)}
+          className={cn(
+            "object-cover object-center transition-transform ease-out duration-[8000ms]",
+            active ? "scale-[1.02]" : "scale-100",
+          )}
+        />
+      )}
     </div>
   );
 }

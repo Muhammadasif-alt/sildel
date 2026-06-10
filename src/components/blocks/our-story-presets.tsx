@@ -70,6 +70,10 @@ export function OurStorySymbolBlock({ block, locale }: { block: Block; locale: L
     body: bodyText.split(/\n\n+/).filter(Boolean),
     image: str(block, "image") || ourStory.symbol.image,
     imageAlt: loc(block, "imageAlt", locale, ourStory.symbol.imageAlt),
+    // 7-shot lynx series isn't exposed in the CMS yet — fall back to the
+    // seed-content array so the cross-fade still works for blocks-based
+    // pages that haven't migrated this field.
+    images: ourStory.symbol.images,
     facts: facts.length ? facts : ourStory.symbol.facts,
   });
   return (

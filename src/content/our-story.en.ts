@@ -30,8 +30,17 @@ export const ourStoryEn = {
       "The Iberian lynx, with its piercing gaze and graceful movements, roams the cork oak forests as a silent guardian of a unique ecosystem. It is in this environment — rich in biodiversity and history — that Sildel finds its essence.",
       "At Sildel, we believe true art lies in honoring nature. The lynx, a symbol of resilience and rarity, reflects our commitment to preserving and elevating natural resources.",
     ],
-    image: "/images/our-story/lynx.webp",
+    image: "/images/our-story/lynx-01.webp",
     imageAlt: "The Iberian lynx — Sildel's symbol and guardian of the cork oak ecosystem.",
+    images: [
+      { src: "/images/our-story/lynx-01.webp", alt: "Studio portrait of an Iberian lynx on a polished cork-bark plinth." },
+      { src: "/images/our-story/lynx-02.webp", alt: "Studio portrait of an Iberian lynx, seated profile." },
+      { src: "/images/our-story/lynx-03.webp", alt: "Studio portrait of an Iberian lynx, three-quarter view." },
+      { src: "/images/our-story/lynx-04.webp", alt: "Studio portrait of an Iberian lynx looking forward." },
+      { src: "/images/our-story/lynx-05.webp", alt: "Iberian lynx in a Portuguese cork oak forest." },
+      { src: "/images/our-story/lynx-06.webp", alt: "Iberian lynx standing among cork oaks in the Alentejo." },
+      { src: "/images/our-story/lynx-07.webp", alt: "Editorial portrait of an Iberian lynx, three-quarter view." },
+    ],
     facts: [
       { value: "≤ 1,500", label: "Lynx in the wild" },
       { value: "Iberia", label: "Native habitat" },
