@@ -4,20 +4,20 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import {
-  isWideTreasure,
-  type Product,
-} from "@/content/treasures";
+import type { Product } from "@/content/treasures";
 import { useTreasures } from "@/content/treasures-provider";
 
 /**
- * Treasures index — magazine-style layout inspired by the old sildel.pt
+ * Treasures index — uniform 3-column rounded card grid.
  *
- * Pattern (per Isabel's feedback): products marked as "wide" in the catalog
- * get a full-width row with the name large beside the image. Everything else
- * pairs up two-per-row. Pagination is dropped — visitors scroll the whole
- * collection in one column, which matches the old site and reads more
- * like a magazine than a search results page.
+ * Founder direction (June 2026): match the home page Shop Categories
+ * design language — rounded-2xl cards, shadow, name + tagline below,
+ * no button. Wider cards (aspect 5:4) so each piece reads bigger on
+ * desktop without making the page feel cramped.
+ *
+ * The earlier magazine-style layout (wide rows for long pieces, paired
+ * rows otherwise) is retired — every piece now uses the same card so
+ * the listing reads as one calm rhythm.
  */
 export function ProductGrid() {
   const { content, products } = useTreasures();
@@ -31,31 +31,6 @@ export function ProductGrid() {
       (p) => p.category.toLowerCase() === activeSlug.replace(/-/g, " "),
     );
   }, [activeSlug, products]);
-
-  // Pre-bake the row pattern: wide products take a row alone, narrow
-  // products pair up. If a narrow product has no narrow neighbour to its
-  // right, it occupies a full row too.
-  const rows = useMemo<Product[][]>(() => {
-    const out: Product[][] = [];
-    let i = 0;
-    while (i < filtered.length) {
-      const cur = filtered[i];
-      if (isWideTreasure(cur.slug)) {
-        out.push([cur]);
-        i++;
-        continue;
-      }
-      const next = filtered[i + 1];
-      if (next && !isWideTreasure(next.slug)) {
-        out.push([cur, next]);
-        i += 2;
-      } else {
-        out.push([cur]);
-        i++;
-      }
-    }
-    return out;
-  }, [filtered]);
 
   return (
     <section
@@ -115,20 +90,10 @@ export function ProductGrid() {
             No treasures in this collection yet.
           </p>
         ) : (
-          <div className="flex flex-col gap-12 md:gap-16 lg:gap-20">
-            {rows.map((row, rowIdx) =>
-              row.length === 1 ? (
-                <WideRow
-                  key={row[0].slug}
-                  product={row[0]}
-                  // Alternate label side on full-width rows so consecutive
-                  // wide pieces feel composed rather than stacked.
-                  labelSide={rowIdx % 2 === 0 ? "right" : "left"}
-                />
-              ) : (
-                <PairRow key={row.map((r) => r.slug).join("-")} pair={row} />
-              ),
-            )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {filtered.map((product) => (
+              <TreasureCard key={product.slug} product={product} />
+            ))}
           </div>
         )}
       </div>
@@ -136,105 +101,44 @@ export function ProductGrid() {
   );
 }
 
-/* ────────────────── Wide (single-column) row ────────────────── */
+/* ────────────────── Uniform treasure card ────────────────── */
 
-function WideRow({
-  product,
-  labelSide,
-}: {
-  product: Product;
-  labelSide: "left" | "right";
-}) {
+function TreasureCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/treasures/${product.slug}`}
       aria-label={`${product.name} — ${product.tagline}`}
-      className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+      className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Card frame — soft tonal background + hairline border so the
-          image + text below clearly belong together. */}
-      <article className="rounded-md border border-border/60 bg-card/60 p-6 md:p-10 lg:p-14 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
-        <div
-          className={cn(
-            "flex flex-col items-center gap-8 md:gap-12 lg:gap-16",
-            labelSide === "left" ? "md:flex-row-reverse" : "md:flex-row",
-          )}
-        >
-          <div className="relative w-full md:w-2/3 aspect-[16/10] overflow-hidden bg-white rounded-sm">
-            <Image
-              src={product.image}
-              alt={`${product.name} — ${product.tagline}`}
-              fill
-              sizes="(min-width: 768px) 60vw, 100vw"
-              className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
-            />
-          </div>
+      <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.22)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.32)]">
+        {/* Image — wider 5:4 frame so the piece reads bigger on desktop.
+            Studio shots use object-contain on the existing white bg, so
+            the product is always shown whole (never cropped). */}
+        <div className="relative aspect-[5/4] w-full overflow-hidden bg-white">
+          <Image
+            src={product.image}
+            alt={`${product.name} — ${product.tagline}`}
+            fill
+            sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
+            className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+          />
+        </div>
 
-          <div
-            className={cn(
-              "w-full md:w-1/3",
-              labelSide === "left" ? "md:text-right" : "md:text-left",
-            )}
-          >
-            <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] text-foreground">
-              {product.name}
-            </h3>
-            {product.badge && (
-              <p className="mt-4 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-                {product.badge}
-              </p>
-            )}
-            <p className="mt-6 text-base text-muted-foreground">
-              {product.tagline}
+        {/* Foot — name + small tagline, no button. */}
+        <div className="flex flex-1 flex-col px-6 py-7 md:px-8 md:py-8">
+          <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-3xl">
+            {product.name}
+          </h3>
+          {product.badge && (
+            <p className="mt-3 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+              {product.badge}
             </p>
-          </div>
+          )}
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+            {product.tagline}
+          </p>
         </div>
       </article>
     </Link>
-  );
-}
-
-/* ────────────────── Paired (two-column) row ────────────────── */
-
-function PairRow({ pair }: { pair: Product[] }) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
-      {pair.map((product) => (
-        <Link
-          key={product.slug}
-          href={`/treasures/${product.slug}`}
-          aria-label={`${product.name} — ${product.tagline}`}
-          className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-        >
-          {/* Card frame — same treatment as wide rows so the listing
-              reads as a single visual rhythm. */}
-          <article className="h-full rounded-md border border-border/60 bg-card/60 p-6 md:p-8 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
-            <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
-              <Image
-                src={product.image}
-                alt={`${product.name} — ${product.tagline}`}
-                fill
-                sizes="(min-width: 768px) 45vw, 100vw"
-                className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
-              />
-            </div>
-
-            <div className="mt-8 text-center">
-              <h3 className="font-serif text-3xl md:text-4xl font-light leading-tight text-foreground">
-                {product.name}
-              </h3>
-              {product.badge && (
-                <p className="mt-3 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-                  {product.badge}
-                </p>
-              )}
-              <p className="mt-3 text-sm text-muted-foreground">
-                {product.tagline}
-              </p>
-            </div>
-          </article>
-        </Link>
-      ))}
-    </div>
   );
 }
