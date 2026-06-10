@@ -112,15 +112,16 @@ function TreasureCard({ product }: { product: Product }) {
     >
       <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.22)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.32)]">
         {/* Image — wider 5:4 frame so the piece reads bigger on desktop.
-            Studio shots use object-contain on the existing white bg, so
-            the product is always shown whole (never cropped). */}
-        <div className="relative aspect-[5/4] w-full overflow-hidden bg-white">
+            Atelier "enhance" renders fill the frame edge-to-edge via
+            object-cover. Studio shots (where still in use) crop slightly
+            but the product is centered so it reads fine. */}
+        <div className="relative aspect-[5/4] w-full overflow-hidden bg-muted">
           <Image
             src={product.image}
             alt={`${product.name} — ${product.tagline}`}
             fill
             sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-            className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+            className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
           />
         </div>
 

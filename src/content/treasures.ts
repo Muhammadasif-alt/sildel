@@ -289,7 +289,7 @@ export const products: Product[] = [
       "Each piece, separate, ready to reinvent itself in new compositions and functions.",
       "SHELL is a visual poem, an expression of versatility in constant transformation.",
     ],
-    image: R.shell[0],
+    image: "/Slidel/enhance/enhance-sculpture-06.webp",
     gallery: R.shell,
   },
   {
@@ -307,7 +307,7 @@ export const products: Product[] = [
       "The contrast between rough cork and polished marble underlines the dignity of each material.",
       "A unique sculptural object, signed and numbered, made to anchor a room.",
     ],
-    image: R.abyss[0],
+    image: "/Slidel/enhance/enhance-sculpture-05.webp",
     gallery: R.abyss,
   },
   {
@@ -323,7 +323,7 @@ export const products: Product[] = [
     longDescription: [
       "Designed to live in considered homes — Alexis is a low table that converses with its surroundings rather than dominating them.",
     ],
-    image: R.alexis[0],
+    image: "/Slidel/enhance/enhance-misc-01.webp",
     gallery: R.alexis,
   },
   {
@@ -340,10 +340,10 @@ export const products: Product[] = [
     longDescription: [
       "Each cork tile is hand-cut and placed to honor its natural grain. The resulting surface is warm, soft, and unrepeatable.",
     ],
-    image: "/Slidel/CRESCENT-1200X350MM-2-SILDEL-1024x683.webp",
+    image: "/Slidel/enhance/enhance-tables-05.webp",
     gallery: [
-      "/Slidel/CRESCENT-1200X350MM-2-SILDEL-1024x683.webp",
-      "/Slidel/CRESCENT-1200X350MM-3-SILDEL-1024x683.webp",
+      "/Slidel/enhance/enhance-tables-05.webp",
+      "/Slidel/enhance/enhance-tables-04.webp",
       G.flatlay[0],
       G.flatlay[2],
     ],
@@ -359,7 +359,7 @@ export const products: Product[] = [
     material: "Authentic Cork on Stainless Steel",
     description:
       "Hot Spring is an earth-fired cork form rising from a slim steel stem — a sculptural object that doubles as a quiet sentinel in a room.",
-    image: R.hotSpring[0],
+    image: "/Slidel/enhance/enhance-misc-10.webp",
     gallery: R.hotSpring,
   },
   {
@@ -372,7 +372,7 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Bond is a low cork table built from two raw cork slabs. It holds itself together with quiet tension — a piece that anchors a living room.",
-    image: R.bond[0],
+    image: "/Slidel/enhance/enhance-misc-45.webp",
     gallery: R.bond,
   },
   {
@@ -385,7 +385,7 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Fragments of cork bark suspended in a horizontal line — Fireflies is part wall-piece, part light, part poem.",
-    image: R.fireflies[0],
+    image: "/Slidel/enhance/enhance-misc-12.webp",
     gallery: R.fireflies,
   },
   {
@@ -412,7 +412,7 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Island is a single, sweeping piece of cork bark suspended above a small marble plinth — a horizon you can hold.",
-    image: R.island[0],
+    image: "/Slidel/enhance/enhance-sculpture-04.webp",
     gallery: R.island,
   },
   {
@@ -425,7 +425,7 @@ export const products: Product[] = [
     material: "Authentic Cork and Tempered Glass",
     description:
       "Two slabs of cork bark support a sheet of tempered glass — a coffee table that feels half-found, half-made.",
-    image: R.gibraltar[0],
+    image: "/Slidel/enhance/enhance-tables-03.webp",
     gallery: R.gibraltar,
   },
   {
@@ -439,7 +439,7 @@ export const products: Product[] = [
     material: "Authentic Cork on Brass",
     description:
       "Crescent is a long horizontal chandelier — cork rings strung on a brass rail. A signature piece for a dining table or hallway.",
-    image: R.crescent[0],
+    image: "/Slidel/enhance/enhance-lighting-02.webp",
     gallery: R.crescent,
   },
   {
@@ -453,7 +453,7 @@ export const products: Product[] = [
     material: "Authentic Cork and 24k Gold Leaf",
     description:
       "Carré d'Or lays 24-carat gold leaf against the authentic grain of Portuguese cork — geometry meets bark in a single, framed composition.",
-    image: R.carreDor[0],
+    image: "/Slidel/enhance/enhance-carre-dor-03.webp",
     gallery: R.carreDor,
   },
 
@@ -490,7 +490,7 @@ export const products: Product[] = [
       "W 122 × L 7 × H 47 cm, 2kg.",
       "Care: dust-proof cork; clean glass with microfiber, no abrasives.",
     ],
-    image: R.sideBySide[0],
+    image: "/Slidel/enhance/enhance-fine-arts-01.webp",
     gallery: R.sideBySide,
   },
   {
@@ -523,7 +523,7 @@ export const products: Product[] = [
     longDescription: [
       "W 74 × D 44 × H 29 cm (29.1\" × 17.3\" × 11.4\"), 5kg.",
     ],
-    image: R.belize[0],
+    image: "/Slidel/enhance/enhance-misc-20.webp",
     gallery: R.belize,
   },
   {
@@ -540,7 +540,7 @@ export const products: Product[] = [
     longDescription: [
       "38W × 61D × 31H cm (15\" × 24\" × 12.2\"), 3kg.",
     ],
-    image: R.equilibrium[0],
+    image: "/Slidel/enhance/enhance-misc-28.webp",
     gallery: R.equilibrium,
   },
   {
@@ -601,7 +601,7 @@ export const products: Product[] = [
     longDescription: [
       "38W × 61D × 31H cm.",
     ],
-    image: R.halley[0],
+    image: "/Slidel/enhance/enhance-fine-arts-03.webp",
     gallery: R.halley,
   },
   {
@@ -634,7 +634,7 @@ export const products: Product[] = [
     longDescription: [
       "77W × 42D × 22H cm, 8kg.",
     ],
-    image: R.marlin[0],
+    image: "/Slidel/enhance/enhance-misc-15.webp",
     gallery: R.marlin,
   },
   {
@@ -728,7 +728,7 @@ export const products: Product[] = [
     longDescription: [
       "W 450 × D 450 × H 120 mm, 0.4 kg.",
     ],
-    image: G.vessel[2],
+    image: "/Slidel/enhance/enhance-misc-18.webp",
     gallery: [G.vessel[2], G.vessel[3], G.flatlay[1], G.flatlay[3]],
   },
   {
@@ -744,7 +744,7 @@ export const products: Product[] = [
     longDescription: [
       "W 900 × D 50 × H 60 mm, 0.3 kg.",
     ],
-    image: G.horizontalLamp[2],
+    image: "/Slidel/enhance/enhance-misc-08.webp",
     gallery: [G.horizontalLamp[2], G.horizontalLamp[3], G.flatlay[2], G.flatlay[0]],
   },
 ];
