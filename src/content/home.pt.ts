@@ -45,6 +45,29 @@ export const homePt = {
     },
   ] satisfies HeroSlide[],
 
+  /* Banda editorial "Porquê escolher a Sildel" — divisão 50/50, texto +
+     imagem cinematográfica de atelier. Direção da fundadora (Junho 2026),
+     referência Papi & Lilly's. */
+  whyChoose: {
+    eyebrow: "Porquê coleccionadores escolhem a Sildel",
+    title: "Um tesouro moldado à mão,",
+    titleAccent: "assinado a nome.",
+    body: [
+      "A Sildel é um pequeno atelier português em Esmoriz, criado pela fundadora Isabel Silva. Cada peça começa como casca de cortiça em bruto de uma floresta viva — nunca uma árvore abatida — e termina como um tesouro numerado, assinado pelas mãos que o moldaram.",
+      "Sem linha de fábrica. Sem fornecedores anónimos. Sem edições reeditadas. Apenas ofício lento, cortiça premium, e três décadas de prática que a península ibérica já conhece.",
+    ],
+    bullets: [
+      "Mais de 30 anos a trabalhar exclusivamente em cortiça",
+      "Desenhada e acabada em Portugal, à mão",
+      "Cada peça assinada, numerada e nunca reeditada",
+      "Extraída de forma sustentável — sem árvores abatidas",
+    ],
+    image: "/Slidel/enhance/enhance-tables-04.webp",
+    imageAlt:
+      "Uma mesa de cortiça Sildel no interior de um atelier português banhado pela luz solar, com nicho em arco e ramo de oliveira.",
+    cta: { label: "Explorar tesouros", href: "/treasures" },
+  },
+
   collections: {
     eyebrow: "As Nossas Colecções",
     title: "Tesouros, assinados",

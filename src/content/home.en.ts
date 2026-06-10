@@ -45,6 +45,28 @@ export const homeEn = {
     },
   ] satisfies HeroSlide[],
 
+  /* "Why Choose Sildel" editorial band — 50/50 split, text + cinematic
+     atelier image. Founder direction (June 2026), Papi & Lilly's reference. */
+  whyChoose: {
+    eyebrow: "Why Collectors Choose Sildel",
+    title: "A treasure shaped by hand,",
+    titleAccent: "signed by name.",
+    body: [
+      "Sildel is a small Portuguese atelier in Esmoriz, built by founder Isabel Silva. Every piece begins as raw cork bark from a working forest — never a felled tree — and ends as a numbered treasure signed by the hands that shaped it.",
+      "No factory line. No anonymous suppliers. No reissued editions. Just slow craft, premium cork, and a thirty-year practice the Iberian peninsula has come to know.",
+    ],
+    bullets: [
+      "30+ years working exclusively in cork",
+      "Designed and finished in Portugal, by hand",
+      "Each piece signed, numbered, never reissued",
+      "Sustainably harvested — no trees ever felled",
+    ],
+    image: "/Slidel/enhance/enhance-tables-04.webp",
+    imageAlt:
+      "A Sildel cork table in a sun-lit Portuguese atelier interior with arched alcove and olive branch.",
+    cta: { label: "Explore treasures", href: "/treasures" },
+  },
+
   collections: {
     eyebrow: "Our Collections",
     title: "Treasures, signed",
