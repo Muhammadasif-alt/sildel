@@ -103,9 +103,9 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
             ))}
           </div>
 
-          {/* Navigation (bottom-right) — always clickable, fills the empty
-              right side. Prev / counter / next. */}
-          <div className="hidden sm:flex items-center gap-5 shrink-0 pb-1">
+          {/* Navigation (bottom-right) — prev/next arrows only (no number
+              counter per founder direction). */}
+          <div className="hidden sm:flex items-center gap-3 shrink-0 pb-1">
             <button
               type="button"
               onClick={prev}
@@ -114,10 +114,6 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
             >
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </button>
-            <span className="text-xs tracking-[0.3em] text-white/80 tabular-nums">
-              {String(index + 1).padStart(2, "0")}
-              <span className="text-white/40"> / {String(total).padStart(2, "0")}</span>
-            </span>
             <button
               type="button"
               onClick={next}
@@ -129,8 +125,8 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
           </div>
         </div>
 
-        {/* Mobile navigation — centered row under the copy */}
-        <div className="mt-8 flex sm:hidden items-center justify-center gap-6">
+        {/* Mobile navigation — centered prev/next arrows (no counter) */}
+        <div className="mt-8 flex sm:hidden items-center justify-center gap-4">
           <button
             type="button"
             onClick={prev}
@@ -139,9 +135,6 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
           >
             <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
           </button>
-          <span className="text-xs tracking-[0.3em] text-white/80 tabular-nums">
-            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-          </span>
           <button
             type="button"
             onClick={next}
