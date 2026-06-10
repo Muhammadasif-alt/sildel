@@ -38,7 +38,7 @@ const CARDS = [
   {
     slug: "fine-arts",
     dictKey: "fineArts",
-    image: "/Slidel/enhance/enhance-fine-arts-06.webp",
+    image: "/Slidel/enhance/enhance-fine-arts-07.webp",
     href: "/treasures?category=fine-arts",
   },
   {
