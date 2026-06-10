@@ -132,7 +132,7 @@ function HeroCopy({
           {ctaLabel && (
             <Link
               href={ctaHref || "#"}
-              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center bg-foreground px-7 py-4 text-[11px] font-medium uppercase tracking-[0.32em] text-background transition-colors hover:bg-foreground/85"
             >
               {ctaLabel}
             </Link>

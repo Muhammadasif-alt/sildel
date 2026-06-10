@@ -223,7 +223,7 @@ export function Sustainability({ data: dataProp }: { data?: HomeContent["sustain
 
               <Link
                 href={data.cta.href}
-                className="group mt-10 inline-flex items-center gap-3 self-start rounded-full bg-primary px-8 py-4 text-xs uppercase tracking-[0.3em] text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+                className="group mt-10 inline-flex items-center gap-3 self-start bg-foreground px-8 py-4 text-[11px] uppercase tracking-[0.32em] text-background transition-colors hover:bg-foreground/85"
               >
                 {data.cta.label}
                 <ArrowRight
