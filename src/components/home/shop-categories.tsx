@@ -4,47 +4,54 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { products } from "@/content/treasures";
 import { home, type HomeContent } from "@/content/home";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-function countOf(category: string): number {
-  return products.filter((p) => p.category === category).length;
-}
-
 /**
- * Hero photo per category. Founder direction (June 2026): use the editorial
- * "Ehance Slidel" series — cork pieces shot in Portuguese atelier scenes
- * (lime-wash walls, arched alcoves, olive branches, golden-hour light) — so
- * each category card reads as a museum moment rather than a catalogue tile.
- * Indices chosen to avoid repetition with the hero slider, treasure detail
- * heroes, and the Why-Choose band.
+ * 3×2 grid of "ways in" — four product categories plus Limited Editions
+ * and Bespoke. Founder direction (June 2026): rounded cards, full-bleed
+ * atelier image (object-cover, no inner white frame), title + tagline
+ * below, no piece count, no CTA button. Cards reuse the editorial
+ * "Ehance Slidel" renders so the section reads as one moodboard with
+ * the hero slider and Why-Choose band.
  */
-const CATEGORY_KEYS = [
+const CARDS = [
   {
     slug: "sculpture",
-    productCategory: "Sculpture",
     dictKey: "sculpture",
     image: "/Slidel/enhance/enhance-sculpture-05.webp",
+    href: "/treasures?category=sculpture",
   },
   {
     slug: "tables",
-    productCategory: "Tables",
     dictKey: "tables",
-    image: "/Slidel/enhance/enhance-tables-02.webp",
+    image: "/Slidel/enhance/enhance-tables-05.webp",
+    href: "/treasures?category=tables",
   },
   {
     slug: "lighting",
-    productCategory: "Lighting",
     dictKey: "lighting",
-    image: "/Slidel/enhance/enhance-lighting-04.webp",
+    image: "/Slidel/enhance/enhance-lighting-05.webp",
+    href: "/treasures?category=lighting",
   },
   {
     slug: "fine-arts",
-    productCategory: "Fine Arts",
     dictKey: "fineArts",
-    image: "/Slidel/enhance/enhance-fine-arts-03.webp",
+    image: "/Slidel/enhance/enhance-fine-arts-06.webp",
+    href: "/treasures?category=fine-arts",
+  },
+  {
+    slug: "limited",
+    dictKey: "limited",
+    image: "/Slidel/enhance/enhance-carre-dor-04.webp",
+    href: "/treasures#carre-dor",
+  },
+  {
+    slug: "bespoke",
+    dictKey: "bespoke",
+    image: "/Slidel/enhance/enhance-misc-15.webp",
+    href: "/contact",
   },
 ] as const;
 
@@ -55,13 +62,16 @@ export function ShopCategories({
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15% 0px" });
 
-  const cats = CATEGORY_KEYS.map((c) => ({
-    slug: c.slug,
-    label: data.categories[c.dictKey].label,
-    tagline: data.categories[c.dictKey].tagline,
-    image: c.image,
-    count: countOf(c.productCategory),
-  }));
+  const cats = CARDS.map((c) => {
+    const dict = (data.categories as Record<string, { label: string; tagline: string }>)[c.dictKey];
+    return {
+      slug: c.slug,
+      label: dict?.label ?? c.slug,
+      tagline: dict?.tagline ?? "",
+      image: c.image,
+      href: c.href,
+    };
+  });
 
   return (
     <section
@@ -96,9 +106,8 @@ export function ShopCategories({
           </motion.p>
         </div>
 
-        {/* 3-column grid (founder direction, June 2026). Image fills card
-            edge-to-edge — no inner white frame. Title + tagline + count
-            sit on the cream card below the image. Shadow lifts on hover. */}
+        {/* 3 × 2 grid: six rounded cards, full-bleed atelier image, no
+            inner padding, no count badge, no CTA button. */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {cats.map((cat, i) => (
             <motion.div
@@ -107,17 +116,17 @@ export function ShopCategories({
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 duration: 0.7,
-                delay: 0.2 + i * 0.1,
+                delay: 0.2 + (i % 3) * 0.1,
                 ease: EASE,
               }}
             >
               <Link
-                href={`/treasures?category=${cat.slug}`}
+                href={cat.href}
                 className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                <article className="flex h-full flex-col overflow-hidden bg-card shadow-[0_8px_30px_-8px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.28)]">
-                  {/* Full-bleed atelier scene — object-cover so the image
-                      fills the frame edge-to-edge, no inner whitespace. */}
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.22)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.32)]">
+                  {/* Full-bleed atelier scene — `object-cover` so the image
+                      fills the frame edge-to-edge with no inner white. */}
                   <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
                     <Image
                       src={cat.image}
@@ -128,18 +137,12 @@ export function ShopCategories({
                     />
                   </div>
 
-                  {/* Card foot — title left, count right, tagline below. No
-                      CTA button per founder direction; the whole card is
-                      already a link. */}
+                  {/* Card foot — title + tagline only. No count badge,
+                      no button (the whole card is the link). */}
                   <div className="flex flex-1 flex-col px-6 py-7 md:px-8 md:py-8">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-3xl">
-                        {cat.label}
-                      </h3>
-                      <span className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                        {cat.count} {data.piecesSuffix}
-                      </span>
-                    </div>
+                    <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-3xl">
+                      {cat.label}
+                    </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                       {cat.tagline}
                     </p>

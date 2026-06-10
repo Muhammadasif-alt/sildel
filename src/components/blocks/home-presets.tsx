@@ -46,6 +46,17 @@ export function HomeShopCategoriesBlock({ block, locale }: { block: Block; local
         label: loc(block, "fineArtsLabel", locale),
         tagline: loc(block, "fineArtsTagline", locale),
       },
+      // Limited Editions + Bespoke added June 2026 to fill the 3×2
+      // grid. CMS fields may not be set yet on existing blocks — fall
+      // back to the seed copy so the new cards always render.
+      limited: {
+        label: loc(block, "limitedLabel", locale) || (locale === "pt" ? "Edições Limitadas" : "Limited Editions"),
+        tagline: loc(block, "limitedTagline", locale) || (locale === "pt" ? "Assinadas, numeradas, nunca reeditadas" : "Signed, numbered, never reissued"),
+      },
+      bespoke: {
+        label: loc(block, "bespokeLabel", locale) || (locale === "pt" ? "Por Encomenda" : "Bespoke"),
+        tagline: loc(block, "bespokeTagline", locale) || (locale === "pt" ? "Comissionada para o seu espaço" : "Commissioned for your space"),
+      },
     },
   };
   return <ShopCategories data={data} />;

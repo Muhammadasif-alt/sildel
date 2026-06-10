@@ -252,13 +252,15 @@ export const homeEn = {
     title: "Find your",
     titleAccent: "treasure.",
     body:
-      "Four collections — each one signed, numbered, and finished in our atelier in northern Portugal.",
+      "Six ways in — by category, by signature edition, or commissioned for your space. Every piece finished by hand in northern Portugal.",
     piecesSuffix: "pieces",
     categories: {
       sculpture: { label: "Sculpture", tagline: "Forms shaped by hand" },
       tables: { label: "Tables", tagline: "Anchors for a room" },
       lighting: { label: "Lighting", tagline: "Warmth, made to hang" },
       fineArts: { label: "Fine Arts", tagline: "Wall pieces, framed" },
+      limited: { label: "Limited Editions", tagline: "Signed, numbered, never reissued" },
+      bespoke: { label: "Bespoke", tagline: "Commissioned for your space" },
     },
   },
 

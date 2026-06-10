@@ -253,13 +253,15 @@ export const homePt = {
     title: "Encontre o seu",
     titleAccent: "tesouro.",
     body:
-      "Quatro colecções — cada uma assinada, numerada e acabada no nosso atelier no norte de Portugal.",
+      "Seis caminhos — por categoria, por edição assinada, ou por encomenda. Cada peça acabada à mão no norte de Portugal.",
     piecesSuffix: "peças",
     categories: {
       sculpture: { label: "Escultura", tagline: "Formas moldadas à mão" },
       tables: { label: "Mesas", tagline: "Âncoras de uma sala" },
       lighting: { label: "Iluminação", tagline: "Calor, feito para pendurar" },
       fineArts: { label: "Belas Artes", tagline: "Peças de parede, emolduradas" },
+      limited: { label: "Edições Limitadas", tagline: "Assinadas, numeradas, nunca reeditadas" },
+      bespoke: { label: "Por Encomenda", tagline: "Comissionada para o seu espaço" },
     },
   },
 
