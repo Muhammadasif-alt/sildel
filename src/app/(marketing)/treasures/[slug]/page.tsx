@@ -398,7 +398,12 @@ export default async function ProductPage({ params }: Params) {
         </section>
 
         {/* ─────────── Use cases — where it lives ─────────── */}
-        <UseCases locale={locale} productName={product.name} />
+        <UseCases
+          locale={locale}
+          productName={product.name}
+          slug={product.slug}
+          category={product.category}
+        />
 
         {/* ─────────── FAQs ─────────── */}
         <section
