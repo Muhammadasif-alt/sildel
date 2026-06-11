@@ -1,20 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { getAwards, type Award } from "@/content/awards";
 import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Awards & Recognition — three international distinctions surfaced on the
- * home page. Founder iteration (June 2026): retire the badge-in-white-frame
- * treatment (the centred Corporate LiveWire seal + LUXlife banner + empty
- * 3rd card with a typographic placeholder all sat awkwardly with white side
- * gaps). New treatment matches the partners-strip + featured-treasures
- * cards: rounded-2xl, layered shadow, full-bleed editorial atelier image
- * pulled from each award's detail heroImage, with the official badge image
- * folded into the card foot as a small "issued by" thumbnail (the third
- * card has no badge file, so it falls back to a gold seal icon).
+ * home page. Founder iteration (June 2026, second pass): bring back the
+ * actual official badges issued by each publication — that's what these
+ * cards have to certify. To kill the white side-gaps that came from
+ * centring the badge on a blank frame, every badge sits on a soft
+ * out-of-focus copy of itself (Apple Music cover-art treatment) so the
+ * frame breathes edge-to-edge in the badge's own palette. The Luxuri
+ * card has no issued badge — Luxuri Magazine never produced one — so it
+ * renders a typographic plaque keyed to the listing instead.
  */
+
+/** Per-card backdrop gradient — tuned to each badge's dominant palette. */
+const BACKDROP_BY_SLUG: Record<string, string> = {
+  // Corporate LiveWire IEA — deep navy that matches the blue octagonal seal
+  "iea-2026": "from-[#0b1f3a] via-[#13315c] to-[#08182d]",
+  // LUXlife Home & Garden — purple/green that picks up the garden banner
+  "luxlife-2026": "from-[#2a1a3d] via-[#1f3a2a] to-[#0e1a14]",
+  // Luxuri (no badge) — warm gold-brown plaque
+  "luxuri-2025": "from-[#1a120a] via-[#3a2818] to-[#0d0805]",
+};
+
 export function Awards({ locale }: { locale: Locale }) {
   const { section, awards, viewDetail } = getAwards(locale);
 
@@ -64,12 +76,10 @@ function AwardCard({
   award: Award;
   viewDetail: string;
 }) {
-  // Cover image — prefer the detail page's curated atelier heroImage so the
-  // home card reads as "this recognition is about the craft" rather than a
-  // disembodied badge. Falls back to the original badge file if no detail
-  // hero was set.
-  const cover = award.detail?.heroImage ?? award.image ?? "/Slidel/enhance/enhance-misc-01.webp";
-  const coverAlt = award.detail?.heroImageAlt ?? award.imageAlt ?? award.title;
+  const badge = award.image;
+  const badgeAlt = award.imageAlt ?? award.title;
+  const backdrop =
+    BACKDROP_BY_SLUG[award.slug] ?? "from-[#1a1612] via-[#2a201b] to-[#0e0b08]";
 
   return (
     <li className="h-full">
@@ -79,24 +89,47 @@ function AwardCard({
         className="group flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       >
         <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.28)]">
-          {/* Full-bleed atelier cover. Slight bottom gradient so the year
-              pill stays legible on lighter source frames. */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-            <Image
-              src={cover}
-              alt={coverAlt}
-              fill
-              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
-              className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
-            />
-            {/* Year pill — top-left over the image */}
-            <span className="absolute top-4 left-4 inline-flex items-center bg-background/90 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.32em] text-foreground backdrop-blur-sm">
+          {/* Badge frame — tinted backdrop so corners are never empty white.
+              When a real badge exists we lay a soft blurred copy as the
+              backdrop fill, then the crisp badge sits centred on top
+              (object-contain so the full seal stays readable). */}
+          <div
+            className={cn(
+              "relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br",
+              backdrop,
+            )}
+          >
+            {badge ? (
+              <>
+                {/* Soft, oversized, blurred copy fills the frame behind */}
+                <Image
+                  src={badge}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
+                  className="scale-150 object-cover opacity-35 blur-2xl"
+                />
+                {/* Crisp badge, centred and contained */}
+                <Image
+                  src={badge}
+                  alt={badgeAlt}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
+                  className="relative object-contain p-8 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                />
+              </>
+            ) : (
+              <TypographicPlaque award={award} />
+            )}
+            {/* Year pill — top-left, glassy on the tinted backdrop */}
+            <span className="absolute top-4 left-4 inline-flex items-center bg-background/85 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.32em] text-foreground backdrop-blur-sm">
               {award.year}
             </span>
-            {/* Quiet arrow indicator that this is a link */}
+            {/* Link-out indicator */}
             <span
               aria-hidden
-              className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/90 text-foreground backdrop-blur-sm transition-all duration-300 group-hover:bg-foreground group-hover:text-background"
+              className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/85 text-foreground backdrop-blur-sm transition-all duration-300 group-hover:bg-foreground group-hover:text-background"
             >
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
             </span>
@@ -128,5 +161,32 @@ function AwardCard({
         </article>
       </Link>
     </li>
+  );
+}
+
+/**
+ * Typographic plaque used when no badge file exists (Luxuri 2025 — the
+ * publication never issued a winner seal; the recognition lives as a
+ * listing on luxurimag.com). Reads as a serif magazine masthead so the
+ * card still feels editorial, not empty.
+ */
+function TypographicPlaque({ award }: { award: Award }) {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center text-background">
+      <p className="mb-5 text-[10px] uppercase tracking-[0.5em] text-primary">
+        {award.issuer}
+      </p>
+      <div className="mb-6 h-px w-14 bg-primary/70" />
+      <p className="font-serif text-[2.25rem] italic leading-none lg:text-[2.5rem]">
+        Porto
+      </p>
+      <p className="font-serif text-5xl font-light leading-none mt-1 lg:text-6xl">
+        2025
+      </p>
+      <div className="mt-6 h-px w-14 bg-primary/70" />
+      <p className="mt-5 text-[10px] uppercase tracking-[0.5em] text-background/80">
+        Winner
+      </p>
+    </div>
   );
 }
