@@ -1,71 +1,80 @@
 import type { HeroSlide } from "./home";
 
 export const homeEn = {
-  /* Hero slider — enhanced editorial atelier shots (founder direction,
-     June 2026). Each slide pairs a collection with a wide cinematic
-     interior frame from the /Slidel/enhance/ series so the whole reel
-     reads as one moodboard rather than a mix of studio + ambient. */
+  /* Hero slider — Quinta do Crasto-inspired centred layout (founder
+     direction, June 2026, second pass): one serif word/phrase, italic
+     tagline below, two flat rectangular CTAs side-by-side. Each slide
+     pairs a collection with a wide cinematic interior frame from the
+     /Slidel/enhance/ series so the whole reel reads as one moodboard
+     rather than a mix of studio + ambient. */
   heroSlider: [
     {
       id: "fine-arts",
       eyebrow: "Fine Arts",
-      title: "We Think",
-      titleAccent: "Cork.",
+      title: "We Think Cork",
+      titleAccent: "Sculptural treasures shaped by hand, signed and numbered.",
       description:
-        "Sculptural treasures shaped from sustainably harvested Portuguese cork — shaped by hand, signed and numbered.",
+        "Sculptural treasures shaped from sustainably harvested Portuguese cork.",
       image: "/Slidel/enhance/enhance-sculpture-04.webp",
       imageAlt: "Sildel cork sculpture in a sun-lit Portuguese atelier interior.",
       cta: { label: "See All Treasures", href: "/treasures" },
+      cta2: { label: "Inside the Atelier", href: "/our-story" },
     },
     {
       id: "carre-dor",
       eyebrow: "Limited Edition",
-      title: "Carré",
-      titleAccent: "d'Or.",
-      description: "Gold leaf against authentic cork — geometry in quiet conversation.",
+      title: "Carré d'Or",
+      titleAccent: "24-carat gold leaf meets the authentic grain of cork.",
+      description:
+        "Gold leaf against authentic cork — geometry in quiet conversation.",
       image: "/Slidel/enhance/enhance-carre-dor-01.webp",
       imageAlt: "Carré d'Or — 24k gold leaf against the authentic grain of Portuguese cork.",
-      cta: { label: "Discover Carré d'Or", href: "/treasures#carre-dor" },
+      cta: { label: "Discover Carré d'Or", href: "/treasures/carre-dor" },
+      cta2: { label: "All Limited", href: "/treasures?category=fine-arts" },
     },
     {
       id: "eclipse",
       eyebrow: "New Collection",
       title: "Eclipse",
-      titleAccent: "Collection.",
+      titleAccent: "Sculptural cork that holds the warmth of the forest.",
       description: "Sculptural cork forms that hold the warmth of the forest.",
       image: "/Slidel/enhance/enhance-lighting-03.webp",
       imageAlt: "Eclipse — cork lighting in a softly-lit Portuguese atelier.",
-      cta: { label: "View Eclipse", href: "/treasures#eclipse" },
+      cta: { label: "View Eclipse", href: "/treasures?q=eclipse" },
+      cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
     },
     {
       id: "gibraltar",
       eyebrow: "Signature",
       title: "Gibraltar",
-      titleAccent: "in cork.",
+      titleAccent: "A defining silhouette — designed to last decades.",
       description: "A defining silhouette — elegant lines designed to last decades.",
       image: "/Slidel/enhance/enhance-tables-04.webp",
       imageAlt: "Gibraltar — Sildel cork table in a sun-lit Portuguese atelier with an arched alcove.",
       cta: { label: "Explore Gibraltar", href: "/treasures/gibraltar" },
+      cta2: { label: "All Tables", href: "/treasures?category=tables" },
     },
     {
       id: "hot-spring",
       eyebrow: "Sculpture",
-      title: "Hot",
-      titleAccent: "Spring.",
+      title: "Hot Spring",
+      titleAccent: "An earth-fired cork form on a quiet plinth.",
       description: "An earth-fired cork form on a quiet plinth — sculpture, made to anchor a room.",
       image: "/Slidel/enhance/enhance-misc-10.webp",
       imageAlt: "Hot Spring — a perforated cork sculpture on a stone podium with olive sprig.",
       cta: { label: "Explore Hot Spring", href: "/treasures/hot-spring" },
+      cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
     },
     {
       id: "side-by-side",
       eyebrow: "Fine Arts",
-      title: "Side",
-      titleAccent: "by Side.",
+      title: "Side by Side",
+      titleAccent: "Frosted glass meets the authentic grain of cork.",
       description: "Frosted glass meets the authentic grain of cork — a quiet wall piece, framed.",
       image: "/Slidel/enhance/enhance-fine-arts-02.webp",
       imageAlt: "Side by Side — frosted glass over a cork brick on a linen tablecloth.",
       cta: { label: "Discover Side by Side", href: "/treasures/side-by-side" },
+      cta2: { label: "All Fine Arts", href: "/treasures?category=fine-arts" },
     },
   ] satisfies HeroSlide[],
 
@@ -89,6 +98,65 @@ export const homeEn = {
     imageAlt:
       "A Sildel cork table in a sun-lit Portuguese atelier interior with arched alcove and olive branch.",
     cta: { label: "Explore treasures", href: "/treasures" },
+  },
+
+  /* Materials / Colors — Isabel's June 2026 direction. Four cork
+     tonalities, with Silver as the signature USP: 2-3 years of Atlantic
+     weather earn the bark a luminous metal patina no machine can fake.
+     This is the strongest material-story differentiator in the catalogue
+     and now sits as a primary brand statement on the home page. */
+  materialsColors: {
+    eyebrow: "The Colors of Cork",
+    title: "Four colors,",
+    titleAccent: "endless variations.",
+    body:
+      "Authentic cork breathes. With time, weather, and light, it deepens, warms, or pales — never twice the same. Every Sildel treasure draws from one of four tonal families. One is earned by the sky.",
+    signatureLabel: "Signature",
+    silverNote: {
+      eyebrow: "Sildel signature",
+      title: "Earned, not made.",
+      body: "Silver is the bark's longest study — two to three years of Atlantic wind and rain transform the surface until it sheds all softness and gains a quiet metal. The most luxurious cork tonality in our catalogue.",
+      caption: "2–3 years weathered",
+    },
+    colors: [
+      {
+        slug: "dark-brown",
+        name: "Dark Brown",
+        tagline: "The bark's first life",
+        body:
+          "Freshly harvested cork, rich with the forest's natural pigment — deep walnut at the heart, almost black at the edges.",
+        bg: "#2a1a0e",
+        textLight: true,
+      },
+      {
+        slug: "beige",
+        name: "Beige",
+        tagline: "The classic",
+        body:
+          "The cork's most familiar voice. Soft, oat-toned, versatile — at home against marble, brass, or oak.",
+        bg: "#d4c2a0",
+        textLight: false,
+      },
+      {
+        slug: "golden",
+        name: "Golden",
+        tagline: "Kissed by sun and time",
+        body:
+          "What cork becomes after summers in the open air — a warm, honeyed gold that catches every angle of light.",
+        bg: "#b8884c",
+        textLight: true,
+      },
+      {
+        slug: "silver",
+        name: "Silver",
+        tagline: "Earned by the sky",
+        body:
+          "Two to three years of Atlantic weather transform the bark into a luminous silver patina — a rare surface no machine can fake.",
+        bg: "#a3a59f",
+        textLight: false,
+        signature: true,
+      },
+    ],
   },
 
   collections: {

@@ -3,13 +3,25 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { HeroSlide } from "@/content/home";
 
 const AUTOPLAY_MS = 7000;
 const FADE_MS = 1200;
 
+/**
+ * Hero slider — Quinta do Crasto-inspired centred layout (founder
+ * direction, June 2026, second pass).
+ *
+ * Each slide is a serif word/phrase + italic tagline + two flat
+ * rectangular CTAs side-by-side, anchored low-middle. Prev/next arrows
+ * sit on the left and right viewport edges, vertically centred.
+ *
+ * Only the current slide + its neighbours are mounted; other slides
+ * render an empty layer so the cross-fade timing is identical the
+ * moment they do become ready (see `mounted` Set logic below).
+ */
 export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -19,7 +31,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
   // Modulo wraparound so the slider loops forever — visitor never hits an end.
   const goTo = useCallback(
     (next: number) => setIndex(((next % total) + total) % total),
-    [total]
+    [total],
   );
   const next = useCallback(() => goTo(index + 1), [goTo, index]);
   const prev = useCallback(() => goTo(index - 1), [goTo, index]);
@@ -61,10 +73,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Full-bleed image stack — slow Ken Burns on active. Only the
-          slides in `mounted` actually render their <Image>; unmounted
-          siblings render an empty layer so the cross-fade timing stays
-          identical, but no fetch happens. */}
+      {/* Full-bleed image stack — slow Ken Burns on active */}
       {slides.map((slide, i) => (
         <HeroImageLayer
           key={slide.id}
@@ -76,87 +85,87 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
         />
       ))}
 
-      {/* Overlays — left wash for the copy + a bottom wash so the lower
-          band where the text now lives stays legible without sitting over
-          the centre of the piece. */}
+      {/* Overlays — symmetric vertical wash so the centred copy at the
+          lower band stays legible without obscuring the piece above. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-black/15"
       />
 
-      {/* Content — anchored to the lower band so the piece above stays clear */}
-      <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 min-h-[100svh] flex flex-col justify-end pb-20 lg:pb-24">
-        <div className="flex items-end justify-between gap-8">
-          {/* Copy (bottom-left) */}
-          <div className="max-w-2xl">
-            {slides.map((slide, i) => (
-              <div
-                key={slide.id}
-                className={cn(
-                  "transition-all duration-700 ease-out",
-                  i === index
-                    ? "opacity-100 translate-y-0 relative"
-                    : "opacity-0 translate-y-4 absolute pointer-events-none inset-0"
-                )}
-                aria-hidden={i !== index}
-              >
-                <p className="text-[11px] tracking-[0.45em] uppercase text-white/80 mb-6">
-                  {slide.eyebrow}
-                </p>
+      {/* Side arrows — edge-anchored, vertically centred (Quinta do Crasto
+          pattern). Hidden behind content on very narrow screens to avoid
+          collisions with the text. */}
+      <button
+        type="button"
+        onClick={prev}
+        aria-label="Previous slide"
+        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-white/85 transition-colors hover:text-white md:inline-flex lg:left-8"
+      >
+        <ArrowLeft className="h-6 w-6 lg:h-7 lg:w-7" strokeWidth={1.25} />
+      </button>
+      <button
+        type="button"
+        onClick={next}
+        aria-label="Next slide"
+        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center text-white/85 transition-colors hover:text-white md:inline-flex lg:right-8"
+      >
+        <ArrowRight className="h-6 w-6 lg:h-7 lg:w-7" strokeWidth={1.25} />
+      </button>
 
-                <h1 className="font-serif text-white text-4xl md:text-6xl lg:text-7xl font-light leading-[1.04] mb-6 tracking-tight">
-                  {slide.title}{" "}
-                  <span className="italic">{slide.titleAccent}</span>
-                </h1>
+      {/* Centred content — anchored low so the piece above stays clear */}
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col items-center justify-end px-6 pb-20 text-center lg:px-12 lg:pb-28">
+        <div className="relative w-full max-w-3xl">
+          {slides.map((slide, i) => (
+            <div
+              key={slide.id}
+              className={cn(
+                "transition-all duration-700 ease-out",
+                i === index
+                  ? "relative opacity-100 translate-y-0"
+                  : "pointer-events-none absolute inset-0 opacity-0 translate-y-4",
+              )}
+              aria-hidden={i !== index}
+            >
+              <p className="mb-5 text-[11px] uppercase tracking-[0.45em] text-white/85">
+                {slide.eyebrow}
+              </p>
 
-                <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl mb-8">
-                  {slide.description}
-                </p>
+              <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight text-white md:text-6xl lg:text-7xl">
+                {slide.title}
+              </h1>
 
+              <p className="mx-auto mt-6 max-w-2xl font-serif text-lg italic leading-snug text-white/90 md:text-xl lg:text-[1.4rem]">
+                {slide.titleAccent}
+              </p>
+
+              {/* Two flat rectangular CTAs side-by-side — Quinta do Crasto's
+                  olive-green primary + dark-inset secondary. */}
+              <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-0">
                 <Link
                   href={slide.cta.href}
-                  className="group inline-flex items-center gap-3 text-[11px] tracking-[0.4em] uppercase text-white pb-2 border-b border-white/40 hover:border-white transition-colors"
+                  className="inline-flex items-center justify-center bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
                 >
-                  <span>{slide.cta.label}</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  {slide.cta.label}
+                </Link>
+                <Link
+                  href={slide.cta2.href}
+                  className="inline-flex items-center justify-center bg-[#1c1a18] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-black"
+                >
+                  {slide.cta2.label}
                 </Link>
               </div>
-            ))}
-          </div>
-
-          {/* Navigation (bottom-right) — prev/next arrows only (no number
-              counter per founder direction). */}
-          <div className="hidden sm:flex items-center gap-3 shrink-0 pb-1">
-            <button
-              type="button"
-              onClick={prev}
-              aria-label="Previous slide"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors hover:bg-white hover:text-black"
-            >
-              <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
-            </button>
-            <button
-              type="button"
-              onClick={next}
-              aria-label="Next slide"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors hover:bg-white hover:text-black"
-            >
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-            </button>
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Mobile navigation — centered prev/next arrows (no counter) */}
-        <div className="mt-8 flex sm:hidden items-center justify-center gap-4">
+        {/* Mobile arrows — small inline pair below CTAs (md+ uses the
+            edge-anchored arrows). */}
+        <div className="mt-10 flex items-center justify-center gap-6 md:hidden">
           <button
             type="button"
             onClick={prev}
             aria-label="Previous slide"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-white"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white"
           >
             <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
           </button>
@@ -164,7 +173,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
             type="button"
             onClick={next}
             aria-label="Next slide"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-white"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white"
           >
             <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
           </button>
@@ -193,7 +202,7 @@ function HeroImageLayer({
     <div
       className={cn(
         "absolute inset-0 transition-opacity ease-out",
-        active ? "opacity-100" : "opacity-0 pointer-events-none"
+        active ? "opacity-100" : "opacity-0 pointer-events-none",
       )}
       style={{ transitionDuration: `${FADE_MS}ms` }}
       aria-hidden={!active}
@@ -210,21 +219,15 @@ function HeroImageLayer({
           alt={alt}
           fill
           priority={priority}
-          // Cap srcset at 1920 — the hero is full-bleed but our deviceSizes
-          // ladder already includes 1920 as the largest variant. The browser
-          // picks the correct one based on viewport width.
           sizes="100vw"
-          // First slide is the LCP candidate on home — `high` tells the
-          // browser to fetch it before lazy images further down the page.
           fetchPriority={priority ? "high" : "auto"}
           quality={priority ? 85 : 80}
           onError={() => setErrored(true)}
           className={cn(
             "object-cover object-center ease-out",
-            // Gentler Ken Burns so products don't get over-cropped
             active
               ? "scale-105 [transition:transform_12000ms_ease-out]"
-              : "scale-100 [transition:transform_0ms]"
+              : "scale-100 [transition:transform_0ms]",
           )}
         />
       )}

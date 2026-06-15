@@ -1,71 +1,78 @@
 import type { HeroSlide } from "./home";
 
 export const homePt = {
-  /* Slider de abertura — fotografias editoriais "Ehance Slidel" (direcção
-     da fundadora, Junho 2026). Cada slide combina uma colecção com um
-     interior cinematográfico, para que todo o reel leia como um único
-     moodboard em vez de uma mistura de estúdio + ambiente. */
+  /* Slider de abertura — layout centrado inspirado em Quinta do Crasto
+     (direcção da fundadora, Junho 2026, segunda iteração): uma palavra
+     em serifa, tagline em itálico por baixo, dois botões rectangulares
+     lado a lado. Cada slide combina uma colecção com um interior
+     cinematográfico para que todo o reel leia como um único moodboard. */
   heroSlider: [
     {
       id: "fine-arts",
       eyebrow: "Belas Artes",
-      title: "Pensamos em",
-      titleAccent: "Cortiça.",
+      title: "Pensamos Cortiça",
+      titleAccent: "Tesouros esculturais moldados à mão, assinados e numerados.",
       description:
-        "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável — moldados à mão, assinados e numerados.",
+        "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável.",
       image: "/Slidel/enhance/enhance-sculpture-04.webp",
       imageAlt: "Escultura em cortiça Sildel num interior de atelier português banhado pela luz solar.",
       cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
+      cta2: { label: "Dentro do Atelier", href: "/our-story" },
     },
     {
       id: "carre-dor",
       eyebrow: "Edição Limitada",
-      title: "Carré",
-      titleAccent: "d'Or.",
+      title: "Carré d'Or",
+      titleAccent: "Folha de ouro de 24 quilates sobre o grão autêntico da cortiça.",
       description: "Folha de ouro sobre cortiça autêntica — geometria em diálogo silencioso.",
       image: "/Slidel/enhance/enhance-carre-dor-01.webp",
       imageAlt: "Carré d'Or — folha de ouro de 24 quilates sobre o grão autêntico da cortiça portuguesa.",
-      cta: { label: "Descobrir Carré d'Or", href: "/treasures#carre-dor" },
+      cta: { label: "Descobrir Carré d'Or", href: "/treasures/carre-dor" },
+      cta2: { label: "Todas Edições", href: "/treasures?category=fine-arts" },
     },
     {
       id: "eclipse",
       eyebrow: "Nova Colecção",
-      title: "Colecção",
-      titleAccent: "Eclipse.",
+      title: "Eclipse",
+      titleAccent: "Cortiça escultural que guarda o calor da floresta.",
       description: "Formas esculturais em cortiça que guardam o calor da floresta.",
       image: "/Slidel/enhance/enhance-lighting-03.webp",
       imageAlt: "Eclipse — candeeiro de cortiça num atelier português suavemente iluminado.",
-      cta: { label: "Ver Eclipse", href: "/treasures#eclipse" },
+      cta: { label: "Ver Eclipse", href: "/treasures?q=eclipse" },
+      cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
     },
     {
       id: "gibraltar",
       eyebrow: "Assinatura",
       title: "Gibraltar",
-      titleAccent: "em cortiça.",
+      titleAccent: "Uma silhueta marcante — desenhada para durar décadas.",
       description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
       image: "/Slidel/enhance/enhance-tables-04.webp",
       imageAlt: "Gibraltar — mesa em cortiça num atelier português banhado pela luz solar, com nicho em arco.",
       cta: { label: "Explorar Gibraltar", href: "/treasures/gibraltar" },
+      cta2: { label: "Todas Mesas", href: "/treasures?category=tables" },
     },
     {
       id: "hot-spring",
       eyebrow: "Escultura",
-      title: "Hot",
-      titleAccent: "Spring.",
+      title: "Hot Spring",
+      titleAccent: "Uma forma de cortiça assente sobre um plinto silencioso.",
       description: "Uma forma de cortiça assente sobre um plinto silencioso — escultura, feita para ancorar uma sala.",
       image: "/Slidel/enhance/enhance-misc-10.webp",
       imageAlt: "Hot Spring — escultura em cortiça perfurada sobre um pódio de pedra com raminho de oliveira.",
       cta: { label: "Explorar Hot Spring", href: "/treasures/hot-spring" },
+      cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
     },
     {
       id: "side-by-side",
       eyebrow: "Belas Artes",
-      title: "Side",
-      titleAccent: "by Side.",
+      title: "Side by Side",
+      titleAccent: "Vidro fosco encontra-se com o grão autêntico da cortiça.",
       description: "Vidro fosco encontra-se com o grão autêntico da cortiça — uma peça de parede, emoldurada.",
       image: "/Slidel/enhance/enhance-fine-arts-02.webp",
       imageAlt: "Side by Side — vidro fosco sobre um tijolo de cortiça numa toalha de linho.",
       cta: { label: "Descobrir Side by Side", href: "/treasures/side-by-side" },
+      cta2: { label: "Todas Belas Artes", href: "/treasures?category=fine-arts" },
     },
   ] satisfies HeroSlide[],
 
@@ -90,6 +97,64 @@ export const homePt = {
     imageAlt:
       "Uma mesa de cortiça Sildel no interior de um atelier português banhado pela luz solar, com nicho em arco e ramo de oliveira.",
     cta: { label: "Explorar tesouros", href: "/treasures" },
+  },
+
+  /* Materiais / Cores — direcção da fundadora (Junho 2026). Quatro
+     tonalidades de cortiça, com Prateado como a USP de assinatura: 2-3
+     anos de clima atlântico transformam a casca numa pátina metálica
+     luminosa que nenhuma máquina consegue imitar. */
+  materialsColors: {
+    eyebrow: "As Cores da Cortiça",
+    title: "Quatro cores,",
+    titleAccent: "infinitas variações.",
+    body:
+      "A cortiça autêntica respira. Com o tempo, o clima e a luz, escurece, aquece ou clareia — nunca duas peças iguais. Cada tesouro Sildel parte de uma de quatro famílias tonais. Uma é conquistada pelo céu.",
+    signatureLabel: "Assinatura",
+    silverNote: {
+      eyebrow: "Assinatura Sildel",
+      title: "Conquistada, não feita.",
+      body: "O prateado é o estudo mais longo da casca — dois a três anos de vento e chuva atlânticos transformam a superfície até perder toda a maciez e ganhar um metal silencioso. A tonalidade de cortiça mais luxuosa do nosso catálogo.",
+      caption: "2–3 anos de cura",
+    },
+    colors: [
+      {
+        slug: "dark-brown",
+        name: "Castanho Profundo",
+        tagline: "A primeira vida da casca",
+        body:
+          "Cortiça recém-colhida, rica no pigmento natural da floresta — nogueira quente no coração, quase preta nas bordas.",
+        bg: "#2a1a0e",
+        textLight: true,
+      },
+      {
+        slug: "beige",
+        name: "Bege",
+        tagline: "O clássico",
+        body:
+          "A voz mais familiar da cortiça. Suave, tom de aveia, versátil — em casa contra o mármore, o latão ou o carvalho.",
+        bg: "#d4c2a0",
+        textLight: false,
+      },
+      {
+        slug: "golden",
+        name: "Dourado",
+        tagline: "Beijado pelo sol e pelo tempo",
+        body:
+          "O que a cortiça se torna após verões ao ar livre — um dourado quente e melado que apanha cada ângulo da luz.",
+        bg: "#b8884c",
+        textLight: true,
+      },
+      {
+        slug: "silver",
+        name: "Prateado",
+        tagline: "Conquistado pelo céu",
+        body:
+          "Dois a três anos de clima atlântico transformam a casca numa pátina prateada luminosa — uma superfície rara que máquina alguma consegue imitar.",
+        bg: "#a3a59f",
+        textLight: false,
+        signature: true,
+      },
+    ],
   },
 
   collections: {

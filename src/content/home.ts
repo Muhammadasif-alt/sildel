@@ -12,12 +12,17 @@ import { homePt } from "./home.pt";
 export type HeroSlide = {
   id: string;
   eyebrow: string;
+  /** Single-line hero word/phrase rendered in serif uppercase. */
   title: string;
+  /** Italic tagline rendered below the title — a short scene-setter. */
   titleAccent: string;
+  /** Kept for SEO / OG fallbacks; no longer rendered in the slider itself. */
   description: string;
   image: string;
   imageAlt: string;
   cta: { label: string; href: string };
+  /** Secondary CTA — both buttons sit side-by-side in the Quinta do Crasto layout. */
+  cta2: { label: string; href: string };
 };
 
 export type HomeContent = typeof homeEn;
