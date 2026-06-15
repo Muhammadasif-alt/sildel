@@ -20,7 +20,11 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
  * atelier scene at full bleed with plain inline name + tagline +
  * arrow underneath. No card chrome.
  */
-const FEATURED_SLUGS = ["carre-dor", "crescent", "abyss"];
+// Two flagship pieces only (founder direction, June 2026, fourth pass):
+// Carré d'Or for limited-edition prestige, Abyss for the unique
+// sculptural anchor. The earlier third slot (Crescent) reads better in
+// /treasures grid context than spotlit on the home page.
+const FEATURED_SLUGS = ["carre-dor", "abyss"];
 
 const featured = FEATURED_SLUGS.map((slug) =>
   products.find((p) => p.slug === slug),
@@ -56,10 +60,10 @@ export function FeaturedTreasures({
           </h2>
         </motion.div>
 
-        {/* Three editorial tiles — image at full bleed, plain inline foot
-            below. No card wrapper, no rounded card frame, no shadow.
-            Two columns on tablet (md), three across on desktop (lg). */}
-        <div className="grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20">
+        {/* Two big editorial tiles — image at full bleed, plain inline
+            foot beneath. Same Van Cleef language as Shop Categories:
+            no card wrapper, no shadow, no rounded card frame. */}
+        <div className="grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
           {featured.map((p, i) => (
             <motion.div
               key={p.slug}
