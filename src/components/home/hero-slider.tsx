@@ -201,10 +201,20 @@ function HeroImageLayer({
   return (
     <div
       className={cn(
-        "absolute inset-0 transition-opacity ease-out",
-        active ? "opacity-100" : "opacity-0 pointer-events-none",
+        "absolute inset-0 ease-out",
+        // Drop-from-above + fade. Active slide slides down into place from
+        // -24px; inactive slides rest 24px above the frame so the next
+        // entrance always travels DOWN (founder direction, June 2026:
+        // hero images should feel like they fall into view).
+        active
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 -translate-y-6 pointer-events-none",
       )}
-      style={{ transitionDuration: `${FADE_MS}ms` }}
+      style={{
+        transitionProperty: "opacity, transform",
+        transitionDuration: `${FADE_MS}ms`,
+        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+      }}
       aria-hidden={!active}
     >
       {!mounted ? null : errored ? (

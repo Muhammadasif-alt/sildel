@@ -6,6 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/content/treasures";
 import { useTreasures } from "@/content/treasures-provider";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Treasures index — Van Cleef-style museum grid.
@@ -98,8 +99,13 @@ export function ProductGrid() {
           // Van Cleef grid: tight gap, three across on desktop, two on
           // tablet, one on mobile. No rounded card, no shadow.
           <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-            {filtered.map((product) => (
-              <TreasureTile key={product.slug} product={product} />
+            {filtered.map((product, i) => (
+              <ScrollReveal
+                key={product.slug}
+                delay={Math.min(0.5, (i % 6) * 0.08)}
+              >
+                <TreasureTile product={product} />
+              </ScrollReveal>
             ))}
           </div>
         )}

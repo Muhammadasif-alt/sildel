@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getAwards, type Award } from "@/content/awards";
 import type { Locale } from "@/lib/i18n/config";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Awards & Recognition — three international distinctions surfaced on the
@@ -38,7 +39,7 @@ export function Awards({ locale }: { locale: Locale }) {
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10 py-20 lg:py-28">
         {/* Header */}
-        <div className="mb-14 lg:mb-20 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+        <ScrollReveal className="mb-14 lg:mb-20 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
               {section.eyebrow}
@@ -56,12 +57,14 @@ export function Awards({ locale }: { locale: Locale }) {
           <p className="max-w-md text-base leading-relaxed text-muted-foreground">
             {section.body}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* 3-up grid */}
         <ul className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-10">
-          {awards.map((award) => (
-            <AwardCard key={award.slug} award={award} viewDetail={viewDetail} />
+          {awards.map((award, i) => (
+            <ScrollReveal key={award.slug} delay={0.15 + i * 0.1}>
+              <AwardCard award={award} viewDetail={viewDetail} />
+            </ScrollReveal>
           ))}
         </ul>
       </div>

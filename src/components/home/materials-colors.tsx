@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { getHome } from "@/content/home";
 import type { Locale } from "@/lib/i18n/config";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Materials / Colors — founder direction (June 2026). Four cork
@@ -26,7 +27,7 @@ export function MaterialsColors({ locale }: { locale: Locale }) {
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-24 lg:py-32">
         {/* Header — quiet, centred Van-Cleef-style */}
-        <div className="mx-auto mb-16 max-w-3xl text-center lg:mb-20">
+        <ScrollReveal className="mx-auto mb-16 max-w-3xl text-center lg:mb-20">
           <p className="mb-5 text-[11px] uppercase tracking-[0.45em] text-primary">
             {data.eyebrow}
           </p>
@@ -40,14 +41,15 @@ export function MaterialsColors({ locale }: { locale: Locale }) {
           <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-[17px]">
             {data.body}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Four-up colour grid — square swatches, generous gap. The Silver
             card is marked with a `Signature` badge so the eye lands there
             even before reading. */}
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {data.colors.map((c) => (
+          {data.colors.map((c, i) => (
             <li key={c.slug}>
+              <ScrollReveal delay={0.1 + i * 0.08}>
               <article
                 className={cn(
                   "group relative flex h-full flex-col overflow-hidden rounded-sm transition-transform duration-700 ease-out hover:-translate-y-1",
@@ -110,6 +112,7 @@ export function MaterialsColors({ locale }: { locale: Locale }) {
                   </p>
                 </div>
               </article>
+              </ScrollReveal>
             </li>
           ))}
         </ul>
@@ -118,7 +121,8 @@ export function MaterialsColors({ locale }: { locale: Locale }) {
             block beneath the grid so the 2–3 year weather narrative
             actually lands. Side-by-side: large silver patina swatch left,
             editorial body right. */}
-        <div className="mt-20 grid grid-cols-1 items-stretch overflow-hidden rounded-sm border border-border/60 lg:mt-28 lg:grid-cols-[1.05fr_1fr]">
+        <ScrollReveal delay={0.2} direction="scale" className="mt-20 lg:mt-28">
+        <div className="grid grid-cols-1 items-stretch overflow-hidden rounded-sm border border-border/60 lg:grid-cols-[1.05fr_1fr]">
           <div
             className="relative aspect-[5/4] w-full lg:aspect-auto lg:min-h-[440px]"
             style={{ backgroundColor: "#a3a59f" }}
@@ -152,6 +156,7 @@ export function MaterialsColors({ locale }: { locale: Locale }) {
             </p>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

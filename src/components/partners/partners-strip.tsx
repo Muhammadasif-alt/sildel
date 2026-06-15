@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
 import { getPartners } from "@/content/partners";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * "Collaborations / In good company" — home + our-story footer strip.
@@ -29,7 +30,7 @@ export function PartnersStrip({ locale }: { locale: Locale }) {
       className="relative w-full border-t border-border/60 bg-muted/30"
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-16 lg:py-20">
-        <div className="mb-12 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
+        <ScrollReveal className="mb-12 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <p className="mb-4 text-[11px] uppercase tracking-[0.4em] text-primary">
               {section.eyebrow}
@@ -52,14 +53,14 @@ export function PartnersStrip({ locale }: { locale: Locale }) {
               strokeWidth={1.5}
             />
           </Link>
-        </div>
+        </ScrollReveal>
 
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {partners.map((partner) => {
+          {partners.map((partner, i) => {
             const cover = partner.images[0]?.src ?? "/Slidel/enhance/enhance-misc-01.webp";
             const excerpt = partner.intro || partner.paragraphs[0] || "";
             return (
-              <li key={partner.slug}>
+              <ScrollReveal key={partner.slug} delay={0.15 + i * 0.1}><li>
                 <Link
                   href={`/partners#${partner.slug}`}
                   aria-label={`${partner.name} — ${partner.kicker}`}
@@ -107,7 +108,7 @@ export function PartnersStrip({ locale }: { locale: Locale }) {
                     </div>
                   </article>
                 </Link>
-              </li>
+              </li></ScrollReveal>
             );
           })}
         </ul>
