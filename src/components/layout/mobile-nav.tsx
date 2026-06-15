@@ -12,7 +12,7 @@ import { getUi } from "@/lib/i18n/ui";
 import type { Locale } from "@/lib/i18n/config";
 import { LanguageToggle } from "./language-toggle";
 
-export function MobileNav() {
+export function MobileNav({ transparent = false }: { transparent?: boolean } = {}) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [locale, setLocale] = useState<Locale>("pt");
@@ -172,7 +172,12 @@ export function MobileNav() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="md:hidden inline-flex h-10 w-10 items-center justify-center text-foreground hover:text-primary transition-colors"
+        className={cn(
+          "md:hidden inline-flex h-10 w-10 items-center justify-center transition-colors",
+          transparent
+            ? "text-white/85 hover:text-white"
+            : "text-foreground hover:text-primary",
+        )}
         aria-label="Open menu"
         aria-expanded={open}
       >

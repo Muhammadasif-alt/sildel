@@ -48,6 +48,11 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const pathname = (await headers()).get("x-sildel-pathname") ?? "";
   const isAdmin = pathname.startsWith("/admin");
+  // Home is the only route with a full-bleed hero behind the (now-fixed)
+  // header. Every other route needs top padding equal to the header height
+  // so its first section doesn't disappear under the floating chrome.
+  const isHome = pathname === "/" || pathname === "";
+  const needsHeaderOffset = !isAdmin && !isHome;
   const locale = await getLocale();
   const htmlLang = locale === "pt" ? "pt-PT" : "en-US";
 
@@ -74,7 +79,15 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ReduxProvider>
           {!isAdmin && <SiteHeader />}
-          {children}
+          <div
+            className={
+              needsHeaderOffset
+                ? "flex flex-1 flex-col pt-20 md:pt-36"
+                : "flex flex-1 flex-col"
+            }
+          >
+            {children}
+          </div>
           {!isAdmin && <SiteFooter />}
           {!isAdmin && <WhatsAppFloat locale={locale} />}
         </ReduxProvider>
