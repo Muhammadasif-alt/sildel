@@ -32,6 +32,27 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
     };
   }, [index, paused, next]);
 
+  // Only fetch slide images we actually need right now (current + prev +
+  // next for smooth cross-fade), instead of mounting all six and burning
+  // bandwidth that the LCP candidate (slide 0) should own. As the visitor
+  // advances, additional slides join `mounted` and stay there — never
+  // re-fetched once cached.
+  const [mounted, setMounted] = useState<Set<number>>(
+    () => new Set([0, 1 % total, (total - 1) % total]),
+  );
+  useEffect(() => {
+    setMounted((prev) => {
+      const ahead = (index + 1) % total;
+      const behind = (index - 1 + total) % total;
+      if (prev.has(index) && prev.has(ahead) && prev.has(behind)) return prev;
+      const out = new Set(prev);
+      out.add(index);
+      out.add(ahead);
+      out.add(behind);
+      return out;
+    });
+  }, [index, total]);
+
   return (
     <section
       className="relative w-full overflow-hidden isolate min-h-[100svh]"
@@ -40,7 +61,10 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Full-bleed image stack — slow Ken Burns on active */}
+      {/* Full-bleed image stack — slow Ken Burns on active. Only the
+          slides in `mounted` actually render their <Image>; unmounted
+          siblings render an empty layer so the cross-fade timing stays
+          identical, but no fetch happens. */}
       {slides.map((slide, i) => (
         <HeroImageLayer
           key={slide.id}
@@ -48,6 +72,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
           alt={slide.imageAlt}
           active={i === index}
           priority={i === 0}
+          mounted={mounted.has(i)}
         />
       ))}
 
@@ -154,11 +179,13 @@ function HeroImageLayer({
   alt,
   active,
   priority,
+  mounted,
 }: {
   src: string;
   alt: string;
   active: boolean;
   priority: boolean;
+  mounted: boolean;
 }) {
   const [errored, setErrored] = useState(false);
 
@@ -171,7 +198,7 @@ function HeroImageLayer({
       style={{ transitionDuration: `${FADE_MS}ms` }}
       aria-hidden={!active}
     >
-      {errored ? (
+      {!mounted ? null : errored ? (
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.35_0.08_75)_0%,_oklch(0.2_0.04_60)_55%,_oklch(0.1_0.02_50)_100%)]"
           role="img"
