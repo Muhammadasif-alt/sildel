@@ -8,16 +8,21 @@ import type { Product } from "@/content/treasures";
 import { useTreasures } from "@/content/treasures-provider";
 
 /**
- * Treasures index — uniform 3-column rounded card grid.
+ * Treasures index — Van Cleef-style museum grid.
  *
- * Founder direction (June 2026): match the home page Shop Categories
- * design language — rounded-2xl cards, shadow, name + tagline below,
- * no button. Wider cards (aspect 5:4) so each piece reads bigger on
- * desktop without making the page feel cramped.
+ * Founder direction (June 2026, fourth pass): retire the rounded-card +
+ * shadow treatment. Each piece now sits on a warm-neutral square tile
+ * with the product hero-shot centred and contained inside generous
+ * padding — no card wrapper, no shadow, no rounded corners on the
+ * image area. Below the tile sits the bare minimum: serif name + small
+ * caps category. Nothing else.
  *
- * The earlier magazine-style layout (wide rows for long pieces, paired
- * rows otherwise) is retired — every piece now uses the same card so
- * the listing reads as one calm rhythm.
+ * Two reasons:
+ *  - The card+shadow language was reading as e-commerce, not maison.
+ *  - The earlier object-cover frame was cropping every piece in half.
+ *    object-contain on a warm-paper tile shows the FULL piece, and
+ *    because the tile colour matches the section background there's no
+ *    "white side gap" to worry about.
  */
 export function ProductGrid() {
   const { content, products } = useTreasures();
@@ -56,7 +61,7 @@ export function ProductGrid() {
 
         {/* Filter row — kept minimal so the catalogue itself is the focus. */}
         <div
-          className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-20 lg:mb-24"
+          className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16 lg:mb-20"
           role="tablist"
           aria-label="Filter by category"
         >
@@ -90,9 +95,11 @@ export function ProductGrid() {
             No treasures in this collection yet.
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          // Van Cleef grid: tight gap, three across on desktop, two on
+          // tablet, one on mobile. No rounded card, no shadow.
+          <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
             {filtered.map((product) => (
-              <TreasureCard key={product.slug} product={product} />
+              <TreasureTile key={product.slug} product={product} />
             ))}
           </div>
         )}
@@ -101,45 +108,39 @@ export function ProductGrid() {
   );
 }
 
-/* ────────────────── Uniform treasure card ────────────────── */
+/* ────────────────── Van Cleef-style museum tile ────────────────── */
 
-function TreasureCard({ product }: { product: Product }) {
+function TreasureTile({ product }: { product: Product }) {
   return (
     <Link
       href={`/treasures/${product.slug}`}
-      aria-label={`${product.name} — ${product.tagline}`}
-      className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+      aria-label={`${product.name} — ${product.category}`}
+      className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.22)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.32)]">
-        {/* Image — wider 5:4 frame so the piece reads bigger on desktop.
-            Atelier "enhance" renders fill the frame edge-to-edge via
-            object-cover. Studio shots (where still in use) crop slightly
-            but the product is centered so it reads fine. */}
-        <div className="relative aspect-[5/4] w-full overflow-hidden bg-muted">
-          <Image
-            src={product.image}
-            alt={`${product.name} — ${product.tagline}`}
-            fill
-            sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-            className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
-          />
-        </div>
+      {/* Square warm-neutral tile. Same warm tone as the section bg so
+          the tile reads as the page itself, not a card with edges.
+          object-contain + generous padding so the FULL piece is visible
+          with breathing room — no cropping, no half-pieces. */}
+      <div className="relative aspect-square w-full overflow-hidden bg-[#f6f2eb]">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
+          className="object-contain p-8 transition-transform duration-700 ease-out group-hover:scale-[1.04] md:p-10"
+        />
+      </div>
 
-        {/* Foot — name + small tagline, no button. */}
-        <div className="flex flex-1 flex-col px-6 py-7 md:px-8 md:py-8">
-          <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-3xl">
-            {product.name}
-          </h3>
-          {product.badge && (
-            <p className="mt-3 text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-              {product.badge}
-            </p>
-          )}
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
-            {product.tagline}
-          </p>
-        </div>
-      </article>
+      {/* Minimal foot — name + category. No tagline, no badge, no CTA.
+          Whitespace and serif type carry the weight. */}
+      <div className="mt-6 text-center">
+        <h3 className="font-serif text-xl font-light leading-tight text-foreground transition-colors group-hover:text-primary md:text-[1.4rem]">
+          {product.name}
+        </h3>
+        <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          {product.category}
+        </p>
+      </div>
     </Link>
   );
 }
