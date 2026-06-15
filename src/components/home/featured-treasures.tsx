@@ -13,11 +13,12 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 /**
  * Featured pieces on the home page — three signature treasures, one per
  * main category, so the home reads as a teaser of the catalogue.
- * Founder direction (June 2026): match the Shop Categories card language
- * one section above — rounded-2xl, layered shadow, full-bleed atelier
- * image (object-cover), no inner white frame, name + small tagline below.
- * Wider container (1800 px) and 3-column grid so cards read bigger on
- * desktop.
+ *
+ * Founder direction (June 2026, third pass): match the Shop Categories
+ * editorial-tile language one section above. Retire the rounded-card +
+ * shadow + tinted padding treatment. Each piece is now just its
+ * atelier scene at full bleed with plain inline name + tagline +
+ * arrow underneath. No card chrome.
  */
 const FEATURED_SLUGS = ["carre-dor", "crescent", "abyss"];
 
@@ -42,7 +43,7 @@ export function FeaturedTreasures({
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: EASE }}
-          className="mx-auto max-w-2xl text-center mb-14 lg:mb-16"
+          className="mx-auto max-w-2xl text-center mb-16 lg:mb-20"
         >
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
             {data.eyebrow}
@@ -55,7 +56,10 @@ export function FeaturedTreasures({
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {/* Three editorial tiles — image at full bleed, plain inline foot
+            below. No card wrapper, no rounded card frame, no shadow.
+            Two columns on tablet (md), three across on desktop (lg). */}
+        <div className="grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20">
           {featured.map((p, i) => (
             <motion.div
               key={p.slug}
@@ -69,30 +73,37 @@ export function FeaturedTreasures({
             >
               <Link
                 href={`/treasures/${p.slug}`}
-                className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.22)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.32)]">
-                  {/* Full-bleed atelier scene — object-cover so the image
-                      fills the frame edge-to-edge with no inner white. */}
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
-                    <Image
-                      src={p.image}
-                      alt={p.name}
-                      fill
-                      sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-                      className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
-                    />
-                  </div>
+                {/* Full-bleed scene — object-cover so the piece fills the
+                    frame, no padding, no card chrome. Aspect 4:5 keeps a
+                    portrait rhythm so three pieces sit comfortably across. */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
+                    className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
 
-                  <div className="flex flex-1 flex-col px-6 py-7 md:px-8 md:py-8">
-                    <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-3xl">
+                {/* Plain inline foot — name + tagline + arrow, no padding,
+                    no separator, no card edge. */}
+                <div className="mt-6 flex items-baseline justify-between gap-6 md:mt-7">
+                  <div>
+                    <h3 className="font-serif text-2xl font-light leading-tight text-foreground transition-colors group-hover:text-primary md:text-[1.7rem] lg:text-[1.85rem]">
                       {p.name}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                       {p.tagline}
                     </p>
                   </div>
-                </article>
+                  <ArrowRight
+                    className="h-5 w-5 shrink-0 text-foreground/60 transition-all duration-300 group-hover:translate-x-1 group-hover:text-foreground"
+                    strokeWidth={1.25}
+                  />
+                </div>
               </Link>
             </motion.div>
           ))}
@@ -104,7 +115,7 @@ export function FeaturedTreasures({
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
-          className="mt-14 lg:mt-16 flex justify-center"
+          className="mt-16 flex justify-center lg:mt-20"
         >
           <Link
             href="/treasures"
