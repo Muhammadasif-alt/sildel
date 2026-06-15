@@ -3,27 +3,30 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/content/treasures";
 import { useTreasures } from "@/content/treasures-provider";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
- * Treasures index — Van Cleef-style museum grid.
+ * Treasures index — editorial magazine rhythm.
  *
- * Founder direction (June 2026, fourth pass): retire the rounded-card +
- * shadow treatment. Each piece now sits on a warm-neutral square tile
- * with the product hero-shot centred and contained inside generous
- * padding — no card wrapper, no shadow, no rounded corners on the
- * image area. Below the tile sits the bare minimum: serif name + small
- * caps category. Nothing else.
+ * Founder direction (June 2026, fifth pass): client wants the catalogue
+ * to read like a printed feature — BIG images, with some pieces given
+ * a full-width spread and others paired two-up. Every block of three
+ * products renders as one hero single + one paired row. The pattern
+ * resets per block so the rhythm holds even when filters change the
+ * total count.
  *
- * Two reasons:
- *  - The card+shadow language was reading as e-commerce, not maison.
- *  - The earlier object-cover frame was cropping every piece in half.
- *    object-contain on a warm-paper tile shows the FULL piece, and
- *    because the tile colour matches the section background there's no
- *    "white side gap" to worry about.
+ *   [          FULL-WIDTH HERO          ]      (item 1)
+ *   [  PAIR ITEM 2  ][  PAIR ITEM 3  ]
+ *   [          FULL-WIDTH HERO          ]      (item 4)
+ *   [  PAIR ITEM 5  ][  PAIR ITEM 6  ]
+ *   ...
+ *
+ * No card wrapper, no rounded card frame, no shadow — image at full
+ * bleed with plain inline name + category + arrow beneath.
  */
 export function ProductGrid() {
   const { content, products } = useTreasures();
@@ -37,6 +40,22 @@ export function ProductGrid() {
       (p) => p.category.toLowerCase() === activeSlug.replace(/-/g, " "),
     );
   }, [activeSlug, products]);
+
+  // Group products into blocks of [single, pair...] for the magazine
+  // rhythm. Each block starts with one full-width hero, then up to two
+  // paired tiles beneath.
+  const blocks = useMemo(() => {
+    const out: Array<{ single: Product; pair: Product[] }> = [];
+    for (let i = 0; i < filtered.length; i += 3) {
+      out.push({
+        single: filtered[i],
+        pair: [filtered[i + 1], filtered[i + 2]].filter(
+          (p): p is Product => Boolean(p),
+        ),
+      });
+    }
+    return out;
+  }, [filtered]);
 
   return (
     <section
@@ -96,16 +115,26 @@ export function ProductGrid() {
             No treasures in this collection yet.
           </p>
         ) : (
-          // Van Cleef grid: tight gap, three across on desktop, two on
-          // tablet, one on mobile. No rounded card, no shadow.
-          <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-            {filtered.map((product, i) => (
-              <ScrollReveal
-                key={product.slug}
-                delay={Math.min(0.5, (i % 6) * 0.08)}
+          <div className="space-y-14 lg:space-y-20">
+            {blocks.map((block) => (
+              <div
+                key={block.single.slug}
+                className="space-y-14 lg:space-y-20"
               >
-                <TreasureTile product={product} />
-              </ScrollReveal>
+                <ScrollReveal>
+                  <SingleTile product={block.single} />
+                </ScrollReveal>
+
+                {block.pair.length > 0 && (
+                  <div className="grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2 lg:gap-x-10 lg:gap-y-20">
+                    {block.pair.map((p, i) => (
+                      <ScrollReveal key={p.slug} delay={0.1 + i * 0.08}>
+                        <PairTile product={p} />
+                      </ScrollReveal>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         )}
@@ -114,38 +143,77 @@ export function ProductGrid() {
   );
 }
 
-/* ────────────────── Van Cleef-style museum tile ────────────────── */
+/* ────────────────── Full-width hero tile ────────────────── */
 
-function TreasureTile({ product }: { product: Product }) {
+function SingleTile({ product }: { product: Product }) {
   return (
     <Link
       href={`/treasures/${product.slug}`}
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Square warm-neutral tile. Same warm tone as the section bg so
-          the tile reads as the page itself, not a card with edges.
-          object-contain + generous padding so the FULL piece is visible
-          with breathing room — no cropping, no half-pieces. */}
-      <div className="relative aspect-square w-full overflow-hidden bg-[#f6f2eb]">
+      {/* Wide editorial frame — image fills the whole row at 16:9-ish so
+          the piece reads at maximum scale on desktop. */}
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-          className="object-contain p-8 transition-transform duration-700 ease-out group-hover:scale-[1.04] md:p-10"
+          sizes="100vw"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
         />
       </div>
 
-      {/* Minimal foot — name + category. No tagline, no badge, no CTA.
-          Whitespace and serif type carry the weight. */}
-      <div className="mt-6 text-center">
-        <h3 className="font-serif text-xl font-light leading-tight text-foreground transition-colors group-hover:text-primary md:text-[1.4rem]">
-          {product.name}
-        </h3>
-        <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-          {product.category}
-        </p>
+      <div className="mt-8 flex items-baseline justify-between gap-6 md:mt-10">
+        <div>
+          <h3 className="font-serif text-3xl font-light leading-tight text-foreground transition-colors group-hover:text-primary md:text-4xl lg:text-[2.75rem]">
+            {product.name}
+          </h3>
+          <p className="mt-3 text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
+            {product.category}
+          </p>
+        </div>
+        <ArrowRight
+          className="h-6 w-6 shrink-0 text-foreground/60 transition-all duration-300 group-hover:translate-x-1 group-hover:text-foreground"
+          strokeWidth={1.25}
+        />
+      </div>
+    </Link>
+  );
+}
+
+/* ────────────────── Paired tile (two per row) ────────────────── */
+
+function PairTile({ product }: { product: Product }) {
+  return (
+    <Link
+      href={`/treasures/${product.slug}`}
+      aria-label={`${product.name} — ${product.category}`}
+      className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+    >
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(min-width: 768px) 48vw, 100vw"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+        />
+      </div>
+
+      <div className="mt-6 flex items-baseline justify-between gap-6 md:mt-7">
+        <div>
+          <h3 className="font-serif text-2xl font-light leading-tight text-foreground transition-colors group-hover:text-primary md:text-[1.8rem] lg:text-[2rem]">
+            {product.name}
+          </h3>
+          <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            {product.category}
+          </p>
+        </div>
+        <ArrowRight
+          className="h-5 w-5 shrink-0 text-foreground/60 transition-all duration-300 group-hover:translate-x-1 group-hover:text-foreground"
+          strokeWidth={1.25}
+        />
       </div>
     </Link>
   );
