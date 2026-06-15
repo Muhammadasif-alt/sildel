@@ -10,18 +10,19 @@ import { home, type HomeContent } from "@/content/home";
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 /**
- * Shop the Collections — founder direction (June 2026, third pass):
+ * Shop the Collections — founder direction (June 2026, fifth pass):
  *
- *  - Drop from 6 cards (3×2 grid) to 4 cards in a SINGLE row. The
- *    previous tablet 2×2 / desktop 3×2 layout was reading as cluttered
- *    and the second row was being cropped on most viewports.
- *  - Show the FULL atelier piece in every card — was getting half-cropped
- *    under `object-cover`. We now lay a soft, blurred copy of the image
- *    behind a crisp `object-contain` foreground (same Apple-Music
- *    cover-art technique used on the Awards section), so the swatch
- *    breathes edge-to-edge with no white gap AND the piece reads fully.
- *  - Limited Editions + Bespoke move to a quiet text row beneath the
- *    grid — still discoverable, just no longer competing as cards.
+ *  - Retire the rounded-card + tinted-padding treatment. Each card had
+ *    huge empty space around the image (object-contain on a portrait
+ *    tile with a landscape source) and the card foot read as separate
+ *    e-commerce chrome.
+ *  - Image now fills the tile edge-to-edge via `object-cover` on a
+ *    wide landscape frame, so the atelier scene IS the tile.
+ *  - Two big cards per row on desktop (was four narrow ones) — gives
+ *    each category the visual weight Van Cleef / Quinta do Crasto
+ *    treats their hero categories with.
+ *  - Text moves OUT of the card and directly under the image as plain
+ *    inline copy: serif name + small caps tagline. No card foot.
  */
 const CARDS = [
   {
@@ -50,7 +51,6 @@ const CARDS = [
   },
 ] as const;
 
-/** Categories that move to the quiet text row beneath the main grid. */
 const SECONDARY = [
   { dictKey: "limited", href: "/treasures#carre-dor" },
   { dictKey: "bespoke", href: "/contact" },
@@ -116,11 +116,10 @@ export function ShopCategories({
           </motion.p>
         </div>
 
-        {/* Four cards, single row on desktop. We skip the md:grid-cols-2
-            stage entirely — the prior 2×2 tablet view was the founder's
-            specific complaint. Tablet stacks vertically (still feels
-            premium), desktop spreads to a single row of four. */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-7 xl:gap-9">
+        {/* Two big cards per row on desktop — image fills tile edge-to-edge
+            via object-cover; text sits directly beneath as plain inline
+            copy, no card foot, no padding. */}
+        <div className="grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2 lg:gap-x-10 lg:gap-y-20">
           {cats.map((cat, i) => (
             <motion.div
               key={cat.slug}
@@ -134,64 +133,60 @@ export function ShopCategories({
             >
               <Link
                 href={cat.href}
-                className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-[0_10px_36px_-10px_rgba(0,0,0,0.18)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_72px_-16px_rgba(0,0,0,0.28)]">
-                  {/* Full-piece frame: blurred copy of the image fills the
-                      backdrop so the corners are never white, then the
-                      crisp `object-contain` foreground sits centred and
-                      shows the FULL piece — no cropping, no gap. */}
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#f6f2eb]">
-                    <Image
-                      src={cat.image}
-                      alt=""
-                      aria-hidden
-                      fill
-                      sizes="(min-width: 1024px) 25vw, 100vw"
-                      className="scale-150 object-cover opacity-40 blur-2xl"
-                    />
-                    <Image
-                      src={cat.image}
-                      alt={cat.label}
-                      fill
-                      sizes="(min-width: 1024px) 25vw, 100vw"
-                      className="relative object-contain p-6 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
-                    />
-                  </div>
+                {/* Full-bleed atelier scene as the tile itself — no card
+                    wrapper, no rounded corners on the image area. The
+                    image IS the visual statement. */}
+                <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
+                  <Image
+                    src={cat.image}
+                    alt={cat.label}
+                    fill
+                    sizes="(min-width: 768px) 48vw, 100vw"
+                    className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
 
-                  <div className="flex flex-1 flex-col px-6 py-7 md:px-7 md:py-8">
-                    <h3 className="font-serif text-2xl font-light leading-tight text-foreground md:text-[1.7rem]">
+                {/* Plain inline foot — name + tagline directly beneath the
+                    image, no card padding, no separator. */}
+                <div className="mt-7 flex items-baseline justify-between gap-6 md:mt-8">
+                  <div>
+                    <h3 className="font-serif text-3xl font-light leading-tight text-foreground transition-colors group-hover:text-primary md:text-[2rem] lg:text-[2.25rem]">
                       {cat.label}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                       {cat.tagline}
                     </p>
                   </div>
-                </article>
+                  <ArrowRight
+                    className="h-5 w-5 shrink-0 text-foreground/60 transition-all duration-300 group-hover:translate-x-1 group-hover:text-foreground"
+                    strokeWidth={1.25}
+                  />
+                </div>
               </Link>
             </motion.div>
           ))}
         </div>
 
-        {/* Secondary row — Limited Editions + Bespoke as quiet text links
-            so they stay discoverable without competing with the four
-            main category tiles. */}
+        {/* Secondary text row — Limited Editions + Bespoke kept
+            discoverable but quiet, beneath the main grid. */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
-          className="mt-14 flex flex-col items-start justify-center gap-5 border-t border-border/60 pt-10 sm:flex-row sm:items-center sm:gap-12 lg:mt-16"
+          className="mt-20 flex flex-col items-start justify-center gap-5 border-t border-border/60 pt-12 sm:flex-row sm:items-center sm:gap-12 lg:mt-24"
         >
           {secondary.map((s) => (
             <Link
               key={s.label}
               href={s.href}
-              className="group inline-flex items-baseline gap-2.5 text-[11px] uppercase tracking-[0.32em] text-foreground transition-colors hover:text-primary"
+              className="group inline-flex items-baseline gap-2.5 text-foreground transition-colors hover:text-primary"
             >
-              <span className="font-serif text-[15px] normal-case tracking-normal text-foreground/90 group-hover:text-primary">
+              <span className="font-serif text-[16px] text-foreground/90 group-hover:text-primary">
                 {s.label}
               </span>
-              <span className="text-muted-foreground/80 text-[12px] normal-case tracking-normal">
+              <span className="text-[13px] text-muted-foreground/85">
                 — {s.tagline}
               </span>
               <ArrowRight
