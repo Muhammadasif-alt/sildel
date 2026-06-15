@@ -63,7 +63,7 @@ export const partnersEn: PartnersContent = {
       slug: "festival-mental",
       name: "Festival Mental",
       kicker: "The official cork trophy",
-      intro: "Sildel crafts the festival's hand-sculpted cork trophy.",
+      intro: "Sildel sculpts the festival's hand-finished cork trophy.",
       note: "9th edition (2025) · 10th edition (2026)",
       layout: "split" as const,
       transparent: false,

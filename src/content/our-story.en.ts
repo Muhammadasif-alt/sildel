@@ -1,11 +1,11 @@
 export const ourStoryEn = {
   hero: {
     eyebrow: "Our Story",
-    title: "Slow craft, since the first oak.",
+    title: "A slow practice, since the first oak.",
     intro:
       "Sildel was born from a Portuguese forest that has shaped families for centuries. We do not chase trends — we follow the bark.",
     image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
-    imageAlt: "Sildel atelier interior at golden hour — Portuguese craft in warm light.",
+    imageAlt: "Sildel atelier interior at golden hour — the atelier in warm light.",
   },
 
   origin: {
@@ -14,10 +14,10 @@ export const ourStoryEn = {
     titleAccent: "in the cork oak.",
     body: [
       "Sildel began as a small atelier in northern Portugal, devoted to cork that has been harvested for over two centuries in Portugal's oak forests. What started as a conversation between a designer and a master harvester became a studio committed to one material — cork — and one principle — patience.",
-      "Every Sildel piece carries the texture of a forest that grew long before us, and the hand of a craftsperson who learned this trade from their elders.",
+      "Every Sildel piece carries the texture of a forest that grew long before us, and the hand of a sculptor who learned this trade from their elders.",
     ],
     image: "/Slidel/Nano Banana 2 - Mid-shot of a master artisan at a workbench hand-sanding a cork sculpture_ warm tung_1.webp",
-    imageAlt: "A Sildel artisan hand-sanding a cork sculpture at the workbench.",
+    imageAlt: "A Sildel sculptor hand-sanding a cork sculpture at the workbench.",
     year: "Est. 2020",
   },
 
@@ -53,7 +53,7 @@ export const ourStoryEn = {
     title: "Two centuries",
     titleAccent: "of Portuguese cork.",
     body:
-      "Portugal grows roughly half the world's cork — over 700,000 hectares of cork oak forest, protected by law since 1209. The tree gives its bark every nine years and lives for two centuries or more. Our craft is built on this rhythm.",
+      "Portugal grows roughly half the world's cork — over 700,000 hectares of cork oak forest, protected by law since 1209. The tree gives its bark every nine years and lives for two centuries or more. Our practice is built on this rhythm.",
     images: [
       {
         src: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
@@ -68,10 +68,10 @@ export const ourStoryEn = {
         src: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
         alt: "Hands of a master cork harvester gripping the traditional curved descortiçador axe.",
         eyebrow: "The descortiçador",
-        title: "A craft passed by hand.",
+        title: "A practice passed by hand.",
         body:
           "The descortiçador (master harvester) reads the trunk by feel — angle of the cut, sound of the blade, give of the bark. There is no machine for this. The skill is passed down inside families, generation to generation.",
-        keywords: "cork harvester, descortiçador, hand harvesting, Portuguese craft",
+        keywords: "cork harvester, descortiçador, hand harvesting, Portuguese atelier",
       },
       {
         src: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
@@ -79,8 +79,8 @@ export const ourStoryEn = {
         eyebrow: "Air-cured for months",
         title: "Time, the quiet ingredient.",
         body:
-          "After harvest, the planks rest outdoors for at least six months — settling colour, grain, and density. Only after this slow cure does the cork become what artisans call &lsquo;amadia&rsquo;: even, dense, ready for sculpture.",
-        keywords: "amadia cork, cork curing, slow craft, natural material",
+          "After harvest, the planks rest outdoors for at least six months — settling colour, grain, and density. Only after this slow cure does the cork become what the atelier calls &lsquo;amadia&rsquo;: even, dense, ready for sculpture.",
+        keywords: "amadia cork, cork curing, slow atelier, natural material",
       },
       {
         src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_1.webp",
@@ -105,7 +105,7 @@ export const ourStoryEn = {
     title: "Made by hand.",
     titleAccent: "Always.",
     body:
-      "Inside our studio, each treasure is shaped, sanded, and finished by a small team of artisans. No machines stand in for the human hand — only assist it. Every grain is read, every cut is felt.",
+      "Inside our studio, each treasure is shaped, sanded, and finished by a small team of sculptors. No machines stand in for the human hand — only assist it. Every grain is read, every cut is felt.",
     images: [
       {
         src: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s (1).webp",
@@ -114,7 +114,7 @@ export const ourStoryEn = {
         title: "A small studio, by intention.",
         body:
           "Our Esmoriz atelier is deliberately small — a handful of artisans, hand tools, and a slow rhythm. Production stays under one hundred pieces a year so every silhouette gets the time it asks for.",
-        keywords: "Sildel atelier, Esmoriz Portugal, small-batch craft, slow production",
+        keywords: "Sildel atelier, Esmoriz Portugal, small-batch atelier, slow production",
       },
       {
         src: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_1.webp",
@@ -122,16 +122,16 @@ export const ourStoryEn = {
         eyebrow: "Shaping by hand",
         title: "Every grain, read by hand.",
         body:
-          "Each block of amadia cork is shaped with hand chisels and rasps. Our artisans follow the grain rather than fight it — letting each silhouette emerge from what the bark already wants to be.",
-        keywords: "hand-finished cork, Portuguese craftsmanship, cork sculpture, hand tools",
+          "Each block of amadia cork is shaped with hand chisels and rasps. Our sculptors follow the grain rather than fight it — letting each silhouette emerge from what the bark already wants to be.",
+        keywords: "hand-finished cork, Portuguese atelier, cork sculpture, hand tools",
       },
       {
         src: "/Slidel/Nano Banana 2 - Overhead top-down view of an artisan workbench in low warm tungsten light_ hand tool_1.webp",
-        alt: "Overhead view of the artisan workbench — chisels, rasps, and cork pieces in warm tungsten light.",
+        alt: "Overhead view of the atelier workbench — chisels, rasps, and cork pieces in warm tungsten light.",
         eyebrow: "Signed and numbered",
         title: "Finished with oil, ink, and a stamp.",
         body:
-          "Once the silhouette is right, each piece is oiled, signed by the artisan, and stamped with its number in the edition. Nothing leaves the workbench until it has carried all four marks of a Sildel treasure.",
+          "Once the silhouette is right, each piece is oiled, signed by the sculptor, and stamped with its number in the edition. Nothing leaves the workbench until it has carried all four marks of a Sildel treasure.",
         keywords: "signed and numbered cork art, limited edition, made in Portugal",
       },
     ],
@@ -179,7 +179,7 @@ export const ourStoryEn = {
     title: "Slow is",
     titleAccent: "the point.",
     body:
-      "We make fewer pieces, deliberately. We refuse to scale at the cost of the forest, the craftsperson, or the object itself. A Sildel treasure should still be in a home — and a forest still standing — long after we are gone.",
+      "We make fewer pieces, deliberately. We refuse to scale at the cost of the forest, the sculptor, or the object itself. A Sildel treasure should still be in a home — and a forest still standing — long after we are gone.",
     pillars: [
       {
         index: "01",
@@ -189,9 +189,9 @@ export const ourStoryEn = {
       },
       {
         index: "02",
-        title: "The Craftsperson",
+        title: "The Sculptor",
         body:
-          "A small atelier of artisans, paid fairly, working at the pace the material demands.",
+          "A small atelier of sculptors, paid fairly, working at the pace the material demands.",
       },
       {
         index: "03",

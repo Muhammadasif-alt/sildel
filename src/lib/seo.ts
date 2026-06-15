@@ -53,9 +53,9 @@ const DEFAULT_KEYWORDS = [
   "design de luxo Portugal",
   "peças de arte cortiça",
   "edição limitada cortiça",
-  "artesanato Portugal",
+  "escultura cortiça Portugal",
   // Sustainability
-  "sustainable craft",
+  "sustainable atelier",
   "sustainable design",
   "carbon-negative material",
   "material sustentável",

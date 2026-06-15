@@ -3,10 +3,10 @@ export const siteConfig = {
   legalName: "Sildel",
   tagline: "We Think Cork",
   shortDescription:
-    "Sildel crafts fine art and luxury home pieces from sustainably harvested Portuguese cork — signed, numbered, made in Esmoriz, Portugal.",
+    "Sildel shapes fine art and luxury home pieces from sustainably harvested Portuguese cork — signed, numbered, made in Esmoriz, Portugal.",
   // Locale-aware short description used by buildMetadata when no per-page description is provided.
   shortDescriptionByLocale: {
-    en: "Sildel crafts fine art and luxury home pieces from sustainably harvested Portuguese cork — signed, numbered, made in Esmoriz, Portugal.",
+    en: "Sildel shapes fine art and luxury home pieces from sustainably harvested Portuguese cork — signed, numbered, made in Esmoriz, Portugal.",
     pt: "Sildel cria peças de arte e decoração de luxo a partir de cortiça portuguesa sustentável — assinadas, numeradas, feitas em Esmoriz, Portugal.",
   },
   url: "https://sildel.pt",

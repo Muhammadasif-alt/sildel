@@ -114,7 +114,7 @@ function buildEn(slug: string, name: string, product: Product | undefined): Prod
   const placement = PLACEMENT_EN[slug] ?? "in a quiet, considered space";
 
   const benefits = [
-    "Signed and numbered by the artisan",
+    "Signed and numbered by the sculptor",
     "Hand-finished in Portugal — no two pieces alike",
     `Ideal ${placement}`,
     "Sustainable Portuguese cork, carefully sourced",
@@ -153,7 +153,7 @@ function buildEn(slug: string, name: string, product: Product | undefined): Prod
       `${name} begins as a piece of raw bark — harvested by hand from a cork oak in Portugal's Alentejo region and carried back to our atelier in northern Portugal. ${product?.description ?? ""}`.trim(),
       product?.longDescription?.length
         ? product.longDescription.join(" ")
-        : `Every step is slow. The bark cures for months before it is even handled, then a single artisan shapes, sands, and finishes the piece — pressing the brass stamp that gives it a number, a date, and a signature. ${name} is the result of that patience.`,
+        : `Every step is slow. The bark cures for months before it is even handled, then a single sculptor shapes, sands, and finishes the piece — pressing the brass stamp that gives it a number, a date, and a signature. ${name} is the result of that patience.`,
       `${name} is built to live ${placement}. It pairs well with marble, brass, glass, and natural wood — and because cork is a living material, the grain you see is the only grain you will ever see. Like every Sildel treasure, this piece is signed, numbered, and shipped from our Portuguese atelier with free worldwide delivery.`,
     ],
     highlights: [
@@ -172,7 +172,7 @@ function buildPt(slug: string, name: string, product: Product | undefined): Prod
   const placement = PLACEMENT_PT[slug] ?? "num espaço silencioso e pensado";
 
   const benefits = [
-    "Assinada e numerada pelo artesão",
+    "Assinada e numerada pelo autor",
     "Acabada à mão em Portugal — nenhuma peça é igual",
     `Ideal ${placement}`,
     "Cortiça portuguesa sustentável, cuidadosamente colhida",
@@ -211,7 +211,7 @@ function buildPt(slug: string, name: string, product: Product | undefined): Prod
       `${name} começa como um pedaço de casca em bruto — colhida à mão de um sobreiro na região do Alentejo, em Portugal, e trazida para o nosso atelier no norte de Portugal. ${product?.description ?? ""}`.trim(),
       product?.longDescription?.length
         ? product.longDescription.join(" ")
-        : `Cada passo é lento. A casca cura durante meses antes de sequer ser manuseada, depois um único artesão molda, lixa e termina a peça — carimbando o número, a data e a assinatura. ${name} é o resultado dessa paciência.`,
+        : `Cada passo é lento. A casca cura durante meses antes de sequer ser manuseada, depois um único escultor molda, lixa e termina a peça — carimbando o número, a data e a assinatura. ${name} é o resultado dessa paciência.`,
       `${name} é feita para viver ${placement}. Combina bem com mármore, latão, vidro e madeira natural — e porque a cortiça é um material vivo, o grão que vê é o único grão que alguma vez verá. Como todos os tesouros Sildel, esta peça é assinada, numerada e enviada do nosso atelier em Portugal com envio gratuito para todo o mundo.`,
     ],
     highlights: [

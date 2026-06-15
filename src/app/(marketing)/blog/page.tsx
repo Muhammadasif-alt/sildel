@@ -6,7 +6,7 @@ export const revalidate = 3600;
 export const metadata = buildMetadata({
   title: "Journal — Notes from the Sildel Atelier in Portugal",
   description:
-    "Notes from the Sildel atelier in Esmoriz, the cork forests of the Alentejo, and the slow craft behind every treasure. Essays on Portuguese cork, design, and sustainability.",
+    "Notes from the Sildel atelier in Esmoriz, the cork forests of the Alentejo, and the slow atelier work behind every treasure. Essays on Portuguese cork, design, and sustainability.",
   path: "/blog",
   keywords: [
     // Content type
@@ -19,8 +19,8 @@ export const metadata = buildMetadata({
     // Topics
     "cork stories",
     "histórias cortiça",
-    "cork craftsmanship",
-    "artesanato cortiça",
+    "cork atelier",
+    "atelier cortiça",
     "Portuguese design notes",
     "notas design Portugal",
     "atelier stories",

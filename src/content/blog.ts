@@ -22,7 +22,7 @@ export type Post = {
   authorRole: string;
   date: string; // ISO
   readMinutes: number;
-  tag: "Atelier" | "Forest" | "Craft" | "Material" | "Collectors";
+  tag: "Atelier" | "Forest" | "Material" | "Collectors";
   body: PostBlock[];
 };
 
@@ -31,7 +31,7 @@ export const posts: Post[] = [
     slug: "nine-year-rhythm",
     title: "The nine-year rhythm of the cork oak.",
     excerpt:
-      "Why our craft moves at the speed of bark — and what that means for every piece that leaves the atelier.",
+      "Why our practice moves at the speed of bark — and what that means for every piece that leaves the atelier.",
     image:
       "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
     imageAlt: "An ancient Portuguese cork oak with bark recently harvested.",
@@ -72,7 +72,7 @@ export const posts: Post[] = [
     slug: "inside-the-atelier",
     title: "Inside the Esmoriz atelier.",
     excerpt:
-      "Six artisans. Three rooms. A handful of tools older than any of us. A quiet tour of where each piece is finished.",
+      "Six sculptors. Three rooms. A handful of tools older than any of us. A quiet tour of where each piece is finished.",
     image:
       "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
     imageAlt: "Sildel atelier interior at golden hour.",
@@ -84,7 +84,7 @@ export const posts: Post[] = [
     body: [
       {
         kind: "paragraph",
-        text: "Our studio in Esmoriz, on the northern coast of Portugal, is small enough that you can hear every cut. By design. Six artisans work at three benches; a fourth bench is reserved for whichever piece is curing that week. Past that, the back room holds the cork — stacks of amadia, slowly drying, slowly waiting.",
+        text: "Our studio in Esmoriz, on the northern coast of Portugal, is small enough that you can hear every cut. By design. Six sculptors work at three benches; a fourth bench is reserved for whichever piece is curing that week. Past that, the back room holds the cork — stacks of amadia, slowly drying, slowly waiting.",
       },
       {
         kind: "image",
@@ -102,7 +102,7 @@ export const posts: Post[] = [
       },
       {
         kind: "paragraph",
-        text: "So we stay under one hundred pieces a year. Sometimes fewer. Each treasure is signed by the artisan who finished it and numbered within its edition. When the edition closes, that's the last one.",
+        text: "So we stay under one hundred pieces a year. Sometimes fewer. Each treasure is signed by the sculptor who finished it and numbered within its edition. When the edition closes, that's the last one.",
       },
     ],
   },
@@ -145,20 +145,20 @@ export const posts: Post[] = [
       "Signed, numbered, dated, and stamped. Why each Sildel treasure carries four small assurances — and what each one means.",
     image:
       "/Slidel/Nano Banana 2 - Close-up macro of an artisan_s hand pressing a hot brass numbering stamp onto a fini_1.webp",
-    imageAlt: "Macro of an artisan pressing a hot brass numbering stamp onto a finished cork piece.",
+    imageAlt: "Macro of a sculptor pressing a hot brass numbering stamp onto a finished cork piece.",
     author: "Isabel Silva",
     authorRole: "CEO & Founder",
     date: "2026-02-22",
     readMinutes: 3,
-    tag: "Craft",
+    tag: "Atelier",
     body: [
       {
         kind: "paragraph",
-        text: "Before any piece leaves the workbench, four marks go on. First, the artisan's signature in black ink — the hand that finished it. Second, the edition number — your piece's place in the run. Third, the year. Fourth, our atelier stamp pressed in hot brass on the underside.",
+        text: "Before any piece leaves the workbench, four marks go on. First, the sculptor's signature in black ink — the hand that finished it. Second, the edition number — your piece's place in the run. Third, the year. Fourth, our atelier stamp pressed in hot brass on the underside.",
       },
       {
         kind: "paragraph",
-        text: "We're often asked why four marks instead of one. The honest answer: each mark is a promise. The signature is a promise of craft. The number is a promise that no other piece is identical. The year is a promise of provenance. The stamp is a promise that it came from this atelier and no other.",
+        text: "We're often asked why four marks instead of one. The honest answer: each mark is a promise. The signature is a promise of the hand that made it. The number is a promise that no other piece is identical. The year is a promise of provenance. The stamp is a promise that it came from this atelier and no other.",
       },
       {
         kind: "quote",

@@ -1,11 +1,11 @@
 export const ourStoryPt = {
   hero: {
     eyebrow: "A Nossa História",
-    title: "Ofício lento, desde o primeiro sobreiro.",
+    title: "Uma prática lenta, desde o primeiro sobreiro.",
     intro:
       "A Sildel nasceu de uma floresta portuguesa que moldou famílias durante séculos. Não perseguimos tendências — seguimos a casca.",
     image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
-    imageAlt: "Interior do atelier Sildel ao pôr-do-sol — ofício português em luz quente.",
+    imageAlt: "Interior do atelier Sildel ao pôr-do-sol — o atelier em luz quente.",
   },
 
   origin: {
@@ -14,10 +14,10 @@ export const ourStoryPt = {
     titleAccent: "no sobreiro.",
     body: [
       "A Sildel começou como um pequeno atelier no norte de Portugal, dedicado à cortiça colhida há mais de dois séculos nos sobreirais portugueses. O que nasceu como uma conversa entre um designer e um mestre descortiçador tornou-se um estúdio dedicado a um material — a cortiça — e a um princípio — a paciência.",
-      "Cada peça Sildel guarda a textura de uma floresta que cresceu muito antes de nós, e a mão de um artesão que aprendeu este ofício com os seus mais velhos.",
+      "Cada peça Sildel guarda a textura de uma floresta que cresceu muito antes de nós, e a mão de um escultor que aprendeu este ofício com os seus mais velhos.",
     ],
     image: "/Slidel/Nano Banana 2 - Mid-shot of a master artisan at a workbench hand-sanding a cork sculpture_ warm tung_1.webp",
-    imageAlt: "Um artesão Sildel a lixar uma escultura em cortiça na bancada.",
+    imageAlt: "Um escultor Sildel a lixar uma escultura em cortiça na bancada.",
     year: "Fundada em 2020",
   },
 
@@ -53,7 +53,7 @@ export const ourStoryPt = {
     title: "Dois séculos",
     titleAccent: "de cortiça portuguesa.",
     body:
-      "Portugal produz cerca de metade da cortiça do mundo — mais de 700.000 hectares de sobreiral, protegidos por lei desde 1209. A árvore dá a sua casca a cada nove anos e vive dois séculos ou mais. O nosso ofício constrói-se sobre este ritmo.",
+      "Portugal produz cerca de metade da cortiça do mundo — mais de 700.000 hectares de sobreiral, protegidos por lei desde 1209. A árvore dá a sua casca a cada nove anos e vive dois séculos ou mais. A nossa prática constrói-se sobre este ritmo.",
     images: [
       {
         src: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
@@ -68,10 +68,10 @@ export const ourStoryPt = {
         src: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
         alt: "Mãos do mestre descortiçador a empunhar o tradicional machado curvo.",
         eyebrow: "O descortiçador",
-        title: "Um ofício passado de mão em mão.",
+        title: "Uma prática passada de mão em mão.",
         body:
           "O descortiçador lê o tronco pelo tacto — o ângulo do corte, o som da lâmina, a resistência da casca. Não há máquina para isto. O ofício passa-se dentro das famílias, de geração em geração.",
-        keywords: "descortiçador, colheita manual, ofício português",
+        keywords: "descortiçador, colheita manual, prática portuguesa",
       },
       {
         src: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
@@ -79,8 +79,8 @@ export const ourStoryPt = {
         eyebrow: "Curada ao ar livre",
         title: "O tempo, o ingrediente silencioso.",
         body:
-          "Após a colheita, as pranchas repousam ao ar livre durante pelo menos seis meses — assentando cor, grão e densidade. Só depois desta cura lenta a cortiça se torna o que os artesãos chamam &lsquo;amadia&rsquo;: regular, densa, pronta para a escultura.",
-        keywords: "cortiça amadia, cura da cortiça, ofício lento, material natural",
+          "Após a colheita, as pranchas repousam ao ar livre durante pelo menos seis meses — assentando cor, grão e densidade. Só depois desta cura lenta a cortiça se torna o que o atelier chama &lsquo;amadia&rsquo;: regular, densa, pronta para a escultura.",
+        keywords: "cortiça amadia, cura da cortiça, prática lenta, material natural",
       },
       {
         src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_1.webp",
@@ -105,7 +105,7 @@ export const ourStoryPt = {
     title: "Feito à mão.",
     titleAccent: "Sempre.",
     body:
-      "Dentro do nosso estúdio, cada tesouro é moldado, lixado e acabado por uma pequena equipa de artesãos. Nenhuma máquina substitui a mão humana — apenas a ajuda. Cada grão é lido, cada corte é sentido.",
+      "Dentro do nosso estúdio, cada tesouro é moldado, lixado e acabado por uma pequena equipa de escultores. Nenhuma máquina substitui a mão humana — apenas a ajuda. Cada grão é lido, cada corte é sentido.",
     images: [
       {
         src: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s (1).webp",
@@ -113,25 +113,25 @@ export const ourStoryPt = {
         eyebrow: "Dentro do atelier",
         title: "Um pequeno estúdio, por opção.",
         body:
-          "O nosso atelier de Esmoriz é deliberadamente pequeno — um punhado de artesãos, ferramentas manuais e um ritmo lento. A produção mantém-se abaixo das cem peças por ano para que cada silhueta tenha o tempo que pede.",
-        keywords: "atelier Sildel, Esmoriz Portugal, ofício em pequena escala, produção lenta",
+          "O nosso atelier de Esmoriz é deliberadamente pequeno — um punhado de escultores, ferramentas manuais e um ritmo lento. A produção mantém-se abaixo das cem peças por ano para que cada silhueta tenha o tempo que pede.",
+        keywords: "atelier Sildel, Esmoriz Portugal, atelier em pequena escala, produção lenta",
       },
       {
         src: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_1.webp",
-        alt: "Mãos de um artesão português a moldar uma escultura em cortiça sob luz de tungsténio.",
+        alt: "Mãos de um escultor português a moldar uma escultura em cortiça sob luz de tungsténio.",
         eyebrow: "Moldada à mão",
         title: "Cada grão, lido à mão.",
         body:
-          "Cada bloco de cortiça amadia é moldado com formões e grosas. Os nossos artesãos seguem o grão em vez de o combater — deixando que cada silhueta nasça do que a casca já quer ser.",
-        keywords: "cortiça acabada à mão, ofício português, escultura em cortiça, ferramentas manuais",
+          "Cada bloco de cortiça amadia é moldado com formões e grosas. Os nossos escultores seguem o grão em vez de o combater — deixando que cada silhueta nasça do que a casca já quer ser.",
+        keywords: "cortiça acabada à mão, atelier português, escultura em cortiça, ferramentas manuais",
       },
       {
         src: "/Slidel/Nano Banana 2 - Overhead top-down view of an artisan workbench in low warm tungsten light_ hand tool_1.webp",
-        alt: "Vista superior da bancada do artesão — formões, grosas e peças em cortiça sob luz quente.",
+        alt: "Vista superior da bancada do atelier — formões, grosas e peças em cortiça sob luz quente.",
         eyebrow: "Assinada e numerada",
         title: "Acabada com óleo, tinta e um carimbo.",
         body:
-          "Quando a silhueta está pronta, cada peça é olificada, assinada pelo artesão e carimbada com o número da sua edição. Nada sai da bancada até carregar as quatro marcas de um tesouro Sildel.",
+          "Quando a silhueta está pronta, cada peça é olificada, assinada pelo autor e carimbada com o número da sua edição. Nada sai da bancada até carregar as quatro marcas de um tesouro Sildel.",
         keywords: "cortiça assinada e numerada, edição limitada, feito em Portugal",
       },
     ],
@@ -179,7 +179,7 @@ export const ourStoryPt = {
     title: "Lento é",
     titleAccent: "o objectivo.",
     body:
-      "Fazemos menos peças, deliberadamente. Recusamos escalar à custa da floresta, do artesão ou do próprio objecto. Um tesouro Sildel deve continuar num lar — e uma floresta de pé — muito depois de nós já cá não estarmos.",
+      "Fazemos menos peças, deliberadamente. Recusamos escalar à custa da floresta, do escultor ou do próprio objecto. Um tesouro Sildel deve continuar num lar — e uma floresta de pé — muito depois de nós já cá não estarmos.",
     pillars: [
       {
         index: "01",
@@ -189,9 +189,9 @@ export const ourStoryPt = {
       },
       {
         index: "02",
-        title: "O Artesão",
+        title: "O Escultor",
         body:
-          "Um pequeno atelier de artesãos, justamente pagos, a trabalhar ao ritmo que o material exige.",
+          "Um pequeno atelier de escultores, justamente pagos, a trabalhar ao ritmo que o material exige.",
       },
       {
         index: "03",

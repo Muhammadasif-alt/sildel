@@ -41,7 +41,7 @@ const BRAND_VIDEO_YT_ID = "U6N8YkiLSHY";
 const videoJsonLd = buildVideoJsonLd({
   name: `${siteConfig.name} — From Cork Forest to Atelier`,
   description:
-    "Step inside the cork forests of Portugal and the Sildel atelier where each treasure is finished by hand — slow craft, signed and numbered.",
+    "Step inside the cork forests of Portugal and the Sildel atelier where each treasure is finished by hand — made slowly, signed and numbered.",
   thumbnailUrl: `https://i.ytimg.com/vi/${BRAND_VIDEO_YT_ID}/maxresdefault.jpg`,
   uploadDate: siteConfig.foundingDate,
   youtubeId: BRAND_VIDEO_YT_ID,

@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       "cortiça",
       "Portuguese cork",
       "cortiça portuguesa",
-      "cork craftsmanship",
-      "artesanato cortiça",
+      "cork atelier",
+      "atelier cortiça",
       // Location
       "Portugal",
       "Esmoriz",

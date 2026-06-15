@@ -12,7 +12,7 @@ export const homeEn = {
       title: "We Think",
       titleAccent: "Cork.",
       description:
-        "Sculptural treasures shaped from sustainably harvested Portuguese cork — slow craft, signed and numbered.",
+        "Sculptural treasures shaped from sustainably harvested Portuguese cork — shaped by hand, signed and numbered.",
       image: "/Slidel/enhance/enhance-sculpture-04.webp",
       imageAlt: "Sildel cork sculpture in a sun-lit Portuguese atelier interior.",
       cta: { label: "See All Treasures", href: "/treasures" },
@@ -77,7 +77,7 @@ export const homeEn = {
     titleAccent: "signed by name.",
     body: [
       "Sildel is a small Portuguese atelier in Esmoriz, built by founder Isabel Silva. Every piece begins as raw cork bark from a working forest — never a felled tree — and ends as a numbered treasure signed by the hands that shaped it.",
-      "No factory line. No anonymous suppliers. No reissued editions. Just slow craft, premium cork, and a thirty-year practice the Iberian peninsula has come to know.",
+      "No factory line. No anonymous suppliers. No reissued editions. Just a slow practice, premium cork, and thirty years of atelier work the Iberian peninsula has come to know.",
     ],
     bullets: [
       "30+ years working exclusively in cork",
@@ -144,7 +144,7 @@ export const homeEn = {
 
   sustainability: {
     eyebrow: "Authentic Cork",
-    title: "Honest craft,",
+    title: "Honest work,",
     titleAccent: "harvested without harm.",
     body:
       "Every Sildel piece begins in the cork oak forests of Portugal — protected ecosystems where the same trees are harvested every nine years, without ever felling them.",
@@ -177,7 +177,7 @@ export const homeEn = {
   },
 
   brandVideo: {
-    eyebrow: "Watch the Craft",
+    eyebrow: "Inside the Atelier",
     title: "From oak to atelier.",
     titleAccent: "In Sildel's own hands.",
     body:
@@ -191,7 +191,7 @@ export const homeEn = {
     title: "We do not sell products.",
     titleAccent: "We create treasures.",
     body:
-      "Each Sildel piece is signed, numbered, and made to outlast trends. Slow craft, designed in Portugal, made to be passed down.",
+      "Each Sildel piece is signed, numbered, and made to outlast trends. Made slowly, designed in Portugal, made to be passed down.",
     signature: "— Sildel Atelier",
     cta: { label: "Explore Treasures", href: "/treasures" },
   },
@@ -199,7 +199,7 @@ export const homeEn = {
   newsletter: {
     eyebrow: "The Atelier Letter",
     title: "Stay close",
-    titleAccent: "to the craft.",
+    titleAccent: "to the atelier.",
     body:
       "New collections, atelier stories, and quiet invitations — once a month, never more.",
     placeholder: "Your email address",
@@ -212,7 +212,7 @@ export const homeEn = {
   },
 
   heroShop: {
-    eyebrow: "Crafted in Portugal",
+    eyebrow: "Made in Portugal",
     titleLines: ["Cork,", "reimagined", "as treasure."],
     description:
       "Sculptural objects shaped by hand from authentic Portuguese cork — signed, numbered, and made to be passed down.",
@@ -300,25 +300,25 @@ export const homeEn = {
       "Three quiet promises behind every Sildel treasure — what makes a piece worth keeping, and worth passing on.",
     stats: [
       { value: 30, suffix: "+", label: "Countries" },
-      { value: 12, suffix: "", label: "Master artisans" },
+      { value: 12, suffix: "", label: "Sculptors at the bench" },
       { value: 9, suffix: "", label: "Years between harvests" },
       { value: 200, suffix: "+", label: "Year oak lifespan" },
     ],
     pillars: [
       {
         index: "01",
-        title: "Slow craft.",
-        body: "Each treasure passes through the same hands. No machines, no shortcuts — only time, attention, and the artisan's eye.",
+        title: "The material's tempo.",
+        body: "Each treasure passes through the same hands. No machines, no shortcuts — only time, attention, and the sculptor's eye.",
       },
       {
         index: "02",
         title: "Made in Portugal.",
-        body: "Cork harvested from Alentejo oak forests, finished in our atelier in northern Portugal — a craft tradition that's been honed for centuries.",
+        body: "Cork harvested from Alentejo oak forests, finished in our atelier in northern Portugal — an atelier practice honed for centuries.",
       },
       {
         index: "03",
         title: "Signed & numbered.",
-        body: "Every piece carries the artisan's signature and its place in the edition. None are reissued, and no two are ever identical.",
+        body: "Every piece carries the sculptor's signature and its place in the edition. None are reissued, and no two are ever identical.",
       },
     ],
   },

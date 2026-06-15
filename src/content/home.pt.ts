@@ -12,7 +12,7 @@ export const homePt = {
       title: "Pensamos em",
       titleAccent: "Cortiça.",
       description:
-        "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável — artesanato lento, assinado e numerado.",
+        "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável — moldados à mão, assinados e numerados.",
       image: "/Slidel/enhance/enhance-sculpture-04.webp",
       imageAlt: "Escultura em cortiça Sildel num interior de atelier português banhado pela luz solar.",
       cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
@@ -78,7 +78,7 @@ export const homePt = {
     titleAccent: "assinado a nome.",
     body: [
       "A Sildel é um pequeno atelier português em Esmoriz, criado pela fundadora Isabel Silva. Cada peça começa como casca de cortiça em bruto de uma floresta viva — nunca uma árvore abatida — e termina como um tesouro numerado, assinado pelas mãos que o moldaram.",
-      "Sem linha de fábrica. Sem fornecedores anónimos. Sem edições reeditadas. Apenas ofício lento, cortiça premium, e três décadas de prática que a península ibérica já conhece.",
+      "Sem linha de fábrica. Sem fornecedores anónimos. Sem edições reeditadas. Apenas uma prática lenta, cortiça premium, e três décadas de trabalho de atelier que a península ibérica já conhece.",
     ],
     bullets: [
       "Mais de 30 anos a trabalhar exclusivamente em cortiça",
@@ -145,7 +145,7 @@ export const homePt = {
 
   sustainability: {
     eyebrow: "Cortiça Autêntica",
-    title: "Ofício honesto,",
+    title: "Trabalho honesto,",
     titleAccent: "sem ferir a árvore.",
     body:
       "Cada peça Sildel começa nos sobreirais de Portugal — ecossistemas protegidos onde as mesmas árvores são colhidas a cada nove anos, sem nunca serem abatidas.",
@@ -178,7 +178,7 @@ export const homePt = {
   },
 
   brandVideo: {
-    eyebrow: "Ver o Ofício",
+    eyebrow: "Dentro do Atelier",
     title: "Do sobreiro ao atelier.",
     titleAccent: "Nas mãos da Sildel.",
     body:
@@ -192,7 +192,7 @@ export const homePt = {
     title: "Não vendemos produtos.",
     titleAccent: "Criamos tesouros.",
     body:
-      "Cada peça Sildel é assinada, numerada e feita para sobreviver às tendências. Artesanato lento, desenhado em Portugal, feito para passar de geração em geração.",
+      "Cada peça Sildel é assinada, numerada e feita para sobreviver às tendências. Feito lentamente, desenhado em Portugal, feito para passar de geração em geração.",
     signature: "— Sildel Atelier",
     cta: { label: "Explorar Tesouros", href: "/treasures" },
   },
@@ -200,7 +200,7 @@ export const homePt = {
   newsletter: {
     eyebrow: "A Carta do Atelier",
     title: "Mantenha-se perto",
-    titleAccent: "do ofício.",
+    titleAccent: "do atelier.",
     body:
       "Novas colecções, histórias do atelier e convites discretos — uma vez por mês, nunca mais.",
     placeholder: "O seu endereço de email",
@@ -301,25 +301,25 @@ export const homePt = {
       "Três promessas discretas por trás de cada tesouro Sildel — o que torna uma peça digna de se guardar e de se passar adiante.",
     stats: [
       { value: 30, suffix: "+", label: "Países" },
-      { value: 12, suffix: "", label: "Mestres artesãos" },
+      { value: 12, suffix: "", label: "Escultores" },
       { value: 9, suffix: "", label: "Anos entre colheitas" },
       { value: 200, suffix: "+", label: "Anos de vida do sobreiro" },
     ],
     pillars: [
       {
         index: "01",
-        title: "Ofício lento.",
-        body: "Cada tesouro passa pelas mesmas mãos. Sem máquinas, sem atalhos — apenas tempo, atenção e o olhar do artesão.",
+        title: "O tempo do material.",
+        body: "Cada tesouro passa pelas mesmas mãos. Sem máquinas, sem atalhos — apenas tempo, atenção e o olhar do escultor.",
       },
       {
         index: "02",
         title: "Feito em Portugal.",
-        body: "Cortiça colhida nos sobreirais do Alentejo, acabada no nosso atelier no norte de Portugal — uma tradição artesanal aperfeiçoada há séculos.",
+        body: "Cortiça colhida nos sobreirais do Alentejo, acabada no nosso atelier no norte de Portugal — uma tradição de atelier aperfeiçoada há séculos.",
       },
       {
         index: "03",
         title: "Assinado e numerado.",
-        body: "Cada peça leva a assinatura do artesão e o seu lugar na edição. Nenhuma é reeditada e não há duas iguais.",
+        body: "Cada peça leva a assinatura do autor e o seu lugar na edição. Nenhuma é reeditada e não há duas iguais.",
       },
     ],
   },

@@ -795,7 +795,7 @@ export const treasures = {
     title: "Every piece,",
     titleAccent: "hand-finished.",
     body:
-      "Each treasure carries its own number and the signature of the artisan who finished it. None are reissued.",
+      "Each treasure carries its own number and the signature of the sculptor who finished it. None are reissued.",
   },
 
   featured: {
@@ -822,7 +822,7 @@ export const treasures = {
     body:
       "Each Sildel treasure carries four assurances — what the piece is, where it was made, who made it, and which number in its run it is.",
     items: [
-      { title: "Signed", body: "The artisan's signature, on every piece." },
+      { title: "Signed", body: "The sculptor's signature, on every piece." },
       { title: "Numbered", body: "Each treasure is numbered within its edition." },
       {
         title: "Made in Portugal",
@@ -1125,7 +1125,7 @@ export const treasuresPt = {
     title: "Cada peça,",
     titleAccent: "acabada à mão.",
     body:
-      "Cada tesouro leva o seu número e a assinatura do artesão que o acabou. Nenhum é reeditado.",
+      "Cada tesouro leva o seu número e a assinatura do autor que o acabou. Nenhum é reeditado.",
   },
   featured: {
     eyebrow: "Destaque",
@@ -1150,7 +1150,7 @@ export const treasuresPt = {
     body:
       "Cada tesouro Sildel leva quatro garantias — o que a peça é, onde foi feita, quem a fez e que número tem na sua série.",
     items: [
-      { title: "Assinado", body: "A assinatura do artesão em cada peça." },
+      { title: "Assinado", body: "A assinatura do autor em cada peça." },
       { title: "Numerado", body: "Cada tesouro é numerado dentro da sua edição." },
       {
         title: "Feito em Portugal",

@@ -20,7 +20,7 @@ export const revalidate = 3600;
 export const metadata = buildMetadata({
   title: "Our Story — A Portuguese Cork Atelier in Esmoriz",
   description:
-    "The story behind Sildel — a Portuguese cork atelier in Esmoriz built on slow craft, sustainable harvest from the Alentejo cork forests, and signed-and-numbered treasures.",
+    "The story behind Sildel — a Portuguese cork atelier in Esmoriz built on a slow practice, sustainable harvest from the Alentejo cork forests, and signed-and-numbered treasures.",
   path: PAGE_PATH,
   image: ourStory.hero.image,
   imageAlt: ourStory.hero.imageAlt,
@@ -41,10 +41,10 @@ export const metadata = buildMetadata({
     "Alentejo cork",
     "cortiça Alentejo",
     // Craft
-    "slow craft",
-    "artesanato lento",
+    "slow atelier work",
+    "ritmo do material",
     "handmade cork sculpture",
-    "escultura cortiça artesanal",
+    "escultura cortiça atelier",
     "cork harvesting tradition",
     "tradição extração cortiça",
     // Material + location
@@ -69,7 +69,7 @@ export default async function OurStoryPage() {
     path: PAGE_PATH,
     name: `Our Story — ${siteConfig.name}`,
     description:
-      "The story behind Sildel — a Portuguese cork atelier built on slow craft and sustainable harvest.",
+      "The story behind Sildel — a Portuguese cork atelier built on a slow practice and sustainable harvest.",
     image: ourStory.hero.image,
     datePublished: DATE_PUBLISHED,
     dateModified: DATE_MODIFIED,

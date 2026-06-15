@@ -77,7 +77,7 @@ export default async function ContactPage() {
     description:
       locale === "pt"
         ? "Encomenda uma peça em cortiça portuguesa desenhada e executada à medida no atelier Sildel em Esmoriz — assinada e numerada."
-        : "Commission a one-of-one Portuguese cork piece designed and crafted at the Sildel atelier in Esmoriz — signed and numbered.",
+        : "Commission a one-of-one Portuguese cork piece designed and shaped at the Sildel atelier in Esmoriz — signed and numbered.",
     serviceType: "Bespoke Cork Art Commission",
     path: "/contact",
   });
