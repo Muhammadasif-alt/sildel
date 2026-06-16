@@ -79,16 +79,25 @@ export function FeaturedTreasures({
                 href={`/treasures/${p.slug}`}
                 className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                {/* Full-bleed scene — object-cover so the piece fills the
-                    frame, no padding, no card chrome. Aspect 4:5 keeps a
-                    portrait rhythm so three pieces sit comfortably across. */}
+                {/* Blurred backdrop + contained product — the entire piece
+                    stays visible regardless of its source ratio (founder
+                    direction, June 2026: no cropped products anywhere).
+                    Aspect 4:5 keeps a portrait rhythm; no card chrome. */}
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+                  <Image
+                    src={p.image}
+                    alt=""
+                    aria-hidden
+                    fill
+                    sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
+                    className="scale-125 object-cover opacity-30 blur-2xl"
+                  />
                   <Image
                     src={p.image}
                     alt={p.name}
                     fill
                     sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-                    className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                    className="relative object-contain p-6 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-9"
                   />
                 </div>
 

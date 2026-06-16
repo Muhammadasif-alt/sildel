@@ -152,15 +152,25 @@ function SingleTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Wide editorial frame — image fills the whole row at 16:9-ish so
-          the piece reads at maximum scale on desktop. */}
+      {/* Wide editorial frame — blurred copy of the piece fills the frame
+          behind, then the crisp object-contain version floats on top so
+          the entire sculpture is visible regardless of its source ratio
+          (founder direction, June 2026: no cropped pieces anywhere). */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+        <Image
+          src={product.image}
+          alt=""
+          aria-hidden
+          fill
+          sizes="100vw"
+          className="scale-125 object-cover opacity-30 blur-2xl"
+        />
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="100vw"
-          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
+          className="relative object-contain p-6 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02] md:p-10"
         />
       </div>
 
@@ -194,10 +204,18 @@ function PairTile({ product }: { product: Product }) {
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
         <Image
           src={product.image}
+          alt=""
+          aria-hidden
+          fill
+          sizes="(min-width: 768px) 48vw, 100vw"
+          className="scale-125 object-cover opacity-30 blur-2xl"
+        />
+        <Image
+          src={product.image}
           alt={product.name}
           fill
           sizes="(min-width: 768px) 48vw, 100vw"
-          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+          className="relative object-contain p-5 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-8"
         />
       </div>
 

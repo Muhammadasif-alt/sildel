@@ -442,37 +442,44 @@ export default async function ProductPage({ params }: Params) {
                 </h2>
               </div>
 
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+              {/* Same editorial language as /treasures grid + home Featured
+                  Treasures: no card wrapper, blurred backdrop + contained
+                  product so the whole piece is visible, plain inline foot. */}
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-14 md:gap-x-10 lg:gap-x-12 lg:gap-y-20">
                 {related.map((p) => (
                   <li key={p.slug}>
                     <Link
                       href={`/treasures/${p.slug}`}
                       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
                     >
-                      {/* Same card frame as /treasures listing so the
-                          cross-sell row reads as part of one system. */}
-                      <article className="h-full rounded-md border border-border/60 bg-card/60 p-5 sm:p-6 md:p-8 transition-all duration-500 ease-out group-hover:border-foreground/40 group-hover:bg-card/80">
-                        <div className="relative aspect-square w-full overflow-hidden bg-white rounded-sm">
-                          <Image
-                            src={p.image}
-                            alt={p.name}
-                            fill
-                            sizes="(min-width: 768px) 45vw, 100vw"
-                            className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-                          />
-                        </div>
-                        <div className="mt-6 md:mt-8 text-center">
-                          <p className="text-[10px] tracking-[0.32em] uppercase text-muted-foreground mb-2">
-                            {p.category}
-                          </p>
-                          <h3 className="font-serif text-2xl md:text-3xl font-light leading-tight text-foreground">
-                            {p.name}
-                          </h3>
-                          <p className="mt-3 text-sm text-muted-foreground">
-                            {p.tagline}
-                          </p>
-                        </div>
-                      </article>
+                      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+                        <Image
+                          src={p.image}
+                          alt=""
+                          aria-hidden
+                          fill
+                          sizes="(min-width: 768px) 45vw, 100vw"
+                          className="scale-125 object-cover opacity-30 blur-2xl"
+                        />
+                        <Image
+                          src={p.image}
+                          alt={p.name}
+                          fill
+                          sizes="(min-width: 768px) 45vw, 100vw"
+                          className="relative object-contain p-6 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-9"
+                        />
+                      </div>
+                      <div className="mt-6 md:mt-7">
+                        <p className="text-[10px] tracking-[0.32em] uppercase text-muted-foreground mb-2">
+                          {p.category}
+                        </p>
+                        <h3 className="font-serif text-2xl md:text-[1.7rem] lg:text-[1.85rem] font-light leading-tight text-foreground transition-colors group-hover:text-primary">
+                          {p.name}
+                        </h3>
+                        <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                          {p.tagline}
+                        </p>
+                      </div>
                     </Link>
                   </li>
                 ))}
