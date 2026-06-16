@@ -102,11 +102,17 @@ export default async function ProductPage({ params }: Params) {
 
   const extras = getProductExtras(slug, locale);
 
-  // Up to 2 "you may also like" picks — paired layout matches the /treasures
-  // listing (one-wide / two-paired), keeps the bottom of the page tight.
-  const related = localizedProducts
-    .filter((p) => p.slug !== product.slug)
-    .slice(0, 2);
+  // Up to 2 "you may also like" picks — prefer same-category pieces so
+  // the cross-sell row feels intentional rather than random (founder
+  // direction, June 2026, eighth pass: the related row was showing
+  // unrelated products and reading like filler). Falls back to any
+  // other piece when fewer than two same-category siblings exist.
+  const others = localizedProducts.filter((p) => p.slug !== product.slug);
+  const sameCategory = others.filter((p) => p.category === product.category);
+  const related = [
+    ...sameCategory,
+    ...others.filter((p) => !sameCategory.includes(p)),
+  ].slice(0, 2);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { label: locale === "pt" ? "Início" : "Home", href: "/" },

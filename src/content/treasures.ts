@@ -341,11 +341,9 @@ export const products: Product[] = [
       "Each cork tile is hand-cut and placed to honor its natural grain. The resulting surface is warm, soft, and unrepeatable.",
     ],
     image: "/images/treasures/granada.webp",
-    gallery: [
-      "/images/treasures/granada.webp",
-      G.flatlay[0],
-      G.flatlay[2],
-    ],
+    // No dedicated atelier renders yet — detail page falls back to the
+    // hero image alone rather than padding the gallery with mismatched
+    // generic placeholders (founder direction, June 2026, eighth pass).
   },
   {
     slug: "hot-spring",
@@ -711,8 +709,11 @@ export const products: Product[] = [
     material: "Authentic cork and glass",
     description:
       "An artistic piece celebrating the heritage of wine cork closures — cork paired with glass to form a continuous flow that turns each flower into a living masterpiece.",
+    // No dedicated atelier render yet — main image is a generic Nano
+    // Banana flatlay until the founder supplies a Vitaqua-specific
+    // enhance frame. Gallery omitted so the detail page falls back to
+    // just this hero rather than showing the rest of the unrelated set.
     image: G.flatlay[0],
-    gallery: G.flatlay,
   },
   {
     slug: "bonfire",
@@ -728,7 +729,8 @@ export const products: Product[] = [
       "W 450 × D 450 × H 120 mm, 0.4 kg.",
     ],
     image: "/Slidel/enhance/enhance-misc-18.webp",
-    gallery: [G.vessel[2], G.vessel[3], G.flatlay[1], G.flatlay[3]],
+    // Bonfire's single atelier render only — generic Nano Banana
+    // placeholders removed because they showed unrelated cork pieces.
   },
   {
     slug: "vitavele",
@@ -744,7 +746,8 @@ export const products: Product[] = [
       "W 900 × D 50 × H 60 mm, 0.3 kg.",
     ],
     image: "/Slidel/enhance/enhance-misc-08.webp",
-    gallery: [G.horizontalLamp[2], G.horizontalLamp[3], G.flatlay[2], G.flatlay[0]],
+    // Vitavele's single atelier render only — the generic horizontal-
+    // lamp + flatlay placeholders showed unrelated cork-stopper pieces.
   },
 ];
 
