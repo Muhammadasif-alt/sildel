@@ -170,7 +170,7 @@ function SingleTile({ product }: { product: Product }) {
           alt={product.name}
           fill
           sizes="100vw"
-          className="relative object-contain p-6 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02] md:p-10"
+          className="relative object-contain p-3 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02] md:p-5"
         />
       </div>
 
@@ -201,7 +201,7 @@ function PairTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
         <Image
           src={product.image}
           alt=""
@@ -215,7 +215,7 @@ function PairTile({ product }: { product: Product }) {
           alt={product.name}
           fill
           sizes="(min-width: 768px) 48vw, 100vw"
-          className="relative object-contain p-5 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-8"
+          className="relative object-contain p-2 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-3"
         />
       </div>
 

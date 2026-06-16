@@ -79,11 +79,12 @@ export function FeaturedTreasures({
                 href={`/treasures/${p.slug}`}
                 className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                {/* Blurred backdrop + contained product — the entire piece
-                    stays visible regardless of its source ratio (founder
-                    direction, June 2026: no cropped products anywhere).
-                    Aspect 4:5 keeps a portrait rhythm; no card chrome. */}
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+                {/* Blurred backdrop + contained product — landscape 4:3
+                    frame matches the atelier-render source ratio so the
+                    piece fills edge to edge with minimal blurred gap
+                    (founder direction, June 2026: image full, no big
+                    empty bands above/below). */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
                   <Image
                     src={p.image}
                     alt=""
@@ -97,7 +98,7 @@ export function FeaturedTreasures({
                     alt={p.name}
                     fill
                     sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-                    className="relative object-contain p-6 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-9"
+                    className="relative object-contain p-2 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-3"
                   />
                 </div>
 
