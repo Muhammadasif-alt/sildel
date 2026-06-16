@@ -79,26 +79,18 @@ export function FeaturedTreasures({
                 href={`/treasures/${p.slug}`}
                 className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                {/* Blurred backdrop + contained product — landscape 4:3
-                    frame matches the atelier-render source ratio so the
-                    piece fills edge to edge with minimal blurred gap
-                    (founder direction, June 2026: image full, no big
-                    empty bands above/below). */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-                  <Image
-                    src={p.image}
-                    alt=""
-                    aria-hidden
-                    fill
-                    sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-                    className="scale-125 object-cover opacity-30 blur-2xl"
-                  />
+                {/* Shop Categories language — landscape 3:2 frame matches
+                    the atelier render ratio, object-cover fills the tile
+                    edge-to-edge with zero visible padding. The image IS
+                    the tile (founder direction, June 2026, seventh
+                    pass: no inner gap on product cards). */}
+                <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
                   <Image
                     src={p.image}
                     alt={p.name}
                     fill
                     sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
-                    className="relative object-contain p-2 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-3"
+                    className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
                   />
                 </div>
 

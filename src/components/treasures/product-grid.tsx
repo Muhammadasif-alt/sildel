@@ -152,25 +152,18 @@ function SingleTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Wide editorial frame — blurred copy of the piece fills the frame
-          behind, then the crisp object-contain version floats on top so
-          the entire sculpture is visible regardless of its source ratio
-          (founder direction, June 2026: no cropped pieces anywhere). */}
+      {/* Wide editorial frame — atelier renders are ~3:2 landscape, so a
+          16:10 hero with object-cover fills edge-to-edge with only a
+          whisper of horizontal crop. No padding, no blurred backdrop:
+          the image IS the tile (founder direction, June 2026, seventh
+          pass: kill all visible inner padding). */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
-        <Image
-          src={product.image}
-          alt=""
-          aria-hidden
-          fill
-          sizes="100vw"
-          className="scale-125 object-cover opacity-30 blur-2xl"
-        />
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="100vw"
-          className="relative object-contain p-3 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02] md:p-5"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
         />
       </div>
 
@@ -201,21 +194,13 @@ function PairTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-        <Image
-          src={product.image}
-          alt=""
-          aria-hidden
-          fill
-          sizes="(min-width: 768px) 48vw, 100vw"
-          className="scale-125 object-cover opacity-30 blur-2xl"
-        />
+      <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(min-width: 768px) 48vw, 100vw"
-          className="relative object-contain p-2 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] md:p-3"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
         />
       </div>
 
