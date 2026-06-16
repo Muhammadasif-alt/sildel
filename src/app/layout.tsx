@@ -82,7 +82,7 @@ export default async function RootLayout({
           <div
             className={
               needsHeaderOffset
-                ? "flex flex-1 flex-col pt-20 md:pt-36"
+                ? "flex flex-1 flex-col pt-20 md:pt-24"
                 : "flex flex-1 flex-col"
             }
           >

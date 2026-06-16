@@ -62,7 +62,7 @@ export function LanguageToggle({ className }: { className?: string }) {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label="Change language"
-        className="inline-flex items-center gap-2 px-2 py-1.5 text-xs tracking-[0.18em] text-foreground/85 hover:text-foreground transition-colors"
+        className="inline-flex items-center gap-2 px-2 py-1.5 text-[13px] font-medium tracking-[0.18em] text-foreground/85 hover:text-foreground transition-colors"
       >
         <Flag locale={active} />
         <span>{LOCALE_LABELS[active]}</span>

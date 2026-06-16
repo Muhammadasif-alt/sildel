@@ -13,19 +13,21 @@ import { MobileNav } from "./mobile-nav";
 type NavItem = { label: string; href: string };
 
 /**
- * Quinta do Crasto-inspired centred header.
+ * Site header — single-row layout (founder direction, June 2026, seventh
+ * pass). Logo flush left, nav inline in the centre, language + account on
+ * the far right. Replaces the earlier two-row Quinta-style "logo on top,
+ * nav beneath" because the centred-floating logo read as cramped and the
+ * two-row chrome ate vertical space on every page.
  *
- *  - Logo centred at the top, nav row centred directly beneath — bigger
- *    type than before (founder direction, June 2026).
- *  - Transparent over the home hero (page is "/", scrollY < 80) — the
- *    dark hero image carries through and the header floats above it
- *    with white logo + nav. After 80px of scroll, the header gains a
- *    soft warm-paper background so the rest of the page stays readable.
+ *  - Transparent over the home hero (page is "/", scrollY < 60) — the
+ *    dark hero image carries through and the header floats above it with
+ *    white logo + nav. After 60px of scroll, the header gains a soft
+ *    paper background so the rest of the page stays readable.
  *  - On every other route, the header is always solid (dark glyph on
  *    warm paper) because there's no full-bleed dark hero behind it.
- *  - Fixed positioning so the hero on home reaches all the way up to
- *    the viewport edge and the header overlays its top band. Non-home
- *    pages compensate with top padding in the layout.
+ *  - Fixed positioning so the home hero reaches all the way up to the
+ *    viewport edge. Non-home pages compensate with top padding in the
+ *    root layout.
  */
 export function HeaderShell({
   navItems,
@@ -64,19 +66,16 @@ export function HeaderShell({
       )}
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
-        {/* Top row — logo absolute-centered, language + account flush right.
-            Mobile gets a left-aligned hamburger trigger via MobileNav. */}
-        <div className="relative flex h-20 items-center justify-between md:h-24">
-          {/* Mobile hamburger sits on the left so the logo can stay centred */}
-          <div className="md:hidden">
+        <div className="flex h-20 items-center md:h-24">
+          {/* Mobile hamburger on the left */}
+          <div className="mr-3 md:hidden">
             <MobileNav transparent={transparent} />
           </div>
 
-          {/* Centered logo. On md+ it's absolutely positioned so it sits
-              dead-centre regardless of right-side controls width. */}
+          {/* Logo — flush left, bigger glyph (founder direction). */}
           <Link
             href="/"
-            className="group flex items-center md:absolute md:left-1/2 md:-translate-x-1/2"
+            className="group flex shrink-0 items-center"
             aria-label={`${siteConfig.name} ${homeLabel}`}
           >
             <Image
@@ -87,12 +86,35 @@ export function HeaderShell({
               priority
               fetchPriority="high"
               quality={82}
-              className="h-12 w-auto transition-opacity group-hover:opacity-75 md:h-14"
+              className="h-14 w-auto transition-opacity group-hover:opacity-75 md:h-16 lg:h-[68px]"
             />
           </Link>
 
-          {/* Right side — language picker + account */}
-          <div className="ml-auto flex items-center gap-3 md:gap-5">
+          {/* Nav — inline, centred between logo and right controls.
+              Slightly bolder type (font-medium) and a touch larger so it
+              reads as the primary wayfinding, not a label row. */}
+          <nav
+            className="hidden flex-1 items-center justify-center gap-9 px-8 md:flex lg:gap-12"
+            aria-label="Main"
+          >
+            {navItems.map((item, i) => (
+              <Link
+                key={`${item.href}-${i}`}
+                href={item.href}
+                className={cn(
+                  "text-[13px] font-medium uppercase tracking-[0.28em] transition-colors",
+                  transparent
+                    ? "text-white/90 hover:text-white"
+                    : "text-foreground/85 hover:text-foreground",
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right controls — language picker + account icon. */}
+          <div className="ml-auto flex shrink-0 items-center gap-3 md:gap-5">
             <LanguageToggle
               className={cn(
                 "hidden md:flex",
@@ -105,42 +127,16 @@ export function HeaderShell({
               className={cn(
                 "hidden h-10 w-10 items-center justify-center transition-colors md:inline-flex",
                 transparent
-                  ? "text-white/85 hover:text-white"
-                  : "text-foreground/70 hover:text-foreground",
+                  ? "text-white/90 hover:text-white"
+                  : "text-foreground/80 hover:text-foreground",
               )}
             >
-              <User className="h-[18px] w-[18px]" strokeWidth={1.5} />
+              <User className="h-[18px] w-[18px]" strokeWidth={1.6} />
             </Link>
-            {/* Mobile hamburger placeholder (mobile hamburger is actually on
-                the LEFT — this kept layout balanced when no left-side icon
-                existed). With the left-side hamburger in place, this slot
-                stays empty on mobile.*/}
+            {/* Mobile-only filler — keeps mobile right edge balanced */}
             <div className="w-10 md:hidden" aria-hidden />
           </div>
         </div>
-
-        {/* Nav row — centred horizontal list. Bigger type per founder
-            (June 2026 direction): from 11px / 0.32em to 13px / 0.28em
-            with extra padding. Hidden on mobile (mobile uses hamburger). */}
-        <nav
-          className="hidden items-center justify-center gap-10 pb-6 md:flex lg:gap-14"
-          aria-label="Main"
-        >
-          {navItems.map((item, i) => (
-            <Link
-              key={`${item.href}-${i}`}
-              href={item.href}
-              className={cn(
-                "text-[13px] uppercase tracking-[0.3em] transition-colors",
-                transparent
-                  ? "text-white/85 hover:text-white"
-                  : "text-foreground/75 hover:text-foreground",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
       </div>
     </header>
   );
