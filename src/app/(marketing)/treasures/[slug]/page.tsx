@@ -20,7 +20,6 @@ import { getUi } from "@/lib/i18n/ui";
 import { JsonLd } from "@/components/common/json-ld";
 import { ProductHero } from "@/components/treasures/product-hero";
 import { ProductGallery } from "@/components/treasures/product-gallery";
-import { UseCases } from "@/components/treasures/use-cases";
 import { ProductFaqs } from "@/components/treasures/product-faqs";
 
 export function generateStaticParams() {
@@ -403,13 +402,13 @@ export default async function ProductPage({ params }: Params) {
           </div>
         </section>
 
-        {/* ─────────── Use cases — where it lives ─────────── */}
-        <UseCases
-          locale={locale}
-          productName={product.name}
-          slug={product.slug}
-          category={product.category}
-        />
+        {/* "Where it lives" use-cases section removed (founder feedback,
+            June 2026, eleventh pass): the curated atelier renders showed
+            different products, not multi-angle shots of the same piece,
+            so each detail page advertised pieces that weren't for sale
+            on it. The product gallery above already carries 5–6 authentic
+            studio shots per treasure; dropping the 5-image mosaic also
+            shaves a meaningful chunk of bytes per page load. */}
 
         {/* ─────────── FAQs ─────────── */}
         <section
