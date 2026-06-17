@@ -325,8 +325,10 @@ function AwardOverview({ award }: { award: Award }) {
       className="relative w-full bg-background"
     >
       <div className="mx-auto grid max-w-[1480px] grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:gap-20 lg:px-12 lg:py-28">
-        {/* Image */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden border border-border/60 bg-muted lg:order-1">
+        {/* Image — landscape 3:2 matches the atelier render source ratio
+            so the related piece fills the frame edge-to-edge without
+            cropping. */}
+        <div className="relative aspect-[3/2] w-full overflow-hidden border border-border/60 bg-muted lg:order-1">
           <Image
             src={overview.image}
             alt={overview.imageAlt}
@@ -399,20 +401,25 @@ function AwardPortfolio({ award }: { award: Award }) {
 
 function PortfolioCard({ card }: { card: AwardPortfolioCard }) {
   if (card.kind === "image") {
+    // Image cards now use a white frame so white-background product
+    // cutouts (HORIZON, EQUILIBRIUM, SHELL et al.) sit on the surface
+    // they were photographed on, with object-contain + padding so the
+    // whole piece is visible (founder feedback June 2026, ninth pass:
+    // award detail page felt disconnected from the actual products).
     return (
-      <li className="group relative aspect-[4/5] overflow-hidden border border-white/10 bg-white/5">
+      <li className="group relative aspect-[4/3] overflow-hidden border border-white/10 bg-white">
         <Image
           src={card.image}
           alt={card.imageAlt}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+          className="object-contain p-6 transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03] lg:p-8"
         />
       </li>
     );
   }
   return (
-    <li className="flex aspect-[4/5] flex-col justify-center border border-white/10 bg-white/[0.04] p-8 lg:p-10">
+    <li className="flex aspect-[4/3] flex-col justify-center border border-white/10 bg-white/[0.04] p-8 lg:p-10">
       <h3 className="font-serif text-2xl font-light leading-[1.15] text-background md:text-3xl">
         {card.title}
       </h3>

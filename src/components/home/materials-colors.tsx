@@ -1,7 +1,14 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { getHome } from "@/content/home";
 import type { Locale } from "@/lib/i18n/config";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+
+// Real silver-weathered cork piece (Shale Belly Silver), used as the
+// editorial pull-out anchor so visitors see actual silver bark rather
+// than a flat color swatch (founder direction, June 2026, ninth pass).
+const SILVER_PIECE_IMAGE =
+  "/products/SHALE-COLLECTION_silver_Fundo_BRANCO_Peca-01__MGL1307-f222b8c0ea.webp";
 
 /**
  * Materials / Colors — founder direction (June 2026). Four cork
@@ -124,9 +131,19 @@ export function MaterialsColors({ locale }: { locale: Locale }) {
         <ScrollReveal delay={0.2} direction="scale" className="mt-20 lg:mt-28">
         <div className="grid grid-cols-1 items-stretch overflow-hidden rounded-sm border border-border/60 lg:grid-cols-[1.05fr_1fr]">
           <div
-            className="relative aspect-[5/4] w-full lg:aspect-auto lg:min-h-[440px]"
+            className="relative aspect-[5/4] w-full overflow-hidden lg:aspect-auto lg:min-h-[440px]"
             style={{ backgroundColor: "#a3a59f" }}
           >
+            {/* Actual silver-weathered cork piece floats on the silver
+                swatch so visitors see the real material rather than a
+                flat colour block. */}
+            <Image
+              src={SILVER_PIECE_IMAGE}
+              alt={data.silverNote.caption}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-contain p-6 lg:p-10"
+            />
             <div
               aria-hidden
               className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.22),_transparent_55%)]"
