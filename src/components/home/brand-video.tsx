@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { home, type HomeContent } from "@/content/home";
@@ -8,6 +8,33 @@ import { home, type HomeContent } from "@/content/home";
 export function BrandVideo({ data: dataProp }: { data?: HomeContent["brandVideo"] } = {}) {
   const data = dataProp ?? home.brandVideo;
   const [open, setOpen] = useState(false);
+
+  // Defer the background iframe until the section actually scrolls into
+  // view. Previously the ambient YouTube embed mounted on first paint and
+  // started downloading + decoding video frames even while the visitor
+  // was still looking at the hero — a meaningful chunk of every home
+  // page load. Now the section shows a YouTube thumbnail until the
+  // visitor approaches, then upgrades to the live embed.
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [bgMounted, setBgMounted] = useState(false);
+  useEffect(() => {
+    if (bgMounted) return;
+    const node = sectionRef.current;
+    if (!node) return;
+    // Mount slightly before the section is visible so the swap from
+    // poster → iframe lands close to when the visitor sees it.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setBgMounted(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [bgMounted]);
 
   // Looped, muted background embed (autoplay-friendly). Mute is required by all
   // browsers for autoplay; controls/info stripped so it reads as ambient footage.
@@ -22,23 +49,41 @@ export function BrandVideo({ data: dataProp }: { data?: HomeContent["brandVideo"
     `https://www.youtube-nocookie.com/embed/${data.youtubeId}` +
     `?autoplay=1&rel=0&modestbranding=1`;
 
+  // YouTube serves a free poster image we can use as a placeholder until
+  // the iframe mounts. hqdefault is light (~25 KB) and good enough for a
+  // backdrop that will be overlaid with gradients anyway.
+  const posterUrl = `https://i.ytimg.com/vi/${data.youtubeId}/hqdefault.jpg`;
+
   return (
     <section
+      ref={sectionRef}
       id="brand-video"
-      className="relative w-full overflow-hidden border-y border-border/60"
+      className="relative w-full overflow-hidden border-y border-border/60 bg-[#15110d]"
       aria-labelledby="brand-video-heading"
     >
-      {/* Background video — covers the whole section via 16:9 over-sizing */}
+      {/* Background — poster while waiting, then live iframe */}
       <div aria-hidden className="absolute inset-0 z-0">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[max(100vw,177.78vh)] h-[max(56.25vw,100vh)] pointer-events-none">
-          <iframe
-            src={bgSrc}
-            title=""
-            tabIndex={-1}
-            aria-hidden
-            allow="autoplay; encrypted-media"
-            className="absolute inset-0 h-full w-full"
-          />
+          {bgMounted ? (
+            <iframe
+              src={bgSrc}
+              title=""
+              tabIndex={-1}
+              aria-hidden
+              loading="lazy"
+              allow="autoplay; encrypted-media"
+              className="absolute inset-0 h-full w-full"
+            />
+          ) : (
+            <img
+              src={posterUrl}
+              alt=""
+              aria-hidden
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          )}
         </div>
         {/* Cinematic overlay so text stays readable on any frame */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/70" />
