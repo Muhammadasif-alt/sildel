@@ -99,6 +99,90 @@ export const homePt = {
     cta: { label: "Explorar tesouros", href: "/treasures" },
   },
 
+  /* História da marca — enquadramento "prodígio" (Junho 2026). A Isabel
+     não "chegou" à cortiça — cresceu junto dela. Trinta anos a trabalhar
+     um único material, apenas com as mãos. Diferencia-se de "30 anos
+     de experiência" (parece gasto) ao liderar com intimidade e uma
+     recusa da cortiça industrial/composta que domina o mercado. Citação
+     directa do listing da Luxuri Magazine. */
+  brandStoryProdigy: {
+    eyebrow: "O Prodígio",
+    title: "Trinta anos dentro",
+    titleAccent: "de um único material.",
+    leadParagraph:
+      "Isabel Silva não chegou à cortiça. Cresceu junto dela. Mais de trinta anos depois, continua a trabalhar apenas este material — e apenas com as mãos.",
+    body: [
+      "A maior parte do que parece cortiça no mundo é fabricada — composta, prensada, tingida. A Isabel trabalha com a casca autêntica: o material irregular, retirado à mão, assinado pela própria árvore — aquele que a versão industrial foi criada para substituir. Recusa a substituição.",
+      "Cada peça Sildel é moldada, lixada e assinada dentro do atelier de Esmoriz, no norte de Portugal. Nada é reeditado. A próxima peça começará a partir de uma casca diferente, com um veio diferente, e tornar-se-á a sua própria forma — nunca cópia da anterior.",
+    ],
+    quote:
+      "A certa altura, a proximidade é tão extraordinária que já não sabemos se a cortiça é parte de nós — ou se somos nós que pertencemos a ela. A resposta é simples. A cortiça é uma questão de amor.",
+    quoteAttribution: "Isabel Silva, fundadora",
+    image: "/Slidel/ISABEL-01-2048x2048.webp",
+    imageAlt:
+      "Retrato de Isabel Silva, fundadora da Sildel, no atelier de Esmoriz.",
+  },
+
+  /* Origens Alentejo — história de origem cortiça-vinho (Junho 2026).
+     Mesma terra, mesmo céu, mesma paciência. O montado alentejano é a
+     floresta produtiva onde cada peça começa, e é a mesma paisagem que
+     alimenta as adegas dos vinhos mais respeitados de Portugal. Pausa
+     editorial, sem CTA — secções de origem funcionam melhor como
+     momento contemplativo do que como argumento de venda. */
+  alentejoOrigins: {
+    eyebrow: "Origem",
+    title: "A mesma terra dá",
+    titleAccent: "cortiça e vinho.",
+    body: [
+      "O Alentejo é o sul de Portugal — luz longa, colinas lentas, e uma terra serena que há séculos sustenta sobreiros e videiras lado a lado.",
+      "Cada peça Sildel começa no montado, a floresta produtiva desta região. É a mesma paisagem que enche as adegas dos vinhos mais respeitados de Portugal.",
+      "A cortiça e o vinho vêm do mesmo chão. Mantêm a mesma companhia. Partilham o mesmo tempo.",
+    ],
+    cadence: ["Mesmas colinas", "Mesmo sol", "Mesma paciência"],
+    image:
+      "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+    imageAlt:
+      "Plano editorial de um sobreiro português ancestral, casca recentemente colhida, no montado alentejano.",
+    inset:
+      "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+    insetAlt:
+      "Pilhas de pranchas de cortiça recém-colhidas a curar sob sobreiros à hora dourada.",
+  },
+
+  /* Porquê cortiça autêntica — banda educativa (Junho 2026). Três factos
+     sobre raridade, enquadrados como numerais grandes + corpo curto.
+     Sem imagens, sem CTA — mantém a secção rápida e deixa os factos
+     respirar. Aparece imediatamente antes de Materiais/Cores para que
+     "o que torna este material raro" seja respondido antes de "quais
+     são as suas cores". */
+  whyAuthenticCork: {
+    eyebrow: "Porquê Cortiça Autêntica",
+    title: "O material mais raro",
+    titleAccent: "de que ninguém fala.",
+    lead:
+      "A cortiça é colhida de uma única espécie de árvore, num canto do mundo, à mão, uma vez de nove em nove anos. O mundo ainda não reparou.",
+    facts: [
+      {
+        number: "200+",
+        label: "Anos por sobreiro",
+        body:
+          "Um sobreiro português vive mais de dois séculos e é descortiçado dezasseis a dezassete vezes ao longo da sua vida. Cada peça que segura é casca que a árvore já regenerou pelo menos uma vez.",
+      },
+      {
+        number: "9",
+        label: "Anos entre colheitas",
+        body:
+          "A casca é retirada à mão, depois deixada a regenerar nove anos completos até à próxima colheita. Sem atalho, sem mecanização — apenas o ritmo da própria árvore, mantido há séculos.",
+      },
+      {
+        number: "0",
+        label: "Árvores abatidas",
+        body:
+          "Nem uma única árvore é abatida para fazer uma peça Sildel. A cortiça é a casca; a árvore continua viva, a crescer, e a alimentar a mesma floresta de onde virá a próxima colheita.",
+      },
+    ],
+  },
+
   /* Materiais / Cores — direcção da fundadora (Junho 2026). Quatro
      tonalidades de cortiça, com Prateado como a USP de assinatura: 2-3
      anos de clima atlântico transformam a casca numa pátina metálica

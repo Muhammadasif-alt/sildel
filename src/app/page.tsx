@@ -7,6 +7,9 @@ import { PartnersStrip } from "@/components/partners/partners-strip";
 import { Awards } from "@/components/home/awards";
 import { WhyChooseSildel } from "@/components/home/why-choose-sildel";
 import { MaterialsColors } from "@/components/home/materials-colors";
+import { BrandStoryProdigy } from "@/components/home/brand-story-prodigy";
+import { AlentejoOrigins } from "@/components/home/alentejo-origins";
+import { WhyAuthenticCork } from "@/components/home/why-authentic-cork";
 
 // ISR — serve a cached HTML for one hour. Admin "save" actions call
 // revalidatePath() so editorial changes still land immediately.
@@ -55,6 +58,15 @@ export default async function HomePage() {
       <JsonLd data={[videoJsonLd]} />
       <main className="flex flex-1 flex-col">
         <BlocksRenderer pageKey="home" />
+        {/* Three editorial sections added June 2026 (founder direction):
+            who made this (prodigy story), where it begins (Alentejo
+            origins), what makes the material rare (3 facts). They sit
+            between the CMS shopping flow and the closing static
+            sections so visitors travel category → maker → land →
+            material → colours → why → awards → partners. */}
+        <BrandStoryProdigy locale={locale} />
+        <AlentejoOrigins locale={locale} />
+        <WhyAuthenticCork locale={locale} />
         <MaterialsColors locale={locale} />
         <WhyChooseSildel locale={locale} />
         <Awards locale={locale} />

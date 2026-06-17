@@ -100,6 +100,89 @@ export const homeEn = {
     cta: { label: "Explore treasures", href: "/treasures" },
   },
 
+  /* Brand Story — prodigy framing (founder direction, June 2026).
+     Isabel didn't "come" to cork — she grew up close to it. Thirty years
+     working a single material, only with her hands. Differentiates from
+     "30 years of experience" (sounds tired) by leading with intimacy
+     and a refusal of the industrial/composite cork that dominates the
+     market. Pull-quote borrowed verbatim from Luxuri Magazine listing. */
+  brandStoryProdigy: {
+    eyebrow: "The Prodigy",
+    title: "Thirty years inside",
+    titleAccent: "one material.",
+    leadParagraph:
+      "Isabel Silva did not come to cork. She grew up close to it. More than thirty years later, she is still working only this material — and only with her hands.",
+    body: [
+      "Most of what looks like cork in the world is engineered — composite, pressed, dyed. Isabel works with authentic bark: the irregular, hand-stripped, signed-by-the-tree material that the engineered version was made to replace. She refuses the replacement.",
+      "Each Sildel piece is shaped, sanded and signed inside the Esmoriz atelier in northern Portugal. Nothing is reissued. The next piece will start from a different bark, with a different grain, and become its own form — never a copy of the last one.",
+    ],
+    quote:
+      "At a certain point, the closeness is so extraordinary that we no longer know if cork is part of us — or if we are the ones who belong to it. The answer is simple. Cork is a matter of love.",
+    quoteAttribution: "Isabel Silva, founder",
+    image: "/Slidel/ISABEL-01-2048x2048.webp",
+    imageAlt:
+      "Portrait of Isabel Silva, founder of Sildel, inside the Esmoriz atelier.",
+  },
+
+  /* Alentejo Origins — wine-and-cork origin story (founder direction,
+     June 2026). Same soil, same sky, same patience. The Alentejo
+     montado is the working cork forest where every piece begins, and
+     it's the same landscape that feeds Portugal's most respected wine
+     cellars. Editorial pause, no CTA — origin sections work better as
+     a contemplative moment than a sales beat. */
+  alentejoOrigins: {
+    eyebrow: "Origins",
+    title: "The same earth makes",
+    titleAccent: "cork and wine.",
+    body: [
+      "Alentejo is Portugal's south — long light, slow hills, and a quiet earth that has carried cork oaks and grape vines side by side for centuries.",
+      "Every Sildel piece begins in the montado, the working cork forest of this region. It is the same landscape that fills the cellars of Portugal's most respected wine houses.",
+      "Cork and wine come from the same ground. They keep the same company. They share the same time.",
+    ],
+    cadence: ["Same hills", "Same sun", "Same patience"],
+    image:
+      "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+    imageAlt:
+      "Wide editorial shot of an ancient Portuguese cork oak tree, bark recently harvested, in the Alentejo montado.",
+    inset:
+      "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+    insetAlt:
+      "Tall stacks of freshly harvested cork sheets curing under cork oak trees at golden hour.",
+  },
+
+  /* Why Authentic Cork — education band (founder direction, June 2026).
+     Three facts about rarity, framed as big numerals + short body. No
+     images, no CTA — keeps the section fast and lets the facts breathe.
+     Sits just before Materials/Colors so "what makes this material rare"
+     answers before "what its colors are". */
+  whyAuthenticCork: {
+    eyebrow: "Why Authentic Cork",
+    title: "The rarest material",
+    titleAccent: "no one talks about.",
+    lead:
+      "Cork is harvested from one species of tree, in one corner of the world, by hand, once every nine years. The world hasn't noticed.",
+    facts: [
+      {
+        number: "200+",
+        label: "Years per tree",
+        body:
+          "A Portuguese cork oak lives more than two centuries and is harvested sixteen to seventeen times in its lifetime. Each piece you hold is bark the tree has grown back at least once.",
+      },
+      {
+        number: "9",
+        label: "Years between harvests",
+        body:
+          "The bark is stripped by hand, then left to regrow for nine full years before the next harvest. No shortcut, no mechanisation — just the tree's own rhythm, kept for centuries.",
+      },
+      {
+        number: "0",
+        label: "Trees felled",
+        body:
+          "Not a single tree is cut to make a Sildel piece. Cork is the bark; the tree keeps living, growing, and feeding the same forest the next harvest will come from.",
+      },
+    ],
+  },
+
   /* Materials / Colors — Isabel's June 2026 direction. Four cork
      tonalities, with Silver as the signature USP: 2-3 years of Atlantic
      weather earn the bark a luminous metal patina no machine can fake.
