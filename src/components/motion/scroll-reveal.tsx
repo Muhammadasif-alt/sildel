@@ -1,54 +1,41 @@
 "use client";
 
-import { motion, useInView, type Variants } from "motion/react";
-import { useRef, type ReactNode } from "react";
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 type Direction = "up" | "down" | "left" | "right" | "scale" | "fade";
 
-function variants(direction: Direction, distance: number): Variants {
-  const hidden: Record<string, number> = { opacity: 0 };
-  switch (direction) {
-    case "up":
-      hidden.y = distance;
-      break;
-    case "down":
-      hidden.y = -distance;
-      break;
-    case "left":
-      hidden.x = distance;
-      break;
-    case "right":
-      hidden.x = -distance;
-      break;
-    case "scale":
-      hidden.scale = 0.96;
-      break;
-    case "fade":
-    default:
-      break;
-  }
-  return {
-    hidden,
-    visible: { opacity: 1, y: 0, x: 0, scale: 1 },
-  };
-}
+const HIDDEN_TRANSFORM: Record<Direction, (distance: number) => string> = {
+  up: (d) => `translate3d(0, ${d}px, 0)`,
+  down: (d) => `translate3d(0, ${-d}px, 0)`,
+  left: (d) => `translate3d(${d}px, 0, 0)`,
+  right: (d) => `translate3d(${-d}px, 0, 0)`,
+  scale: () => "scale(0.96)",
+  fade: () => "none",
+};
 
 /**
- * ScrollReveal — drop-in motion wrapper for any block that should
- * animate into view on scroll. Reusable so the whole site shares a
- * single timing language (founder direction, June 2026: subtle,
- * Quinta do Crasto-class motion across every section).
+ * ScrollReveal — native IntersectionObserver-based reveal wrapper
+ * (founder direction June 2026: keep the Quinta do Crasto-class
+ * scroll-in motion, but kill the framer-motion overhead).
  *
- *   <ScrollReveal>            // default: 24px from below, 0.7s ease
+ * Previously used `motion`'s `useInView` + `<motion.div>`, which
+ * created a per-instance observer through the Framer hook stack and
+ * a per-instance animation engine. With ~25 ScrollReveal nodes on
+ * the home page, that was real hydration work for what is, visually,
+ * a fade-and-translate transition any modern browser handles in CSS.
+ *
+ * This implementation:
+ *   - One native IntersectionObserver per instance (still cheap; the
+ *     Intersection API is implemented in C++ in every modern browser).
+ *   - Pure CSS transition driven by class flip — no per-frame JS.
+ *   - `prefers-reduced-motion` honoured: users with the OS toggle on
+ *     see the content rendered final-state immediately, no animation.
+ *
+ *   <ScrollReveal>                                  // default: 24px from below, 0.7s ease
  *   <ScrollReveal delay={0.2}>
  *   <ScrollReveal direction="down" distance={40}>   // drops from above
  *   <ScrollReveal direction="scale">                // gentle zoom-in
- *
- * Plays once when 10% inside the viewport, then stays. The wrapping
- * div is `<div>` by default but we keep it semantically transparent
- * (just adds opacity + transform inline-style on the parent).
  */
 export function ScrollReveal({
   children,
@@ -68,18 +55,51 @@ export function ScrollReveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once, margin: "-10% 0px" });
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    // Honour OS-level reduced-motion: skip the animation entirely.
+    if (typeof window !== "undefined") {
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (mq.matches) {
+        setVisible(true);
+        return;
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            if (once) observer.disconnect();
+          } else if (!once) {
+            setVisible(false);
+          }
+        }
+      },
+      { rootMargin: "-10% 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [once]);
+
+  const hiddenTransform = HIDDEN_TRANSFORM[direction](distance);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={variants(direction, distance)}
-      transition={{ duration, delay, ease: EASE }}
-      className={className}
+      className={cn("will-change-[opacity,transform]", className)}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "none" : hiddenTransform,
+        transition: `opacity ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

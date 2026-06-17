@@ -25,7 +25,16 @@ const FADE_MS = 1200;
 export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  // Two more pause flags, both for free perf wins after first paint:
+  //   - offscreen: once the visitor scrolls past the hero, the timer
+  //     keeps running and triggering re-renders even though no-one is
+  //     looking. Skip it.
+  //   - hidden: when the tab is in the background, pause too — avoids
+  //     burning CPU + waking the cross-fade transitions on a hidden tab.
+  const [offscreen, setOffscreen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const total = slides.length;
+  const sectionRef = useRef<HTMLElement | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Modulo wraparound so the slider loops forever — visitor never hits an end.
@@ -37,12 +46,32 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
   const prev = useCallback(() => goTo(index - 1), [goTo, index]);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || offscreen || hidden) return;
     timerRef.current = setTimeout(next, AUTOPLAY_MS);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [index, paused, next]);
+  }, [index, paused, offscreen, hidden, next]);
+
+  // Watch the section's visibility — pause autoplay once it scrolls out.
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setOffscreen(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  // Pause when the tab is hidden (background tab, minimised window).
+  useEffect(() => {
+    const onVisibility = () => setHidden(document.hidden);
+    document.addEventListener("visibilitychange", onVisibility);
+    onVisibility();
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
 
   // Only fetch slide images we actually need right now (current + prev +
   // next for smooth cross-fade), instead of mounting all six and burning
@@ -67,6 +96,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
 
   return (
     <section
+      ref={sectionRef}
       className="relative w-full overflow-hidden isolate min-h-[100svh] bg-[#15110d]"
       aria-roledescription="carousel"
       aria-label="Sildel collections"
