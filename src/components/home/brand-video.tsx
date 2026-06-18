@@ -9,31 +9,43 @@ export function BrandVideo({ data: dataProp }: { data?: HomeContent["brandVideo"
   const data = dataProp ?? home.brandVideo;
   const [open, setOpen] = useState(false);
 
-  // Defer the background iframe until the section actually scrolls into
-  // view. Previously the ambient YouTube embed mounted on first paint and
-  // started downloading + decoding video frames even while the visitor
-  // was still looking at the hero — a meaningful chunk of every home
-  // page load. Now the section shows a YouTube thumbnail until the
-  // visitor approaches, then upgrades to the live embed.
+  // Defer the background iframe by a short post-paint timeout rather
+  // than waiting for the section to scroll into view. Founder feedback
+  // June 2026 (twelfth pass): scroll-based deferral made the iframe
+  // start loading too late — visitors arrived at the section before
+  // YouTube finished spinning up and saw a black loading frame for a
+  // few seconds. A short 600ms idle gives the critical first-paint
+  // resources (hero LCP, fonts) priority, then mounts the iframe so it
+  // is already buffering long before the visitor scrolls down to it.
   const sectionRef = useRef<HTMLElement | null>(null);
   const [bgMounted, setBgMounted] = useState(false);
   useEffect(() => {
     if (bgMounted) return;
-    const node = sectionRef.current;
-    if (!node) return;
-    // Mount slightly before the section is visible so the swap from
-    // poster → iframe lands close to when the visitor sees it.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setBgMounted(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
+    // Prefer requestIdleCallback when available so we yield to anything
+    // truly critical happening on first paint; fall back to a small
+    // setTimeout for browsers that don't support it (Safari).
+    let cancelled = false;
+    let idleHandle: number | undefined;
+    let timeoutHandle: ReturnType<typeof setTimeout> | undefined;
+    const mount = () => {
+      if (!cancelled) setBgMounted(true);
+    };
+    const w = window as typeof window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    if (typeof w.requestIdleCallback === "function") {
+      idleHandle = w.requestIdleCallback(mount, { timeout: 1200 });
+    } else {
+      timeoutHandle = setTimeout(mount, 600);
+    }
+    return () => {
+      cancelled = true;
+      if (idleHandle !== undefined && typeof w.cancelIdleCallback === "function") {
+        w.cancelIdleCallback(idleHandle);
+      }
+      if (timeoutHandle !== undefined) clearTimeout(timeoutHandle);
+    };
   }, [bgMounted]);
 
   // Looped, muted background embed (autoplay-friendly). Mute is required by all
@@ -79,7 +91,6 @@ export function BrandVideo({ data: dataProp }: { data?: HomeContent["brandVideo"
               src={posterUrl}
               alt=""
               aria-hidden
-              loading="lazy"
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />
