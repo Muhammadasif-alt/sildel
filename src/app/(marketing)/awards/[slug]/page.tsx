@@ -366,17 +366,29 @@ function AwardOverview({ award }: { award: Award }) {
 }
 
 /* ─────────────────────────────────────────── Portfolio ─────────────── */
-/* 2x3 grid of alternating image / text cards — Dehleez-style. */
+/* Three commitments — clean editorial layout (founder feedback, June
+   2026, twelfth pass): the previous 2×3 grid mixed white-bg product
+   cutouts with dark-bg text cards and read as fragmented chrome rather
+   than a single statement. Filter to the three TEXT commitments only
+   and present them as a typographic three-column block — numbered
+   hairlines, serif heading, body. Same language as the Why Authentic
+   Cork band on the home page so the brand voice is consistent. */
+
+type AwardTextCard = Extract<AwardPortfolioCard, { kind: "text" }>;
 
 function AwardPortfolio({ award }: { award: Award }) {
   const { portfolio } = award.detail;
+  const commitments: AwardTextCard[] = portfolio.cards.filter(
+    (c): c is AwardTextCard => c.kind === "text",
+  );
+
   return (
     <section
       aria-labelledby={`portfolio-${award.slug}`}
       className="relative w-full bg-foreground text-background"
     >
-      <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-10 lg:py-28">
-        <div className="mb-14 max-w-2xl lg:mb-20">
+      <div className="mx-auto max-w-[1600px] px-6 py-24 lg:px-12 lg:py-32">
+        <div className="mx-auto mb-16 max-w-3xl text-center lg:mb-20">
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
             {portfolio.eyebrow}
           </p>
@@ -389,44 +401,30 @@ function AwardPortfolio({ award }: { award: Award }) {
           </h2>
         </div>
 
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {portfolio.cards.map((card, i) => (
-            <PortfolioCard key={i} card={card} />
+        <ul className="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-8 lg:gap-14">
+          {commitments.map((card, i) => (
+            <li
+              key={`${card.title}-${i}`}
+              className="flex flex-col items-start text-left"
+            >
+              <p className="font-serif text-5xl font-light leading-none text-primary md:text-6xl tabular-nums">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <span
+                aria-hidden
+                className="mt-6 mb-5 inline-block h-px w-12 bg-primary/70"
+              />
+              <h3 className="font-serif text-xl font-light leading-snug text-background md:text-2xl">
+                {card.title}
+              </h3>
+              <p className="mt-4 text-base leading-relaxed text-background/75">
+                {card.body}
+              </p>
+            </li>
           ))}
         </ul>
       </div>
     </section>
-  );
-}
-
-function PortfolioCard({ card }: { card: AwardPortfolioCard }) {
-  if (card.kind === "image") {
-    // Image cards now use a white frame so white-background product
-    // cutouts (HORIZON, EQUILIBRIUM, SHELL et al.) sit on the surface
-    // they were photographed on, with object-contain + padding so the
-    // whole piece is visible (founder feedback June 2026, ninth pass:
-    // award detail page felt disconnected from the actual products).
-    return (
-      <li className="group relative aspect-[4/3] overflow-hidden border border-white/10 bg-white">
-        <Image
-          src={card.image}
-          alt={card.imageAlt}
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-contain p-6 transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03] lg:p-8"
-        />
-      </li>
-    );
-  }
-  return (
-    <li className="flex aspect-[4/3] flex-col justify-center border border-white/10 bg-white/[0.04] p-8 lg:p-10">
-      <h3 className="font-serif text-2xl font-light leading-[1.15] text-background md:text-3xl">
-        {card.title}
-      </h3>
-      <p className="mt-5 text-base leading-relaxed text-background/75">
-        {card.body}
-      </p>
-    </li>
   );
 }
 
