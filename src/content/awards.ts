@@ -249,10 +249,9 @@ const awardsEn: AwardsContent = {
           "sustainable cork harvest",
           "Portuguese craftsmanship",
         ],
-        heroImage:
-          "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+        heroImage: "/Slidel/harvest/harvest-axe.jpg",
         heroImageAlt:
-          "An ancient Portuguese cork oak tree with bark recently harvested — the source of every Sildel piece.",
+          "Sildel harvesters at work on an old Alentejo cork oak — one stripping the trunk by hand with an axe, another working higher up. The freshly exposed wood is the bright orange beneath the dark cork bark.",
         heroSubtitle:
           "LUXlife Home & Garden Awards 2026 — Portugal",
         credential: {
@@ -271,10 +270,9 @@ const awardsEn: AwardsContent = {
           ],
           citation:
             "Following our merit-led research and evaluation process Sildel — We Think Cork has been recognised as the deserving recipient.",
-          image:
-            "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+          image: "/Slidel/harvest/harvest-team.jpg",
           imageAlt:
-            "Stacks of freshly harvested cork sheets curing under the oaks at golden hour.",
+            "The Sildel harvest crew with a trailer fully loaded with cork bark in the Alentejo montado — the team behind every piece.",
         },
         portfolio: {
           eyebrow: "Why this recognition",
@@ -552,10 +550,9 @@ const awardsPt: AwardsContent = {
           "extração sustentável cortiça",
           "artesanato português",
         ],
-        heroImage:
-          "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+        heroImage: "/Slidel/harvest/harvest-axe.jpg",
         heroImageAlt:
-          "Um sobreiro português ancião com a cortiça recém-extraída — a origem de cada peça Sildel.",
+          "Descortiçadores Sildel num antigo sobreiro alentejano — um a retirar a casca à mão com machado, outro a trabalhar mais acima. A madeira recém-exposta é o laranja vivo por baixo da cortiça escura.",
         heroSubtitle:
           "LUXlife Home & Garden Awards 2026 — Portugal",
         credential: {
@@ -574,10 +571,9 @@ const awardsPt: AwardsContent = {
           ],
           citation:
             "Após o nosso processo de pesquisa e avaliação por mérito, a Sildel — We Think Cork foi reconhecida como a merecedora distinta.",
-          image:
-            "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+          image: "/Slidel/harvest/harvest-team.jpg",
           imageAlt:
-            "Pilhas de cortiça recém-extraída a curar sob os sobreiros, à hora dourada.",
+            "A equipa de colheita da Sildel com o reboque carregado de cortiça no montado alentejano — as mãos por detrás de cada peça.",
         },
         portfolio: {
           eyebrow: "Porquê esta distinção",
