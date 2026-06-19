@@ -1,0 +1,100 @@
+import Image from "next/image";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { getOurStory } from "@/content/our-story";
+import type { Locale } from "@/lib/i18n/config";
+
+/**
+ * Founder section, editorial pass (founder direction, June 2026: no
+ * three-column grids, match Quinta Nova's two-up image+text rhythm).
+ * Replaces the earlier Founder card-with-stats with a clean magazine
+ * layout — tall portrait one side, eyebrow + serif pull quote + body
+ * paragraphs + signature on the other.
+ *
+ *   mirror=false  → portrait LEFT  | quote RIGHT
+ *   mirror=true   → portrait RIGHT | quote LEFT
+ */
+export function FounderEditorial({
+  locale,
+  mirror = false,
+}: {
+  locale: Locale;
+  mirror?: boolean;
+}) {
+  const { founder } = getOurStory(locale);
+
+  const portraitBlock = (
+    <ScrollReveal
+      direction={mirror ? "right" : "left"}
+      className={mirror ? "order-1 lg:order-2" : undefined}
+    >
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[88vh] lg:min-h-[720px]">
+        <Image
+          src={founder.image}
+          alt={founder.imageAlt}
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="object-cover object-top"
+        />
+      </div>
+    </ScrollReveal>
+  );
+
+  const copyBlock = (
+    <ScrollReveal
+      delay={0.15}
+      direction={mirror ? "left" : "right"}
+      className={mirror ? "order-2 lg:order-1" : undefined}
+    >
+      <div
+        className={
+          mirror
+            ? "flex flex-col justify-center px-6 py-10 md:px-10 md:py-14 lg:px-16 lg:py-0 xl:px-24 2xl:pl-32"
+            : "flex flex-col justify-center px-6 py-10 md:px-10 md:py-14 lg:px-16 lg:py-0 xl:px-24 2xl:pr-32"
+        }
+      >
+        <div className={mirror ? "max-w-xl lg:ml-auto" : "max-w-xl"}>
+          <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-foreground/65">
+            {founder.eyebrow}
+          </p>
+          <blockquote className="font-serif text-3xl font-light italic leading-[1.18] text-foreground md:text-4xl lg:text-[2.5rem]">
+            &ldquo;{founder.pullQuote}&rdquo;
+          </blockquote>
+          <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground md:text-[17px]">
+            {founder.body.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+          <p className="mt-7 font-serif text-xl italic text-foreground md:text-2xl">
+            {founder.closing}
+          </p>
+          <div className="mt-10 flex items-center gap-4">
+            <span className="h-px w-10 bg-foreground/40" aria-hidden />
+            <p className="text-[11px] uppercase tracking-[0.32em] text-foreground/75">
+              {founder.signature.name}
+              <span className="mx-2 text-foreground/40">·</span>
+              {founder.signature.role}
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+
+  return (
+    <section
+      aria-label={founder.eyebrow}
+      className="relative w-full bg-background py-12 md:py-16 lg:py-20"
+    >
+      <div
+        className={
+          mirror
+            ? "grid grid-cols-1 items-center lg:grid-cols-[45%_55%]"
+            : "grid grid-cols-1 items-center lg:grid-cols-[55%_45%]"
+        }
+      >
+        {mirror ? copyBlock : portraitBlock}
+        {mirror ? portraitBlock : copyBlock}
+      </div>
+    </section>
+  );
+}
