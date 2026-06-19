@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { TreasuresContent } from "@/content/treasures";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Closing parallax CTA for /treasures — same treatment as
@@ -20,7 +21,7 @@ export function TreasuresClosing({ cta }: { cta: TreasuresContent["cta"] }) {
     >
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
+      <ScrollReveal className="relative z-10 mx-auto max-w-4xl text-center">
         <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-foreground/70">
           {cta.eyebrow}
         </p>
@@ -56,7 +57,7 @@ export function TreasuresClosing({ cta }: { cta: TreasuresContent["cta"] }) {
             {cta.closingLine}
           </p>
         ) : null}
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

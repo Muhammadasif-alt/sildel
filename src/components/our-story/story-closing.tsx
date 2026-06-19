@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getOurStory } from "@/content/our-story";
 import type { Locale } from "@/lib/i18n/config";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Closing parallax CTA for /our-story (founder direction, June 2026:
@@ -28,7 +29,7 @@ export function StoryClosing({ locale }: { locale: Locale }) {
           two sections rhyme across the site. */}
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
+      <ScrollReveal className="relative z-10 mx-auto max-w-4xl text-center">
         <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-foreground/70">
           {cta.eyebrow}
         </p>
@@ -64,7 +65,7 @@ export function StoryClosing({ locale }: { locale: Locale }) {
             {cta.closingLine}
           </p>
         ) : null}
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

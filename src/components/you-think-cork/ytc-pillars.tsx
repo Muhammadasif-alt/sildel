@@ -42,13 +42,13 @@ export function YtcPillars({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[92vh] lg:min-h-[760px]">
+      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[92vh] lg:min-h-[760px]">
         <Image
           src={imageSrc}
           alt={imageAlt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
         />
       </div>
     </ScrollReveal>
@@ -89,25 +89,30 @@ export function YtcPillars({
             </p>
           ) : null}
           <ul className="mt-10 divide-y divide-foreground/10 border-t border-b border-foreground/10">
-            {items.map(({ icon: Icon, title: itemTitle, body: itemBody }) => (
-              <li
-                key={itemTitle}
-                className="grid grid-cols-1 gap-3 py-6 md:grid-cols-[auto_1fr] md:items-start md:gap-6"
-              >
-                <span
-                  aria-hidden
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/80"
+            {items.map(({ icon: Icon, title: itemTitle, body: itemBody }, i) => (
+              <li key={itemTitle}>
+                <ScrollReveal
+                  delay={0.05 + i * 0.1}
+                  distance={16}
+                  duration={0.6}
                 >
-                  <Icon className="h-4 w-4" strokeWidth={1.5} />
-                </span>
-                <div>
-                  <p className="font-serif text-lg font-light italic text-foreground md:text-xl">
-                    {itemTitle}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
-                    {itemBody}
-                  </p>
-                </div>
+                  <div className="grid grid-cols-1 gap-3 py-6 md:grid-cols-[auto_1fr] md:items-start md:gap-6">
+                    <span
+                      aria-hidden
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/80"
+                    >
+                      <Icon className="h-4 w-4" strokeWidth={1.5} />
+                    </span>
+                    <div>
+                      <p className="font-serif text-lg font-light italic text-foreground md:text-xl">
+                        {itemTitle}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                        {itemBody}
+                      </p>
+                    </div>
+                  </div>
+                </ScrollReveal>
               </li>
             ))}
           </ul>

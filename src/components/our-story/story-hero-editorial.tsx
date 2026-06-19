@@ -28,6 +28,10 @@ export function StoryHeroEditorial({ locale }: { locale: Locale }) {
           priority
           sizes="100vw"
           className="object-cover"
+          style={{
+            animation:
+              "kenBurns 24s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate",
+          }}
         />
       </div>
     </section>

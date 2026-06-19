@@ -31,13 +31,13 @@ export function CorkProperties({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[92vh] lg:min-h-[760px]">
+      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[92vh] lg:min-h-[760px]">
         <Image
           src={imageSrc}
           alt={imageAlt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
         />
       </div>
     </ScrollReveal>
@@ -76,17 +76,22 @@ export function CorkProperties({
             {properties.body}
           </p>
           <ul className="mt-10 divide-y divide-foreground/10 border-t border-b border-foreground/10">
-            {properties.items.map((item) => (
-              <li
-                key={item.title}
-                className="grid grid-cols-1 gap-1 py-5 md:grid-cols-[14ch_1fr] md:items-baseline md:gap-8"
-              >
-                <p className="font-serif text-lg font-light italic text-foreground md:text-xl">
-                  {item.title}
-                </p>
-                <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px]">
-                  {item.body}
-                </p>
+            {properties.items.map((item, i) => (
+              <li key={item.title}>
+                <ScrollReveal
+                  delay={0.05 + i * 0.08}
+                  distance={16}
+                  duration={0.6}
+                >
+                  <div className="grid grid-cols-1 gap-1 py-5 md:grid-cols-[14ch_1fr] md:items-baseline md:gap-8">
+                    <p className="font-serif text-lg font-light italic text-foreground md:text-xl">
+                      {item.title}
+                    </p>
+                    <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                      {item.body}
+                    </p>
+                  </div>
+                </ScrollReveal>
               </li>
             ))}
           </ul>

@@ -36,13 +36,13 @@ export function StorySection({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[88vh] lg:min-h-[720px]">
+      <div className="group relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[88vh] lg:min-h-[720px]">
         <Image
           src={data.image}
           alt={data.imageAlt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
         />
       </div>
     </ScrollReveal>

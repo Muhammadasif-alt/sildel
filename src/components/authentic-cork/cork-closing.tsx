@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getAuthenticCork } from "@/content/authentic-cork";
 import type { Locale } from "@/lib/i18n/config";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Closing parallax CTA for /authentic-cork — mirrors the home-page
@@ -22,7 +23,7 @@ export function CorkClosing({ locale }: { locale: Locale }) {
     >
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
+      <ScrollReveal className="relative z-10 mx-auto max-w-4xl text-center">
         <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-foreground/70">
           {cta.eyebrow}
         </p>
@@ -58,7 +59,7 @@ export function CorkClosing({ locale }: { locale: Locale }) {
             {cta.closingLine}
           </p>
         ) : null}
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

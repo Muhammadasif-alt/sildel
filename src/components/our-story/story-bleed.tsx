@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Full-bleed single-image divider for /our-story (founder direction,
@@ -19,15 +20,17 @@ export function StoryBleed({
 }) {
   return (
     <section aria-label={alt} className="relative w-full overflow-hidden bg-muted">
-      <div className="relative aspect-[4/3] w-full md:aspect-[16/9] lg:aspect-[21/9] lg:h-[90vh] lg:min-h-[640px]">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
+      <ScrollReveal direction="scale" distance={0} duration={1.2}>
+        <div className="group relative aspect-[4/3] w-full overflow-hidden md:aspect-[16/9] lg:aspect-[21/9] lg:h-[90vh] lg:min-h-[640px]">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="100vw"
+            className="object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.04]"
+          />
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

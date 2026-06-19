@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Closing parallax CTA for /partners — mirrors the home-page
@@ -34,7 +35,7 @@ export function PartnersClosing({
     >
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
+      <ScrollReveal className="relative z-10 mx-auto max-w-4xl text-center">
         <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-foreground/70">
           {eyebrow}
         </p>
@@ -72,7 +73,7 @@ export function PartnersClosing({
             {closingLine}
           </p>
         ) : null}
-      </div>
+      </ScrollReveal>
     </section>
   );
 }
