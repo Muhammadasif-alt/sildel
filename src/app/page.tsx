@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getHome } from "@/content/home";
 import { ProductFeature } from "@/components/home/product-feature";
+import { ParallaxCta } from "@/components/home/parallax-cta";
 import { HeroSlider } from "@/components/home/hero-slider";
 
 // ISR — serve a cached HTML for one hour. Admin "save" actions call
@@ -90,6 +91,11 @@ export default async function HomePage() {
             "home.newsletter",
           ]}
         />
+        {/* Parallax CTA — last beat before the footer. Fixed-attachment
+            atelier image with a white tint, centred serif headline and
+            a dark-inset Treasures button. Founder direction June 2026
+            (twenty-fourth pass). */}
+        <ParallaxCta locale={locale} />
       </main>
     </>
   );

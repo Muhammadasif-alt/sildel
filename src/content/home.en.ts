@@ -157,6 +157,20 @@ export const homeEn = {
     },
   ],
 
+  /* Parallax CTA — light, editorial pause after the brand video that
+     pushes the visitor into the catalogue. Fixed-attachment atelier
+     backdrop with a heavy white tint so the section reads "luxury
+     estate" rather than "product banner". */
+  parallaxCta: {
+    eyebrow: "The Sildel Collection",
+    title: "Find your treasure.",
+    body:
+      "Browse the full collection — sculpture, lighting, fine arts, tables. Each piece shaped by hand in the Esmoriz atelier, signed, numbered, made to be lived with.",
+    cta: { label: "View All Treasures", href: "/treasures" },
+    image:
+      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+  },
+
   /* Brand Story — prodigy framing (founder direction, June 2026).
      Isabel didn't "come" to cork — she grew up close to it. Thirty years
      working a single material, only with her hands. Differentiates from

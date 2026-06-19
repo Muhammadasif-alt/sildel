@@ -158,6 +158,20 @@ export const homePt = {
     },
   ],
 
+  /* CTA com parallax — pausa editorial clara depois do vídeo da marca
+     que empurra o visitante para o catálogo. Fundo fixo do atelier com
+     véu branco intenso para que a secção se leia "quinta de luxo" e
+     não "banner de produto". */
+  parallaxCta: {
+    eyebrow: "A Colecção Sildel",
+    title: "Encontre o seu tesouro.",
+    body:
+      "Explore toda a colecção — escultura, iluminação, belas artes, mesas. Cada peça moldada à mão no atelier de Esmoriz, assinada, numerada, feita para ser vivida.",
+    cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
+    image:
+      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+  },
+
   /* História da marca — enquadramento "prodígio" (Junho 2026). A Isabel
      não "chegou" à cortiça — cresceu junto dela. Trinta anos a trabalhar
      um único material, apenas com as mãos. Diferencia-se de "30 anos
