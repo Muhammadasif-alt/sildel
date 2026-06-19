@@ -86,15 +86,14 @@ export default async function HomePage() {
         <BrandStoryProdigy locale={locale} />
         <Awards locale={locale} />
         <PartnersStrip locale={locale} />
-        {/* CMS blocks — only the newsletter signup remains; everything
-            else from the CMS pass is skipped. */}
+        {/* CMS blocks — brand video (cork-harvesting reel) + newsletter
+            signup. The rest of the CMS pass is skipped. */}
         <BlocksRenderer
           pageKey="home"
           skipTypes={[
             "home.heroShop",
             "home.shopCategories",
             "home.featuredTreasures",
-            "home.brandVideo",
             "home.sustainability",
             "home.whySildel",
           ]}
