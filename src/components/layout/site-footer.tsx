@@ -50,6 +50,7 @@ export async function SiteFooter() {
             { label: ui.nav.contact, href: "/contact" },
             { label: ui.footer.helpLinks.faq, href: "/faq" },
             { label: ui.nav.blog, href: "/blog" },
+            { label: ui.nav.press, href: "/press" },
             { label: ui.footer.legalLinks.shipping, href: "/shipping" },
             { label: ui.footer.legalLinks.terms, href: "/terms" },
             { label: ui.footer.legalLinks.privacy, href: "/privacy" },

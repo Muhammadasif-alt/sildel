@@ -15,6 +15,7 @@ export type UiDict = {
     youThinkCork: string;
     treasures: string;
     blog: string;
+    press: string;
     contact: string;
   };
   header: {
@@ -157,6 +158,7 @@ const en: UiDict = {
     youThinkCork: "You Think Cork",
     treasures: "Treasures",
     blog: "Journal",
+    press: "Press",
     contact: "Contact",
   },
   header: {
@@ -328,6 +330,7 @@ const pt: UiDict = {
     youThinkCork: "Pensa em Cortiça",
     treasures: "Tesouros",
     blog: "Jornal",
+    press: "Imprensa",
     contact: "Contacto",
   },
   header: {
