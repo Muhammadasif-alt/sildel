@@ -72,7 +72,20 @@ export default async function HomePage() {
         {/* Mirror twin of AtelierIntro — flipped layout, product image
             on the right. Founder direction June 2026 (nineteenth pass). */}
         <ProductSpotlight locale={locale} />
-        <BlocksRenderer pageKey="home" skipTypes={["home.heroShop"]} />
+        {/* CMS blocks — the hero, shopCategories and featuredTreasures
+            are skipped now that the new editorial AtelierIntro +
+            ProductSpotlight pair carries the "shop" intent above
+            (founder direction, June 2026, twentieth pass — client
+            asked to drop the 4-tile category grid and the 3-featured
+            product row to avoid duplication). */}
+        <BlocksRenderer
+          pageKey="home"
+          skipTypes={[
+            "home.heroShop",
+            "home.shopCategories",
+            "home.featuredTreasures",
+          ]}
+        />
         {/* Editorial sections added June 2026 — who made this (prodigy
             story), where it begins (Alentejo origins), what makes the
             material rare (3 facts). They sit between the CMS shopping
