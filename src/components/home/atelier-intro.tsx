@@ -7,21 +7,21 @@ import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Atelier intro — Quinta Nova-style editorial introduction (founder
- * direction, June 2026, fourteenth pass: "make it final like
- * quintanova.com"). Sits directly under the hero as the first editorial
- * moment of the home page. 50/50 split:
+ * direction, June 2026, fifteenth pass: match quintanova.com exactly).
  *
- *   ┌────────────────────────┐    Title (serif, large)
- *   │                        │
- *   │   wide landscape       │    Body paragraph
- *   │   image, full bleed,   │
- *   │   no chrome            │    Discover the atelier →
- *   │                        │
- *   └────────────────────────┘
+ * Layout details that match the reference:
+ *   - Generous TOP + BOTTOM whitespace (section padding) so the section
+ *     doesn't touch the hero. The hero ends; visitor drops into a
+ *     deliberate breath of warm-paper space; the image then anchors
+ *     the eye low-left.
+ *   - Image bleeds all the way to the LEFT viewport edge — no inner
+ *     container padding on its column. This is the Quinta Nova trick
+ *     that makes the image feel massive without being centred.
+ *   - Asymmetric 55/45 grid on desktop so the image gets the larger
+ *     share of the row, the text gets the calmer right side with
+ *     generous inner padding.
  *
- * The right column is intentionally generous in whitespace — Quinta
- * Nova's restraint. No eyebrow, no card, no shadow, no border. Just an
- * image, a sentence, and a quiet arrow link.
+ * No eyebrow, no card chrome, no shadow — Quinta Nova restraint.
  */
 export function AtelierIntro({ locale }: { locale: Locale }) {
   const { atelierIntro: data } = getHome(locale);
@@ -29,25 +29,30 @@ export function AtelierIntro({ locale }: { locale: Locale }) {
   return (
     <section
       aria-labelledby="atelier-intro-heading"
-      className="relative w-full bg-background"
+      className="relative w-full bg-background py-16 md:py-24 lg:py-28"
     >
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 items-center gap-0 lg:grid-cols-2">
-        {/* Image column — full bleed inside the column, no inner padding */}
+      {/* Asymmetric grid — image bleeds to viewport left edge (no outer
+          max-width container), text column gets the right 45% with
+          comfortable internal padding. */}
+      <div className="grid grid-cols-1 items-center lg:grid-cols-[55%_45%]">
+        {/* Image — full width of its column, no inner padding so it
+            reaches the viewport left edge on desktop. */}
         <ScrollReveal direction="left">
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-[5/4]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
             <Image
               src={data.image}
               alt={data.imageAlt}
               fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 55vw, 100vw"
               className="object-cover"
             />
           </div>
         </ScrollReveal>
 
-        {/* Copy column — vertically centred with generous whitespace */}
+        {/* Copy column — vertically centred, generous left + right
+            padding so the text breathes against the wide image. */}
         <ScrollReveal delay={0.15}>
-          <div className="flex flex-col justify-center px-8 py-16 md:px-12 lg:px-20 lg:py-24 xl:px-28">
+          <div className="flex flex-col justify-center px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-0 xl:px-24 2xl:pr-32">
             <div className="max-w-xl">
               <h2
                 id="atelier-intro-heading"
