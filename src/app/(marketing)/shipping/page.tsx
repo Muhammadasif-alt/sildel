@@ -50,5 +50,15 @@ export default async function ShippingPage() {
     );
   }
   const locale = await getLocale();
-  return <LegalPage doc={getShipping(locale)} />;
+  return (
+    <LegalPage
+      doc={getShipping(locale)}
+      heroImage="/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp"
+      heroAlt={
+        locale === "pt"
+          ? "Pilhas de cortiça portuguesa a curar ao ar livre, prontas para envio."
+          : "Stacks of Portuguese cork curing in the open air, ready to be shipped."
+      }
+    />
+  );
 }

@@ -25,5 +25,15 @@ export default async function PrivacyPage() {
     );
   }
   const locale = await getLocale();
-  return <LegalPage doc={getPrivacy(locale)} />;
+  return (
+    <LegalPage
+      doc={getPrivacy(locale)}
+      heroImage="/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp"
+      heroAlt={
+        locale === "pt"
+          ? "Porta envelhecida do atelier Sildel ao pôr-do-sol."
+          : "Weathered Sildel atelier doorway at golden hour."
+      }
+    />
+  );
 }

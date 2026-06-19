@@ -7,6 +7,7 @@ import {
 import { JsonLd } from "@/components/common/json-ld";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getFaqs } from "@/content/legal";
+import { EditorialHero } from "@/components/editorial/editorial-hero";
 
 const PAGE_PATH = "/faq";
 
@@ -63,7 +64,19 @@ export default async function FaqPage() {
     <>
       <JsonLd data={[breadcrumbs, faqJsonLd]} />
       <main className="flex flex-1 flex-col bg-background text-foreground">
-        {/* Header */}
+        {/* Editorial hero — image only, no overlay (founder direction
+            June 2026: Quinta Nova History page reference). */}
+        <EditorialHero
+          src="/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp"
+          alt={
+            isPt
+              ? "Peça escultórica em cortiça sobre pedestal de mármore — silhueta minimalista."
+              : "Sculptural cork piece on a marble pedestal — minimalist silhouette."
+          }
+          eyebrow={t.eyebrow}
+        />
+
+        {/* Title block */}
         <section className="border-b border-border/40">
           <div className="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-24">
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">

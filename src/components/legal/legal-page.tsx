@@ -1,10 +1,34 @@
 import type { LegalDoc } from "@/content/legal";
+import { EditorialHero } from "@/components/editorial/editorial-hero";
 
-/** Clean, readable layout for long-form legal / policy documents. */
-export function LegalPage({ doc }: { doc: LegalDoc }) {
+/**
+ * Clean, readable layout for long-form legal / policy documents.
+ *
+ * Editorial pass (founder direction, June 2026: Quinta Nova History
+ * page reference) — every legal page opens with an image-only hero
+ * before the centered title block, so the policy pages share the
+ * same opening rhythm as the narrative pages.
+ */
+export function LegalPage({
+  doc,
+  heroImage,
+  heroAlt,
+}: {
+  doc: LegalDoc;
+  heroImage?: string;
+  heroAlt?: string;
+}) {
   return (
     <main className="flex flex-1 flex-col bg-background text-foreground">
-      {/* Header */}
+      {heroImage ? (
+        <EditorialHero
+          src={heroImage}
+          alt={heroAlt ?? doc.title}
+          eyebrow={doc.eyebrow}
+        />
+      ) : null}
+
+      {/* Title block */}
       <section className="border-b border-border/40">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-24">
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
