@@ -11,8 +11,7 @@ import { MaterialsColors } from "@/components/home/materials-colors";
 import { BrandStoryProdigy } from "@/components/home/brand-story-prodigy";
 import { AlentejoOrigins } from "@/components/home/alentejo-origins";
 import { WhyAuthenticCork } from "@/components/home/why-authentic-cork";
-import { AtelierIntro } from "@/components/home/atelier-intro";
-import { ProductSpotlight } from "@/components/home/product-spotlight";
+import { ProductFeature } from "@/components/home/product-feature";
 import { HeroSlider } from "@/components/home/hero-slider";
 
 // ISR — serve a cached HTML for one hour. Admin "save" actions call
@@ -62,28 +61,36 @@ export default async function HomePage() {
     <>
       <JsonLd data={[videoJsonLd]} />
       <main className="flex flex-1 flex-col">
-        {/* Hero is rendered manually now so we can slip the Quinta Nova-
-            style AtelierIntro section directly under it (founder
-            direction, June 2026, fourteenth pass). The CMS pass then
-            paints the remaining shop / featured / video / sustainability
-            blocks with the hero filtered out so it isn't rendered twice. */}
+        {/* Hero is rendered manually so we can slip the editorial
+            ProductFeature reel directly under it; the CMS pass below
+            paints the remaining sustainability / newsletter blocks
+            with the hero filtered out so it isn't rendered twice. */}
         <HeroSlider slides={content.heroSlider} />
-        <AtelierIntro locale={locale} />
-        {/* Mirror twin of AtelierIntro — flipped layout, product image
-            on the right. Founder direction June 2026 (nineteenth pass). */}
-        <ProductSpotlight locale={locale} />
-        {/* CMS blocks — the hero, shopCategories and featuredTreasures
-            are skipped now that the new editorial AtelierIntro +
-            ProductSpotlight pair carries the "shop" intent above
-            (founder direction, June 2026, twentieth pass — client
-            asked to drop the 4-tile category grid and the 3-featured
-            product row to avoid duplication). */}
+        {/* Four-product editorial reel — alternating layouts (image
+            left/right/left/right) so the eye crosses the page in a
+            Z while the visitor scrolls through the catalogue's
+            strongest pieces. Founder direction June 2026 (twenty-first
+            pass): replaces the earlier atelier intro + single spotlight
+            with a four-up product reel. */}
+        {content.productFeatures.map((feature, i) => (
+          <ProductFeature
+            key={feature.title}
+            data={feature}
+            mirror={i % 2 === 1}
+            headingId={`product-feature-${i}`}
+          />
+        ))}
+        {/* CMS blocks — heroShop, shopCategories, featuredTreasures and
+            brandVideo are skipped. The four-product reel above already
+            carries the "shop" intent, and the brand video was cut to
+            keep the page from running too long. */}
         <BlocksRenderer
           pageKey="home"
           skipTypes={[
             "home.heroShop",
             "home.shopCategories",
             "home.featuredTreasures",
+            "home.brandVideo",
           ]}
         />
         {/* Editorial sections added June 2026 — who made this (prodigy

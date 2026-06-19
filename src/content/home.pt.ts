@@ -108,37 +108,55 @@ export const homePt = {
      título serifa curto + corpo + link com seta à direita. Sem
      molduras, sem etiqueta — a mesma linguagem contida de quinta de
      luxo que a Quinta Nova usa no seu próprio site. */
-  atelierIntro: {
-    title: "Um atelier moldado à mão.",
-    body:
-      "No nosso atelier em Esmoriz, no norte de Portugal, acreditamos que a natureza é a origem de cada tesouro. Cada peça é moldada à medida, respeitando o veio natural e a forma singular de cada bloco de cortiça — para criar tesouros esculturais com um carácter bem definido e um equilíbrio perfeito entre forma, luz e matéria.",
-    cta: {
-      label: "Descobrir o atelier Sildel",
-      href: "/our-story",
+  /* Tesouros em destaque — quatro linhas editoriais alternadas
+     (direcção da fundadora, Junho 2026, vigésima primeira iteração:
+     substitui o par anterior atelierIntro + productSpotlight por um
+     reel de quatro produtos para que o visitante veja as peças mais
+     fortes do catálogo umas a seguir às outras, com os layouts a
+     alternar esquerda/direita/esquerda/direita pelo ritmo). O bloco
+     CMS de vídeo da marca abaixo foi removido para abrir espaço. */
+  productFeatures: [
+    {
+      eyebrow: "Escultura",
+      title: "Hot Spring",
+      body:
+        "Uma forma escultural em cortiça sobre um plinto de pedra — cozida pela terra, perfurada à mão, feita para ancorar uma sala silenciosa. Cada peça é moldada e assinada pela Isabel no atelier de Esmoriz. Disponível em três formatos.",
+      cta: { label: "Descobrir Hot Spring", href: "/treasures/hot-spring" },
+      image: "/Slidel/enhance/enhance-sculpture-04.webp",
+      imageAlt:
+        "Hot Spring — escultura em cortiça perfurada sobre um pódio de pedra, iluminada por luz direccional quente.",
     },
-    image:
-      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
-    imageAlt:
-      "Vista cinematográfica larga do interior do atelier Sildel no norte de Portugal à hora dourada, com peças de cortiça acabadas sobre as bancadas.",
-  },
-
-  /* Destaque de produto — gémeo espelhado da secção atelierIntro
-     (direção da fundadora, Junho 2026, décima nona iteração). Mesmo
-     formato editorial grande, esquema invertido (texto à ESQUERDA,
-     imagem do produto à DIREITA) para que o olhar atravesse a página
-     em Z enquanto o visitante desce do atelier ao tesouro. */
-  productSpotlight: {
-    title: "Tesouros moldados devagar.",
-    body:
-      "De um único bloco de cortiça até uma escultura numerada, cada peça Sildel passa pelas mesmas mãos. Sem linha de fábrica. Sem reedições. Apenas a prática lenta de um atelier que escuta a matéria há trinta anos — e a convicção de que um tesouro é o resultado visível da paciência.",
-    cta: {
-      label: "Explorar Todos os Tesouros",
-      href: "/treasures",
+    {
+      eyebrow: "Edição Limitada",
+      title: "Carré d'Or",
+      body:
+        "Folha de ouro de 24 quilates pressionada contra o veio puro da cortiça portuguesa — geometria em diálogo silencioso com a casca crua da floresta. Edição limitada, cada quadrado assinado pela mão que o terminou.",
+      cta: { label: "Descobrir Carré d'Or", href: "/treasures/carre-dor" },
+      image: "/Slidel/enhance/enhance-carre-dor-03.webp",
+      imageAlt:
+        "Carré d'Or — tesouro Sildel em cortiça com folha de ouro de 24 quilates, fotografado sob luz direccional suave de atelier.",
     },
-    image: "/Slidel/enhance/enhance-carre-dor-03.webp",
-    imageAlt:
-      "Carré d'Or — tesouro Sildel em cortiça com folha de ouro de 24 quilates, fotografado sob luz direccional suave de atelier.",
-  },
+    {
+      eyebrow: "Assinatura",
+      title: "Gibraltar",
+      body:
+        "Uma silhueta marcante — apoios em cortiça sob vidro, linhas elegantes desenhadas para durar décadas. Uma mesa de assinatura que sustenta o peso de uma sala sem nunca levantar a voz. Disponível em três comprimentos.",
+      cta: { label: "Explorar Gibraltar", href: "/treasures/gibraltar" },
+      image: "/Slidel/enhance/enhance-tables-04.webp",
+      imageAlt:
+        "Gibraltar — mesa em cortiça num atelier português banhado pela luz solar, com nicho em arco.",
+    },
+    {
+      eyebrow: "Nova Colecção",
+      title: "Eclipse",
+      body:
+        "Uma forma escultural em cortiça que guarda o calor da floresta em luz. O veio torna-se arquitectura; a luz torna-se atmosfera. Uma nova colecção do atelier Sildel em Esmoriz.",
+      cta: { label: "Explorar Eclipse", href: "/treasures/eclipse" },
+      image: "/Slidel/enhance/enhance-lighting-03.webp",
+      imageAlt:
+        "Eclipse — candeeiro de cortiça escultural num atelier português suavemente iluminado.",
+    },
+  ],
 
   /* História da marca — enquadramento "prodígio" (Junho 2026). A Isabel
      não "chegou" à cortiça — cresceu junto dela. Trinta anos a trabalhar

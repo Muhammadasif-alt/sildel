@@ -108,36 +108,54 @@ export const homeEn = {
      short serif title + body + arrow link right. No card chrome,
      no eyebrow — the same restrained luxury-estate language Quinta
      Nova uses on its own homepage. */
-  atelierIntro: {
-    title: "An atelier shaped by hand.",
-    body:
-      "At our atelier in Esmoriz, in northern Portugal, we believe nature is the origin of every treasure. Each piece is shaped to measure, respecting the natural grain and singular form of every cork block — to produce sculptural treasures with a well-defined character and a perfect balance between form, light, and material.",
-    cta: {
-      label: "Discover the Sildel atelier",
-      href: "/our-story",
+  /* Featured treasures — four alternating editorial rows (founder
+     direction, June 2026, twenty-first pass: replaces the earlier
+     atelierIntro + productSpotlight pair with a four-product reel so
+     the visitor sees the catalogue's strongest pieces one after the
+     other, layouts alternating left/right/left/right for rhythm).
+     The brand-video CMS block below was removed to make room. */
+  productFeatures: [
+    {
+      eyebrow: "Sculpture",
+      title: "Hot Spring",
+      body:
+        "A sculptural cork form on a stone plinth — earth-fired, perforated by hand, made to anchor a quiet room. Each piece is shaped and signed by Isabel in the Esmoriz atelier. Available in three formats.",
+      cta: { label: "Discover Hot Spring", href: "/treasures/hot-spring" },
+      image: "/Slidel/enhance/enhance-sculpture-04.webp",
+      imageAlt:
+        "Hot Spring — a perforated cork sculpture on a stone podium, lit by warm directional atelier light.",
     },
-    image:
-      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
-    imageAlt:
-      "Wide cinematic view of the Sildel atelier interior in northern Portugal at golden hour, with finished cork pieces on workbenches.",
-  },
-
-  /* Product spotlight — mirror twin of atelierIntro (founder direction,
-     June 2026, nineteenth pass). Same big editorial format, layout
-     flipped (text LEFT, product image RIGHT) so the eye crosses the
-     page as the visitor scrolls atelier → treasure. */
-  productSpotlight: {
-    title: "Treasures shaped slowly.",
-    body:
-      "From a single block of cork bark to a numbered sculpture, every Sildel piece passes through the same hands. No factory line. No reissues. Only the slow practice of an atelier that has been listening to the material for thirty years — and the conviction that a treasure is the visible result of patience.",
-    cta: {
-      label: "Explore All Treasures",
-      href: "/treasures",
+    {
+      eyebrow: "Limited Edition",
+      title: "Carré d'Or",
+      body:
+        "Twenty-four-carat gold leaf pressed against the untouched grain of Portuguese cork — geometry in quiet conversation with the raw bark of the forest. Limited edition, each square signed by the hand that finished it.",
+      cta: { label: "Discover Carré d'Or", href: "/treasures/carre-dor" },
+      image: "/Slidel/enhance/enhance-carre-dor-03.webp",
+      imageAlt:
+        "Carré d'Or — Sildel cork treasure with 24-carat gold leaf, photographed in soft directional atelier light.",
     },
-    image: "/Slidel/enhance/enhance-carre-dor-03.webp",
-    imageAlt:
-      "Carré d'Or — Sildel cork treasure with 24-carat gold leaf, photographed in soft directional atelier light.",
-  },
+    {
+      eyebrow: "Signature",
+      title: "Gibraltar",
+      body:
+        "A defining silhouette — cork supports under glass, elegant lines designed to last decades. A signature table that holds the weight of a room without ever raising its voice. Available in three lengths.",
+      cta: { label: "Explore Gibraltar", href: "/treasures/gibraltar" },
+      image: "/Slidel/enhance/enhance-tables-04.webp",
+      imageAlt:
+        "Gibraltar — Sildel cork table in a sun-lit Portuguese atelier with an arched alcove.",
+    },
+    {
+      eyebrow: "New Collection",
+      title: "Eclipse",
+      body:
+        "A sculptural cork form that holds the warmth of the forest in light. The grain becomes architecture; the light becomes mood. A new collection from the Sildel atelier in Esmoriz.",
+      cta: { label: "Explore Eclipse", href: "/treasures/eclipse" },
+      image: "/Slidel/enhance/enhance-lighting-03.webp",
+      imageAlt:
+        "Eclipse — sculptural cork lighting in a softly-lit Portuguese atelier.",
+    },
+  ],
 
   /* Brand Story — prodigy framing (founder direction, June 2026).
      Isabel didn't "come" to cork — she grew up close to it. Thirty years
