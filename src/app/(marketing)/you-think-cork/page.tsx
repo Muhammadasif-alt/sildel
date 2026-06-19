@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Beaker, Leaf, Settings } from "lucide-react";
 import {
   buildMetadata,
@@ -10,24 +9,33 @@ import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
 import { ContactForm } from "@/components/contact/contact-form";
 import { PartnersSection } from "@/components/partners/partners-section";
+import { YtcHeroEditorial } from "@/components/you-think-cork/ytc-hero-editorial";
+import { YtcPillars, type YtcPillar } from "@/components/you-think-cork/ytc-pillars";
+import {
+  StorySection,
+  type StorySectionData,
+} from "@/components/our-story/story-section";
+import { StoryBleed } from "@/components/our-story/story-bleed";
 
 /**
- * /you-think-cork — direct mirror of the live sildel.pt page.
- *
- * Founder asked for the original Material-Bank / "Let's Innovate Together"
- * pitch to come back verbatim. We stopped using the BlocksRenderer here
- * because the older fine-art manifesto layout the CMS still points at no
- * longer matches the real page; the simpler inline layout below tracks the
- * live site one-to-one (hero, body, black band, three pillars, contact form).
+ * /you-think-cork — editorial pass in the Quinta Nova rhythm
+ * (founder direction, June 2026). Image-only hero, alternating
+ * StorySection rows, a full-bleed palette-cleanser, slogan band
+ * for the dark inset beat, then the three collaboration pillars
+ * as a vertical typeset list (no 3-column grid).
  */
 const PAGE_PATH = "/you-think-cork";
 const DATE_PUBLISHED = "2024-01-01T00:00:00Z";
-const DATE_MODIFIED = "2026-05-26T00:00:00Z";
+const DATE_MODIFIED = "2026-06-20T00:00:00Z";
 
 const HERO_IMAGE =
   "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_ warm_1.webp";
 const BLOCK_IMAGE =
   "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp";
+const BARK_IMAGE =
+  "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged.webp";
+const ATELIER_DOOR_IMAGE =
+  "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp";
 
 export const revalidate = 3600;
 
@@ -78,115 +86,115 @@ export default async function YouThinkCorkPage() {
   });
 
   const t = {
-    heroTitle: isPt ? "PENSA EM CORTIÇA!" : "YOU THINK CORK!",
+    eyebrow: "Sildel × Material Bank",
+    heroTitle: isPt ? "Pensa em" : "You Think",
+    heroTitleAccent: isPt ? "cortiça." : "cork.",
     heroBody: isPt
       ? "Como orgulhoso membro do Material Bank, a SILDEL está empenhada em fomentar um ambiente colaborativo onde marcas e empresas se encontrem para inovar e criar. “You Think Cork” não é apenas sobre fazer parcerias connosco — é sobre construir uma rede de empresas com visão de futuro, dedicadas a expandir os limites do que é possível com cortiça autêntica."
       : "As a proud member of Material Bank, SILDEL is committed to fostering a collaborative environment where brands and companies can come together to innovate and create. “You Think Cork” is not just about partnering with us — it's about building a network of forward-thinking companies dedicated to pushing the boundaries of what's possible with authentic cork.",
-    bodyHeading: isPt ? "Vamos inovar juntos!" : "Let's innovate together!",
-    bodyBody: isPt
+    innovateEyebrow: isPt ? "Convite" : "Invitation",
+    innovateTitle: isPt ? "Vamos inovar" : "Let's innovate",
+    innovateTitleAccent: isPt ? "juntos." : "together.",
+    innovateBody: isPt
       ? "Acreditamos no poder da colaboração para impulsionar a inovação e criar peças extraordinárias. A nossa dedicação à cortiça autêntica mostrou-nos o potencial ilimitado deste material sustentável. Queremos levar a nossa paixão um passo mais longe e convidamo-lo a juntar-se a nós na exploração de novos horizontes."
       : "We believe in the power of collaboration to drive innovation and create extraordinary pieces. Our dedication for authentic cork has shown us the limitless potential of this sustainable material. We want to take our passion a step further and invite you to join us in exploring new horizons.",
     bannerLine: isPt
-      ? "JUNTOS PODEMOS DESENVOLVER SOLUÇÕES REVOLUCIONÁRIAS:"
-      : "TOGETHER WE CAN DEVELOP GROUNDBREAKING SOLUTIONS:",
+      ? "JUNTOS PODEMOS DESENVOLVER SOLUÇÕES REVOLUCIONÁRIAS"
+      : "TOGETHER WE CAN DEVELOP GROUNDBREAKING SOLUTIONS",
+    pillarsEyebrow: isPt ? "Três caminhos" : "Three paths",
+    pillarsTitle: isPt ? "Onde se cruzam" : "Where our work",
+    pillarsTitleAccent: isPt ? "os nossos caminhos." : "meets yours.",
+    pillarsBody: isPt
+      ? "Três frentes de colaboração — cada uma um convite aberto às marcas, estúdios e fabricantes que vêem na cortiça mais do que um material."
+      : "Three fronts of collaboration — each an open invitation to brands, studios and makers who see more than a material in cork.",
     pillars: [
       {
         icon: Beaker,
-        title: isPt ? "DESENVOLVIMENTO DE PRODUTO" : "PRODUCT DEVELOPMENT",
+        title: isPt ? "Desenvolvimento de produto" : "Product development",
         body: isPt
           ? "Colabore com a nossa equipa para criar produtos inovadores que tirem partido dos benefícios únicos da cortiça."
           : "Collaborate with our team to create innovative products that leverage the unique benefits of cork.",
       },
       {
         icon: Leaf,
-        title: isPt ? "SOLUÇÕES SUSTENTÁVEIS" : "SUSTAINABLE SOLUTIONS",
+        title: isPt ? "Soluções sustentáveis" : "Sustainable solutions",
         body: isPt
           ? "Trabalhemos lado a lado para desenvolver alternativas ecológicas a materiais tradicionais."
           : "Work together to develop eco-friendly alternatives to traditional materials.",
       },
       {
         icon: Settings,
-        title: isPt ? "PROJETOS PERSONALIZADOS" : "CUSTOMIZED PROJECTS",
+        title: isPt ? "Projetos personalizados" : "Customised projects",
         body: isPt
           ? "Dê vida às suas ideias com soluções em cortiça desenhadas à medida das suas necessidades."
           : "Bring your unique ideas to life with tailored cork solutions designed to meet your specific needs.",
       },
-    ],
+    ] satisfies YtcPillar[],
     ctaEyebrow: isPt ? "Pensa em cortiça?" : "Do you think cork?",
     ctaHeading: isPt
       ? "Fale connosco e ajude-nos a moldar o futuro."
       : "Reach out and join us in shaping the future.",
   };
 
+  const heroSection: StorySectionData = {
+    eyebrow: t.eyebrow,
+    title: t.heroTitle,
+    titleAccent: t.heroTitleAccent,
+    body: [t.heroBody],
+    image: BARK_IMAGE,
+    imageAlt: isPt
+      ? "Pormenor macro da casca de cortiça portuguesa."
+      : "Macro detail of Portuguese cork bark.",
+  };
+
+  const innovateSection: StorySectionData = {
+    eyebrow: t.innovateEyebrow,
+    title: t.innovateTitle,
+    titleAccent: t.innovateTitleAccent,
+    body: [t.innovateBody],
+    image: ATELIER_DOOR_IMAGE,
+    imageAlt: isPt
+      ? "Porta envelhecida do atelier Sildel ao pôr-do-sol."
+      : "Weathered Sildel atelier doorway at golden hour.",
+  };
+
   return (
     <>
       <JsonLd data={[breadcrumbs, aboutPage]} />
       <main className="flex flex-col flex-1 bg-background text-foreground">
-        {/* ─────────── Hero ─────────── */}
-        <section
-          aria-labelledby="ytc-heading"
-          className="relative w-full border-b border-border/40"
-        >
-          <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 px-6 lg:px-12 py-16 lg:py-24 items-center">
-            <div>
-              <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
-                Sildel × Material Bank
-              </p>
-              <h1
-                id="ytc-heading"
-                className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-8"
-              >
-                {t.heroTitle}
-              </h1>
-              <p className="text-base md:text-lg leading-relaxed text-muted-foreground max-w-xl">
-                {t.heroBody}
-              </p>
-            </div>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-muted/40">
-              <Image
-                src={HERO_IMAGE}
-                alt={
-                  isPt
-                    ? "Amostras de cortiça em sessão de inspeção Sildel."
-                    : "Cork samples being inspected in the Sildel atelier."
-                }
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </section>
+        {/* Editorial hero — image only, no overlay (founder direction
+            June 2026: Quinta Nova History page reference). */}
+        <YtcHeroEditorial
+          src={HERO_IMAGE}
+          alt={
+            isPt
+              ? "Mãos a seleccionar uma peça de cortiça amadia fina."
+              : "Hands selecting a piece of fine amadia cork bark."
+          }
+          eyebrow={t.eyebrow}
+        />
 
-        {/* ─────────── Innovate together ─────────── */}
-        <section className="relative w-full">
-          <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 px-6 lg:px-12 py-16 lg:py-24 items-center">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-muted/40 order-2 lg:order-1">
-              <Image
-                src={BLOCK_IMAGE}
-                alt={
-                  isPt
-                    ? "Pilhas de cortiça portuguesa a curar ao ar livre."
-                    : "Stacks of Portuguese cork curing in the open air."
-                }
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="order-1 lg:order-2">
-              <p className="text-base md:text-lg leading-relaxed text-muted-foreground mb-8 max-w-xl">
-                {t.bodyBody}
-              </p>
-              <p className="font-serif italic text-2xl md:text-3xl text-foreground leading-snug">
-                {t.bodyHeading}
-              </p>
-            </div>
-          </div>
-        </section>
+        {/* You Think Cork (image LEFT) */}
+        <StorySection data={heroSection} mirror={false} headingId="ytc-hero" />
 
-        {/* ─────────── Black band ─────────── */}
+        {/* Full-bleed: cork sheets curing in the open air */}
+        <StoryBleed
+          src={BLOCK_IMAGE}
+          alt={
+            isPt
+              ? "Pilhas de cortiça portuguesa a curar ao ar livre."
+              : "Stacks of Portuguese cork curing in the open air."
+          }
+        />
+
+        {/* Let's innovate together (image RIGHT) */}
+        <StorySection
+          data={innovateSection}
+          mirror={true}
+          headingId="ytc-innovate"
+        />
+
+        {/* Dark inset slogan band — the page's one moment of pure type. */}
         <section
           aria-label={t.bannerLine}
           className="bg-foreground text-background"
@@ -198,42 +206,31 @@ export default async function YouThinkCorkPage() {
           </div>
         </section>
 
-        {/* ─────────── Three pillars ─────────── */}
-        <section
-          aria-label={isPt ? "Pilares de colaboração" : "Collaboration pillars"}
-          className="relative w-full"
-        >
-          <div className="mx-auto max-w-[1480px] px-6 lg:px-12 py-16 lg:py-20">
-            <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-              {t.pillars.map(({ icon: Icon, title, body }) => (
-                <li
-                  key={title}
-                  className="group rounded-md border border-border/60 bg-card/60 p-7 md:p-8 transition-all duration-500 ease-out hover:border-foreground/40 hover:bg-card/80"
-                >
-                  <span
-                    aria-hidden
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-foreground/5 text-foreground mb-6"
-                  >
-                    <Icon className="h-5 w-5" strokeWidth={1.5} />
-                  </span>
-                  <h2 className="font-medium text-sm tracking-[0.28em] uppercase text-foreground mb-4">
-                    {title}
-                  </h2>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {body}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        {/* Three collaboration pillars as a vertical typeset list
+            (no 3-column grid). Image LEFT, list RIGHT. */}
+        <YtcPillars
+          eyebrow={t.pillarsEyebrow}
+          title={t.pillarsTitle}
+          titleAccent={t.pillarsTitleAccent}
+          body={t.pillarsBody}
+          items={t.pillars}
+          imageSrc={
+            "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp"
+          }
+          imageAlt={
+            isPt
+              ? "Peça escultórica em cortiça sobre pedestal de mármore — silhueta minimalista."
+              : "A sculptural cork piece on a marble pedestal — minimalist silhouette."
+          }
+          mirror={false}
+        />
 
-        {/* ─────────── Partnerships ─────────── */}
+        {/* Partnerships — keep the existing editorial cards. */}
         <div className="border-t border-border/60">
           <PartnersSection locale={locale} variant="alt" />
         </div>
 
-        {/* ─────────── Contact CTA + form ─────────── */}
+        {/* Contact CTA + form — closing beat of the page. */}
         <section
           aria-labelledby="ytc-cta-heading"
           className="relative w-full bg-muted/30 border-t border-border/60"
