@@ -23,14 +23,14 @@ export function ProductSpotlight({ locale }: { locale: Locale }) {
   return (
     <section
       aria-labelledby="product-spotlight-heading"
-      className="relative flex w-full items-stretch bg-background py-16 md:py-24 lg:min-h-[90vh] lg:py-0"
+      className="relative w-full bg-background py-16 md:py-24 lg:py-28"
     >
-      <div className="grid w-full grid-cols-1 items-stretch lg:grid-cols-[45%_55%]">
+      <div className="grid grid-cols-1 items-center lg:grid-cols-[45%_55%]">
         {/* Copy column — LEFT side, vertically centred. On mobile it
             appears below the image (order swap) so the visitor still
             sees the product first on small screens. */}
         <ScrollReveal direction="right" className="order-2 lg:order-1">
-          <div className="flex h-full flex-col justify-center px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-20 xl:px-24 2xl:pl-32">
+          <div className="flex flex-col justify-center px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-0 xl:px-24 2xl:pl-32">
             <div className="max-w-xl lg:ml-auto">
               <h2
                 id="product-spotlight-heading"
@@ -55,9 +55,10 @@ export function ProductSpotlight({ locale }: { locale: Locale }) {
           </div>
         </ScrollReveal>
 
-        {/* Image — RIGHT side, fills full section height on desktop. */}
+        {/* Image — RIGHT side, explicit tall height on desktop so the
+            section keeps its top + bottom whitespace. */}
         <ScrollReveal delay={0.15} className="order-1 lg:order-2">
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-full lg:min-h-[720px]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[78vh] lg:min-h-[640px]">
             <Image
               src={data.image}
               alt={data.imageAlt}
