@@ -4,9 +4,6 @@ import { JsonLd } from "@/components/common/json-ld";
 import { siteConfig } from "@/lib/site-config";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getHome } from "@/content/home";
-import { PartnersStrip } from "@/components/partners/partners-strip";
-import { Awards } from "@/components/home/awards";
-import { BrandStoryProdigy } from "@/components/home/brand-story-prodigy";
 import { ProductFeature } from "@/components/home/product-feature";
 import { HeroSlider } from "@/components/home/hero-slider";
 
@@ -76,18 +73,12 @@ export default async function HomePage() {
             headingId={`product-feature-${i}`}
           />
         ))}
-        {/* Founder story + social proof — the only editorial below the
-            product reel. Isabel's 30-years framing anchors the brand;
-            awards + partners do the proof. Everything else (Alentejo
-            origins, Why Authentic Cork facts, Materials & Colours, Why
-            Choose Sildel, CMS sustainability) was cut per founder
-            direction (June 2026, twenty-second pass — "neacha wala
-            mostly remove kr do") to stop the page running long. */}
-        <BrandStoryProdigy locale={locale} />
-        <Awards locale={locale} />
-        <PartnersStrip locale={locale} />
-        {/* CMS blocks — brand video (cork-harvesting reel) + newsletter
-            signup. The rest of the CMS pass is skipped. */}
+        {/* Below the product reel: only the brand video (cork-harvesting
+            YouTube reel) — founder direction June 2026, twenty-third
+            pass. BrandStoryProdigy, Awards, PartnersStrip and the
+            CMS newsletter were temporarily pulled — components remain
+            in the codebase and can be re-added in one import + one
+            JSX line each (or unskipping the CMS type for newsletter). */}
         <BlocksRenderer
           pageKey="home"
           skipTypes={[
@@ -96,6 +87,7 @@ export default async function HomePage() {
             "home.featuredTreasures",
             "home.sustainability",
             "home.whySildel",
+            "home.newsletter",
           ]}
         />
       </main>

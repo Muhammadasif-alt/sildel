@@ -63,7 +63,9 @@ export async function SiteFooter() {
     { label: ui.footer.legalLinks.shipping, href: "/shipping" },
   ];
 
-  const logoDark = settings.brand.logoDarkUrl || "/brand/sildel-logo-dark-trim.webp";
+  // Black footer (founder direction, June 2026): use the LIGHT logo
+  // variant so the wordmark stays legible against the dark ground.
+  const logoLight = settings.brand.logoLightUrl || "/brand/sildel-logo-light-trim.webp";
   const tagline = pickLocalized(settings.brand.tagline, locale) || ui.footer.tagline;
   const footerTagline = pickLocalized(settings.footer.tagline, locale);
   const email = settings.contact.email || siteConfig.contact.email;
@@ -73,7 +75,7 @@ export async function SiteFooter() {
 
   return (
     <footer
-      className="relative w-full bg-background border-t border-border/60"
+      className="relative w-full bg-black text-white/85 border-t border-white/10"
       aria-labelledby="site-footer-heading"
     >
       <h2 id="site-footer-heading" className="sr-only">
@@ -86,18 +88,18 @@ export async function SiteFooter() {
           <div className="sm:col-span-2 lg:col-span-4">
             <Link href="/" aria-label={`${siteConfig.name} home`} className="inline-block">
               <Image
-                src={logoDark}
+                src={logoLight}
                 alt={`${siteConfig.name} — ${siteConfig.tagline}`}
                 width={197}
                 height={200}
                 className="h-14 w-auto"
               />
             </Link>
-            <p className="mt-7 max-w-md font-serif text-lg font-light leading-snug text-foreground sm:text-xl text-balance">
+            <p className="mt-7 max-w-md font-serif text-lg font-light leading-snug text-white sm:text-xl text-balance">
               {tagline}
             </p>
             {footerTagline && (
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-white/65">
                 {footerTagline}
               </p>
             )}
@@ -111,7 +113,7 @@ export async function SiteFooter() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${siteConfig.name} on ${label}`}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
                     >
                       <Icon className="h-4 w-4" />
                     </a>
@@ -130,7 +132,7 @@ export async function SiteFooter() {
                   <li key={`${item.href}-${j}`}>
                     <Link
                       href={item.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      className="text-sm text-white/65 transition-colors hover:text-primary"
                     >
                       {item.label}
                     </Link>
@@ -148,13 +150,13 @@ export async function SiteFooter() {
             <ul className="space-y-5 text-sm">
               {phone && (
                 <li className="flex items-start gap-3">
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-card text-primary">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-primary">
                     <Phone className="h-4 w-4" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <a
                       href={`tel:${phone.replace(/\s/g, "")}`}
-                      className="block whitespace-nowrap font-medium text-foreground transition-colors hover:text-primary"
+                      className="block whitespace-nowrap font-medium text-white transition-colors hover:text-primary"
                     >
                       {phone}
                     </a>
@@ -163,12 +165,12 @@ export async function SiteFooter() {
               )}
               {email && (
                 <li className="flex items-center gap-3">
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-card text-primary">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-primary">
                     <Mail className="h-4 w-4" />
                   </span>
                   <a
                     href={`mailto:${email}`}
-                    className="truncate text-foreground transition-colors hover:text-primary"
+                    className="truncate text-white transition-colors hover:text-primary"
                   >
                     {email}
                   </a>
@@ -176,12 +178,12 @@ export async function SiteFooter() {
               )}
               {address && (
                 <li className="flex items-start gap-3">
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-card text-primary">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-primary">
                     <MapPin className="h-4 w-4" />
                   </span>
-                  <address className="not-italic leading-relaxed text-muted-foreground">
+                  <address className="not-italic leading-relaxed text-white/65">
                     {address.split("\n").map((line, i) => (
-                      <span key={i} className={i === 0 ? "block text-foreground" : "block"}>
+                      <span key={i} className={i === 0 ? "block text-white" : "block"}>
                         {line}
                       </span>
                     ))}
@@ -194,15 +196,15 @@ export async function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-border/60 bg-muted/30">
+      <div className="border-t border-white/10 bg-white/[0.03]">
         <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-4 px-6 py-6 md:flex-row lg:px-10">
-          <p className="text-[11px] tracking-wider text-muted-foreground">
+          <p className="text-[11px] tracking-wider text-white/55">
             {copyright ||
               `© ${year} ${siteConfig.name}. ${
                 locale === "pt" ? "Desenhado em Portugal." : "Designed in Portugal."
               } ${ui.footer.rights}`}
           </p>
-          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] tracking-wider text-muted-foreground">
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] tracking-wider text-white/55">
             {legalLinks.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-primary">
