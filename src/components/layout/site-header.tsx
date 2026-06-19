@@ -29,13 +29,16 @@ export async function SiteHeader() {
       ];
 
   const logoDark = settings.brand.logoDarkUrl || "/brand/sildel-logo-dark-trim.webp";
-  const logoLight = settings.brand.logoLightUrl || "/brand/sildel-logo-light-trim.webp";
+  // logoLight was wired here for the old transparent-on-home header
+  // variant. The shell is now always solid (dark glyph on warm paper),
+  // so the light logo is no longer used. The CMS field stays — admins
+  // can still upload one for future light-bg surfaces — it's just not
+  // referenced from this entry point any more.
 
   return (
     <HeaderShell
       navItems={navItems}
       logoDark={logoDark}
-      logoLight={logoLight}
       accountLabel={ui.header.account}
       homeLabel={ui.nav.home}
     />

@@ -140,15 +140,20 @@ export const homeEn = {
       "Cork and wine come from the same ground. They keep the same company. They share the same time.",
     ],
     cadence: ["Same hills", "Same sun", "Same patience"],
-    // Real Alentejo harvest photography supplied by the founder (June
-    // 2026). Drop the named files into /public/Slidel/harvest/ — see
-    // the README in that folder for the exact source per file.
-    image: "/Slidel/harvest/harvest-golden.jpg",
+    // TODO(founder): once the real harvest photos land in
+    // /public/Slidel/harvest/ (see that folder's README), swap these
+    // two paths to "/Slidel/harvest/harvest-golden.jpg" and
+    // "/Slidel/harvest/harvest-bark-cylinder.jpg". Until then we point
+    // at the working Nano Banana 2 placeholders so the section doesn't
+    // render with broken-image icons.
+    image:
+      "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
     imageAlt:
-      "A tractor and trailer loaded with freshly harvested cork bark, ground covered in cork sheets, Alentejo cork forest at golden hour.",
-    inset: "/Slidel/harvest/harvest-bark-cylinder.jpg",
+      "Wide editorial shot of an ancient Portuguese cork oak tree, bark recently harvested, in the Alentejo montado.",
+    inset:
+      "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
     insetAlt:
-      "A massive cork bark cylinder lying on the forest floor with the freshly-stripped cork oak above.",
+      "Tall stacks of freshly harvested cork sheets curing under cork oak trees at golden hour.",
   },
 
   /* Why Authentic Cork — education band (founder direction, June 2026).

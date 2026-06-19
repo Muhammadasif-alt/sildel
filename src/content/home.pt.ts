@@ -139,15 +139,20 @@ export const homePt = {
       "A cortiça e o vinho vêm do mesmo chão. Mantêm a mesma companhia. Partilham o mesmo tempo.",
     ],
     cadence: ["Mesmas colinas", "Mesmo sol", "Mesma paciência"],
-    // Fotografia real da colheita alentejana fornecida pela fundadora
-    // (Junho 2026). Os ficheiros vivem em /public/Slidel/harvest/ — ver
-    // o README dessa pasta para a correspondência por imagem.
-    image: "/Slidel/harvest/harvest-golden.jpg",
+    // TODO(fundadora): quando as fotografias reais da colheita
+    // estiverem em /public/Slidel/harvest/ (ver o README dessa pasta),
+    // trocar estes dois caminhos para "/Slidel/harvest/harvest-golden.jpg"
+    // e "/Slidel/harvest/harvest-bark-cylinder.jpg". Até lá apontamos
+    // para os placeholders Nano Banana 2 para a secção não renderizar
+    // com ícones de imagem partida.
+    image:
+      "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
     imageAlt:
-      "Um tractor com reboque carregado de cortiça recém-colhida, chão coberto de pranchas, montado alentejano à hora dourada.",
-    inset: "/Slidel/harvest/harvest-bark-cylinder.jpg",
+      "Plano editorial de um sobreiro português ancestral, casca recentemente colhida, no montado alentejano.",
+    inset:
+      "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
     insetAlt:
-      "Um enorme cilindro de cortiça pousado no chão da floresta, com o sobreiro recém-descortiçado acima.",
+      "Pilhas de pranchas de cortiça recém-colhidas a curar sob sobreiros à hora dourada.",
   },
 
   /* Porquê cortiça autêntica — banda educativa (Junho 2026). Três factos

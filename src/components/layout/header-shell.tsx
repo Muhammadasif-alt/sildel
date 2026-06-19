@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { User } from "lucide-react";
@@ -13,63 +11,48 @@ import { MobileNav } from "./mobile-nav";
 type NavItem = { label: string; href: string };
 
 /**
- * Site header — single-row layout (founder direction, June 2026, seventh
- * pass). Logo flush left, nav inline in the centre, language + account on
- * the far right. Replaces the earlier two-row Quinta-style "logo on top,
- * nav beneath" because the centred-floating logo read as cramped and the
- * two-row chrome ate vertical space on every page.
+ * Site header — single-row layout, always solid (founder direction,
+ * June 2026, thirteenth pass: kill the transparent-on-home variant).
  *
- *  - Transparent over the home hero (page is "/", scrollY < 60) — the
- *    dark hero image carries through and the header floats above it with
- *    white logo + nav. After 60px of scroll, the header gains a soft
- *    paper background so the rest of the page stays readable.
- *  - On every other route, the header is always solid (dark glyph on
- *    warm paper) because there's no full-bleed dark hero behind it.
- *  - Fixed positioning so the home hero reaches all the way up to the
- *    viewport edge. Non-home pages compensate with top padding in the
- *    root layout.
+ * The previous design floated the header transparently over the home
+ * hero so the cinematic image could bleed all the way to the viewport
+ * edge. Two issues kept recurring with that:
+ *   - Light-toned hero slides made the white nav text disappear.
+ *   - Navigating from another route to "/" reset scroll to 0 mid-frame,
+ *     so the header rendered as transparent over whichever cream-toned
+ *     image happened to be loading.
+ *
+ * Every patch (darkening scrim, dark section background fallback, etc.)
+ * traded surprise legibility failures for ongoing maintenance cost.
+ * The simpler, more luxury-correct decision is: header is always a
+ * solid warm-paper bar with dark glyph + dark nav, on every route. The
+ * home hero still fills the viewport beneath it — the bar is just
+ * always present rather than ghosted.
  */
 export function HeaderShell({
   navItems,
   logoDark,
-  logoLight,
   accountLabel,
   homeLabel,
 }: {
   navItems: readonly NavItem[];
+  /** Dark/full-colour logo glyph — used in every state now. */
   logoDark: string;
-  logoLight: string;
+  /** Kept in the server wrapper's props but no longer wired here, since
+   *  the always-solid header never renders the light variant. Removed
+   *  from this signature so TypeScript stops asking what to do with it. */
   accountLabel: string;
   homeLabel: string;
 }) {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const transparent = isHome && !scrolled;
-  const logo = transparent ? logoLight : logoDark;
-
   return (
     <header
-      className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-500 ease-out",
-        transparent
-          ? "bg-transparent"
-          : "border-b border-border/60 bg-background/95 backdrop-blur-md",
-      )}
+      className="fixed top-0 z-50 w-full border-b border-border/60 bg-background/95 backdrop-blur-md transition-colors duration-300 ease-out"
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <div className="flex h-20 items-center md:h-24">
           {/* Mobile hamburger on the left */}
           <div className="mr-3 md:hidden">
-            <MobileNav transparent={transparent} />
+            <MobileNav transparent={false} />
           </div>
 
           {/* Logo — flush left, bigger glyph (founder direction). */}
@@ -79,7 +62,7 @@ export function HeaderShell({
             aria-label={`${siteConfig.name} ${homeLabel}`}
           >
             <Image
-              src={logo}
+              src={logoDark}
               alt={`${siteConfig.name} — ${siteConfig.tagline}`}
               width={197}
               height={200}
@@ -101,12 +84,7 @@ export function HeaderShell({
               <Link
                 key={`${item.href}-${i}`}
                 href={item.href}
-                className={cn(
-                  "text-[13px] font-medium uppercase tracking-[0.28em] transition-colors",
-                  transparent
-                    ? "text-white/90 hover:text-white"
-                    : "text-foreground/85 hover:text-foreground",
-                )}
+                className="text-[13px] font-medium uppercase tracking-[0.28em] text-foreground/85 transition-colors hover:text-foreground"
               >
                 {item.label}
               </Link>
@@ -115,21 +93,11 @@ export function HeaderShell({
 
           {/* Right controls — language picker + account icon. */}
           <div className="ml-auto flex shrink-0 items-center gap-3 md:gap-5">
-            <LanguageToggle
-              className={cn(
-                "hidden md:flex",
-                transparent && "text-white",
-              )}
-            />
+            <LanguageToggle className="hidden md:flex" />
             <Link
               href="/account"
               aria-label={accountLabel}
-              className={cn(
-                "hidden h-10 w-10 items-center justify-center transition-colors md:inline-flex",
-                transparent
-                  ? "text-white/90 hover:text-white"
-                  : "text-foreground/80 hover:text-foreground",
-              )}
+              className="hidden h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground md:inline-flex"
             >
               <User className="h-[18px] w-[18px]" strokeWidth={1.6} />
             </Link>

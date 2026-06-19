@@ -116,20 +116,13 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
       ))}
 
       {/* Overlays — symmetric vertical wash so the centred copy at the
-          lower band stays legible without obscuring the piece above. */}
+          lower band stays legible without obscuring the piece above.
+          The dedicated header scrim that used to sit at the top has
+          been removed now that the header is always solid; it was
+          only needed to back the transparent nav variant. */}
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-black/15"
-      />
-
-      {/* Dedicated header scrim — guarantees the transparent header sits
-          on a dark band regardless of the hero image's tonality (founder
-          feedback June 2026, tenth pass: header text was unreadable when
-          the active slide had a light cream/beige composition). Covers
-          the top ~128px and fades out before reaching the title block. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 z-[5] h-32 bg-gradient-to-b from-black/55 via-black/25 to-transparent"
       />
 
       {/* Side arrows — edge-anchored, vertically centred (Quinta do Crasto
