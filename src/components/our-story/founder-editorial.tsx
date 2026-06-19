@@ -1,26 +1,36 @@
 import Image from "next/image";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { getOurStory } from "@/content/our-story";
-import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Founder section, editorial pass (founder direction, June 2026: no
  * three-column grids, match Quinta Nova's two-up image+text rhythm).
- * Replaces the earlier Founder card-with-stats with a clean magazine
- * layout — tall portrait one side, eyebrow + serif pull quote + body
- * paragraphs + signature on the other.
+ * Tall portrait one side, eyebrow + serif pull quote + body paragraphs
+ * + signature on the other.
  *
  *   mirror=false  → portrait LEFT  | quote RIGHT
  *   mirror=true   → portrait RIGHT | quote LEFT
+ *
+ * Data-driven — the route passes the rendered founder object (resolved
+ * from Mongo or the TS fallback) so this component never reaches for
+ * a content file directly.
  */
+export type FounderEditorialData = {
+  eyebrow: string;
+  pullQuote: string;
+  body: string[];
+  closing: string;
+  image: string;
+  imageAlt: string;
+  signature: { name: string; role: string };
+};
+
 export function FounderEditorial({
-  locale,
+  founder,
   mirror = false,
 }: {
-  locale: Locale;
+  founder: FounderEditorialData;
   mirror?: boolean;
 }) {
-  const { founder } = getOurStory(locale);
 
   const portraitBlock = (
     <ScrollReveal

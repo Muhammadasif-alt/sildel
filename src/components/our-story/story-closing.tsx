@@ -1,32 +1,30 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { getOurStory } from "@/content/our-story";
-import type { Locale } from "@/lib/i18n/config";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
- * Closing parallax CTA for /our-story (founder direction, June 2026:
- * "vedio section se neacha b iss trha ka section add karin taka end
- * m vedio bura na lagy" — same treatment as the home page's
- * ParallaxCta so the video isn't the last beat before the footer).
- *
- * White-tint editorial parallax over a Sildel atelier image with a
- * serif heading, body copy, and a dark-inset Treasures button —
- * matches the home-page pattern the founder approved.
+ * Closing parallax CTA for /our-story. Data-driven — the route
+ * passes a rendered `cta` object (resolved from Mongo or the TS
+ * fallback) rather than reaching for the content file itself.
  */
-export function StoryClosing({ locale }: { locale: Locale }) {
-  const { cta } = getOurStory(locale);
-  const primary = cta.destinations[0];
-  const heroImage = cta.destinations[1]?.image ?? primary.image;
+export type StoryClosingData = {
+  eyebrow: string;
+  title: string;
+  titleAccent?: string;
+  body: string;
+  label: string;
+  href: string;
+  backgroundImage: string;
+  closingLine?: string;
+};
 
+export function StoryClosing({ cta }: { cta: StoryClosingData }) {
   return (
     <section
       aria-labelledby="story-closing-heading"
       className="relative flex w-full items-center justify-center overflow-hidden bg-scroll bg-cover bg-center px-6 py-24 md:py-32 lg:bg-fixed lg:py-40"
-      style={{ backgroundImage: `url('${heroImage}')` }}
+      style={{ backgroundImage: `url('${cta.backgroundImage}')` }}
     >
-      {/* White tint — same opacity as the home parallax CTA so the
-          two sections rhyme across the site. */}
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
       <ScrollReveal className="relative z-10 mx-auto max-w-4xl text-center">
@@ -50,10 +48,10 @@ export function StoryClosing({ locale }: { locale: Locale }) {
         </p>
         <div className="mt-10 flex justify-center">
           <Link
-            href={primary.href}
+            href={cta.href}
             className="group inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
           >
-            {primary.cta}
+            {cta.label}
             <ArrowRight
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               strokeWidth={1.5}

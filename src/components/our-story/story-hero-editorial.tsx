@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { getOurStory } from "@/content/our-story";
-import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Editorial Our Story hero (founder direction, June 2026: "Hero m
@@ -9,12 +7,14 @@ import type { Locale } from "@/lib/i18n/config";
  * overlay text — the chrome line below carries the section name, the
  * narrative starts in the first content row beneath.
  *
- * Kept as a server component: no client JS, no animation overhead.
- * The image is `priority` because it is above the fold on /our-story.
+ * Data-driven — the route passes the rendered hero (resolved from
+ * Mongo or the TS fallback).
  */
-export function StoryHeroEditorial({ locale }: { locale: Locale }) {
-  const { hero } = getOurStory(locale);
-
+export function StoryHeroEditorial({
+  hero,
+}: {
+  hero: { eyebrow: string; image: string; imageAlt: string };
+}) {
   return (
     <section
       aria-label={hero.eyebrow}

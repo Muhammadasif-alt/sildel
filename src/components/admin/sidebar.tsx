@@ -13,6 +13,7 @@ import {
   FileText,
   Settings,
   Images,
+  Sparkles,
 } from "lucide-react";
 
 type NavItem = {
@@ -45,7 +46,8 @@ const GROUPS: NavGroup[] = [
   {
     title: "Content",
     items: [
-      { href: "/admin/pages", label: "Pages", icon: FileText },
+      { href: "/admin/editorial", label: "Editorial pages", icon: Sparkles },
+      { href: "/admin/pages", label: "Pages (legacy)", icon: FileText },
       { href: "/admin/blogs", label: "Blogs", icon: Newspaper },
       { href: "/admin/media", label: "Media library", icon: Images },
     ],
