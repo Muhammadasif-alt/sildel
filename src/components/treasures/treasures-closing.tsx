@@ -20,7 +20,7 @@ export function TreasuresClosing({ cta }: { cta: TreasuresContent["cta"] }) {
     >
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
-      <div className="relative z-10 mx-auto max-w-3xl text-center">
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
         <p className="mb-6 text-[11px] uppercase tracking-[0.4em] text-foreground/70">
           {cta.eyebrow}
         </p>
@@ -36,7 +36,7 @@ export function TreasuresClosing({ cta }: { cta: TreasuresContent["cta"] }) {
             </>
           ) : null}
         </h2>
-        <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg">
+        <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-foreground/80 md:text-lg">
           {cta.body}
         </p>
         <div className="mt-10 flex justify-center">

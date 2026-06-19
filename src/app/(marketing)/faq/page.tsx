@@ -78,7 +78,7 @@ export default async function FaqPage() {
 
         {/* Title block */}
         <section className="border-b border-border/40">
-          <div className="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-24">
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
               {t.eyebrow}
             </p>
@@ -86,7 +86,7 @@ export default async function FaqPage() {
               {t.title}{" "}
               <span className="italic text-primary">{t.titleAccent}</span>
             </h1>
-            <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
               {t.intro}
             </p>
           </div>
@@ -94,7 +94,7 @@ export default async function FaqPage() {
 
         {/* Q&A — native <details> so it works without JS and is SEO-friendly. */}
         <section>
-          <div className="mx-auto max-w-3xl px-6 py-14 lg:px-10 lg:py-20">
+          <div className="mx-auto max-w-4xl px-6 py-14 lg:px-10 lg:py-20">
             <ul className="divide-y divide-border/60 border-y border-border/60">
               {faqs.map((f, i) => (
                 <li key={i}>
@@ -129,7 +129,7 @@ export default async function FaqPage() {
 
         {/* CTA */}
         <section className="border-t border-border/60 bg-muted/30">
-          <div className="mx-auto max-w-3xl px-6 py-14 text-center lg:px-10 lg:py-16">
+          <div className="mx-auto max-w-4xl px-6 py-14 text-center lg:px-10 lg:py-16">
             <p className="mb-3 text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
               {t.ctaEyebrow}
             </p>

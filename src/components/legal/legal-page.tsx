@@ -28,9 +28,10 @@ export function LegalPage({
         />
       ) : null}
 
-      {/* Title block */}
+      {/* Title block — wider container so the page title can breathe;
+          intro paragraph stays narrower for readability. */}
       <section className="border-b border-border/40">
-        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-24">
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
             {doc.eyebrow}
           </p>
@@ -41,7 +42,7 @@ export function LegalPage({
             {doc.updated}
           </p>
           {doc.intro && (
-            <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
               {doc.intro}
             </p>
           )}

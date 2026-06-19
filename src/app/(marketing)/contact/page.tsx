@@ -9,17 +9,23 @@ import { JsonLd } from "@/components/common/json-ld";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactMap } from "@/components/contact/contact-map";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
+import {
+  StorySection,
+  type StorySectionData,
+} from "@/components/our-story/story-section";
 
 /**
  * /contact — editorial pass in the Quinta Nova rhythm (founder
- * direction, June 2026). Image-only hero, a centered intro block,
- * the existing ContactForm, then the ContactMap. Bypasses the
- * BlocksRenderer here because the CMS layout no longer matches the
- * live page we're tracking.
+ * direction, June 2026). Image-only hero, a StorySection intro
+ * (image + title side-by-side so the rhythm doesn't collapse
+ * into a narrow centered column), wider form section, then the
+ * existing ContactMap.
  */
 const PAGE_PATH = "/contact";
 const HERO_IMAGE =
   "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp";
+const INTRO_IMAGE =
+  "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp";
 
 export const revalidate = 3600;
 
@@ -78,8 +84,6 @@ export default async function ContactPage() {
     { label: isPt ? "Contacto" : "Contact", href: PAGE_PATH },
   ]);
 
-  // Two services we explicitly market on this page — surfaces in SERPs
-  // as separate "service" rich results for relevant queries.
   const commissionService = buildServiceJsonLd({
     name: isPt
       ? "Encomendas Personalizadas em Cortiça"
@@ -102,8 +106,8 @@ export default async function ContactPage() {
 
   const t = {
     eyebrow: isPt ? "Contacto" : "Contact",
-    title: isPt ? "Fale" : "Talk to",
-    titleAccent: isPt ? "connosco." : "us.",
+    title: isPt ? "Fale" : "Talk",
+    titleAccent: isPt ? "connosco." : "to us.",
     intro: isPt
       ? "Encomendas personalizadas, visitas ao atelier, imprensa, parcerias — escreva-nos. Respondemos dentro de um dia útil, com calma e dedicação."
       : "Bespoke commissions, atelier visits, press, partnerships — write to us. We reply within one business day, with care.",
@@ -111,6 +115,20 @@ export default async function ContactPage() {
     formHeading: isPt
       ? "Conte-nos no que está a pensar."
       : "Tell us what you're thinking about.",
+    formBody: isPt
+      ? "Resposta dentro de um dia útil. Pode também escrever-nos directamente para sildel@sildel.pt."
+      : "We reply within one business day. You can also write to us directly at sildel@sildel.pt.",
+  };
+
+  const intro: StorySectionData = {
+    eyebrow: t.eyebrow,
+    title: t.title,
+    titleAccent: t.titleAccent,
+    body: [t.intro],
+    image: INTRO_IMAGE,
+    imageAlt: isPt
+      ? "Atelier Sildel em Esmoriz — interior ao pôr-do-sol."
+      : "Sildel atelier in Esmoriz — interior at golden hour.",
   };
 
   return (
@@ -135,44 +153,40 @@ export default async function ContactPage() {
           eyebrow={t.eyebrow}
         />
 
-        {/* Title block — centered, mirrors the legal pages' opening. */}
-        <section className="border-b border-border/40">
-          <div className="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-24">
-            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
-              {t.eyebrow}
-            </p>
-            <h1 className="font-serif text-4xl font-light leading-[1.05] md:text-5xl lg:text-6xl">
-              {t.title}{" "}
-              <span className="italic text-primary">{t.titleAccent}</span>
-            </h1>
-            <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
-              {t.intro}
-            </p>
-          </div>
-        </section>
+        {/* Intro — full editorial row (image LEFT, title + body RIGHT)
+            so the rhythm doesn't collapse into a narrow centered text
+            block. Matches the other editorial pages. */}
+        <StorySection data={intro} mirror={false} headingId="contact-intro" />
 
-        {/* Contact form — heading then form, narrow column. */}
+        {/* Form section — wider container, centered heading + form,
+            with a soft muted band so the page breathes between the
+            editorial row above and the map below. */}
         <section
           aria-labelledby="contact-form-heading"
-          className="relative w-full bg-muted/30 border-b border-border/60"
+          className="relative w-full border-y border-border/60 bg-muted/30"
         >
-          <div className="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-24">
-            <div className="text-center mb-12">
-              <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-4">
+          <div className="mx-auto max-w-5xl px-6 py-20 lg:px-12 lg:py-28">
+            <div className="mx-auto mb-14 max-w-3xl text-center">
+              <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
                 {t.formEyebrow}
               </p>
               <h2
                 id="contact-form-heading"
-                className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1]"
+                className="font-serif text-3xl font-light leading-[1.05] md:text-4xl lg:text-5xl"
               >
                 {t.formHeading}
               </h2>
+              <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                {t.formBody}
+              </p>
             </div>
-            <ContactForm />
+            <div className="mx-auto max-w-3xl">
+              <ContactForm />
+            </div>
           </div>
         </section>
 
-        {/* Map + NAP — kept as the closing beat (local-SEO anchor). */}
+        {/* Map + NAP — closing beat (local-SEO anchor). */}
         <ContactMap locale={locale} />
       </main>
     </>

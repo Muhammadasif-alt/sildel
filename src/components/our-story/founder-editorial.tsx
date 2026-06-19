@@ -48,11 +48,11 @@ export function FounderEditorial({
       <div
         className={
           mirror
-            ? "flex flex-col justify-center px-6 py-10 md:px-10 md:py-14 lg:px-16 lg:py-0 xl:px-24 2xl:pl-32"
-            : "flex flex-col justify-center px-6 py-10 md:px-10 md:py-14 lg:px-16 lg:py-0 xl:px-24 2xl:pr-32"
+            ? "flex flex-col justify-center px-6 py-10 md:px-10 md:py-14 lg:px-12 lg:py-0 xl:px-16 2xl:pl-24"
+            : "flex flex-col justify-center px-6 py-10 md:px-10 md:py-14 lg:px-12 lg:py-0 xl:px-16 2xl:pr-24"
         }
       >
-        <div className={mirror ? "max-w-xl lg:ml-auto" : "max-w-xl"}>
+        <div className={mirror ? "max-w-2xl lg:ml-auto" : "max-w-2xl"}>
           <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-foreground/65">
             {founder.eyebrow}
           </p>
