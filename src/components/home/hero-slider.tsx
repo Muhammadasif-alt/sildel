@@ -8,7 +8,10 @@ import { cn } from "@/lib/utils";
 import type { HeroSlide } from "@/content/home";
 
 const AUTOPLAY_MS = 7000;
-const FADE_MS = 1200;
+// Bounce-down keyframe length (must match heroBounceDown in globals.css).
+// Used to schedule the copy's delayed rise so it lands AFTER the image.
+const BOUNCE_MS = 1400;
+const COPY_DELAY_MS = 650;
 
 /**
  * Hero slider — Quinta do Crasto-inspired centred layout (founder
@@ -103,7 +106,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Full-bleed image stack — slow Ken Burns on active */}
+      {/* Full-bleed image stack — bounce-down entrance on active slide */}
       {slides.map((slide, i) => (
         <HeroImageLayer
           key={slide.id}
@@ -112,6 +115,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
           active={i === index}
           priority={i === 0}
           mounted={mounted.has(i)}
+          bounceMs={BOUNCE_MS}
         />
       ))}
 
@@ -145,17 +149,25 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
         <ArrowRight className="h-6 w-6 lg:h-7 lg:w-7" strokeWidth={1.25} />
       </button>
 
-      {/* Centred content — anchored low so the piece above stays clear */}
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col items-center justify-end px-6 pb-20 text-center lg:px-12 lg:pb-28">
-        <div className="relative w-full max-w-3xl">
+      {/* Centred content — pushed further down so the BIG dropped-in
+          image dominates the top two-thirds of the frame. Founder
+          direction June 2026 (sixteenth pass): image full-size moving
+          in from above, text + buttons anchored low. */}
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col items-center justify-end px-6 pb-10 text-center lg:px-12 lg:pb-14">
+        <div
+          key={index}
+          className="relative w-full max-w-3xl"
+          style={{
+            animation: `heroCopyRise 900ms cubic-bezier(0.22, 1, 0.36, 1) ${COPY_DELAY_MS}ms both`,
+          }}
+        >
           {slides.map((slide, i) => (
             <div
               key={slide.id}
               className={cn(
-                "transition-all duration-700 ease-out",
                 i === index
-                  ? "relative opacity-100 translate-y-0"
-                  : "pointer-events-none absolute inset-0 opacity-0 translate-y-4",
+                  ? "relative opacity-100"
+                  : "pointer-events-none absolute inset-0 opacity-0",
               )}
               aria-hidden={i !== index}
             >
@@ -222,32 +234,33 @@ function HeroImageLayer({
   active,
   priority,
   mounted,
+  bounceMs,
 }: {
   src: string;
   alt: string;
   active: boolean;
   priority: boolean;
   mounted: boolean;
+  bounceMs: number;
 }) {
   const [errored, setErrored] = useState(false);
 
   return (
     <div
       className={cn(
-        "absolute inset-0 ease-out",
-        // Drop-from-above + fade. Active slide slides down into place from
-        // -24px; inactive slides rest 24px above the frame so the next
-        // entrance always travels DOWN (founder direction, June 2026:
-        // hero images should feel like they fall into view).
-        active
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 -translate-y-6 pointer-events-none",
+        "absolute inset-0",
+        active ? "opacity-100 z-[1]" : "opacity-0 pointer-events-none",
       )}
-      style={{
-        transitionProperty: "opacity, transform",
-        transitionDuration: `${FADE_MS}ms`,
-        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-      }}
+      style={
+        // Active slide plays the bounce-down keyframe (overshoot then
+        // settle). Inactive slides stay invisible above the frame so the
+        // next entrance always travels DOWN with personality.
+        active
+          ? {
+              animation: `heroBounceDown ${bounceMs}ms cubic-bezier(0.22, 1, 0.36, 1) both`,
+            }
+          : { transform: "translateY(-110%)" }
+      }
       aria-hidden={!active}
     >
       {!mounted ? null : errored ? (
@@ -266,12 +279,7 @@ function HeroImageLayer({
           fetchPriority={priority ? "high" : "auto"}
           quality={priority ? 85 : 80}
           onError={() => setErrored(true)}
-          className={cn(
-            "object-cover object-center ease-out",
-            active
-              ? "scale-105 [transition:transform_12000ms_ease-out]"
-              : "scale-100 [transition:transform_0ms]",
-          )}
+          className="object-cover object-center"
         />
       )}
     </div>
