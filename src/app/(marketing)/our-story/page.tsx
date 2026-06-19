@@ -12,6 +12,7 @@ import { StorySection, type StorySectionData } from "@/components/our-story/stor
 import { StoryBleed } from "@/components/our-story/story-bleed";
 import { FounderEditorial } from "@/components/our-story/founder-editorial";
 import { StoryVideo } from "@/components/our-story/story-video";
+import { StoryClosing } from "@/components/our-story/story-closing";
 
 const PAGE_PATH = "/our-story";
 const DATE_PUBLISHED = "2024-01-01T00:00:00Z";
@@ -185,6 +186,13 @@ export default async function OurStoryPage() {
         {/* Cinematic video — kept from the previous design per founder
             direction "Vedio ka Section tu rakhna hai". */}
         <StoryVideo locale={locale} />
+
+        {/* Closing parallax CTA — added so the video isn't the last
+            beat before the footer (founder direction June 2026:
+            "vedio section se neacha b iss trha ka section add karin
+            taka end m vedio bura na lagy"). Mirrors the home-page
+            ParallaxCta pattern. */}
+        <StoryClosing locale={locale} />
       </main>
     </>
   );
