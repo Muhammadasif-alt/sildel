@@ -1,12 +1,13 @@
 import type { HeroSlide } from "./home";
 
 export const homeEn = {
-  /* Hero slider — Quinta do Crasto-inspired centred layout (founder
-     direction, June 2026, second pass): one serif word/phrase, italic
-     tagline below, two flat rectangular CTAs side-by-side. Each slide
-     pairs a collection with a wide cinematic interior frame from the
-     /Slidel/enhance/ series so the whole reel reads as one moodboard
-     rather than a mix of studio + ambient. */
+  /* Hero slider — cinematic brand-journey reel (founder direction,
+     June 2026, eighteenth pass: client found studio /enhance/ renders
+     too product-looking; swapped to the editorial Nano Banana 2
+     atmospheric series so each slide sets MOOD, not catalogue).
+     Sequence reads as one short film: enter the atelier → meet the
+     masterpiece → know the ancient tree → see the harvest → witness
+     the hands → step outside through the painted doorway. */
   heroSlider: [
     {
       id: "fine-arts",
@@ -15,8 +16,8 @@ export const homeEn = {
       titleAccent: "Sculptural treasures shaped by hand, signed and numbered.",
       description:
         "Sculptural treasures shaped from sustainably harvested Portuguese cork.",
-      image: "/Slidel/enhance/enhance-sculpture-04.webp",
-      imageAlt: "Sildel cork sculpture in a sun-lit Portuguese atelier interior.",
+      image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+      imageAlt: "A Portuguese cork atelier interior at golden hour, sunlight spilling across the workbench.",
       cta: { label: "See All Treasures", href: "/treasures" },
       cta2: { label: "Inside the Atelier", href: "/our-story" },
     },
@@ -27,8 +28,8 @@ export const homeEn = {
       titleAccent: "24-carat gold leaf meets the authentic grain of cork.",
       description:
         "Gold leaf against authentic cork — geometry in quiet conversation.",
-      image: "/Slidel/enhance/enhance-carre-dor-01.webp",
-      imageAlt: "Carré d'Or — 24k gold leaf against the authentic grain of Portuguese cork.",
+      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_3.webp",
+      imageAlt: "Sculptural cork art object under soft warm light against a deep matte-black ground.",
       cta: { label: "Discover Carré d'Or", href: "/treasures/carre-dor" },
       cta2: { label: "All Limited", href: "/treasures?category=fine-arts" },
     },
@@ -38,8 +39,8 @@ export const homeEn = {
       title: "Eclipse",
       titleAccent: "Sculptural cork that holds the warmth of the forest.",
       description: "Sculptural cork forms that hold the warmth of the forest.",
-      image: "/Slidel/enhance/enhance-lighting-03.webp",
-      imageAlt: "Eclipse — cork lighting in a softly-lit Portuguese atelier.",
+      image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+      imageAlt: "An ancient Portuguese cork oak tree, its trunk recently harvested in the Alentejo light.",
       cta: { label: "View Eclipse", href: "/treasures?q=eclipse" },
       cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
     },
@@ -49,8 +50,8 @@ export const homeEn = {
       title: "Gibraltar",
       titleAccent: "A defining silhouette — designed to last decades.",
       description: "A defining silhouette — elegant lines designed to last decades.",
-      image: "/Slidel/enhance/enhance-tables-04.webp",
-      imageAlt: "Gibraltar — Sildel cork table in a sun-lit Portuguese atelier with an arched alcove.",
+      image: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+      imageAlt: "Tall stacks of freshly harvested cork sheets curing under oak trees at golden hour.",
       cta: { label: "Explore Gibraltar", href: "/treasures/gibraltar" },
       cta2: { label: "All Tables", href: "/treasures?category=tables" },
     },
@@ -60,8 +61,8 @@ export const homeEn = {
       title: "Hot Spring",
       titleAccent: "An earth-fired cork form on a quiet plinth.",
       description: "An earth-fired cork form on a quiet plinth — sculpture, made to anchor a room.",
-      image: "/Slidel/enhance/enhance-misc-10.webp",
-      imageAlt: "Hot Spring — a perforated cork sculpture on a stone podium with olive sprig.",
+      image: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
+      imageAlt: "Close-up of a master harvester's weathered hands gripping a curved cork axe.",
       cta: { label: "Explore Hot Spring", href: "/treasures/hot-spring" },
       cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
     },
@@ -71,8 +72,8 @@ export const homeEn = {
       title: "Side by Side",
       titleAccent: "Frosted glass meets the authentic grain of cork.",
       description: "Frosted glass meets the authentic grain of cork — a quiet wall piece, framed.",
-      image: "/Slidel/enhance/enhance-fine-arts-02.webp",
-      imageAlt: "Side by Side — frosted glass over a cork brick on a linen tablecloth.",
+      image: "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp",
+      imageAlt: "A weathered Portuguese atelier doorway at golden hour with a hand-painted Sildel sign.",
       cta: { label: "Discover Side by Side", href: "/treasures/side-by-side" },
       cta2: { label: "All Fine Arts", href: "/treasures?category=fine-arts" },
     },

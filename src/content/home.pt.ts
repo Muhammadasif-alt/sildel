@@ -1,11 +1,13 @@
 import type { HeroSlide } from "./home";
 
 export const homePt = {
-  /* Slider de abertura — layout centrado inspirado em Quinta do Crasto
-     (direcção da fundadora, Junho 2026, segunda iteração): uma palavra
-     em serifa, tagline em itálico por baixo, dois botões rectangulares
-     lado a lado. Cada slide combina uma colecção com um interior
-     cinematográfico para que todo o reel leia como um único moodboard. */
+  /* Slider de abertura — reel cinematográfico da marca (direcção da
+     fundadora, Junho 2026, décima oitava iteração: o cliente achou as
+     renders /enhance/ demasiado catálogo; trocadas pela série editorial
+     Nano Banana 2 para que cada slide defina ATMOSFERA, não produto).
+     A sequência lê-se como uma curta-metragem: entrar no atelier →
+     conhecer a peça → ver o sobreiro antigo → ver a colheita →
+     testemunhar as mãos → sair pela porta pintada à mão. */
   heroSlider: [
     {
       id: "fine-arts",
@@ -14,8 +16,8 @@ export const homePt = {
       titleAccent: "Tesouros esculturais moldados à mão, assinados e numerados.",
       description:
         "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável.",
-      image: "/Slidel/enhance/enhance-sculpture-04.webp",
-      imageAlt: "Escultura em cortiça Sildel num interior de atelier português banhado pela luz solar.",
+      image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+      imageAlt: "Interior de um atelier de cortiça português à hora dourada, com a luz a derramar-se sobre a bancada.",
       cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
       cta2: { label: "Dentro do Atelier", href: "/our-story" },
     },
@@ -25,8 +27,8 @@ export const homePt = {
       title: "Carré d'Or",
       titleAccent: "Folha de ouro de 24 quilates sobre o grão autêntico da cortiça.",
       description: "Folha de ouro sobre cortiça autêntica — geometria em diálogo silencioso.",
-      image: "/Slidel/enhance/enhance-carre-dor-01.webp",
-      imageAlt: "Carré d'Or — folha de ouro de 24 quilates sobre o grão autêntico da cortiça portuguesa.",
+      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_3.webp",
+      imageAlt: "Objecto escultural em cortiça sob luz quente direccional, contra um fundo preto mate profundo.",
       cta: { label: "Descobrir Carré d'Or", href: "/treasures/carre-dor" },
       cta2: { label: "Todas Edições", href: "/treasures?category=fine-arts" },
     },
@@ -36,8 +38,8 @@ export const homePt = {
       title: "Eclipse",
       titleAccent: "Cortiça escultural que guarda o calor da floresta.",
       description: "Formas esculturais em cortiça que guardam o calor da floresta.",
-      image: "/Slidel/enhance/enhance-lighting-03.webp",
-      imageAlt: "Eclipse — candeeiro de cortiça num atelier português suavemente iluminado.",
+      image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+      imageAlt: "Um sobreiro português antigo, com o tronco recentemente descortiçado na luz do Alentejo.",
       cta: { label: "Ver Eclipse", href: "/treasures?q=eclipse" },
       cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
     },
@@ -47,8 +49,8 @@ export const homePt = {
       title: "Gibraltar",
       titleAccent: "Uma silhueta marcante — desenhada para durar décadas.",
       description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
-      image: "/Slidel/enhance/enhance-tables-04.webp",
-      imageAlt: "Gibraltar — mesa em cortiça num atelier português banhado pela luz solar, com nicho em arco.",
+      image: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+      imageAlt: "Pilhas altas de chapas de cortiça acabadas de colher a curar sob sobreiros, à hora dourada.",
       cta: { label: "Explorar Gibraltar", href: "/treasures/gibraltar" },
       cta2: { label: "Todas Mesas", href: "/treasures?category=tables" },
     },
@@ -58,8 +60,8 @@ export const homePt = {
       title: "Hot Spring",
       titleAccent: "Uma forma de cortiça assente sobre um plinto silencioso.",
       description: "Uma forma de cortiça assente sobre um plinto silencioso — escultura, feita para ancorar uma sala.",
-      image: "/Slidel/enhance/enhance-misc-10.webp",
-      imageAlt: "Hot Spring — escultura em cortiça perfurada sobre um pódio de pedra com raminho de oliveira.",
+      image: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
+      imageAlt: "Plano de pormenor das mãos curtidas de um mestre descortiçador a segurar um machado curvo.",
       cta: { label: "Explorar Hot Spring", href: "/treasures/hot-spring" },
       cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
     },
@@ -69,8 +71,8 @@ export const homePt = {
       title: "Side by Side",
       titleAccent: "Vidro fosco encontra-se com o grão autêntico da cortiça.",
       description: "Vidro fosco encontra-se com o grão autêntico da cortiça — uma peça de parede, emoldurada.",
-      image: "/Slidel/enhance/enhance-fine-arts-02.webp",
-      imageAlt: "Side by Side — vidro fosco sobre um tijolo de cortiça numa toalha de linho.",
+      image: "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp",
+      imageAlt: "Porta envelhecida de um atelier português à hora dourada, com tabuleta Sildel pintada à mão.",
       cta: { label: "Descobrir Side by Side", href: "/treasures/side-by-side" },
       cta2: { label: "Todas Belas Artes", href: "/treasures?category=fine-arts" },
     },
