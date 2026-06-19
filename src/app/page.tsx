@@ -6,11 +6,7 @@ import { getLocale } from "@/lib/i18n/get-locale";
 import { getHome } from "@/content/home";
 import { PartnersStrip } from "@/components/partners/partners-strip";
 import { Awards } from "@/components/home/awards";
-import { WhyChooseSildel } from "@/components/home/why-choose-sildel";
-import { MaterialsColors } from "@/components/home/materials-colors";
 import { BrandStoryProdigy } from "@/components/home/brand-story-prodigy";
-import { AlentejoOrigins } from "@/components/home/alentejo-origins";
-import { WhyAuthenticCork } from "@/components/home/why-authentic-cork";
 import { ProductFeature } from "@/components/home/product-feature";
 import { HeroSlider } from "@/components/home/hero-slider";
 
@@ -80,10 +76,18 @@ export default async function HomePage() {
             headingId={`product-feature-${i}`}
           />
         ))}
-        {/* CMS blocks — heroShop, shopCategories, featuredTreasures and
-            brandVideo are skipped. The four-product reel above already
-            carries the "shop" intent, and the brand video was cut to
-            keep the page from running too long. */}
+        {/* Founder story + social proof — the only editorial below the
+            product reel. Isabel's 30-years framing anchors the brand;
+            awards + partners do the proof. Everything else (Alentejo
+            origins, Why Authentic Cork facts, Materials & Colours, Why
+            Choose Sildel, CMS sustainability) was cut per founder
+            direction (June 2026, twenty-second pass — "neacha wala
+            mostly remove kr do") to stop the page running long. */}
+        <BrandStoryProdigy locale={locale} />
+        <Awards locale={locale} />
+        <PartnersStrip locale={locale} />
+        {/* CMS blocks — only the newsletter signup remains; everything
+            else from the CMS pass is skipped. */}
         <BlocksRenderer
           pageKey="home"
           skipTypes={[
@@ -91,21 +95,10 @@ export default async function HomePage() {
             "home.shopCategories",
             "home.featuredTreasures",
             "home.brandVideo",
+            "home.sustainability",
+            "home.whySildel",
           ]}
         />
-        {/* Editorial sections added June 2026 — who made this (prodigy
-            story), where it begins (Alentejo origins), what makes the
-            material rare (3 facts). They sit between the CMS shopping
-            flow and the closing static sections so visitors travel
-            atelier intro → category → maker → land → material → colours
-            → why → awards → partners. */}
-        <BrandStoryProdigy locale={locale} />
-        <AlentejoOrigins locale={locale} />
-        <WhyAuthenticCork locale={locale} />
-        <MaterialsColors locale={locale} />
-        <WhyChooseSildel locale={locale} />
-        <Awards locale={locale} />
-        <PartnersStrip locale={locale} />
       </main>
     </>
   );
