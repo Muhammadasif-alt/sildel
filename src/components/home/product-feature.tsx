@@ -35,7 +35,7 @@ export function ProductFeature({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[68vh] lg:min-h-[560px]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[88vh] lg:min-h-[720px]">
         <Image
           src={data.image}
           alt={data.imageAlt}
