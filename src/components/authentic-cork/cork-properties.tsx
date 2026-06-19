@@ -62,7 +62,7 @@ export function CorkProperties({
           </p>
           <h2
             id="cork-properties"
-            className="font-serif text-3xl font-light leading-[1.15] text-foreground md:text-4xl lg:text-[2.5rem]"
+            className="font-serif text-3xl font-light leading-[1.08] tracking-tight text-foreground md:text-4xl lg:text-[2.5rem]"
           >
             {properties.title}
             {properties.titleAccent ? (

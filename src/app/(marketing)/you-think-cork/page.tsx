@@ -242,7 +242,7 @@ export default async function YouThinkCorkPage() {
               </p>
               <h2
                 id="ytc-cta-heading"
-                className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1]"
+                className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.04] tracking-tight"
               >
                 {t.ctaHeading}
               </h2>

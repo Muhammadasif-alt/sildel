@@ -40,7 +40,7 @@ export function PartnersClosing({
         </p>
         <h2
           id="partners-closing-heading"
-          className="font-serif text-3xl font-light leading-[1.1] text-foreground md:text-5xl lg:text-[3.25rem]"
+          className="font-serif text-3xl font-light leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-[3.25rem]"
         >
           {title}
           {titleAccent ? (
@@ -58,7 +58,7 @@ export function PartnersClosing({
         <div className="mt-10 flex justify-center">
           <Link
             href={ctaHref}
-            className="group inline-flex items-center gap-3 bg-foreground px-10 py-4 text-[12px] uppercase tracking-[0.32em] text-background transition-colors hover:bg-foreground/85"
+            className="group inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
           >
             {ctaLabel}
             <ArrowRight

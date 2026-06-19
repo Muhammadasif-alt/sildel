@@ -137,7 +137,7 @@ export default async function TreasuresPage() {
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
               {content.hero.eyebrow}
             </p>
-            <h1 className="font-serif text-4xl font-light leading-[1.05] md:text-5xl lg:text-6xl">
+            <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight md:text-5xl lg:text-6xl">
               {content.hero.title}{" "}
               <span className="italic text-primary">
                 {content.hero.titleAccent}

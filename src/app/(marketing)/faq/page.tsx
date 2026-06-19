@@ -82,7 +82,7 @@ export default async function FaqPage() {
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
               {t.eyebrow}
             </p>
-            <h1 className="font-serif text-4xl font-light leading-[1.05] md:text-5xl lg:text-6xl">
+            <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight md:text-5xl lg:text-6xl">
               {t.title}{" "}
               <span className="italic text-primary">{t.titleAccent}</span>
             </h1>
@@ -133,12 +133,12 @@ export default async function FaqPage() {
             <p className="mb-3 text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
               {t.ctaEyebrow}
             </p>
-            <p className="font-serif text-2xl font-light leading-snug md:text-3xl">
+            <p className="font-serif text-2xl font-light leading-snug tracking-tight md:text-3xl">
               {t.ctaBody}
             </p>
             <Link
               href="/contact"
-              className="mt-8 inline-flex items-center justify-center gap-3 bg-foreground px-8 py-4 text-xs font-medium uppercase tracking-[0.32em] text-background transition-colors hover:bg-foreground/90"
+              className="mt-8 inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
             >
               {t.ctaLink}
             </Link>

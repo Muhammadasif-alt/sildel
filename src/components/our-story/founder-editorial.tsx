@@ -56,7 +56,7 @@ export function FounderEditorial({
           <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-foreground/65">
             {founder.eyebrow}
           </p>
-          <blockquote className="font-serif text-3xl font-light italic leading-[1.18] text-foreground md:text-4xl lg:text-[2.5rem]">
+          <blockquote className="font-serif text-3xl font-light italic leading-[1.1] tracking-tight text-foreground md:text-4xl lg:text-[2.5rem]">
             &ldquo;{founder.pullQuote}&rdquo;
           </blockquote>
           <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground md:text-[17px]">

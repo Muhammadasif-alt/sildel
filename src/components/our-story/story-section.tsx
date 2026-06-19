@@ -69,7 +69,7 @@ export function StorySection({
           ) : null}
           <h2
             id={headingId}
-            className="font-serif text-3xl font-light leading-[1.15] text-foreground md:text-4xl lg:text-[2.5rem]"
+            className="font-serif text-3xl font-light leading-[1.08] tracking-tight text-foreground md:text-4xl lg:text-[2.5rem]"
           >
             {data.title}
             {data.titleAccent ? (

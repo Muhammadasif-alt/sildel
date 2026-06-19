@@ -35,7 +35,7 @@ export function LegalPage({
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
             {doc.eyebrow}
           </p>
-          <h1 className="font-serif text-4xl font-light leading-[1.05] md:text-5xl">
+          <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight md:text-5xl">
             {doc.title}
           </h1>
           <p className="mt-5 text-[11px] uppercase tracking-[0.28em] text-muted-foreground">

@@ -172,7 +172,7 @@ export default async function ContactPage() {
               </p>
               <h2
                 id="contact-form-heading"
-                className="font-serif text-3xl font-light leading-[1.05] md:text-4xl lg:text-5xl"
+                className="font-serif text-3xl font-light leading-[1.04] tracking-tight md:text-4xl lg:text-5xl"
               >
                 {t.formHeading}
               </h2>
