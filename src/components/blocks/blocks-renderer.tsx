@@ -80,12 +80,25 @@ import {
 export async function BlocksRenderer({
   pageKey,
   fallback,
+  skipTypes,
 }: {
   pageKey: string;
   /** Rendered if the page has no blocks yet — keeps pre-CMS pages working. */
   fallback?: React.ReactNode;
+  /** Optional set of block types to filter out before rendering. Used on
+   *  the home page so we can render the hero block manually first,
+   *  drop the new AtelierIntro section between hero and shop, then
+   *  let BlocksRenderer paint the remaining CMS blocks. */
+  skipTypes?: readonly string[];
 }) {
-  const [blocks, locale] = await Promise.all([getPageBlocks(pageKey), getLocale()]);
+  const [allBlocks, locale] = await Promise.all([
+    getPageBlocks(pageKey),
+    getLocale(),
+  ]);
+  const skip = skipTypes && skipTypes.length ? new Set(skipTypes) : null;
+  const blocks = skip
+    ? allBlocks.filter((b) => !skip.has(b.type))
+    : allBlocks;
   if (!blocks.length) return <>{fallback ?? null}</>;
 
   const products = await loadShowcaseProducts(blocks);

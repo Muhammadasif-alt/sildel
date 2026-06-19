@@ -99,6 +99,27 @@ export const homePt = {
     cta: { label: "Explorar tesouros", href: "/treasures" },
   },
 
+  /* Introdução ao atelier — secção editorial ao estilo Quinta Nova
+     (direcção da fundadora, Junho 2026: "fazer final como
+     quintanova.com"). Aparece directamente sob o hero como o primeiro
+     momento editorial da página inicial. Imagem larga à esquerda,
+     título serifa curto + corpo + link com seta à direita. Sem
+     molduras, sem etiqueta — a mesma linguagem contida de quinta de
+     luxo que a Quinta Nova usa no seu próprio site. */
+  atelierIntro: {
+    title: "Um atelier moldado à mão.",
+    body:
+      "No nosso atelier em Esmoriz, no norte de Portugal, acreditamos que a natureza é a origem de cada tesouro. Cada peça é moldada à medida, respeitando o veio natural e a forma singular de cada bloco de cortiça — para criar tesouros esculturais com um carácter bem definido e um equilíbrio perfeito entre forma, luz e matéria.",
+    cta: {
+      label: "Descobrir o atelier Sildel",
+      href: "/our-story",
+    },
+    image:
+      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+    imageAlt:
+      "Vista cinematográfica larga do interior do atelier Sildel no norte de Portugal à hora dourada, com peças de cortiça acabadas sobre as bancadas.",
+  },
+
   /* História da marca — enquadramento "prodígio" (Junho 2026). A Isabel
      não "chegou" à cortiça — cresceu junto dela. Trinta anos a trabalhar
      um único material, apenas com as mãos. Diferencia-se de "30 anos

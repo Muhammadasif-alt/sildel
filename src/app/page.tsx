@@ -3,6 +3,7 @@ import { buildMetadata, buildVideoJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/common/json-ld";
 import { siteConfig } from "@/lib/site-config";
 import { getLocale } from "@/lib/i18n/get-locale";
+import { getHome } from "@/content/home";
 import { PartnersStrip } from "@/components/partners/partners-strip";
 import { Awards } from "@/components/home/awards";
 import { WhyChooseSildel } from "@/components/home/why-choose-sildel";
@@ -10,6 +11,8 @@ import { MaterialsColors } from "@/components/home/materials-colors";
 import { BrandStoryProdigy } from "@/components/home/brand-story-prodigy";
 import { AlentejoOrigins } from "@/components/home/alentejo-origins";
 import { WhyAuthenticCork } from "@/components/home/why-authentic-cork";
+import { AtelierIntro } from "@/components/home/atelier-intro";
+import { HeroSlider } from "@/components/home/hero-slider";
 
 // ISR — serve a cached HTML for one hour. Admin "save" actions call
 // revalidatePath() so editorial changes still land immediately.
@@ -53,17 +56,25 @@ const videoJsonLd = buildVideoJsonLd({
 
 export default async function HomePage() {
   const locale = await getLocale();
+  const content = getHome(locale);
   return (
     <>
       <JsonLd data={[videoJsonLd]} />
       <main className="flex flex-1 flex-col">
-        <BlocksRenderer pageKey="home" />
-        {/* Three editorial sections added June 2026 (founder direction):
-            who made this (prodigy story), where it begins (Alentejo
-            origins), what makes the material rare (3 facts). They sit
-            between the CMS shopping flow and the closing static
-            sections so visitors travel category → maker → land →
-            material → colours → why → awards → partners. */}
+        {/* Hero is rendered manually now so we can slip the Quinta Nova-
+            style AtelierIntro section directly under it (founder
+            direction, June 2026, fourteenth pass). The CMS pass then
+            paints the remaining shop / featured / video / sustainability
+            blocks with the hero filtered out so it isn't rendered twice. */}
+        <HeroSlider slides={content.heroSlider} />
+        <AtelierIntro locale={locale} />
+        <BlocksRenderer pageKey="home" skipTypes={["home.heroShop"]} />
+        {/* Editorial sections added June 2026 — who made this (prodigy
+            story), where it begins (Alentejo origins), what makes the
+            material rare (3 facts). They sit between the CMS shopping
+            flow and the closing static sections so visitors travel
+            atelier intro → category → maker → land → material → colours
+            → why → awards → partners. */}
         <BrandStoryProdigy locale={locale} />
         <AlentejoOrigins locale={locale} />
         <WhyAuthenticCork locale={locale} />

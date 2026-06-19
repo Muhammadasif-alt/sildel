@@ -100,6 +100,27 @@ export const homeEn = {
     cta: { label: "Explore treasures", href: "/treasures" },
   },
 
+  /* Atelier intro — Quinta Nova-style editorial introduction (founder
+     direction, June 2026, fourteenth pass: "make it final like
+     quintanova.com"). Sits directly under the hero as the first
+     editorial moment of the home page. Large landscape image left,
+     short serif title + body + arrow link right. No card chrome,
+     no eyebrow — the same restrained luxury-estate language Quinta
+     Nova uses on its own homepage. */
+  atelierIntro: {
+    title: "An atelier shaped by hand.",
+    body:
+      "At our atelier in Esmoriz, in northern Portugal, we believe nature is the origin of every treasure. Each piece is shaped to measure, respecting the natural grain and singular form of every cork block — to produce sculptural treasures with a well-defined character and a perfect balance between form, light, and material.",
+    cta: {
+      label: "Discover the Sildel atelier",
+      href: "/our-story",
+    },
+    image:
+      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+    imageAlt:
+      "Wide cinematic view of the Sildel atelier interior in northern Portugal at golden hour, with finished cork pieces on workbenches.",
+  },
+
   /* Brand Story — prodigy framing (founder direction, June 2026).
      Isabel didn't "come" to cork — she grew up close to it. Thirty years
      working a single material, only with her hands. Differentiates from
