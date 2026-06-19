@@ -165,7 +165,7 @@ export default async function ProductPage({ params }: Params) {
           aria-label="Breadcrumb"
           className="border-b border-border/40 bg-muted/30"
         >
-          <div className="mx-auto max-w-[1480px] px-6 lg:px-12 py-4 flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-muted-foreground">
+          <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-4 flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-muted-foreground">
             <Link href="/treasures" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
               <ArrowLeft className="h-3.5 w-3.5" />
               {i18n.allTreasures}
@@ -192,7 +192,7 @@ export default async function ProductPage({ params }: Params) {
           aria-label={locale === "pt" ? "A peça" : "The piece"}
           className="relative w-full bg-background"
         >
-          <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-20 px-6 py-16 lg:px-12 lg:py-24 items-start">
+          <div className="mx-auto max-w-[1600px] grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-10 lg:gap-16 px-6 py-16 lg:px-12 lg:py-24 items-start">
             {/* Gallery — continuous vertical stack */}
             <div>
               <ProductGallery
@@ -217,7 +217,7 @@ export default async function ProductPage({ params }: Params) {
                 <p className="text-[10px] tracking-[0.32em] uppercase text-muted-foreground mb-3">
                   {i18n.price}
                 </p>
-                <div className="font-serif text-3xl md:text-4xl font-light text-foreground leading-none">
+                <div className="font-serif text-3xl md:text-4xl font-light tracking-tight text-foreground leading-none">
                   {i18n.priceOnRequest}
                 </div>
                 <p className="mt-4 text-sm text-muted-foreground max-w-md">
@@ -250,7 +250,7 @@ export default async function ProductPage({ params }: Params) {
               <div className="mb-12">
                 <Link
                   href={`/contact?piece=${encodeURIComponent(product.name)}`}
-                  className="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-foreground text-background px-9 py-4 text-xs tracking-[0.32em] uppercase font-medium transition-colors hover:bg-foreground/90"
+                  className="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
                 >
                   <Mail className="h-4 w-4" aria-hidden strokeWidth={1.5} />
                   {i18n.enquire}
@@ -281,14 +281,14 @@ export default async function ProductPage({ params }: Params) {
           aria-labelledby="benefits-heading"
           className="relative w-full bg-muted/30 border-y border-border/60"
         >
-          <div className="mx-auto max-w-[1480px] px-6 py-20 lg:px-12 lg:py-28">
+          <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-12 lg:py-28">
             <div className="max-w-3xl mx-auto text-center mb-14 lg:mb-16">
               <p className="text-xs tracking-[0.4em] uppercase text-primary mb-6">
                 {i18n.benefitsEyebrow}
               </p>
               <h2
                 id="benefits-heading"
-                className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]"
+                className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.04] tracking-tight"
               >
                 {i18n.benefitsTitle}{" "}
                 <span className="italic text-primary">{i18n.benefitsAccent}</span>
@@ -308,7 +308,7 @@ export default async function ProductPage({ params }: Params) {
                   >
                     <Check className="h-5 w-5" />
                   </span>
-                  <p className="font-serif text-lg lg:text-xl text-foreground leading-snug">
+                  <p className="font-serif text-lg lg:text-xl font-light tracking-tight text-foreground leading-snug">
                     {b}
                   </p>
                 </li>
@@ -325,33 +325,21 @@ export default async function ProductPage({ params }: Params) {
         >
           <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-12 lg:py-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              {/* Square editorial image */}
-              <div className="relative">
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -inset-3 rounded-sm border border-primary/20"
+              {/* Square editorial image — clean overflow-hidden wrapper
+                  with the same hover-zoom the editorial sections use,
+                  no gold corner ornaments or double ring. */}
+              <div className="group relative aspect-square w-full overflow-hidden bg-muted">
+                <Image
+                  src={
+                    (product.gallery && product.gallery.length > 1)
+                      ? product.gallery[1]
+                      : product.image
+                  }
+                  alt={`${product.name} — ${product.tagline}`}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                 />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -top-3 -left-3 h-6 w-6 border-l-2 border-t-2 border-primary"
-                />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -bottom-3 -right-3 h-6 w-6 border-b-2 border-r-2 border-primary"
-                />
-                <div className="relative aspect-square w-full overflow-hidden rounded-sm ring-1 ring-border bg-muted shadow-2xl shadow-foreground/15">
-                  <Image
-                    src={
-                      (product.gallery && product.gallery.length > 1)
-                        ? product.gallery[1]
-                        : product.image
-                    }
-                    alt={`${product.name} — ${product.tagline}`}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
               </div>
 
               {/* Text content */}
@@ -361,7 +349,7 @@ export default async function ProductPage({ params }: Params) {
                 </p>
                 <h2
                   id="story-heading"
-                  className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.05] mb-8"
+                  className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.04] tracking-tight mb-8"
                 >
                   {extras.story.title}
                 </h2>
@@ -391,7 +379,7 @@ export default async function ProductPage({ params }: Params) {
                 <div>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 py-4 rounded-sm text-xs tracking-[0.35em] uppercase font-medium hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
                   >
                     <Mail className="h-4 w-4" />
                     {extras.story.ctaLabel}
@@ -422,7 +410,7 @@ export default async function ProductPage({ params }: Params) {
               </p>
               <h2
                 id="faq-heading"
-                className="font-serif text-4xl md:text-5xl font-light leading-[1.05]"
+                className="font-serif text-4xl md:text-5xl font-light leading-[1.04] tracking-tight"
               >
                 {i18n.faqTitle}{" "}
                 <span className="italic text-primary">{i18n.faqAccent}</span>
@@ -437,12 +425,12 @@ export default async function ProductPage({ params }: Params) {
         {/* ─────────── You may also like ─────────── */}
         {related.length > 0 && (
           <section className="relative w-full bg-muted/30 border-t border-border/60">
-            <div className="mx-auto max-w-[1480px] px-6 py-12 lg:px-12 lg:py-16">
+            <div className="mx-auto max-w-[1600px] px-6 py-12 lg:px-12 lg:py-16">
               <div className="text-center mb-10 lg:mb-12">
                 <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-3">
                   {i18n.youMayLike}
                 </p>
-                <h2 className="font-serif text-3xl md:text-4xl font-light leading-tight">
+                <h2 className="font-serif text-3xl md:text-4xl font-light leading-tight tracking-tight">
                   {i18n.moreTreasures}
                 </h2>
               </div>
@@ -470,7 +458,7 @@ export default async function ProductPage({ params }: Params) {
                         <p className="text-[10px] tracking-[0.32em] uppercase text-muted-foreground mb-2">
                           {p.category}
                         </p>
-                        <h3 className="font-serif text-2xl md:text-[1.7rem] lg:text-[1.85rem] font-light leading-tight text-foreground transition-colors group-hover:text-primary">
+                        <h3 className="font-serif text-2xl md:text-[1.7rem] lg:text-[1.85rem] font-light leading-tight tracking-tight text-foreground transition-colors group-hover:text-primary">
                           {p.name}
                         </h3>
                         <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
@@ -485,7 +473,7 @@ export default async function ProductPage({ params }: Params) {
               <div className="mt-12 lg:mt-14 flex justify-center">
                 <Link
                   href="/treasures"
-                  className="group inline-flex items-center gap-3 bg-foreground text-background border border-foreground rounded-full px-7 md:px-9 py-3 md:py-3.5 text-[11px] tracking-[0.32em] uppercase font-medium transition-all duration-300 ease-out hover:bg-transparent hover:text-foreground hover:-translate-y-0.5"
+                  className="group inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
                 >
                   {ui.common.viewAll}
                 </Link>
