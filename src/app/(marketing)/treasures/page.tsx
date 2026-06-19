@@ -6,11 +6,24 @@ import { siteConfig } from "@/lib/site-config";
 import { treasures, getTreasures, getProducts } from "@/content/treasures";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
-import { BlocksRenderer } from "@/components/blocks/blocks-renderer";
+import { EditorialHero } from "@/components/editorial/editorial-hero";
+import { TreasuresProvider } from "@/content/treasures-provider";
+import { ProductGrid } from "@/components/treasures/product-grid";
+import { TreasuresClosing } from "@/components/treasures/treasures-closing";
 
+/**
+ * /treasures — editorial pass in the Quinta Nova rhythm (founder
+ * direction, June 2026). Image-only hero, centered title block,
+ * the existing ProductGrid catalogue (kept verbatim — the magazine
+ * single+pair layout was the founder's pick), then a closing
+ * parallax CTA that matches the other editorial pages.
+ *
+ * Bypasses the BlocksRenderer for the same reason as the other
+ * pages — the CMS layout no longer matches the live design.
+ */
 const PAGE_PATH = "/treasures";
 const DATE_PUBLISHED = "2024-01-01T00:00:00Z";
-const DATE_MODIFIED = "2026-05-19T00:00:00Z";
+const DATE_MODIFIED = "2026-06-20T00:00:00Z";
 
 export const revalidate = 3600;
 
@@ -22,11 +35,9 @@ export const metadata = buildMetadata({
   image: treasures.hero.image,
   imageAlt: treasures.hero.imageAlt,
   keywords: [
-    // Brand collection
     "Sildel treasures",
     "Sildel collection",
     "Sildel cork pieces",
-    // Product types — EN
     "cork sculpture",
     "cork table",
     "cork lamp",
@@ -34,21 +45,18 @@ export const metadata = buildMetadata({
     "cork mirror",
     "cork pedestal",
     "cork wall art",
-    // Product types — PT
     "escultura em cortiça",
     "mesa de cortiça",
     "candeeiro cortiça",
     "vaso cortiça",
     "espelho cortiça",
     "pedestal cortiça",
-    // Signature pieces
     "Carré d'Or",
     "Shell cork",
     "Abyss cork",
     "Granada cork mosaic",
     "Halley cork",
     "Crescent cork",
-    // Buyer intent
     "buy cork art online",
     "Portuguese cork art for sale",
     "comprar peças cortiça",
@@ -61,8 +69,8 @@ export const metadata = buildMetadata({
 
 export default async function TreasuresPage() {
   const locale = await getLocale();
-  const localizedTreasures = getTreasures(locale);
-  const localizedProducts = getProducts(locale);
+  const content = getTreasures(locale);
+  const products = getProducts(locale);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { label: locale === "pt" ? "Início" : "Home", href: "/" },
@@ -74,8 +82,8 @@ export default async function TreasuresPage() {
     "@type": "CollectionPage",
     "@id": new URL(PAGE_PATH, siteConfig.url).toString(),
     url: new URL(PAGE_PATH, siteConfig.url).toString(),
-    name: `${localizedTreasures.products.title} — ${siteConfig.name}`,
-    description: localizedTreasures.products.body,
+    name: `${content.products.title} — ${siteConfig.name}`,
+    description: content.products.body,
     inLanguage: locale === "pt" ? "pt-PT" : "en-US",
     isPartOf: {
       "@type": "WebSite",
@@ -86,8 +94,8 @@ export default async function TreasuresPage() {
     dateModified: DATE_MODIFIED,
     mainEntity: {
       "@type": "ItemList",
-      numberOfItems: localizedProducts.length,
-      itemListElement: localizedProducts.map((p, i) => ({
+      numberOfItems: products.length,
+      itemListElement: products.map((p, i) => ({
         "@type": "ListItem",
         position: i + 1,
         item: {
@@ -113,8 +121,42 @@ export default async function TreasuresPage() {
   return (
     <>
       <JsonLd data={[breadcrumbs, collectionPageJsonLd]} />
-      <main className="flex flex-col flex-1">
-        <BlocksRenderer pageKey="treasures" />
+      <main className="flex flex-col flex-1 bg-background text-foreground">
+        {/* Editorial hero — image only, no overlay (founder direction
+            June 2026: Quinta Nova History page reference). */}
+        <EditorialHero
+          src={content.hero.image}
+          alt={content.hero.imageAlt}
+          eyebrow={content.hero.eyebrow}
+        />
+
+        {/* Title block — centered, mirrors the rhythm on the other
+            editorial pages. */}
+        <section className="border-b border-border/40">
+          <div className="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-24">
+            <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
+              {content.hero.eyebrow}
+            </p>
+            <h1 className="font-serif text-4xl font-light leading-[1.05] md:text-5xl lg:text-6xl">
+              {content.hero.title}{" "}
+              <span className="italic text-primary">
+                {content.hero.titleAccent}
+              </span>
+            </h1>
+            <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
+              {content.hero.intro}
+            </p>
+          </div>
+        </section>
+
+        {/* The catalogue — kept verbatim. ProductGrid is a client
+            component that pulls from the TreasuresProvider context. */}
+        <TreasuresProvider content={content} products={products}>
+          <ProductGrid />
+        </TreasuresProvider>
+
+        {/* Closing parallax CTA → /our-story. */}
+        <TreasuresClosing cta={content.cta} />
       </main>
     </>
   );
