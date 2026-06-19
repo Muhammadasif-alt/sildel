@@ -29,16 +29,18 @@ export function AtelierIntro({ locale }: { locale: Locale }) {
   return (
     <section
       aria-labelledby="atelier-intro-heading"
-      className="relative w-full bg-background py-16 md:py-24 lg:py-28"
+      className="relative flex w-full items-stretch bg-background py-16 md:py-24 lg:min-h-[90vh] lg:py-0"
     >
       {/* Asymmetric grid — image bleeds to viewport left edge (no outer
           max-width container), text column gets the right 45% with
-          comfortable internal padding. */}
-      <div className="grid grid-cols-1 items-center lg:grid-cols-[55%_45%]">
-        {/* Image — full width of its column, no inner padding so it
-            reaches the viewport left edge on desktop. */}
+          comfortable internal padding. On desktop both columns stretch
+          to the section's min height so the image dominates the frame. */}
+      <div className="grid w-full grid-cols-1 items-stretch lg:grid-cols-[55%_45%]">
+        {/* Image — fills the full height of the column on desktop so it
+            reads as a tall imposing window. Mobile falls back to an
+            aspect ratio so it doesn't blow up the scroll. */}
         <ScrollReveal direction="left">
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-full lg:min-h-[720px]">
             <Image
               src={data.image}
               alt={data.imageAlt}
@@ -52,7 +54,7 @@ export function AtelierIntro({ locale }: { locale: Locale }) {
         {/* Copy column — vertically centred, generous left + right
             padding so the text breathes against the wide image. */}
         <ScrollReveal delay={0.15}>
-          <div className="flex flex-col justify-center px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-0 xl:px-24 2xl:pr-32">
+          <div className="flex h-full flex-col justify-center px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-20 xl:px-24 2xl:pr-32">
             <div className="max-w-xl">
               <h2
                 id="atelier-intro-heading"

@@ -12,6 +12,7 @@ import { BrandStoryProdigy } from "@/components/home/brand-story-prodigy";
 import { AlentejoOrigins } from "@/components/home/alentejo-origins";
 import { WhyAuthenticCork } from "@/components/home/why-authentic-cork";
 import { AtelierIntro } from "@/components/home/atelier-intro";
+import { ProductSpotlight } from "@/components/home/product-spotlight";
 import { HeroSlider } from "@/components/home/hero-slider";
 
 // ISR — serve a cached HTML for one hour. Admin "save" actions call
@@ -68,6 +69,9 @@ export default async function HomePage() {
             blocks with the hero filtered out so it isn't rendered twice. */}
         <HeroSlider slides={content.heroSlider} />
         <AtelierIntro locale={locale} />
+        {/* Mirror twin of AtelierIntro — flipped layout, product image
+            on the right. Founder direction June 2026 (nineteenth pass). */}
+        <ProductSpotlight locale={locale} />
         <BlocksRenderer pageKey="home" skipTypes={["home.heroShop"]} />
         {/* Editorial sections added June 2026 — who made this (prodigy
             story), where it begins (Alentejo origins), what makes the

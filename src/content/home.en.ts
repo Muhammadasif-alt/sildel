@@ -122,6 +122,23 @@ export const homeEn = {
       "Wide cinematic view of the Sildel atelier interior in northern Portugal at golden hour, with finished cork pieces on workbenches.",
   },
 
+  /* Product spotlight — mirror twin of atelierIntro (founder direction,
+     June 2026, nineteenth pass). Same big editorial format, layout
+     flipped (text LEFT, product image RIGHT) so the eye crosses the
+     page as the visitor scrolls atelier → treasure. */
+  productSpotlight: {
+    title: "Treasures shaped slowly.",
+    body:
+      "From a single block of cork bark to a numbered sculpture, every Sildel piece passes through the same hands. No factory line. No reissues. Only the slow practice of an atelier that has been listening to the material for thirty years — and the conviction that a treasure is the visible result of patience.",
+    cta: {
+      label: "Explore All Treasures",
+      href: "/treasures",
+    },
+    image: "/Slidel/enhance/enhance-carre-dor-03.webp",
+    imageAlt:
+      "Carré d'Or — Sildel cork treasure with 24-carat gold leaf, photographed in soft directional atelier light.",
+  },
+
   /* Brand Story — prodigy framing (founder direction, June 2026).
      Isabel didn't "come" to cork — she grew up close to it. Thirty years
      working a single material, only with her hands. Differentiates from

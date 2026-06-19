@@ -122,6 +122,24 @@ export const homePt = {
       "Vista cinematográfica larga do interior do atelier Sildel no norte de Portugal à hora dourada, com peças de cortiça acabadas sobre as bancadas.",
   },
 
+  /* Destaque de produto — gémeo espelhado da secção atelierIntro
+     (direção da fundadora, Junho 2026, décima nona iteração). Mesmo
+     formato editorial grande, esquema invertido (texto à ESQUERDA,
+     imagem do produto à DIREITA) para que o olhar atravesse a página
+     em Z enquanto o visitante desce do atelier ao tesouro. */
+  productSpotlight: {
+    title: "Tesouros moldados devagar.",
+    body:
+      "De um único bloco de cortiça até uma escultura numerada, cada peça Sildel passa pelas mesmas mãos. Sem linha de fábrica. Sem reedições. Apenas a prática lenta de um atelier que escuta a matéria há trinta anos — e a convicção de que um tesouro é o resultado visível da paciência.",
+    cta: {
+      label: "Explorar Todos os Tesouros",
+      href: "/treasures",
+    },
+    image: "/Slidel/enhance/enhance-carre-dor-03.webp",
+    imageAlt:
+      "Carré d'Or — tesouro Sildel em cortiça com folha de ouro de 24 quilates, fotografado sob luz direccional suave de atelier.",
+  },
+
   /* História da marca — enquadramento "prodígio" (Junho 2026). A Isabel
      não "chegou" à cortiça — cresceu junto dela. Trinta anos a trabalhar
      um único material, apenas com as mãos. Diferencia-se de "30 anos
