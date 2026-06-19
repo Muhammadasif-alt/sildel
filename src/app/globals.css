@@ -233,16 +233,14 @@
   100% { transform: scale(1.12) translate(1%, 1%); }
 }
 
-/* Hero slider — image drops in from above with a soft bounce
-   (founder direction, June 2026, sixteenth pass: client wants
-   the image to "fall in" with personality). The overshoot at
-   80% gives the bounce its life; the final scale settles at
-   1 so the active slide can then start its slow Ken Burns. */
-@keyframes heroBounceDown {
-  0%   { transform: translateY(-110%) scale(1.05); opacity: 0; }
-  60%  { transform: translateY(2.5%)  scale(1.02); opacity: 1; }
-  78%  { transform: translateY(-1.2%) scale(1.01); }
-  90%  { transform: translateY(0.6%)  scale(1.005); }
+/* Hero slider — image rises UPWARD into place (founder direction,
+   June 2026, seventeenth pass: image itself moves up, not drops
+   from above). Starts slightly below + scaled up, then floats
+   upward with a touch of overshoot before settling. */
+@keyframes heroRiseUp {
+  0%   { transform: translateY(6%)    scale(1.06); opacity: 0; }
+  55%  { transform: translateY(-1.2%) scale(1.02); opacity: 1; }
+  75%  { transform: translateY(0.6%)  scale(1.01); }
   100% { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 

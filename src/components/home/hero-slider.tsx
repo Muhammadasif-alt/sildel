@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 import type { HeroSlide } from "@/content/home";
 
 const AUTOPLAY_MS = 7000;
-// Bounce-down keyframe length (must match heroBounceDown in globals.css).
+// Rise-up keyframe length (must match heroRiseUp in globals.css).
 // Used to schedule the copy's delayed rise so it lands AFTER the image.
-const BOUNCE_MS = 1400;
+const RISE_MS = 1400;
 const COPY_DELAY_MS = 650;
 
 /**
@@ -106,7 +106,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Full-bleed image stack — bounce-down entrance on active slide */}
+      {/* Full-bleed image stack — rise-up entrance on active slide */}
       {slides.map((slide, i) => (
         <HeroImageLayer
           key={slide.id}
@@ -115,7 +115,7 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
           active={i === index}
           priority={i === 0}
           mounted={mounted.has(i)}
-          bounceMs={BOUNCE_MS}
+          riseMs={RISE_MS}
         />
       ))}
 
@@ -234,14 +234,14 @@ function HeroImageLayer({
   active,
   priority,
   mounted,
-  bounceMs,
+  riseMs,
 }: {
   src: string;
   alt: string;
   active: boolean;
   priority: boolean;
   mounted: boolean;
-  bounceMs: number;
+  riseMs: number;
 }) {
   const [errored, setErrored] = useState(false);
 
@@ -252,14 +252,14 @@ function HeroImageLayer({
         active ? "opacity-100 z-[1]" : "opacity-0 pointer-events-none",
       )}
       style={
-        // Active slide plays the bounce-down keyframe (overshoot then
-        // settle). Inactive slides stay invisible above the frame so the
-        // next entrance always travels DOWN with personality.
+        // Active slide plays the rise-up keyframe — image itself floats
+        // upward into place with a small overshoot. Inactive slides park
+        // slightly below + invisible so every entrance travels UP.
         active
           ? {
-              animation: `heroBounceDown ${bounceMs}ms cubic-bezier(0.22, 1, 0.36, 1) both`,
+              animation: `heroRiseUp ${riseMs}ms cubic-bezier(0.22, 1, 0.36, 1) both`,
             }
-          : { transform: "translateY(-110%)" }
+          : { transform: "translateY(6%)" }
       }
       aria-hidden={!active}
     >
