@@ -166,7 +166,7 @@ export function ContactMap({ locale }: { locale: Locale }) {
               href={mapsLinkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-7 py-4 text-xs font-medium uppercase tracking-[0.35em] text-primary-foreground transition-colors hover:bg-primary/90"
+              className="mt-10 inline-flex items-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
             >
               <MapPin className="h-4 w-4" />
               {i18n.directionsLabel}
