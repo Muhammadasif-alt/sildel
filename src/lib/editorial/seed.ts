@@ -21,6 +21,7 @@ import {
   faqEditorialPt,
 } from "@/content/faq.editorial";
 import { getFaqs } from "@/content/legal";
+import { getPress } from "@/content/press";
 import type { EditorialContentDoc } from "./types";
 
 type Story = typeof ourStoryEn;
@@ -396,6 +397,48 @@ export function buildInitialFaq(): EditorialContentDoc {
       body: pair(en.cta.body, pt.cta.body),
       ctaLabel: pair(en.cta.ctaLabel, pt.cta.ctaLabel),
       ctaHref: en.cta.ctaHref,
+    },
+  };
+}
+
+export function buildInitialPress(): EditorialContentDoc {
+  const en = getPress("en");
+  const pt = getPress("pt");
+
+  return {
+    hero: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      image: en.hero.image,
+      imageAlt: pair(en.hero.imageAlt, pt.hero.imageAlt),
+    },
+    intro: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      title: pair(en.hero.title, pt.hero.title),
+      titleAccent: pair(en.hero.titleAccent, pt.hero.titleAccent),
+      intro: pair(en.hero.intro, pt.hero.intro),
+    },
+    features: {
+      items: en.features.map((f, i) => {
+        const ptItem = pt.features[i] ?? f;
+        return {
+          publication: pair(f.publication, ptItem.publication),
+          date: pair(f.date, ptItem.date),
+          image: f.spread,
+          imageAlt: pair(f.alt, ptItem.alt),
+        };
+      }),
+    },
+    cta: {
+      eyebrow: pair(en.cta.eyebrow, pt.cta.eyebrow),
+      title: pair(en.cta.title, pt.cta.title),
+      titleAccent: pair(en.cta.titleAccent, pt.cta.titleAccent),
+      body: pair(en.cta.body, pt.cta.body),
+      ctaLabel: pair(en.cta.label, pt.cta.label),
+      ctaHref: en.cta.href,
+      closingLine: pair(
+        en.cta.closingLine ?? "",
+        pt.cta.closingLine ?? "",
+      ),
     },
   };
 }

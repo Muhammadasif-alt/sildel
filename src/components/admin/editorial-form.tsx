@@ -12,6 +12,7 @@ import type {
   LocalizedText,
   LocalizedParagraphs,
   TitledListItem,
+  PressListItem,
 } from "@/lib/editorial/types";
 import { saveEditorialContent } from "@/app/admin/editorial/actions";
 
@@ -240,6 +241,14 @@ function FieldEditor({
         />
       ) : null}
 
+      {field.type === "pressList" ? (
+        <PressListField
+          value={value}
+          locale={locale}
+          onChange={onChange}
+        />
+      ) : null}
+
       {field.hint ? (
         <p className="mt-1.5 text-xs text-muted-foreground">{field.hint}</p>
       ) : null}
@@ -457,6 +466,126 @@ function TitledListField({
 
 function emptyItem(): TitledListItem {
   return { title: { pt: "", en: "" }, body: { pt: "", en: "" } };
+}
+
+function PressListField({
+  value,
+  locale,
+  onChange,
+}: {
+  value: FieldValue;
+  locale: Locale;
+  onChange: (v: FieldValue) => void;
+}) {
+  const list: PressListItem[] = Array.isArray(value)
+    ? (value as PressListItem[])
+    : [];
+
+  function setList(next: PressListItem[]) {
+    onChange(next);
+  }
+
+  function updateLocalised(
+    i: number,
+    key: "publication" | "date" | "imageAlt",
+    next: string,
+  ) {
+    const copy = list.slice();
+    const item = copy[i] ?? emptyPressItem();
+    copy[i] = {
+      ...item,
+      [key]: { ...item[key], [locale]: next },
+    };
+    setList(copy);
+  }
+
+  function updateImage(i: number, next: string) {
+    const copy = list.slice();
+    const item = copy[i] ?? emptyPressItem();
+    copy[i] = { ...item, image: next };
+    setList(copy);
+  }
+
+  function removeAt(i: number) {
+    setList(list.filter((_, j) => j !== i));
+  }
+
+  function add() {
+    setList([...list, emptyPressItem()]);
+  }
+
+  return (
+    <div className="space-y-3">
+      {list.map((item, i) => (
+        <div
+          key={i}
+          className="space-y-2 rounded-md border border-border bg-background p-3"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+              Feature {i + 1}
+            </span>
+            <button
+              type="button"
+              onClick={() => removeAt(i)}
+              className="rounded-md border border-border p-1.5 text-muted-foreground transition-colors hover:border-red-300 hover:text-red-600"
+              aria-label={`Remove feature ${i + 1}`}
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+            </button>
+          </div>
+          <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+            <input
+              type="text"
+              placeholder="Publication (e.g. Vogue)"
+              value={item.publication?.[locale] ?? ""}
+              onChange={(e) =>
+                updateLocalised(i, "publication", e.target.value)
+              }
+              className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            />
+            <input
+              type="text"
+              placeholder="Date (e.g. October '22)"
+              value={item.date?.[locale] ?? ""}
+              onChange={(e) => updateLocalised(i, "date", e.target.value)}
+              className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            />
+          </div>
+          <input
+            type="text"
+            placeholder="Magazine spread image path"
+            value={item.image ?? ""}
+            onChange={(e) => updateImage(i, e.target.value)}
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+          />
+          <input
+            type="text"
+            placeholder="Image alt text"
+            value={item.imageAlt?.[locale] ?? ""}
+            onChange={(e) => updateLocalised(i, "imageAlt", e.target.value)}
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+          />
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={add}
+        className="inline-flex items-center gap-2 text-xs text-primary transition-colors hover:text-primary/80"
+      >
+        <Plus className="h-3.5 w-3.5" /> Add press feature
+      </button>
+    </div>
+  );
+}
+
+function emptyPressItem(): PressListItem {
+  return {
+    publication: { pt: "", en: "" },
+    date: { pt: "", en: "" },
+    image: "",
+    imageAlt: { pt: "", en: "" },
+  };
 }
 
 function ImageField({

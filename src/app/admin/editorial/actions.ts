@@ -13,6 +13,7 @@ import type {
   EditorialField,
   FieldValue,
   TitledListItem,
+  PressListItem,
 } from "@/lib/editorial/types";
 
 /**
@@ -74,6 +75,22 @@ function cleanField(field: EditorialField, value: FieldValue): FieldValue {
         return { title, body };
       })
       .filter((x): x is TitledListItem => x !== null);
+  }
+
+  if (field.type === "pressList") {
+    if (!Array.isArray(value)) return [];
+    return value
+      .map((row): PressListItem | null => {
+        if (!row || typeof row !== "object") return null;
+        const r = row as Record<string, unknown>;
+        const publication = readLocalised(r.publication);
+        const date = readLocalised(r.date);
+        const image = typeof r.image === "string" ? r.image : "";
+        const imageAlt = readLocalised(r.imageAlt);
+        if (!publication.en && !publication.pt && !image) return null;
+        return { publication, date, image, imageAlt };
+      })
+      .filter((x): x is PressListItem => x !== null);
   }
 
   // text / textarea

@@ -14,7 +14,8 @@ export type EditorialFieldType =
   | "textarea"
   | "paragraphs"
   | "image"
-  | "titledList";
+  | "titledList"
+  | "pressList";
 
 export type EditorialField = {
   key: string;
@@ -60,6 +61,17 @@ export type TitledListItem = {
 };
 
 /**
+ * One row in a press list — publication and date both localised,
+ * the magazine spread image and its alt are global.
+ */
+export type PressListItem = {
+  publication: LocalizedText;
+  date: LocalizedText;
+  image: string;
+  imageAlt: LocalizedText;
+};
+
+/**
  * Stored value for one field — depends on type + localized.
  */
 export type FieldValue =
@@ -68,6 +80,7 @@ export type FieldValue =
   | LocalizedText
   | LocalizedParagraphs
   | TitledListItem[]
+  | PressListItem[]
   | undefined;
 
 /**

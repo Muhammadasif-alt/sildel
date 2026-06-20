@@ -6,12 +6,13 @@ import { partnersSchema } from "./schemas/partners.schema";
 import { treasuresSchema } from "./schemas/treasures.schema";
 import { contactSchema } from "./schemas/contact.schema";
 import { faqSchema } from "./schemas/faq.schema";
+import { pressSchema } from "./schemas/press.schema";
 
 /**
  * Registry of all editorial-page schemas. Drives the admin sidebar /
  * index list and the /admin/editorial/[pageKey] route resolver.
  *
- * Remaining: press.
+ * All eight editorial pages are wired — add new ones here.
  */
 export const EDITORIAL_SCHEMAS: EditorialSchema[] = [
   ourStorySchema,
@@ -21,6 +22,7 @@ export const EDITORIAL_SCHEMAS: EditorialSchema[] = [
   treasuresSchema,
   contactSchema,
   faqSchema,
+  pressSchema,
 ];
 
 export function findEditorialSchema(

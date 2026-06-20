@@ -11,7 +11,8 @@ import { JsonLd } from "@/components/common/json-ld";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
 import { PressAccordion } from "@/components/press/press-accordion";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { getPress, pressEn } from "@/content/press";
+import { pressEn } from "@/content/press";
+import { resolvePress } from "@/lib/editorial/resolvers/press";
 
 /**
  * /press — Sildel in print, editorial pass in the Quinta Nova
@@ -55,7 +56,9 @@ export const metadata = buildMetadata({
 export default async function PressPage() {
   const locale = await getLocale();
   const isPt = locale === "pt";
-  const content = getPress(locale);
+  // Resolved from Mongo if the founder has edited the page in admin,
+  // otherwise from the TS file fallback. Same shape either way.
+  const content = await resolvePress(locale);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { label: isPt ? "Início" : "Home", href: "/" },
@@ -90,16 +93,21 @@ export default async function PressPage() {
         <section className="border-b border-border/40">
           <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-24">
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
-              {content.hero.eyebrow}
+              {content.intro.eyebrow}
             </p>
             <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight md:text-5xl lg:text-6xl">
-              {content.hero.title}{" "}
-              <span className="italic text-primary">
-                {content.hero.titleAccent}
-              </span>
+              {content.intro.title}
+              {content.intro.titleAccent ? (
+                <>
+                  {" "}
+                  <span className="italic text-primary">
+                    {content.intro.titleAccent}
+                  </span>
+                </>
+              ) : null}
             </h1>
             <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              {content.hero.intro}
+              {content.intro.intro}
             </p>
           </div>
         </section>
