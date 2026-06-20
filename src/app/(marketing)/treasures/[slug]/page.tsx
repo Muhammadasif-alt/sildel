@@ -187,13 +187,17 @@ export default async function ProductPage({ params }: Params) {
         />
 
         {/* ─────────── GALLERY + DETAILS ─────────── */}
+        {/* Founder direction (June 2026, twelfth pass): full-bleed gallery —
+            no max-width cap, no outer side padding on the image column, so
+            the product photo runs edge-to-edge of the viewport. The details
+            column carries its own padding so the copy still breathes. */}
         <section
           id="cart-section"
           aria-label={locale === "pt" ? "A peça" : "The piece"}
           className="relative w-full bg-background"
         >
-          <div className="mx-auto max-w-[1600px] grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-10 lg:gap-16 px-6 py-16 lg:px-12 lg:py-24 items-start">
-            {/* Gallery — continuous vertical stack */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-0 lg:gap-16 items-start">
+            {/* Gallery — continuous vertical stack, full-bleed left edge */}
             <div>
               <ProductGallery
                 images={(product.gallery && product.gallery.length > 0)
@@ -205,9 +209,8 @@ export default async function ProductPage({ params }: Params) {
             </div>
 
             {/* Details panel — sticks in view while the image column scrolls.
-                Name + tagline already live in the hero above, so this leads
-                with the overview and the enquiry details. */}
-            <div className="flex flex-col lg:sticky lg:top-28 lg:self-start">
+                Carries its own px/py so the gallery column can stay flush. */}
+            <div className="flex flex-col px-6 py-16 lg:pl-0 lg:pr-12 lg:py-24 lg:sticky lg:top-28 lg:self-start">
               <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
                 {i18n.overview}
               </p>

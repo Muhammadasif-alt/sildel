@@ -30,7 +30,6 @@ import { ScrollReveal } from "@/components/motion/scroll-reveal";
  */
 export function ProductGrid() {
   const { content, products } = useTreasures();
-  const data = content.products;
   const categories = content.categories.items;
   const [activeSlug, setActiveSlug] = useState<string>("all");
 
@@ -61,24 +60,19 @@ export function ProductGrid() {
     <section
       id="product-grid"
       className="relative w-full bg-background"
-      aria-labelledby="product-grid-heading"
+      aria-label="Treasures catalogue"
     >
-      <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-12 lg:py-28">
-        <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
-          <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
-            {data.eyebrow}
-          </p>
-          <h2
-            id="product-grid-heading"
-            className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1]"
-          >
-            {data.title} <span className="italic">{data.titleAccent}</span>
-          </h2>
-          <p className="mt-8 text-muted-foreground text-base md:text-lg leading-relaxed">
-            {data.body}
-          </p>
-        </div>
+      {/* Founder direction (June 2026, twelfth pass): full-bleed container,
+          no max-width cap, edge padding only — matches the home
+          FeaturedTreasures rhythm so the catalogue reads at the same scale
+          the client signed off on for the home page.
 
+          The inner eyebrow+title+body block was removed (founder feedback,
+          June 2026 thirteenth pass: "yh cheez khtm he kr do, buri lag rhi"
+          — the page-level intro above already says this, the inner repeat
+          was just dead weight pushing the grid down). `data.eyebrow/title/
+          body` from /content/treasures.ts intentionally unused here. */}
+      <div className="w-full px-6 py-20 lg:px-12 lg:py-28 xl:px-16">
         {/* Filter row — kept minimal so the catalogue itself is the focus. */}
         <div
           className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16 lg:mb-20"
@@ -152,18 +146,18 @@ function SingleTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Wide editorial frame — atelier renders are ~3:2 landscape, so a
-          16:10 hero with object-cover fills edge-to-edge with only a
-          whisper of horizontal crop. No padding, no blurred backdrop:
-          the image IS the tile (founder direction, June 2026, seventh
-          pass: kill all visible inner padding). */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+      {/* Founder direction (June 2026, twelfth pass): big bold full-bleed
+          hero tile. 4:3 ratio (taller than the old 16:10) gives portrait
+          studio shots — most of /products/ is 1920×2880 — far more room
+          to breathe before object-cover crops them. No mat behind the
+          photo: the photo already carries its own studio backdrop. */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="100vw"
-          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
+          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
         />
       </div>
 
@@ -194,13 +188,17 @@ function PairTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
+      {/* Portrait-leaning pair tile — most /products/ shots are 1920×2880
+          portrait, so a 3:4 frame fits them with almost no crop. The
+          earlier 3:2 landscape was clipping the top/bottom of tall pieces
+          (founder feedback, June 2026 twelfth pass). */}
+      <div className="relative aspect-[3/4] w-full overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(min-width: 768px) 48vw, 100vw"
-          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
         />
       </div>
 
