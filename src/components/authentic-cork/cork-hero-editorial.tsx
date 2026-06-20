@@ -1,15 +1,15 @@
 import Image from "next/image";
-import { getAuthenticCork } from "@/content/authentic-cork";
-import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Image-only hero for /authentic-cork (founder direction, June 2026:
- * Quinta Nova History page reference — same treatment as the
- * /our-story hero). No overlay copy, just the photograph.
+ * Quinta Nova History page reference). Data-driven — the route passes
+ * the rendered hero (resolved from Mongo or the TS fallback).
  */
-export function CorkHeroEditorial({ locale }: { locale: Locale }) {
-  const { hero } = getAuthenticCork(locale);
-
+export function CorkHeroEditorial({
+  hero,
+}: {
+  hero: { eyebrow: string; image: string; imageAlt: string };
+}) {
   return (
     <section
       aria-label={hero.eyebrow}

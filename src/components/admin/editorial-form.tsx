@@ -11,6 +11,7 @@ import type {
   FieldValue,
   LocalizedText,
   LocalizedParagraphs,
+  TitledListItem,
 } from "@/lib/editorial/types";
 import { saveEditorialContent } from "@/app/admin/editorial/actions";
 
@@ -231,6 +232,14 @@ function FieldEditor({
         <ImageField id={labelId} value={value} onChange={onChange} />
       ) : null}
 
+      {field.type === "titledList" ? (
+        <TitledListField
+          value={value}
+          locale={locale}
+          onChange={onChange}
+        />
+      ) : null}
+
       {field.hint ? (
         <p className="mt-1.5 text-xs text-muted-foreground">{field.hint}</p>
       ) : null}
@@ -358,6 +367,96 @@ function ParagraphsField({
       </button>
     </div>
   );
+}
+
+function TitledListField({
+  value,
+  locale,
+  onChange,
+}: {
+  value: FieldValue;
+  locale: Locale;
+  onChange: (v: FieldValue) => void;
+}) {
+  const list: TitledListItem[] = Array.isArray(value)
+    ? (value as TitledListItem[])
+    : [];
+
+  function setList(next: TitledListItem[]) {
+    onChange(next);
+  }
+
+  function updateAt(
+    i: number,
+    key: "title" | "body",
+    next: string,
+  ) {
+    const copy = list.slice();
+    const item = copy[i] ?? emptyItem();
+    copy[i] = {
+      ...item,
+      [key]: { ...item[key], [locale]: next },
+    };
+    setList(copy);
+  }
+
+  function removeAt(i: number) {
+    setList(list.filter((_, j) => j !== i));
+  }
+
+  function add() {
+    setList([...list, emptyItem()]);
+  }
+
+  return (
+    <div className="space-y-3">
+      {list.map((item, i) => (
+        <div
+          key={i}
+          className="space-y-2 rounded-md border border-border bg-background p-3"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+              Item {i + 1}
+            </span>
+            <button
+              type="button"
+              onClick={() => removeAt(i)}
+              className="rounded-md border border-border p-1.5 text-muted-foreground transition-colors hover:border-red-300 hover:text-red-600"
+              aria-label={`Remove item ${i + 1}`}
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+            </button>
+          </div>
+          <input
+            type="text"
+            placeholder="Title"
+            value={item.title?.[locale] ?? ""}
+            onChange={(e) => updateAt(i, "title", e.target.value)}
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+          />
+          <textarea
+            placeholder="Body"
+            rows={2}
+            value={item.body?.[locale] ?? ""}
+            onChange={(e) => updateAt(i, "body", e.target.value)}
+            className="min-h-[60px] w-full resize-y rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+          />
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={add}
+        className="inline-flex items-center gap-2 text-xs text-primary transition-colors hover:text-primary/80"
+      >
+        <Plus className="h-3.5 w-3.5" /> Add item
+      </button>
+    </div>
+  );
+}
+
+function emptyItem(): TitledListItem {
+  return { title: { pt: "", en: "" }, body: { pt: "", en: "" } };
 }
 
 function ImageField({

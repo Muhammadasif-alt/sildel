@@ -1,25 +1,28 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { getAuthenticCork } from "@/content/authentic-cork";
-import type { Locale } from "@/lib/i18n/config";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
- * Closing parallax CTA for /authentic-cork — mirrors the home-page
- * ParallaxCta and the /our-story StoryClosing so the editorial pages
- * rhyme. White-tint atelier photograph behind a serif heading, body
- * copy, and a single dark-inset Treasures button.
+ * Closing parallax CTA for /authentic-cork. Data-driven — the route
+ * passes the rendered cta (resolved from Mongo or the TS fallback).
  */
-export function CorkClosing({ locale }: { locale: Locale }) {
-  const { cta } = getAuthenticCork(locale);
-  const primary = cta.destinations[0];
-  const heroImage = cta.destinations[1]?.image ?? primary.image;
+export type CorkClosingData = {
+  eyebrow: string;
+  title: string;
+  titleAccent?: string;
+  body: string;
+  label: string;
+  href: string;
+  backgroundImage: string;
+  closingLine?: string;
+};
 
+export function CorkClosing({ cta }: { cta: CorkClosingData }) {
   return (
     <section
       aria-labelledby="cork-closing-heading"
       className="relative flex w-full items-center justify-center overflow-hidden bg-scroll bg-cover bg-center px-6 py-24 md:py-32 lg:bg-fixed lg:py-40"
-      style={{ backgroundImage: `url('${heroImage}')` }}
+      style={{ backgroundImage: `url('${cta.backgroundImage}')` }}
     >
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
@@ -44,10 +47,10 @@ export function CorkClosing({ locale }: { locale: Locale }) {
         </p>
         <div className="mt-10 flex justify-center">
           <Link
-            href={primary.href}
+            href={cta.href}
             className="group inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
           >
-            {primary.cta}
+            {cta.label}
             <ArrowRight
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               strokeWidth={1.5}

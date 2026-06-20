@@ -12,6 +12,7 @@ import type {
   EditorialContentDoc,
   EditorialField,
   FieldValue,
+  TitledListItem,
 } from "@/lib/editorial/types";
 
 /**
@@ -61,6 +62,20 @@ function cleanField(field: EditorialField, value: FieldValue): FieldValue {
     return typeof value === "string" ? value : "";
   }
 
+  if (field.type === "titledList") {
+    if (!Array.isArray(value)) return [];
+    return value
+      .map((row): TitledListItem | null => {
+        if (!row || typeof row !== "object") return null;
+        const r = row as Record<string, unknown>;
+        const title = readLocalised(r.title);
+        const body = readLocalised(r.body);
+        if (!title.en && !title.pt && !body.en && !body.pt) return null;
+        return { title, body };
+      })
+      .filter((x): x is TitledListItem => x !== null);
+  }
+
   // text / textarea
   if (field.localized) {
     const v = (value && typeof value === "object" && !Array.isArray(value)
@@ -72,6 +87,17 @@ function cleanField(field: EditorialField, value: FieldValue): FieldValue {
     };
   }
   return typeof value === "string" ? value : "";
+}
+
+function readLocalised(v: unknown): { pt: string; en: string } {
+  const o =
+    v && typeof v === "object" && !Array.isArray(v)
+      ? (v as Record<string, unknown>)
+      : {};
+  return {
+    pt: typeof o.pt === "string" ? o.pt : "",
+    en: typeof o.en === "string" ? o.en : "",
+  };
 }
 
 function toStringArray(v: unknown): string[] {

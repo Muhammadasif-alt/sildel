@@ -1,9 +1,12 @@
 import "server-only";
 import { ourStoryEn } from "@/content/our-story.en";
 import { ourStoryPt } from "@/content/our-story.pt";
+import { authenticCorkEn } from "@/content/authentic-cork.en";
+import { authenticCorkPt } from "@/content/authentic-cork.pt";
 import type { EditorialContentDoc } from "./types";
 
 type Story = typeof ourStoryEn;
+type Cork = typeof authenticCorkEn;
 
 /**
  * Convert the file-based TS content into the locale-paired shape the
@@ -105,6 +108,90 @@ export function buildInitialOurStory(): EditorialContentDoc {
         en.cta.destinations[0].cta,
         pt.cta.destinations[0].cta,
       ),
+      ctaHref: en.cta.destinations[0].href,
+      backgroundImage:
+        en.cta.destinations[1]?.image ?? en.cta.destinations[0].image,
+      closingLine: pair(
+        en.cta.closingLine ?? "",
+        pt.cta.closingLine ?? "",
+      ),
+    },
+  };
+}
+
+export function buildInitialAuthenticCork(): EditorialContentDoc {
+  const en = authenticCorkEn;
+  const pt = authenticCorkPt as Cork;
+
+  return {
+    hero: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      image: en.hero.image,
+      imageAlt: pair(en.hero.imageAlt, pt.hero.imageAlt),
+    },
+    whatIsCork: {
+      eyebrow: pair(en.whatIsCork.eyebrow, pt.whatIsCork.eyebrow),
+      title: pair(en.whatIsCork.title, pt.whatIsCork.title),
+      titleAccent: pair(en.whatIsCork.titleAccent, pt.whatIsCork.titleAccent),
+      body: paragraphPair(en.whatIsCork.body, pt.whatIsCork.body),
+      image: en.whatIsCork.image,
+      imageAlt: pair(en.whatIsCork.imageAlt, pt.whatIsCork.imageAlt),
+    },
+    bleedAfterWhatIsCork: {
+      src: en.harvest.images[0].src,
+      alt: pair(en.harvest.images[0].alt, pt.harvest.images[0].alt),
+    },
+    harvest: {
+      eyebrow: pair(en.harvest.eyebrow, pt.harvest.eyebrow),
+      title: pair(en.harvest.title, pt.harvest.title),
+      titleAccent: pair(en.harvest.titleAccent, pt.harvest.titleAccent),
+      body: paragraphPair([en.harvest.body], [pt.harvest.body]),
+      image: en.harvest.images[1].src,
+      imageAlt: pair(en.harvest.images[1].alt, pt.harvest.images[1].alt),
+    },
+    bleedAfterHarvest: {
+      src: en.harvest.images[2].src,
+      alt: pair(en.harvest.images[2].alt, pt.harvest.images[2].alt),
+    },
+    properties: {
+      eyebrow: pair(en.properties.eyebrow, pt.properties.eyebrow),
+      title: pair(en.properties.title, pt.properties.title),
+      titleAccent: pair(en.properties.titleAccent, pt.properties.titleAccent),
+      body: pair(en.properties.body, pt.properties.body),
+      image: en.cta.destinations[0].image,
+      imageAlt: pair(
+        en.cta.destinations[0].imageAlt,
+        pt.cta.destinations[0].imageAlt,
+      ),
+      items: en.properties.items.map((item, i) => ({
+        title: pair(item.title, pt.properties.items[i].title),
+        body: pair(item.body, pt.properties.items[i].body),
+      })),
+    },
+    bleedBeforeInSildel: {
+      src: en.cta.destinations[1].image,
+      alt: pair(
+        en.cta.destinations[1].imageAlt,
+        pt.cta.destinations[1].imageAlt,
+      ),
+    },
+    inSildel: {
+      eyebrow: pair(en.inSildel.eyebrow, pt.inSildel.eyebrow),
+      title: pair(en.inSildel.title, pt.inSildel.title),
+      titleAccent: pair(en.inSildel.titleAccent, pt.inSildel.titleAccent),
+      body: paragraphPair(
+        [en.inSildel.body, en.inSildel.points.join(". ") + "."],
+        [pt.inSildel.body, pt.inSildel.points.join(". ") + "."],
+      ),
+      image: en.inSildel.image,
+      imageAlt: pair(en.inSildel.imageAlt, pt.inSildel.imageAlt),
+    },
+    cta: {
+      eyebrow: pair(en.cta.eyebrow, pt.cta.eyebrow),
+      title: pair(en.cta.title, pt.cta.title),
+      titleAccent: pair(en.cta.titleAccent, pt.cta.titleAccent),
+      body: pair(en.cta.body, pt.cta.body),
+      ctaLabel: pair(en.cta.destinations[0].cta, pt.cta.destinations[0].cta),
       ctaHref: en.cta.destinations[0].href,
       backgroundImage:
         en.cta.destinations[1]?.image ?? en.cta.destinations[0].image,

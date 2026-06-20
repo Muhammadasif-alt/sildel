@@ -1,31 +1,35 @@
 import Image from "next/image";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { getAuthenticCork } from "@/content/authentic-cork";
-import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Properties section, editorial pass (founder direction, June 2026:
  * "koi b 3 ka section na ho" — no three-column grids). The six cork
  * qualities live as a single vertical typeset list on the text side,
- * paired with a tall image on the other — matches the StorySection
- * two-up rhythm used everywhere else on /authentic-cork.
+ * paired with a tall image on the other.
+ *
+ * Data-driven — the route passes the rendered properties block
+ * (resolved from Mongo or the TS fallback).
  *
  *   mirror=false  → image LEFT  (55%) | list RIGHT (45%)
  *   mirror=true   → list  LEFT  (45%) | image RIGHT (55%)
  */
+export type CorkPropertiesData = {
+  eyebrow: string;
+  title: string;
+  titleAccent?: string;
+  body: string;
+  image: string;
+  imageAlt: string;
+  items: Array<{ title: string; body: string }>;
+};
+
 export function CorkProperties({
-  locale,
-  imageSrc,
-  imageAlt,
+  data,
   mirror = false,
 }: {
-  locale: Locale;
-  imageSrc: string;
-  imageAlt: string;
+  data: CorkPropertiesData;
   mirror?: boolean;
 }) {
-  const { properties } = getAuthenticCork(locale);
-
   const imageBlock = (
     <ScrollReveal
       direction={mirror ? "right" : "left"}
@@ -33,8 +37,8 @@ export function CorkProperties({
     >
       <div className="group relative aspect-[4/5] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[92vh] lg:min-h-[760px]">
         <Image
-          src={imageSrc}
-          alt={imageAlt}
+          src={data.image}
+          alt={data.imageAlt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
           className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
@@ -58,26 +62,26 @@ export function CorkProperties({
       >
         <div className={mirror ? "max-w-2xl lg:ml-auto" : "max-w-2xl"}>
           <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-foreground/65">
-            {properties.eyebrow}
+            {data.eyebrow}
           </p>
           <h2
             id="cork-properties"
             className="font-serif text-3xl font-light leading-[1.08] tracking-tight text-foreground md:text-4xl lg:text-[2.5rem]"
           >
-            {properties.title}
-            {properties.titleAccent ? (
+            {data.title}
+            {data.titleAccent ? (
               <>
                 {" "}
-                <span className="italic">{properties.titleAccent}</span>
+                <span className="italic">{data.titleAccent}</span>
               </>
             ) : null}
           </h2>
           <p className="mt-7 text-base leading-relaxed text-muted-foreground md:text-[17px]">
-            {properties.body}
+            {data.body}
           </p>
           <ul className="mt-10 divide-y divide-foreground/10 border-t border-b border-foreground/10">
-            {properties.items.map((item, i) => (
-              <li key={item.title}>
+            {data.items.map((item, i) => (
+              <li key={`${item.title}-${i}`}>
                 <ScrollReveal
                   delay={0.05 + i * 0.08}
                   distance={16}

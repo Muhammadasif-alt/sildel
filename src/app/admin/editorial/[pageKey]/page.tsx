@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { findEditorialSchema } from "@/lib/editorial/registry";
 import { loadEditorialContent } from "@/lib/editorial/load";
-import { buildInitialOurStory } from "@/lib/editorial/seed";
+import {
+  buildInitialOurStory,
+  buildInitialAuthenticCork,
+} from "@/lib/editorial/seed";
 import { EditorialForm } from "@/components/admin/editorial-form";
 import type { EditorialContentDoc } from "@/lib/editorial/types";
 
@@ -25,6 +28,8 @@ async function resolveInitial(
   switch (pageKey) {
     case "our-story":
       return buildInitialOurStory();
+    case "authentic-cork":
+      return buildInitialAuthenticCork();
     default:
       return {};
   }

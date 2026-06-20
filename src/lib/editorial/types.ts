@@ -13,7 +13,8 @@ export type EditorialFieldType =
   | "text"
   | "textarea"
   | "paragraphs"
-  | "image";
+  | "image"
+  | "titledList";
 
 export type EditorialField = {
   key: string;
@@ -49,6 +50,16 @@ export type LocalizedText = { pt: string; en: string };
 export type LocalizedParagraphs = { pt: string[]; en: string[] };
 
 /**
+ * One row in a titledList — both fields are always localised
+ * regardless of the parent field's `localized` flag (a titledList
+ * without translations would be useless for a bilingual site).
+ */
+export type TitledListItem = {
+  title: LocalizedText;
+  body: LocalizedText;
+};
+
+/**
  * Stored value for one field — depends on type + localized.
  */
 export type FieldValue =
@@ -56,6 +67,7 @@ export type FieldValue =
   | string[]
   | LocalizedText
   | LocalizedParagraphs
+  | TitledListItem[]
   | undefined;
 
 /**
