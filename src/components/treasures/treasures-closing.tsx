@@ -1,23 +1,30 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { TreasuresContent } from "@/content/treasures";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 /**
  * Closing parallax CTA for /treasures — same treatment as
  * StoryClosing / CorkClosing / PartnersClosing so the editorial
- * pages all rhyme. White-tint atelier photograph behind a serif
- * heading, body copy, and a single dark-inset Our Story button.
+ * pages all rhyme. Data-driven — the route passes the rendered
+ * cta object (resolved from Mongo or the TS fallback).
  */
-export function TreasuresClosing({ cta }: { cta: TreasuresContent["cta"] }) {
-  const primary = cta.destinations[0];
-  const heroImage = cta.destinations[1]?.image ?? primary.image;
+export type TreasuresClosingData = {
+  eyebrow: string;
+  title: string;
+  titleAccent?: string;
+  body: string;
+  label: string;
+  href: string;
+  backgroundImage: string;
+  closingLine?: string;
+};
 
+export function TreasuresClosing({ cta }: { cta: TreasuresClosingData }) {
   return (
     <section
       aria-labelledby="treasures-closing-heading"
       className="relative flex w-full items-center justify-center overflow-hidden bg-scroll bg-cover bg-center px-6 py-24 md:py-32 lg:bg-fixed lg:py-40"
-      style={{ backgroundImage: `url('${heroImage}')` }}
+      style={{ backgroundImage: `url('${cta.backgroundImage}')` }}
     >
       <div aria-hidden className="absolute inset-0 bg-white/70" />
 
@@ -42,10 +49,10 @@ export function TreasuresClosing({ cta }: { cta: TreasuresContent["cta"] }) {
         </p>
         <div className="mt-10 flex justify-center">
           <Link
-            href={primary.href}
+            href={cta.href}
             className="group inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
           >
-            {primary.cta}
+            {cta.label}
             <ArrowRight
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               strokeWidth={1.5}

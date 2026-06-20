@@ -11,6 +11,7 @@ import {
   partnersEditorialEn,
   partnersEditorialPt,
 } from "@/content/partners.editorial";
+import { treasures, treasuresPt } from "@/content/treasures";
 import type { EditorialContentDoc } from "./types";
 
 type Story = typeof ourStoryEn;
@@ -292,6 +293,39 @@ export function buildInitialPartners(): EditorialContentDoc {
       ctaHref: en.cta.ctaHref,
       backgroundImage: en.cta.backgroundImage,
       closingLine: pair(en.cta.closingLine, pt.cta.closingLine),
+    },
+  };
+}
+
+export function buildInitialTreasures(): EditorialContentDoc {
+  const en = treasures;
+  const pt = treasuresPt as typeof treasures;
+
+  return {
+    hero: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      image: en.hero.image,
+      imageAlt: pair(en.hero.imageAlt, pt.hero.imageAlt),
+    },
+    intro: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      title: pair(en.hero.title, pt.hero.title),
+      titleAccent: pair(en.hero.titleAccent, pt.hero.titleAccent),
+      intro: pair(en.hero.intro, pt.hero.intro),
+    },
+    cta: {
+      eyebrow: pair(en.cta.eyebrow, pt.cta.eyebrow),
+      title: pair(en.cta.title, pt.cta.title),
+      titleAccent: pair(en.cta.titleAccent, pt.cta.titleAccent),
+      body: pair(en.cta.body, pt.cta.body),
+      ctaLabel: pair(en.cta.destinations[0].cta, pt.cta.destinations[0].cta),
+      ctaHref: en.cta.destinations[0].href,
+      backgroundImage:
+        en.cta.destinations[1]?.image ?? en.cta.destinations[0].image,
+      closingLine: pair(
+        en.cta.closingLine ?? "",
+        pt.cta.closingLine ?? "",
+      ),
     },
   };
 }

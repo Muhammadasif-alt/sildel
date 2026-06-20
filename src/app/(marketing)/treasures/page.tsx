@@ -10,6 +10,7 @@ import { EditorialHero } from "@/components/editorial/editorial-hero";
 import { TreasuresProvider } from "@/content/treasures-provider";
 import { ProductGrid } from "@/components/treasures/product-grid";
 import { TreasuresClosing } from "@/components/treasures/treasures-closing";
+import { resolveTreasuresChrome } from "@/lib/editorial/resolvers/treasures";
 
 /**
  * /treasures — editorial pass in the Quinta Nova rhythm (founder
@@ -69,7 +70,11 @@ export const metadata = buildMetadata({
 
 export default async function TreasuresPage() {
   const locale = await getLocale();
+  // Catalogue content (categories, products) stays on getTreasures —
+  // chrome (hero/title/closing CTA) goes through the editorial resolver
+  // so the founder can edit it in /admin/editorial/treasures.
   const content = getTreasures(locale);
+  const chrome = await resolveTreasuresChrome(locale);
   const products = getProducts(locale);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
@@ -125,9 +130,9 @@ export default async function TreasuresPage() {
         {/* Editorial hero — image only, no overlay (founder direction
             June 2026: Quinta Nova History page reference). */}
         <EditorialHero
-          src={content.hero.image}
-          alt={content.hero.imageAlt}
-          eyebrow={content.hero.eyebrow}
+          src={chrome.hero.image}
+          alt={chrome.hero.imageAlt}
+          eyebrow={chrome.hero.eyebrow}
         />
 
         {/* Title block — wider container so the hero type breathes;
@@ -135,16 +140,21 @@ export default async function TreasuresPage() {
         <section className="border-b border-border/40">
           <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-24">
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
-              {content.hero.eyebrow}
+              {chrome.intro.eyebrow}
             </p>
             <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight md:text-5xl lg:text-6xl">
-              {content.hero.title}{" "}
-              <span className="italic text-primary">
-                {content.hero.titleAccent}
-              </span>
+              {chrome.intro.title}
+              {chrome.intro.titleAccent ? (
+                <>
+                  {" "}
+                  <span className="italic text-primary">
+                    {chrome.intro.titleAccent}
+                  </span>
+                </>
+              ) : null}
             </h1>
             <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              {content.hero.intro}
+              {chrome.intro.intro}
             </p>
           </div>
         </section>
@@ -156,7 +166,7 @@ export default async function TreasuresPage() {
         </TreasuresProvider>
 
         {/* Closing parallax CTA → /our-story. */}
-        <TreasuresClosing cta={content.cta} />
+        <TreasuresClosing cta={chrome.cta} />
       </main>
     </>
   );
