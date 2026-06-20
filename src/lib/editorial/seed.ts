@@ -16,6 +16,11 @@ import {
   contactEditorialEn,
   contactEditorialPt,
 } from "@/content/contact.editorial";
+import {
+  faqEditorialEn,
+  faqEditorialPt,
+} from "@/content/faq.editorial";
+import { getFaqs } from "@/content/legal";
 import type { EditorialContentDoc } from "./types";
 
 type Story = typeof ourStoryEn;
@@ -23,6 +28,7 @@ type Cork = typeof authenticCorkEn;
 type Ytc = typeof youThinkCorkEditorialEn;
 type Partners = typeof partnersEditorialEn;
 type Contact = typeof contactEditorialEn;
+type Faq = typeof faqEditorialEn;
 
 /**
  * Convert the file-based TS content into the locale-paired shape the
@@ -357,6 +363,39 @@ export function buildInitialContact(): EditorialContentDoc {
       eyebrow: pair(en.form.eyebrow, pt.form.eyebrow),
       heading: pair(en.form.heading, pt.form.heading),
       body: pair(en.form.body, pt.form.body),
+    },
+  };
+}
+
+export function buildInitialFaq(): EditorialContentDoc {
+  const en = faqEditorialEn;
+  const pt = faqEditorialPt as Faq;
+  const faqsEn = getFaqs("en");
+  const faqsPt = getFaqs("pt");
+
+  return {
+    hero: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      image: en.hero.image,
+      imageAlt: pair(en.hero.imageAlt, pt.hero.imageAlt),
+    },
+    intro: {
+      eyebrow: pair(en.intro.eyebrow, pt.intro.eyebrow),
+      title: pair(en.intro.title, pt.intro.title),
+      titleAccent: pair(en.intro.titleAccent, pt.intro.titleAccent),
+      intro: pair(en.intro.intro, pt.intro.intro),
+    },
+    faqs: {
+      items: faqsEn.map((f, i) => ({
+        title: pair(f.q, faqsPt[i]?.q ?? f.q),
+        body: pair(f.a, faqsPt[i]?.a ?? f.a),
+      })),
+    },
+    cta: {
+      eyebrow: pair(en.cta.eyebrow, pt.cta.eyebrow),
+      body: pair(en.cta.body, pt.cta.body),
+      ctaLabel: pair(en.cta.ctaLabel, pt.cta.ctaLabel),
+      ctaHref: en.cta.ctaHref,
     },
   };
 }

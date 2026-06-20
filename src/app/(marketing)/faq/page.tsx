@@ -6,8 +6,8 @@ import {
 } from "@/lib/seo";
 import { JsonLd } from "@/components/common/json-ld";
 import { getLocale } from "@/lib/i18n/get-locale";
-import { getFaqs } from "@/content/legal";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
+import { resolveFaq } from "@/lib/editorial/resolvers/faq";
 
 const PAGE_PATH = "/faq";
 
@@ -36,58 +36,48 @@ export const metadata = buildMetadata({
 
 export default async function FaqPage() {
   const locale = await getLocale();
+  // Resolved from Mongo if the founder has edited the page in admin,
+  // otherwise from the TS file fallback. Same shape either way.
+  const content = await resolveFaq(locale);
   const isPt = locale === "pt";
-  const faqs = getFaqs(locale);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { label: isPt ? "Início" : "Home", href: "/" },
     { label: isPt ? "Perguntas Frequentes" : "FAQ", href: PAGE_PATH },
   ]);
   // FAQ schema — surfaces answers directly in Google results.
-  const faqJsonLd = buildFaqJsonLd(faqs);
-
-  const t = {
-    eyebrow: isPt ? "Apoio" : "Help",
-    title: isPt ? "Perguntas" : "Frequently asked",
-    titleAccent: isPt ? "frequentes." : "questions.",
-    intro: isPt
-      ? "Tudo o que normalmente nos perguntam sobre comprar, envios, devoluções e cortiça autêntica. Se algo aqui não responder à sua dúvida, fale connosco — temos todo o gosto."
-      : "Everything we're usually asked about buying, shipping, returns and authentic cork. If you don't find your answer here, just reach out — we'd love to hear from you.",
-    ctaEyebrow: isPt ? "Ainda com dúvidas?" : "Still have a question?",
-    ctaBody: isPt
-      ? "Fale connosco diretamente — respondemos com calma e dedicação."
-      : "Talk to us directly — we reply with care.",
-    ctaLink: isPt ? "Contacte-nos" : "Contact us",
-  };
+  const faqJsonLd = buildFaqJsonLd(content.faqs);
 
   return (
     <>
       <JsonLd data={[breadcrumbs, faqJsonLd]} />
       <main className="flex flex-1 flex-col bg-background text-foreground">
-        {/* Editorial hero — image only, no overlay (founder direction
-            June 2026: Quinta Nova History page reference). */}
+        {/* Editorial hero — image only, no overlay. */}
         <EditorialHero
-          src="/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp"
-          alt={
-            isPt
-              ? "Peça escultórica em cortiça sobre pedestal de mármore — silhueta minimalista."
-              : "Sculptural cork piece on a marble pedestal — minimalist silhouette."
-          }
-          eyebrow={t.eyebrow}
+          src={content.hero.image}
+          alt={content.hero.imageAlt}
+          eyebrow={content.hero.eyebrow}
         />
 
         {/* Title block */}
         <section className="border-b border-border/40">
           <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-24">
             <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
-              {t.eyebrow}
+              {content.intro.eyebrow}
             </p>
             <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight md:text-5xl lg:text-6xl">
-              {t.title}{" "}
-              <span className="italic text-primary">{t.titleAccent}</span>
+              {content.intro.title}
+              {content.intro.titleAccent ? (
+                <>
+                  {" "}
+                  <span className="italic text-primary">
+                    {content.intro.titleAccent}
+                  </span>
+                </>
+              ) : null}
             </h1>
             <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              {t.intro}
+              {content.intro.intro}
             </p>
           </div>
         </section>
@@ -96,7 +86,7 @@ export default async function FaqPage() {
         <section>
           <div className="mx-auto max-w-4xl px-6 py-14 lg:px-10 lg:py-20">
             <ul className="divide-y divide-border/60 border-y border-border/60">
-              {faqs.map((f, i) => (
+              {content.faqs.map((f, i) => (
                 <li key={i}>
                   <details className="group">
                     <summary className="flex cursor-pointer items-center justify-between gap-6 py-6 text-left text-base font-medium text-foreground transition-colors hover:text-primary md:text-lg [&::-webkit-details-marker]:hidden">
@@ -131,16 +121,16 @@ export default async function FaqPage() {
         <section className="border-t border-border/60 bg-muted/30">
           <div className="mx-auto max-w-4xl px-6 py-14 text-center lg:px-10 lg:py-16">
             <p className="mb-3 text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
-              {t.ctaEyebrow}
+              {content.cta.eyebrow}
             </p>
             <p className="font-serif text-2xl font-light leading-snug tracking-tight md:text-3xl">
-              {t.ctaBody}
+              {content.cta.body}
             </p>
             <Link
-              href="/contact"
+              href={content.cta.ctaHref}
               className="mt-8 inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
             >
-              {t.ctaLink}
+              {content.cta.ctaLabel}
             </Link>
           </div>
         </section>

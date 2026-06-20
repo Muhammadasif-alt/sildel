@@ -10,6 +10,7 @@ import {
   buildInitialPartners,
   buildInitialTreasures,
   buildInitialContact,
+  buildInitialFaq,
 } from "@/lib/editorial/seed";
 import { EditorialForm } from "@/components/admin/editorial-form";
 import type { EditorialContentDoc } from "@/lib/editorial/types";
@@ -42,6 +43,8 @@ async function resolveInitial(
       return buildInitialTreasures();
     case "contact":
       return buildInitialContact();
+    case "faq":
+      return buildInitialFaq();
     default:
       return {};
   }
