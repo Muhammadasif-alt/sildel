@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Noto_Serif_TC, Lato } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import {
@@ -15,20 +15,21 @@ import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { ReduxProvider } from "@/lib/store/provider";
 import { getLocale } from "@/lib/i18n/get-locale";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Body sans — Lato. Same weights Quinta Nova loads (300 / 400 / 700) so
+// `font-light`, default, and `font-bold` all resolve to real cuts.
+const lato = Lato({
+  variable: "--font-lato",
   subsets: ["latin"],
+  weight: ["300", "400", "700"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+// Heading serif — Noto Serif TC, the same display serif Quinta Nova uses.
+// Variable font (single file, full 200–900 axis) so any Tailwind weight
+// utility lands on a real cut without extra payload.
+const notoSerif = Noto_Serif_TC({
+  variable: "--font-noto-serif",
   subsets: ["latin"],
-  // We only render Playfair at 400 (regular) and 500 (medium) across the
-  // whole site — `font-light` (300) doesn't exist in Playfair so it falls
-  // back to 400 anyway. Loading 600/700/800 was a ~75KB hit for fonts we
-  // never use.
-  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -59,7 +60,7 @@ export default async function RootLayout({
   return (
     <html
       lang={htmlLang}
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      className={`${lato.variable} ${notoSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
