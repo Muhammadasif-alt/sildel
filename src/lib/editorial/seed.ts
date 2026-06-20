@@ -3,10 +3,15 @@ import { ourStoryEn } from "@/content/our-story.en";
 import { ourStoryPt } from "@/content/our-story.pt";
 import { authenticCorkEn } from "@/content/authentic-cork.en";
 import { authenticCorkPt } from "@/content/authentic-cork.pt";
+import {
+  youThinkCorkEditorialEn,
+  youThinkCorkEditorialPt,
+} from "@/content/you-think-cork.editorial";
 import type { EditorialContentDoc } from "./types";
 
 type Story = typeof ourStoryEn;
 type Cork = typeof authenticCorkEn;
+type Ytc = typeof youThinkCorkEditorialEn;
 
 /**
  * Convert the file-based TS content into the locale-paired shape the
@@ -199,6 +204,58 @@ export function buildInitialAuthenticCork(): EditorialContentDoc {
         en.cta.closingLine ?? "",
         pt.cta.closingLine ?? "",
       ),
+    },
+  };
+}
+
+export function buildInitialYouThinkCork(): EditorialContentDoc {
+  const en = youThinkCorkEditorialEn;
+  const pt = youThinkCorkEditorialPt as Ytc;
+
+  return {
+    hero: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      image: en.hero.image,
+      imageAlt: pair(en.hero.imageAlt, pt.hero.imageAlt),
+    },
+    intro: {
+      eyebrow: pair(en.intro.eyebrow, pt.intro.eyebrow),
+      title: pair(en.intro.title, pt.intro.title),
+      titleAccent: pair(en.intro.titleAccent, pt.intro.titleAccent),
+      body: paragraphPair(en.intro.body, pt.intro.body),
+      image: en.intro.image,
+      imageAlt: pair(en.intro.imageAlt, pt.intro.imageAlt),
+    },
+    bleed: {
+      src: en.bleed.src,
+      alt: pair(en.bleed.alt, pt.bleed.alt),
+    },
+    innovate: {
+      eyebrow: pair(en.innovate.eyebrow, pt.innovate.eyebrow),
+      title: pair(en.innovate.title, pt.innovate.title),
+      titleAccent: pair(en.innovate.titleAccent, pt.innovate.titleAccent),
+      body: paragraphPair(en.innovate.body, pt.innovate.body),
+      image: en.innovate.image,
+      imageAlt: pair(en.innovate.imageAlt, pt.innovate.imageAlt),
+    },
+    banner: {
+      line: pair(en.banner.line, pt.banner.line),
+    },
+    pillars: {
+      eyebrow: pair(en.pillars.eyebrow, pt.pillars.eyebrow),
+      title: pair(en.pillars.title, pt.pillars.title),
+      titleAccent: pair(en.pillars.titleAccent, pt.pillars.titleAccent),
+      body: pair(en.pillars.body, pt.pillars.body),
+      image: en.pillars.image,
+      imageAlt: pair(en.pillars.imageAlt, pt.pillars.imageAlt),
+      items: en.pillars.items.map((item, i) => ({
+        title: pair(item.title, pt.pillars.items[i].title),
+        body: pair(item.body, pt.pillars.items[i].body),
+      })),
+    },
+    contactCta: {
+      eyebrow: pair(en.contactCta.eyebrow, pt.contactCta.eyebrow),
+      heading: pair(en.contactCta.heading, pt.contactCta.heading),
     },
   };
 }
