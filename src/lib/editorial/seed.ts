@@ -7,11 +7,16 @@ import {
   youThinkCorkEditorialEn,
   youThinkCorkEditorialPt,
 } from "@/content/you-think-cork.editorial";
+import {
+  partnersEditorialEn,
+  partnersEditorialPt,
+} from "@/content/partners.editorial";
 import type { EditorialContentDoc } from "./types";
 
 type Story = typeof ourStoryEn;
 type Cork = typeof authenticCorkEn;
 type Ytc = typeof youThinkCorkEditorialEn;
+type Partners = typeof partnersEditorialEn;
 
 /**
  * Convert the file-based TS content into the locale-paired shape the
@@ -256,6 +261,37 @@ export function buildInitialYouThinkCork(): EditorialContentDoc {
     contactCta: {
       eyebrow: pair(en.contactCta.eyebrow, pt.contactCta.eyebrow),
       heading: pair(en.contactCta.heading, pt.contactCta.heading),
+    },
+  };
+}
+
+export function buildInitialPartners(): EditorialContentDoc {
+  const en = partnersEditorialEn;
+  const pt = partnersEditorialPt as Partners;
+
+  return {
+    hero: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      image: en.hero.image,
+      imageAlt: pair(en.hero.imageAlt, pt.hero.imageAlt),
+    },
+    intro: {
+      eyebrow: pair(en.intro.eyebrow, pt.intro.eyebrow),
+      title: pair(en.intro.title, pt.intro.title),
+      titleAccent: pair(en.intro.titleAccent, pt.intro.titleAccent),
+      body: paragraphPair(en.intro.body, pt.intro.body),
+      image: en.intro.image,
+      imageAlt: pair(en.intro.imageAlt, pt.intro.imageAlt),
+    },
+    cta: {
+      eyebrow: pair(en.cta.eyebrow, pt.cta.eyebrow),
+      title: pair(en.cta.title, pt.cta.title),
+      titleAccent: pair(en.cta.titleAccent, pt.cta.titleAccent),
+      body: pair(en.cta.body, pt.cta.body),
+      ctaLabel: pair(en.cta.ctaLabel, pt.cta.ctaLabel),
+      ctaHref: en.cta.ctaHref,
+      backgroundImage: en.cta.backgroundImage,
+      closingLine: pair(en.cta.closingLine, pt.cta.closingLine),
     },
   };
 }
