@@ -12,12 +12,17 @@ import {
   partnersEditorialPt,
 } from "@/content/partners.editorial";
 import { treasures, treasuresPt } from "@/content/treasures";
+import {
+  contactEditorialEn,
+  contactEditorialPt,
+} from "@/content/contact.editorial";
 import type { EditorialContentDoc } from "./types";
 
 type Story = typeof ourStoryEn;
 type Cork = typeof authenticCorkEn;
 type Ytc = typeof youThinkCorkEditorialEn;
 type Partners = typeof partnersEditorialEn;
+type Contact = typeof contactEditorialEn;
 
 /**
  * Convert the file-based TS content into the locale-paired shape the
@@ -326,6 +331,32 @@ export function buildInitialTreasures(): EditorialContentDoc {
         en.cta.closingLine ?? "",
         pt.cta.closingLine ?? "",
       ),
+    },
+  };
+}
+
+export function buildInitialContact(): EditorialContentDoc {
+  const en = contactEditorialEn;
+  const pt = contactEditorialPt as Contact;
+
+  return {
+    hero: {
+      eyebrow: pair(en.hero.eyebrow, pt.hero.eyebrow),
+      image: en.hero.image,
+      imageAlt: pair(en.hero.imageAlt, pt.hero.imageAlt),
+    },
+    intro: {
+      eyebrow: pair(en.intro.eyebrow, pt.intro.eyebrow),
+      title: pair(en.intro.title, pt.intro.title),
+      titleAccent: pair(en.intro.titleAccent, pt.intro.titleAccent),
+      body: paragraphPair(en.intro.body, pt.intro.body),
+      image: en.intro.image,
+      imageAlt: pair(en.intro.imageAlt, pt.intro.imageAlt),
+    },
+    form: {
+      eyebrow: pair(en.form.eyebrow, pt.form.eyebrow),
+      heading: pair(en.form.heading, pt.form.heading),
+      body: pair(en.form.body, pt.form.body),
     },
   };
 }

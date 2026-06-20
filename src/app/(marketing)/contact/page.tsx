@@ -9,10 +9,8 @@ import { JsonLd } from "@/components/common/json-ld";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactMap } from "@/components/contact/contact-map";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
-import {
-  StorySection,
-  type StorySectionData,
-} from "@/components/our-story/story-section";
+import { StorySection } from "@/components/our-story/story-section";
+import { resolveContact } from "@/lib/editorial/resolvers/contact";
 
 /**
  * /contact — editorial pass in the Quinta Nova rhythm (founder
@@ -24,8 +22,6 @@ import {
 const PAGE_PATH = "/contact";
 const HERO_IMAGE =
   "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp";
-const INTRO_IMAGE =
-  "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp";
 
 export const revalidate = 3600;
 
@@ -78,6 +74,9 @@ const ContactPageJsonLd = {
 export default async function ContactPage() {
   const locale = await getLocale();
   const isPt = locale === "pt";
+  // Resolved from Mongo if the founder has edited the page in admin,
+  // otherwise from the TS file fallback. Same shape either way.
+  const content = await resolveContact(locale);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { label: isPt ? "Início" : "Home", href: "/" },
@@ -104,33 +103,6 @@ export default async function ContactPage() {
     path: PAGE_PATH,
   });
 
-  const t = {
-    eyebrow: isPt ? "Contacto" : "Contact",
-    title: isPt ? "Fale" : "Talk",
-    titleAccent: isPt ? "connosco." : "to us.",
-    intro: isPt
-      ? "Encomendas personalizadas, visitas ao atelier, imprensa, parcerias — escreva-nos. Respondemos dentro de um dia útil, com calma e dedicação."
-      : "Bespoke commissions, atelier visits, press, partnerships — write to us. We reply within one business day, with care.",
-    formEyebrow: isPt ? "Escreva-nos" : "Write to us",
-    formHeading: isPt
-      ? "Conte-nos no que está a pensar."
-      : "Tell us what you're thinking about.",
-    formBody: isPt
-      ? "Resposta dentro de um dia útil. Pode também escrever-nos directamente para sildel@sildel.pt."
-      : "We reply within one business day. You can also write to us directly at sildel@sildel.pt.",
-  };
-
-  const intro: StorySectionData = {
-    eyebrow: t.eyebrow,
-    title: t.title,
-    titleAccent: t.titleAccent,
-    body: [t.intro],
-    image: INTRO_IMAGE,
-    imageAlt: isPt
-      ? "Atelier Sildel em Esmoriz — interior ao pôr-do-sol."
-      : "Sildel atelier in Esmoriz — interior at golden hour.",
-  };
-
   return (
     <>
       <JsonLd
@@ -144,19 +116,19 @@ export default async function ContactPage() {
       <main className="flex flex-1 flex-col bg-background text-foreground">
         {/* Editorial hero — image only, no overlay. */}
         <EditorialHero
-          src={HERO_IMAGE}
-          alt={
-            isPt
-              ? "Porta envelhecida do atelier Sildel ao pôr-do-sol, com placa pintada à mão."
-              : "Weathered Sildel atelier doorway at golden hour with the hand-painted sign."
-          }
-          eyebrow={t.eyebrow}
+          src={content.hero.image}
+          alt={content.hero.imageAlt}
+          eyebrow={content.hero.eyebrow}
         />
 
         {/* Intro — full editorial row (image LEFT, title + body RIGHT)
             so the rhythm doesn't collapse into a narrow centered text
             block. Matches the other editorial pages. */}
-        <StorySection data={intro} mirror={false} headingId="contact-intro" />
+        <StorySection
+          data={content.intro}
+          mirror={false}
+          headingId="contact-intro"
+        />
 
         {/* Form section — wider container, centered heading + form,
             with a soft muted band so the page breathes between the
@@ -168,16 +140,16 @@ export default async function ContactPage() {
           <div className="mx-auto max-w-5xl px-6 py-20 lg:px-12 lg:py-28">
             <div className="mx-auto mb-14 max-w-3xl text-center">
               <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
-                {t.formEyebrow}
+                {content.form.eyebrow}
               </p>
               <h2
                 id="contact-form-heading"
                 className="font-serif text-3xl font-light leading-[1.04] tracking-tight md:text-4xl lg:text-5xl"
               >
-                {t.formHeading}
+                {content.form.heading}
               </h2>
               <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                {t.formBody}
+                {content.form.body}
               </p>
             </div>
             <div className="mx-auto max-w-3xl">

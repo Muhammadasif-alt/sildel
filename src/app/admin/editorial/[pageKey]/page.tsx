@@ -9,6 +9,7 @@ import {
   buildInitialYouThinkCork,
   buildInitialPartners,
   buildInitialTreasures,
+  buildInitialContact,
 } from "@/lib/editorial/seed";
 import { EditorialForm } from "@/components/admin/editorial-form";
 import type { EditorialContentDoc } from "@/lib/editorial/types";
@@ -39,6 +40,8 @@ async function resolveInitial(
       return buildInitialPartners();
     case "treasures":
       return buildInitialTreasures();
+    case "contact":
+      return buildInitialContact();
     default:
       return {};
   }
