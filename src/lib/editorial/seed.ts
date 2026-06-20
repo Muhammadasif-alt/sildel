@@ -274,6 +274,8 @@ export function buildInitialYouThinkCork(): EditorialContentDoc {
     contactCta: {
       eyebrow: pair(en.contactCta.eyebrow, pt.contactCta.eyebrow),
       heading: pair(en.contactCta.heading, pt.contactCta.heading),
+      image: en.contactCta.image,
+      imageAlt: pair(en.contactCta.imageAlt, pt.contactCta.imageAlt),
     },
   };
 }

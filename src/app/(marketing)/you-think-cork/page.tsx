@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   buildMetadata,
   buildBreadcrumbJsonLd,
@@ -127,24 +128,44 @@ export default async function YouThinkCorkPage() {
           <PartnersSection locale={locale} variant="alt" />
         </div>
 
-        {/* Contact CTA + form — closing beat of the page. */}
+        {/* Contact CTA + form — split layout: closing image LEFT (sticky
+            on desktop), heading + form RIGHT. Same rhythm as /contact's
+            form section so the two contact moments rhyme. */}
         <section
           aria-labelledby="ytc-cta-heading"
-          className="relative w-full bg-muted/30 border-t border-border/60"
+          className="relative w-full bg-background border-t border-border/60"
         >
-          <div className="mx-auto max-w-3xl px-6 lg:px-12 py-16 lg:py-24">
-            <div className="text-center mb-12">
-              <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-4">
-                {content.contactCta.eyebrow}
-              </p>
-              <h2
-                id="ytc-cta-heading"
-                className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.04] tracking-tight"
-              >
-                {content.contactCta.heading}
-              </h2>
+          <div className="grid grid-cols-1 items-stretch lg:grid-cols-[45%_55%]">
+            <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:min-h-0">
+              <Image
+                src={content.contactCta.image}
+                alt={content.contactCta.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
+              />
             </div>
-            <ContactForm />
+
+            <div className="flex flex-col justify-center px-6 py-20 lg:px-14 lg:py-28 xl:px-20">
+              <div className="mb-12 max-w-xl">
+                <p className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
+                  {content.contactCta.eyebrow}
+                </p>
+                <h2
+                  id="ytc-cta-heading"
+                  className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-[1.04] tracking-tight"
+                >
+                  {content.contactCta.heading}
+                </h2>
+              </div>
+              <div className="max-w-xl">
+                <ContactForm />
+              </div>
+            </div>
           </div>
         </section>
       </main>

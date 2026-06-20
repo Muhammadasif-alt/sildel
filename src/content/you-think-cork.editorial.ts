@@ -22,6 +22,11 @@ const ATELIER_DOOR_IMAGE =
   "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp";
 const PEDESTAL_IMAGE =
   "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp";
+// Distinct from every image used above this point so the closing
+// form section reads as a fresh frame, not a repeat (founder
+// feedback, June 2026 fifteenth pass — same as /contact fix).
+const CTA_IMAGE =
+  "/products/HORIZON_Fundo_BRANCO__MGL0462_1-9b8324db9e.webp";
 
 const en = {
   hero: {
@@ -80,6 +85,9 @@ const en = {
   contactCta: {
     eyebrow: "Do you think cork?",
     heading: "Reach out and join us in shaping the future.",
+    image: CTA_IMAGE,
+    imageAlt:
+      "Horizon — a sculptural cork piece on a clean white backdrop, the curve suggesting a long view forward.",
   },
 };
 
@@ -140,6 +148,9 @@ const pt: typeof en = {
   contactCta: {
     eyebrow: "Pensa em cortiça?",
     heading: "Fale connosco e ajude-nos a moldar o futuro.",
+    image: CTA_IMAGE,
+    imageAlt:
+      "Horizon — escultura de cortiça sobre fundo branco; a curva sugere uma vista longa em frente.",
   },
 };
 

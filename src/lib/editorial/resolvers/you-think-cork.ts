@@ -33,7 +33,12 @@ export type YouThinkCorkRendered = {
     imageAlt: string;
     items: YtcPillar[];
   };
-  contactCta: { eyebrow: string; heading: string };
+  contactCta: {
+    eyebrow: string;
+    heading: string;
+    image: string;
+    imageAlt: string;
+  };
 };
 
 export async function resolveYouThinkCork(
@@ -148,6 +153,8 @@ function fromDb(
     contactCta: {
       eyebrow: t(contactCta.eyebrow),
       heading: t(contactCta.heading),
+      image: s(contactCta.image),
+      imageAlt: t(contactCta.imageAlt),
     },
   };
 }

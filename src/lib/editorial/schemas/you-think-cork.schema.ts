@@ -113,12 +113,14 @@ export const youThinkCorkSchema: EditorialSchema = {
     },
     {
       key: "contactCta",
-      label: "Contact form heading",
+      label: "Contact form heading + side image",
       description:
-        "The eyebrow and heading shown above the contact form at the bottom of the page.",
+        "The eyebrow and heading shown above the contact form at the bottom of the page, plus the photo paired with the form on desktop.",
       fields: [
         { key: "eyebrow", label: "Eyebrow", type: "text", localized: true },
         { key: "heading", label: "Heading", type: "text", localized: true },
+        { key: "image", label: "Side image (left column on desktop)", type: "image" },
+        { key: "imageAlt", label: "Side image alt", type: "text", localized: true },
       ],
     },
   ],
