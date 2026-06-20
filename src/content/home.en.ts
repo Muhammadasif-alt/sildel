@@ -16,7 +16,7 @@ export const homeEn = {
       titleAccent: "Sculptural treasures shaped by hand, signed and numbered.",
       description:
         "Sculptural treasures shaped from sustainably harvested Portuguese cork.",
-      image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+      image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
       imageAlt: "A Portuguese cork atelier interior at golden hour, sunlight spilling across the workbench.",
       cta: { label: "See All Treasures", href: "/treasures" },
       cta2: { label: "Inside the Atelier", href: "/our-story" },
@@ -28,7 +28,7 @@ export const homeEn = {
       titleAccent: "24-carat gold leaf meets the authentic grain of cork.",
       description:
         "Gold leaf against authentic cork — geometry in quiet conversation.",
-      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_3.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1481-fe89adcd19.webp",
       imageAlt: "Sculptural cork art object under soft warm light against a deep matte-black ground.",
       cta: { label: "Discover Carré d'Or", href: "/treasures/carre-dor" },
       cta2: { label: "All Limited", href: "/treasures?category=fine-arts" },
@@ -39,7 +39,7 @@ export const homeEn = {
       title: "Eclipse",
       titleAccent: "Sculptural cork that holds the warmth of the forest.",
       description: "Sculptural cork forms that hold the warmth of the forest.",
-      image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+      image: "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
       imageAlt: "An ancient Portuguese cork oak tree, its trunk recently harvested in the Alentejo light.",
       cta: { label: "View Eclipse", href: "/treasures?q=eclipse" },
       cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
@@ -50,7 +50,7 @@ export const homeEn = {
       title: "Gibraltar",
       titleAccent: "A defining silhouette — designed to last decades.",
       description: "A defining silhouette — elegant lines designed to last decades.",
-      image: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+      image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
       imageAlt: "Tall stacks of freshly harvested cork sheets curing under oak trees at golden hour.",
       cta: { label: "Explore Gibraltar", href: "/treasures/gibraltar" },
       cta2: { label: "All Tables", href: "/treasures?category=tables" },
@@ -61,7 +61,7 @@ export const homeEn = {
       title: "Hot Spring",
       titleAccent: "An earth-fired cork form on a quiet plinth.",
       description: "An earth-fired cork form on a quiet plinth — sculpture, made to anchor a room.",
-      image: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
+      image: "/products/FIREFLIES_Fundo_BRANCO_14_01_02_FB-d499e7453d.webp",
       imageAlt: "Close-up of a master harvester's weathered hands gripping a curved cork axe.",
       cta: { label: "Explore Hot Spring", href: "/treasures/hot-spring" },
       cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
@@ -72,7 +72,7 @@ export const homeEn = {
       title: "Side by Side",
       titleAccent: "Frosted glass meets the authentic grain of cork.",
       description: "Frosted glass meets the authentic grain of cork — a quiet wall piece, framed.",
-      image: "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt: "A weathered Portuguese atelier doorway at golden hour with a hand-painted Sildel sign.",
       cta: { label: "Discover Side by Side", href: "/treasures/side-by-side" },
       cta2: { label: "All Fine Arts", href: "/treasures?category=fine-arts" },
@@ -95,7 +95,7 @@ export const homeEn = {
       "Each piece signed, numbered, never reissued",
       "Sustainably harvested — no trees ever felled",
     ],
-    image: "/Slidel/enhance/enhance-tables-04.webp",
+    image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
     imageAlt:
       "A Sildel cork table in a sun-lit Portuguese atelier interior with arched alcove and olive branch.",
     cta: { label: "Explore treasures", href: "/treasures" },
@@ -121,7 +121,7 @@ export const homeEn = {
       body:
         "A sculptural cork form on a stone plinth — earth-fired, perforated by hand, made to anchor a quiet room. Each piece is shaped and signed by Isabel in the Esmoriz atelier. Available in three formats.",
       cta: { label: "Discover Hot Spring", href: "/treasures/hot-spring" },
-      image: "/Slidel/enhance/enhance-sculpture-04.webp",
+      image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
       imageAlt:
         "Hot Spring — a perforated cork sculpture on a stone podium, lit by warm directional atelier light.",
     },
@@ -131,7 +131,7 @@ export const homeEn = {
       body:
         "Twenty-four-carat gold leaf pressed against the untouched grain of Portuguese cork — geometry in quiet conversation with the raw bark of the forest. Limited edition, each square signed by the hand that finished it.",
       cta: { label: "Discover Carré d'Or", href: "/treasures/carre-dor" },
-      image: "/Slidel/enhance/enhance-carre-dor-03.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1494-e73b3ecee6.webp",
       imageAlt:
         "Carré d'Or — Sildel cork treasure with 24-carat gold leaf, photographed in soft directional atelier light.",
     },
@@ -141,7 +141,7 @@ export const homeEn = {
       body:
         "A defining silhouette — cork supports under glass, elegant lines designed to last decades. A signature table that holds the weight of a room without ever raising its voice. Available in three lengths.",
       cta: { label: "Explore Gibraltar", href: "/treasures/gibraltar" },
-      image: "/Slidel/enhance/enhance-tables-04.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt:
         "Gibraltar — Sildel cork table in a sun-lit Portuguese atelier with an arched alcove.",
     },
@@ -151,7 +151,7 @@ export const homeEn = {
       body:
         "A sculptural cork form that holds the warmth of the forest in light. The grain becomes architecture; the light becomes mood. A new collection from the Sildel atelier in Esmoriz.",
       cta: { label: "Explore Eclipse", href: "/treasures/eclipse" },
-      image: "/Slidel/enhance/enhance-lighting-03.webp",
+      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
       imageAlt:
         "Eclipse — sculptural cork lighting in a softly-lit Portuguese atelier.",
     },
@@ -168,7 +168,7 @@ export const homeEn = {
       "Browse the full collection — sculpture, lighting, fine arts, tables. Each piece shaped by hand in the Esmoriz atelier, signed, numbered, made to be lived with.",
     cta: { label: "View All Treasures", href: "/treasures" },
     image:
-      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+      "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
   },
 
   /* Brand Story — prodigy framing (founder direction, June 2026).
@@ -218,11 +218,11 @@ export const homeEn = {
     // at the working Nano Banana 2 placeholders so the section doesn't
     // render with broken-image icons.
     image:
-      "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+      "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
     imageAlt:
       "Wide editorial shot of an ancient Portuguese cork oak tree, bark recently harvested, in the Alentejo montado.",
     inset:
-      "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+      "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
     insetAlt:
       "Tall stacks of freshly harvested cork sheets curing under cork oak trees at golden hour.",
   },
@@ -360,7 +360,7 @@ export const homeEn = {
     headlineAccent: "we give them life.",
     body:
       "Each piece is a testament to nature's renewal. We don't cut down cork oak trees; by harvesting the cork, we set the tree free to regenerate, flourishing with a new layer of life. Thus, every treasure is a celebration of resilience and the eternal cycle of the earth.",
-    image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
     imageAlt: "Ancient Portuguese cork oak tree with bark recently harvested.",
     stats: [
       { value: "9", unit: "years", label: "Between each harvest" },
@@ -376,7 +376,7 @@ export const homeEn = {
     titleAccent: "harvested without harm.",
     body:
       "Every Sildel piece begins in the cork oak forests of Portugal — protected ecosystems where the same trees are harvested every nine years, without ever felling them.",
-    image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_4.webp",
+    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_04_FB-359839da1a.webp",
     imageAlt: "Portuguese cork oak forest at golden hour.",
     steps: [
       {
@@ -384,21 +384,21 @@ export const homeEn = {
         title: "Harvested by hand",
         body:
           "Master harvesters strip the bark with axes, never harming the tree beneath.",
-        image: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_3.webp",
+        image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
       },
       {
         number: "02",
         title: "Aged in open air",
         body:
           "The cork rests outdoors for months, settling into its grain and color.",
-        image: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+        image: "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
       },
       {
         number: "03",
         title: "Shaped slowly",
         body:
           "Each piece is finished by our atelier — no two are ever identical.",
-        image: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_2.webp",
+        image: "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
       },
     ],
     cta: { label: "Discover authentic cork", href: "/authentic-cork" },

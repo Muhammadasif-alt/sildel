@@ -7,9 +7,9 @@ import type { Locale } from "@/lib/i18n/config";
  */
 
 const HERO_IMAGE =
-  "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp";
+  "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp";
 const INTRO_IMAGE =
-  "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp";
+  "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp";
 
 const en = {
   hero: {

@@ -161,7 +161,7 @@ export function Sustainability({ data: dataProp }: { data?: HomeContent["sustain
             {/* Left — image */}
             <div className="relative aspect-[4/3] min-h-[320px] lg:aspect-auto lg:min-h-[460px]">
               <Image
-                src="/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_2.webp"
+                src="/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp"
                 alt="Ancient Portuguese cork oak with bark recently harvested."
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"

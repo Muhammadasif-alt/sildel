@@ -5,7 +5,7 @@ export const youThinkCorkEn = {
     titleAccent: "We think fine art.",
     intro:
       "Cork has been a stopper, a coaster, a board on a school wall. We have spent years asking it to be something more.",
-    image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_4.webp",
+    image: "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
     imageAlt: "A finished cork sculpture catching warm light — Sildel's reframing of cork as fine art.",
   },
 
@@ -40,7 +40,7 @@ export const youThinkCorkEn = {
   manifesto: {
     eyebrow: "Our Manifesto",
     image:
-      "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_4.webp",
+      "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
     imageAlt: "A sculptural cork piece catching warm directional light.",
     lead: "Cork is not what you think.",
     lines: [
@@ -63,32 +63,32 @@ export const youThinkCorkEn = {
       {
         title: "Eclipse",
         tagline: "Cork in silhouette",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
+        image: "/products/ECLIPSE_Fundo_BRANCO_silver_Candeeiro-02_MV_0337_1-e925f86f8b.webp",
       },
       {
         title: "Monolith",
         tagline: "Cork as monument",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_1.webp",
+        image: "/products/HORIZON_Fundo_PRETO__MGL0462-feaa04fa7e.webp",
       },
       {
         title: "Vessel",
         tagline: "Cork as form",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_2.webp",
+        image: "/products/OLYMPIA_Fundo_PRETO__MGL3110-copy-31bfa2746e.webp",
       },
       {
         title: "Pedestal",
         tagline: "Cork on stone",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_1.webp",
+        image: "/products/-SCAR_Fundo_PRETO__MGL3061-de1ed8741d.webp",
       },
       {
         title: "Relic",
         tagline: "Cork as artifact",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_2.webp",
+        image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
       },
       {
         title: "Form",
         tagline: "Cork in light",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_3.webp",
+        image: "/products/ISLAND_Fundo_PRETO_07_01_01_FP-5432cd5483.webp",
       },
     ],
   },
@@ -103,22 +103,22 @@ export const youThinkCorkEn = {
       {
         title: "Sculpture",
         body: "Sculptural cork pieces — signed, numbered, displayed.",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp",
+        image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
       },
       {
         title: "Furniture",
         body: "Cork tables and seats — light, warm, unexpectedly strong.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_2.webp",
+        image: "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
       },
       {
         title: "Fine art",
         body: "Cork against gold, copper, and stone — paintings in three dimensions.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_3.webp",
+        image: "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
       },
       {
         title: "Interiors",
         body: "Cork that lives in homes — the quietest luxury in the room.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_4.webp",
+        image: "/products/FIREFLIES_Fundo_BRANCO_14_01_04_FB-359839da1a.webp",
       },
     ],
   },
@@ -134,7 +134,7 @@ export const youThinkCorkEn = {
         eyebrow: "The Collection",
         title: "Explore the treasures",
         body: "All the pieces, hand-finished in Portugal.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_1.webp",
+        image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         imageAlt: "Editorial flat-lay of three Sildel cork art pieces.",
         href: "/treasures",
         cta: "See Treasures",
@@ -143,7 +143,7 @@ export const youThinkCorkEn = {
         eyebrow: "The Material",
         title: "Cork, explained",
         body: "What the bark is, where it comes from, why it matters.",
-        image: "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged.webp",
+        image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
         imageAlt: "Macro of authentic Portuguese cork bark texture.",
         href: "/authentic-cork",
         cta: "Authentic Cork",

@@ -4,7 +4,7 @@ export const ourStoryEn = {
     title: "A slow practice, since the first oak.",
     intro:
       "Sildel was born from a Portuguese forest that has shaped families for centuries. We do not chase trends — we follow the bark.",
-    image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+    image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
     imageAlt: "Sildel atelier interior at golden hour — the atelier in warm light.",
   },
 
@@ -16,7 +16,7 @@ export const ourStoryEn = {
       "Sildel began as a small atelier in northern Portugal, devoted to cork that has been harvested for over two centuries in Portugal's oak forests. What started as a conversation between a designer and a master harvester became a studio committed to one material — cork — and one principle — patience.",
       "Every Sildel piece carries the texture of a forest that grew long before us, and the hand of a sculptor who learned this trade from their elders.",
     ],
-    image: "/Slidel/Nano Banana 2 - Mid-shot of a master artisan at a workbench hand-sanding a cork sculpture_ warm tung_1.webp",
+    image: "/products/OLYMPIA_Fundo_PRETO__MGL3092-copy-c99a1dd822.webp",
     imageAlt: "A Sildel sculptor hand-sanding a cork sculpture at the workbench.",
     year: "Est. 2020",
   },
@@ -56,7 +56,7 @@ export const ourStoryEn = {
       "Portugal grows roughly half the world's cork — over 700,000 hectares of cork oak forest, protected by law since 1209. The tree gives its bark every nine years and lives for two centuries or more. Our practice is built on this rhythm.",
     images: [
       {
-        src: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+        src: "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
         alt: "Ancient Portuguese cork oak (Quercus suber) with bark recently harvested in the Alentejo.",
         eyebrow: "The cork oak",
         title: "Quercus suber, the patient giant.",
@@ -65,7 +65,7 @@ export const ourStoryEn = {
         keywords: "Portuguese cork oak, Quercus suber, Alentejo, sustainable harvest",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
+        src: "/products/FIREFLIES_Fundo_BRANCO_14_01_02_FB-d499e7453d.webp",
         alt: "Hands of a master cork harvester gripping the traditional curved descortiçador axe.",
         eyebrow: "The descortiçador",
         title: "A practice passed by hand.",
@@ -74,7 +74,7 @@ export const ourStoryEn = {
         keywords: "cork harvester, descortiçador, hand harvesting, Portuguese atelier",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+        src: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         alt: "Tall stacks of freshly harvested Portuguese cork sheets curing in the open air.",
         eyebrow: "Air-cured for months",
         title: "Time, the quiet ingredient.",
@@ -83,7 +83,7 @@ export const ourStoryEn = {
         keywords: "amadia cork, cork curing, slow atelier, natural material",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_1.webp",
+        src: "/products/FIREFLIES_Fundo_BRANCO_14_01_03_FB-24e02f3d62.webp",
         alt: "Two young harvesters lifting the maiden bark off a 25-year-old Portuguese cork oak.",
         eyebrow: "Once every nine years",
         title: "The nine-year rhythm.",
@@ -108,7 +108,7 @@ export const ourStoryEn = {
       "Inside our studio, each treasure is shaped, sanded, and finished by a small team of sculptors. No machines stand in for the human hand — only assist it. Every grain is read, every cut is felt.",
     images: [
       {
-        src: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s (1).webp",
+        src: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         alt: "Sildel atelier interior in Esmoriz at golden hour — warm sunlight on cork work in progress.",
         eyebrow: "Inside the atelier",
         title: "A small studio, by intention.",
@@ -117,7 +117,7 @@ export const ourStoryEn = {
         keywords: "Sildel atelier, Esmoriz Portugal, small-batch atelier, slow production",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_1.webp",
+        src: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
         alt: "Hands of a Portuguese craftsman shaping a cork sculpture by hand under tungsten light.",
         eyebrow: "Shaping by hand",
         title: "Every grain, read by hand.",
@@ -126,7 +126,7 @@ export const ourStoryEn = {
         keywords: "hand-finished cork, Portuguese atelier, cork sculpture, hand tools",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Overhead top-down view of an artisan workbench in low warm tungsten light_ hand tool_1.webp",
+        src: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         alt: "Overhead view of the atelier workbench — chisels, rasps, and cork pieces in warm tungsten light.",
         eyebrow: "Signed and numbered",
         title: "Finished with oil, ink, and a stamp.",
@@ -216,7 +216,7 @@ export const ourStoryEn = {
         eyebrow: "The Collection",
         title: "See the treasures",
         body: "Signed, numbered, made to outlast trends.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_1.webp",
+        image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         imageAlt: "Editorial flat-lay of three sculptural Sildel cork art pieces.",
         href: "/treasures",
         cta: "Explore Treasures",
@@ -225,7 +225,7 @@ export const ourStoryEn = {
         eyebrow: "The Material",
         title: "About authentic cork",
         body: "Two centuries of Portuguese tradition, in nine-year rhythms.",
-        image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_2.webp",
+        image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         imageAlt: "Cork oak in the Portuguese forest after harvest.",
         href: "/authentic-cork",
         cta: "Learn About Cork",

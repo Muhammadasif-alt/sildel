@@ -4,7 +4,7 @@ export const ourStoryPt = {
     title: "Uma prática lenta, desde o primeiro sobreiro.",
     intro:
       "A Sildel nasceu de uma floresta portuguesa que moldou famílias durante séculos. Não perseguimos tendências — seguimos a casca.",
-    image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+    image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
     imageAlt: "Interior do atelier Sildel ao pôr-do-sol — o atelier em luz quente.",
   },
 
@@ -16,7 +16,7 @@ export const ourStoryPt = {
       "A Sildel começou como um pequeno atelier no norte de Portugal, dedicado à cortiça colhida há mais de dois séculos nos sobreirais portugueses. O que nasceu como uma conversa entre um designer e um mestre descortiçador tornou-se um estúdio dedicado a um material — a cortiça — e a um princípio — a paciência.",
       "Cada peça Sildel guarda a textura de uma floresta que cresceu muito antes de nós, e a mão de um escultor que aprendeu este ofício com os seus mais velhos.",
     ],
-    image: "/Slidel/Nano Banana 2 - Mid-shot of a master artisan at a workbench hand-sanding a cork sculpture_ warm tung_1.webp",
+    image: "/products/OLYMPIA_Fundo_PRETO__MGL3092-copy-c99a1dd822.webp",
     imageAlt: "Um escultor Sildel a lixar uma escultura em cortiça na bancada.",
     year: "Fundada em 2020",
   },
@@ -56,7 +56,7 @@ export const ourStoryPt = {
       "Portugal produz cerca de metade da cortiça do mundo — mais de 700.000 hectares de sobreiral, protegidos por lei desde 1209. A árvore dá a sua casca a cada nove anos e vive dois séculos ou mais. A nossa prática constrói-se sobre este ritmo.",
     images: [
       {
-        src: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+        src: "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
         alt: "Sobreiro centenário português (Quercus suber) com a casca recém-extraída no Alentejo.",
         eyebrow: "O sobreiro",
         title: "Quercus suber, o gigante paciente.",
@@ -65,7 +65,7 @@ export const ourStoryPt = {
         keywords: "sobreiro português, Quercus suber, Alentejo, colheita sustentável",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
+        src: "/products/FIREFLIES_Fundo_BRANCO_14_01_02_FB-d499e7453d.webp",
         alt: "Mãos do mestre descortiçador a empunhar o tradicional machado curvo.",
         eyebrow: "O descortiçador",
         title: "Uma prática passada de mão em mão.",
@@ -74,7 +74,7 @@ export const ourStoryPt = {
         keywords: "descortiçador, colheita manual, prática portuguesa",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+        src: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         alt: "Pilhas altas de cortiça portuguesa recém-colhida a curar ao ar livre.",
         eyebrow: "Curada ao ar livre",
         title: "O tempo, o ingrediente silencioso.",
@@ -83,7 +83,7 @@ export const ourStoryPt = {
         keywords: "cortiça amadia, cura da cortiça, prática lenta, material natural",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_1.webp",
+        src: "/products/FIREFLIES_Fundo_BRANCO_14_01_03_FB-24e02f3d62.webp",
         alt: "Dois jovens descortiçadores a retirar a primeira casca de um sobreiro de 25 anos.",
         eyebrow: "De nove em nove anos",
         title: "O ritmo dos nove anos.",
@@ -108,7 +108,7 @@ export const ourStoryPt = {
       "Dentro do nosso estúdio, cada tesouro é moldado, lixado e acabado por uma pequena equipa de escultores. Nenhuma máquina substitui a mão humana — apenas a ajuda. Cada grão é lido, cada corte é sentido.",
     images: [
       {
-        src: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s (1).webp",
+        src: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         alt: "Interior do atelier Sildel em Esmoriz ao pôr-do-sol — luz quente sobre o trabalho em cortiça.",
         eyebrow: "Dentro do atelier",
         title: "Um pequeno estúdio, por opção.",
@@ -117,7 +117,7 @@ export const ourStoryPt = {
         keywords: "atelier Sildel, Esmoriz Portugal, atelier em pequena escala, produção lenta",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_1.webp",
+        src: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
         alt: "Mãos de um escultor português a moldar uma escultura em cortiça sob luz de tungsténio.",
         eyebrow: "Moldada à mão",
         title: "Cada grão, lido à mão.",
@@ -126,7 +126,7 @@ export const ourStoryPt = {
         keywords: "cortiça acabada à mão, atelier português, escultura em cortiça, ferramentas manuais",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Overhead top-down view of an artisan workbench in low warm tungsten light_ hand tool_1.webp",
+        src: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         alt: "Vista superior da bancada do atelier — formões, grosas e peças em cortiça sob luz quente.",
         eyebrow: "Assinada e numerada",
         title: "Acabada com óleo, tinta e um carimbo.",
@@ -216,7 +216,7 @@ export const ourStoryPt = {
         eyebrow: "A Colecção",
         title: "Ver os tesouros",
         body: "Assinados, numerados, feitos para resistir às tendências.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_1.webp",
+        image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         imageAlt: "Flat-lay editorial de três peças escultóricas Sildel em cortiça.",
         href: "/treasures",
         cta: "Explorar Tesouros",
@@ -225,7 +225,7 @@ export const ourStoryPt = {
         eyebrow: "O Material",
         title: "Sobre a cortiça autêntica",
         body: "Dois séculos de tradição portuguesa, em ritmos de nove anos.",
-        image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_2.webp",
+        image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         imageAlt: "Sobreiro na floresta portuguesa após a colheita.",
         href: "/authentic-cork",
         cta: "Conhecer a Cortiça",

@@ -13,15 +13,15 @@ import type { Locale } from "@/lib/i18n/config";
  */
 
 const HERO_IMAGE =
-  "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_ warm_1.webp";
+  "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp";
 const BLOCK_IMAGE =
-  "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp";
+  "/products/ALEXIS_MV_1032-89d7df8a82.webp";
 const BARK_IMAGE =
-  "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged.webp";
+  "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp";
 const ATELIER_DOOR_IMAGE =
-  "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp";
+  "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp";
 const PEDESTAL_IMAGE =
-  "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp";
+  "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp";
 
 const en = {
   hero: {

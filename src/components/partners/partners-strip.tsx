@@ -57,7 +57,7 @@ export function PartnersStrip({ locale }: { locale: Locale }) {
 
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {partners.map((partner, i) => {
-            const cover = partner.images[0]?.src ?? "/Slidel/enhance/enhance-misc-01.webp";
+            const cover = partner.images[0]?.src ?? "/products/ALEXIS_MV_1036-769ae6c3e3.webp";
             const excerpt = partner.intro || partner.paragraphs[0] || "";
             return (
               <ScrollReveal key={partner.slug} delay={0.15 + i * 0.1}><li>

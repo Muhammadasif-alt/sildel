@@ -10,7 +10,7 @@ import type { Locale } from "@/lib/i18n/config";
  */
 const VIDEO_SRC = "/video/our-story-bg.mp4";
 const POSTER =
-  "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_2.webp";
+  "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp";
 
 export function StoryVideo({ locale }: { locale: Locale }) {
   const isPt = locale === "pt";

@@ -5,7 +5,7 @@ export const youThinkCorkPt = {
     titleAccent: "Nós pensamos em belas artes.",
     intro:
       "A cortiça já foi uma rolha, uma base de copo, um placard na parede de uma escola. Passámos anos a pedir-lhe que fosse algo mais.",
-    image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_4.webp",
+    image: "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
     imageAlt:
       "Uma escultura acabada em cortiça apanhando luz quente — a Sildel a reformular a cortiça como bela arte.",
   },
@@ -41,7 +41,7 @@ export const youThinkCorkPt = {
   manifesto: {
     eyebrow: "O Nosso Manifesto",
     image:
-      "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_4.webp",
+      "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
     imageAlt: "Uma peça escultórica em cortiça à luz quente direccional.",
     lead: "A cortiça não é o que pensa.",
     lines: [
@@ -64,32 +64,32 @@ export const youThinkCorkPt = {
       {
         title: "Eclipse",
         tagline: "Cortiça em silhueta",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
+        image: "/products/ECLIPSE_Fundo_BRANCO_silver_Candeeiro-02_MV_0337_1-e925f86f8b.webp",
       },
       {
         title: "Monolith",
         tagline: "Cortiça como monumento",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_1.webp",
+        image: "/products/HORIZON_Fundo_PRETO__MGL0462-feaa04fa7e.webp",
       },
       {
         title: "Vessel",
         tagline: "Cortiça em forma",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_2.webp",
+        image: "/products/OLYMPIA_Fundo_PRETO__MGL3110-copy-31bfa2746e.webp",
       },
       {
         title: "Pedestal",
         tagline: "Cortiça sobre pedra",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_1.webp",
+        image: "/products/-SCAR_Fundo_PRETO__MGL3061-de1ed8741d.webp",
       },
       {
         title: "Relic",
         tagline: "Cortiça como artefato",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_2.webp",
+        image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
       },
       {
         title: "Form",
         tagline: "Cortiça na luz",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_3.webp",
+        image: "/products/ISLAND_Fundo_PRETO_07_01_01_FP-5432cd5483.webp",
       },
     ],
   },
@@ -104,22 +104,22 @@ export const youThinkCorkPt = {
       {
         title: "Escultura",
         body: "Peças esculturais em cortiça — assinadas, numeradas, expostas.",
-        image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp",
+        image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
       },
       {
         title: "Mobiliário",
         body: "Mesas e assentos em cortiça — leves, quentes, inesperadamente fortes.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_2.webp",
+        image: "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
       },
       {
         title: "Bela arte",
         body: "Cortiça com ouro, cobre e pedra — pinturas em três dimensões.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_3.webp",
+        image: "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
       },
       {
         title: "Interiores",
         body: "Cortiça que vive nos lares — o luxo mais silencioso da sala.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_4.webp",
+        image: "/products/FIREFLIES_Fundo_BRANCO_14_01_04_FB-359839da1a.webp",
       },
     ],
   },
@@ -135,7 +135,7 @@ export const youThinkCorkPt = {
         eyebrow: "A Colecção",
         title: "Explorar os tesouros",
         body: "Todas as peças, acabadas à mão em Portugal.",
-        image: "/Slidel/Nano Banana 2 - Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_1.webp",
+        image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
         imageAlt: "Mesa em cortiça Bond — um tesouro Sildel em destaque.",
         href: "/treasures",
         cta: "Ver Tesouros",
@@ -144,7 +144,7 @@ export const youThinkCorkPt = {
         eyebrow: "O Material",
         title: "Cortiça, explicada",
         body: "O que é a casca, de onde vem, porque importa.",
-        image: "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged.webp",
+        image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
         imageAlt: "Pormenor da cortiça portuguesa autêntica.",
         href: "/authentic-cork",
         cta: "Cortiça Autêntica",

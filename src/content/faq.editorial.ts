@@ -8,7 +8,7 @@ import { getFaqs } from "@/content/legal";
  */
 
 const HERO_IMAGE =
-  "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp";
+  "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp";
 
 const en = {
   hero: {

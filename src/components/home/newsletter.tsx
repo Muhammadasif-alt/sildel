@@ -54,7 +54,7 @@ export function Newsletter({ data: dataProp }: { data?: HomeContent["newsletter"
             {/* Left — atmospheric atelier image */}
             <div className="relative min-h-[340px] lg:min-h-[560px]">
               <Image
-                src="/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp"
+                src="/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp"
                 alt="Sildel atelier interior at golden hour."
                 fill
                 sizes="(min-width: 1024px) 48vw, 100vw"

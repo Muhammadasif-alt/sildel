@@ -53,7 +53,7 @@ export default async function ShippingPage() {
   return (
     <LegalPage
       doc={getShipping(locale)}
-      heroImage="/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp"
+      heroImage="/products/ALEXIS_MV_1032-89d7df8a82.webp"
       heroAlt={
         locale === "pt"
           ? "Pilhas de cortiça portuguesa a curar ao ar livre, prontas para envio."

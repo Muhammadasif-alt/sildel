@@ -24,7 +24,7 @@ export default async function LoginPage() {
         <aside className="relative hidden lg:block">
           <div className="sticky top-0 h-screen">
             <Image
-              src="/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp"
+              src="/products/ECLIPSE_Fundo_BRANCO_silver_Candeeiro-02_MV_0337_1-e925f86f8b.webp"
               alt="A Sildel cork treasure under warm light."
               fill
               priority

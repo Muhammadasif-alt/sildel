@@ -40,7 +40,7 @@ export default async function RegisterPage() {
         <aside className="relative hidden lg:block">
           <div className="sticky top-0 h-screen">
             <Image
-              src="/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_1.webp"
+              src="/products/-SCAR_Fundo_PRETO__MGL3061-de1ed8741d.webp"
               alt="A Sildel cork piece on a marble pedestal."
               fill
               priority

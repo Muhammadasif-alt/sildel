@@ -137,7 +137,7 @@ export const pressEn = {
     intro:
       "Eight design and interiors magazines that have written about Sildel — the atelier, the pieces, and the slow practice behind the cork.",
     image:
-      "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp",
+      "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
     imageAlt:
       "A Sildel cork piece displayed in editorial light — the atelier's signature silhouette.",
   },

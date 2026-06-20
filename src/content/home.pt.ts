@@ -16,7 +16,7 @@ export const homePt = {
       titleAccent: "Tesouros esculturais moldados à mão, assinados e numerados.",
       description:
         "Tesouros esculturais moldados a partir de cortiça portuguesa sustentável.",
-      image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+      image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
       imageAlt: "Interior de um atelier de cortiça português à hora dourada, com a luz a derramar-se sobre a bancada.",
       cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
       cta2: { label: "Dentro do Atelier", href: "/our-story" },
@@ -27,7 +27,7 @@ export const homePt = {
       title: "Carré d'Or",
       titleAccent: "Folha de ouro de 24 quilates sobre o grão autêntico da cortiça.",
       description: "Folha de ouro sobre cortiça autêntica — geometria em diálogo silencioso.",
-      image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_3.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1481-fe89adcd19.webp",
       imageAlt: "Objecto escultural em cortiça sob luz quente direccional, contra um fundo preto mate profundo.",
       cta: { label: "Descobrir Carré d'Or", href: "/treasures/carre-dor" },
       cta2: { label: "Todas Edições", href: "/treasures?category=fine-arts" },
@@ -38,7 +38,7 @@ export const homePt = {
       title: "Eclipse",
       titleAccent: "Cortiça escultural que guarda o calor da floresta.",
       description: "Formas esculturais em cortiça que guardam o calor da floresta.",
-      image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+      image: "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
       imageAlt: "Um sobreiro português antigo, com o tronco recentemente descortiçado na luz do Alentejo.",
       cta: { label: "Ver Eclipse", href: "/treasures?q=eclipse" },
       cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
@@ -49,7 +49,7 @@ export const homePt = {
       title: "Gibraltar",
       titleAccent: "Uma silhueta marcante — desenhada para durar décadas.",
       description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
-      image: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+      image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
       imageAlt: "Pilhas altas de chapas de cortiça acabadas de colher a curar sob sobreiros, à hora dourada.",
       cta: { label: "Explorar Gibraltar", href: "/treasures/gibraltar" },
       cta2: { label: "Todas Mesas", href: "/treasures?category=tables" },
@@ -60,7 +60,7 @@ export const homePt = {
       title: "Hot Spring",
       titleAccent: "Uma forma de cortiça assente sobre um plinto silencioso.",
       description: "Uma forma de cortiça assente sobre um plinto silencioso — escultura, feita para ancorar uma sala.",
-      image: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_1.webp",
+      image: "/products/FIREFLIES_Fundo_BRANCO_14_01_02_FB-d499e7453d.webp",
       imageAlt: "Plano de pormenor das mãos curtidas de um mestre descortiçador a segurar um machado curvo.",
       cta: { label: "Explorar Hot Spring", href: "/treasures/hot-spring" },
       cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
@@ -71,7 +71,7 @@ export const homePt = {
       title: "Side by Side",
       titleAccent: "Vidro fosco encontra-se com o grão autêntico da cortiça.",
       description: "Vidro fosco encontra-se com o grão autêntico da cortiça — uma peça de parede, emoldurada.",
-      image: "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt: "Porta envelhecida de um atelier português à hora dourada, com tabuleta Sildel pintada à mão.",
       cta: { label: "Descobrir Side by Side", href: "/treasures/side-by-side" },
       cta2: { label: "Todas Belas Artes", href: "/treasures?category=fine-arts" },
@@ -95,7 +95,7 @@ export const homePt = {
       "Cada peça assinada, numerada e nunca reeditada",
       "Extraída de forma sustentável — sem árvores abatidas",
     ],
-    image: "/Slidel/enhance/enhance-tables-04.webp",
+    image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
     imageAlt:
       "Uma mesa de cortiça Sildel no interior de um atelier português banhado pela luz solar, com nicho em arco e ramo de oliveira.",
     cta: { label: "Explorar tesouros", href: "/treasures" },
@@ -122,7 +122,7 @@ export const homePt = {
       body:
         "Uma forma escultural em cortiça sobre um plinto de pedra — cozida pela terra, perfurada à mão, feita para ancorar uma sala silenciosa. Cada peça é moldada e assinada pela Isabel no atelier de Esmoriz. Disponível em três formatos.",
       cta: { label: "Descobrir Hot Spring", href: "/treasures/hot-spring" },
-      image: "/Slidel/enhance/enhance-sculpture-04.webp",
+      image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
       imageAlt:
         "Hot Spring — escultura em cortiça perfurada sobre um pódio de pedra, iluminada por luz direccional quente.",
     },
@@ -132,7 +132,7 @@ export const homePt = {
       body:
         "Folha de ouro de 24 quilates pressionada contra o veio puro da cortiça portuguesa — geometria em diálogo silencioso com a casca crua da floresta. Edição limitada, cada quadrado assinado pela mão que o terminou.",
       cta: { label: "Descobrir Carré d'Or", href: "/treasures/carre-dor" },
-      image: "/Slidel/enhance/enhance-carre-dor-03.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1494-e73b3ecee6.webp",
       imageAlt:
         "Carré d'Or — tesouro Sildel em cortiça com folha de ouro de 24 quilates, fotografado sob luz direccional suave de atelier.",
     },
@@ -142,7 +142,7 @@ export const homePt = {
       body:
         "Uma silhueta marcante — apoios em cortiça sob vidro, linhas elegantes desenhadas para durar décadas. Uma mesa de assinatura que sustenta o peso de uma sala sem nunca levantar a voz. Disponível em três comprimentos.",
       cta: { label: "Explorar Gibraltar", href: "/treasures/gibraltar" },
-      image: "/Slidel/enhance/enhance-tables-04.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt:
         "Gibraltar — mesa em cortiça num atelier português banhado pela luz solar, com nicho em arco.",
     },
@@ -152,7 +152,7 @@ export const homePt = {
       body:
         "Uma forma escultural em cortiça que guarda o calor da floresta em luz. O veio torna-se arquitectura; a luz torna-se atmosfera. Uma nova colecção do atelier Sildel em Esmoriz.",
       cta: { label: "Explorar Eclipse", href: "/treasures/eclipse" },
-      image: "/Slidel/enhance/enhance-lighting-03.webp",
+      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
       imageAlt:
         "Eclipse — candeeiro de cortiça escultural num atelier português suavemente iluminado.",
     },
@@ -169,7 +169,7 @@ export const homePt = {
       "Explore toda a colecção — escultura, iluminação, belas artes, mesas. Cada peça moldada à mão no atelier de Esmoriz, assinada, numerada, feita para ser vivida.",
     cta: { label: "Ver Todos os Tesouros", href: "/treasures" },
     image:
-      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+      "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
   },
 
   /* História da marca — enquadramento "prodígio" (Junho 2026). A Isabel
@@ -219,11 +219,11 @@ export const homePt = {
     // para os placeholders Nano Banana 2 para a secção não renderizar
     // com ícones de imagem partida.
     image:
-      "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+      "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
     imageAlt:
       "Plano editorial de um sobreiro português ancestral, casca recentemente colhida, no montado alentejano.",
     inset:
-      "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+      "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
     insetAlt:
       "Pilhas de pranchas de cortiça recém-colhidas a curar sob sobreiros à hora dourada.",
   },
@@ -361,7 +361,7 @@ export const homePt = {
     headlineAccent: "damos-lhes vida.",
     body:
       "Cada peça é um testemunho da renovação da natureza. Não cortamos sobreiros; ao colher a cortiça, libertamos a árvore para se regenerar e florescer com uma nova camada de vida. Assim, cada tesouro celebra a resiliência e o ciclo eterno da terra.",
-    image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
     imageAlt: "Casca de sobreiro a ser colhida numa floresta portuguesa.",
     stats: [
       { value: "9", unit: "anos", label: "Entre cada colheita" },
@@ -377,7 +377,7 @@ export const homePt = {
     titleAccent: "sem ferir a árvore.",
     body:
       "Cada peça Sildel começa nos sobreirais de Portugal — ecossistemas protegidos onde as mesmas árvores são colhidas a cada nove anos, sem nunca serem abatidas.",
-    image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_4.webp",
+    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_04_FB-359839da1a.webp",
     imageAlt: "Sobreiral português ao pôr-do-sol.",
     steps: [
       {
@@ -385,21 +385,21 @@ export const homePt = {
         title: "Colhida à mão",
         body:
           "Mestres descortiçadores retiram a casca com machado, sem nunca ferir a árvore por baixo.",
-        image: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_3.webp",
+        image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
       },
       {
         number: "02",
         title: "Envelhecida ao ar livre",
         body:
           "A cortiça repousa ao ar livre durante meses, assentando o grão e a cor.",
-        image: "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+        image: "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
       },
       {
         number: "03",
         title: "Moldada lentamente",
         body:
           "Cada peça é acabada pelo nosso atelier — não há duas iguais.",
-        image: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_2.webp",
+        image: "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
       },
     ],
     cta: { label: "Descobrir a cortiça autêntica", href: "/authentic-cork" },

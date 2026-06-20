@@ -28,25 +28,25 @@ const CARDS = [
   {
     slug: "sculpture",
     dictKey: "sculpture",
-    image: "/Slidel/enhance/enhance-sculpture-05.webp",
+    image: "/products/-SCAR_Fundo_PRETO__MGL3061-de1ed8741d.webp",
     href: "/treasures?category=sculpture",
   },
   {
     slug: "tables",
     dictKey: "tables",
-    image: "/Slidel/enhance/enhance-tables-05.webp",
+    image: "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
     href: "/treasures?category=tables",
   },
   {
     slug: "lighting",
     dictKey: "lighting",
-    image: "/Slidel/enhance/enhance-lighting-05.webp",
+    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_02_FB-d499e7453d.webp",
     href: "/treasures?category=lighting",
   },
   {
     slug: "fine-arts",
     dictKey: "fineArts",
-    image: "/Slidel/enhance/enhance-fine-arts-07.webp",
+    image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1530-31f11ce399.webp",
     href: "/treasures?category=fine-arts",
   },
 ] as const;

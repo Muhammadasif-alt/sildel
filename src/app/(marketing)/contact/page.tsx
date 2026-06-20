@@ -21,7 +21,7 @@ import { resolveContact } from "@/lib/editorial/resolvers/contact";
  */
 const PAGE_PATH = "/contact";
 const HERO_IMAGE =
-  "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp";
+  "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp";
 
 export const revalidate = 3600;
 

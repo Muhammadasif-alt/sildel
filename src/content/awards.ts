@@ -155,7 +155,7 @@ const awardsEn: AwardsContent = {
           "cork art recognition",
         ],
         heroImage:
-          "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_2.webp",
+          "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
         heroImageAlt:
           "A Sildel craftsman shaping a cork sculpture in the atelier under warm tungsten light.",
         heroSubtitle:
@@ -253,7 +253,7 @@ const awardsEn: AwardsContent = {
         // and overview.image to "/Slidel/harvest/harvest-team.jpg" once the
         // real harvest photos are dropped into /public/Slidel/harvest/.
         heroImage:
-          "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+          "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
         heroImageAlt:
           "An ancient Portuguese cork oak tree with bark recently harvested — the source of every Sildel piece.",
         heroSubtitle:
@@ -275,7 +275,7 @@ const awardsEn: AwardsContent = {
           citation:
             "Following our merit-led research and evaluation process Sildel — We Think Cork has been recognised as the deserving recipient.",
           image:
-            "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+            "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
           imageAlt:
             "Stacks of freshly harvested cork sheets curing under the oaks at golden hour.",
         },
@@ -292,13 +292,13 @@ const awardsEn: AwardsContent = {
             {
               kind: "image",
               image:
-                "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_4.webp",
+                "/products/FIREFLIES_Fundo_BRANCO_14_01_04_FB-359839da1a.webp",
               imageAlt: "Portuguese cork oak forest at golden hour.",
             },
             {
               kind: "image",
               image:
-                "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_3.webp",
+                "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
               imageAlt: "Master harvester's weathered hands gripping a curved axe.",
             },
             {
@@ -314,7 +314,7 @@ const awardsEn: AwardsContent = {
             {
               kind: "image",
               image:
-                "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_2.webp",
+                "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
               imageAlt: "A Sildel craftsman shaping cork in the Esmoriz atelier.",
             },
           ],
@@ -347,7 +347,7 @@ const awardsEn: AwardsContent = {
           "30 years of cork craftsmanship",
         ],
         heroImage:
-          "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+          "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
         heroImageAlt:
           "Wide cinematic shot of the Sildel Portuguese atelier interior at golden hour.",
         heroSubtitle: "Luxuri Awards — Porto 2025",
@@ -460,7 +460,7 @@ const awardsPt: AwardsContent = {
           "reconhecimento arte em cortiça",
         ],
         heroImage:
-          "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_2.webp",
+          "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
         heroImageAlt:
           "Artesão Sildel a moldar uma escultura em cortiça no atelier sob luz quente de tungsténio.",
         heroSubtitle:
@@ -559,7 +559,7 @@ const awardsPt: AwardsContent = {
         // (hero) e "/Slidel/harvest/harvest-team.jpg" (overview) quando
         // as fotos reais estiverem em /public/Slidel/harvest/.
         heroImage:
-          "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_3.webp",
+          "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
         heroImageAlt:
           "Um sobreiro português ancião com a cortiça recém-extraída — a origem de cada peça Sildel.",
         heroSubtitle:
@@ -581,7 +581,7 @@ const awardsPt: AwardsContent = {
           citation:
             "Após o nosso processo de pesquisa e avaliação por mérito, a Sildel — We Think Cork foi reconhecida como a merecedora distinta.",
           image:
-            "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_2.webp",
+            "/products/ALEXIS_MV_1034-a8aaa5f9e8.webp",
           imageAlt:
             "Pilhas de cortiça recém-extraída a curar sob os sobreiros, à hora dourada.",
         },
@@ -598,13 +598,13 @@ const awardsPt: AwardsContent = {
             {
               kind: "image",
               image:
-                "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_4.webp",
+                "/products/FIREFLIES_Fundo_BRANCO_14_01_04_FB-359839da1a.webp",
               imageAlt: "Sobreiral português à hora dourada.",
             },
             {
               kind: "image",
               image:
-                "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_3.webp",
+                "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
               imageAlt: "Mãos curtidas do mestre descortiçador a empunhar o machado.",
             },
             {
@@ -620,7 +620,7 @@ const awardsPt: AwardsContent = {
             {
               kind: "image",
               image:
-                "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_2.webp",
+                "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
               imageAlt: "Um artesão Sildel a moldar cortiça no atelier de Esmoriz.",
             },
           ],
@@ -653,7 +653,7 @@ const awardsPt: AwardsContent = {
           "30 anos de ofício em cortiça",
         ],
         heroImage:
-          "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+          "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
         heroImageAlt:
           "Plano cinematográfico amplo do interior do atelier português da Sildel à hora dourada.",
         heroSubtitle: "Luxuri Awards — Porto 2025",

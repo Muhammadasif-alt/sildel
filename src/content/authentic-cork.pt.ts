@@ -5,7 +5,7 @@ export const authenticCorkPt = {
     titleAccent: "que respira.",
     intro:
       "A cortiça não é madeira. É uma casca viva, colhida do sobreiro português sem nunca prejudicar a árvore. Cada tesouro Sildel começa dentro deste ritmo.",
-    image: "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged.webp",
+    image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
     imageAlt: "Pormenor da casca de cortiça recém-colhida do sobreiro.",
   },
 
@@ -17,7 +17,7 @@ export const authenticCorkPt = {
       "A cortiça é a casca exterior do Quercus suber — o sobreiro português. Ao contrário da madeira, é colhida sem abater a árvore: a cada nove anos, a casca é retirada à mão e o sobreiro volta a fazê-la crescer, ano após ano, durante dois séculos.",
       "No interior, a cortiça é uma cidade de células microscópicas — 40 milhões delas por centímetro cúbico — cada uma cheia de ar. É essa estrutura que torna a cortiça quente, macia e silenciosamente impossível de imitar.",
     ],
-    image: "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged (1).webp",
+    image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
     imageAlt: "Pormenor da estrutura celular da cortiça — pormenor da casca.",
     callout: { label: "Quercus Suber", value: "200 anos" },
   },
@@ -64,15 +64,15 @@ export const authenticCorkPt = {
       "Colher cortiça é um ofício passado de geração em geração. A primeira colheita — a cortiça virgem — acontece quando a árvore tem 25 anos. A casca cresce de novo, e é colhida outra vez — a cada nove anos — durante dois séculos.",
     images: [
       {
-        src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_2.webp",
+        src: "/products/BOND__MGL9177-60b23d261e.webp",
         alt: "Dois jovens descortiçadores a retirar a primeira casca de um sobreiro de 25 anos.",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_2.webp",
+        src: "/products/FIREFLIES_Fundo_BRANCO_14_01_03_FB-24e02f3d62.webp",
         alt: "Mãos curtidas do mestre descortiçador a empunhar o machado curvo — o corte inaugural.",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_ warm_1.webp",
+        src: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
         alt: "Mãos a seleccionar uma peça de cortiça amadia fina e regular.",
       },
     ],
@@ -101,7 +101,7 @@ export const authenticCorkPt = {
     titleAccent: "ao tesouro.",
     body:
       "Quando a cortiça madura chega ao atelier, começa uma segunda vida. Lemos o seu grão, estudamos o seu tom e moldamo-la lentamente — deixando que a casca guie a silhueta, e não o contrário.",
-    image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp",
+    image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
     imageAlt: "Peça acabada em cortiça da Sildel — casca transformada em tesouro escultural.",
     points: [
       "Seleccionada à mão pelo grão e densidade",
@@ -121,7 +121,7 @@ export const authenticCorkPt = {
         eyebrow: "A Colecção",
         title: "Ver os tesouros",
         body: "Cortiça moldada à mão. Assinada e numerada.",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_3.webp",
+        image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1481-fe89adcd19.webp",
         imageAlt: "Objecto escultórico em cortiça sob luz quente direccional.",
         href: "/treasures",
         cta: "Explorar Tesouros",
@@ -130,7 +130,7 @@ export const authenticCorkPt = {
         eyebrow: "O Estúdio",
         title: "Ler a nossa história",
         body: "Dentro do atelier — as mãos que moldam cada peça.",
-        image: "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp",
+        image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         imageAlt: "Porta envelhecida do atelier português ao pôr-do-sol, com placa pintada à mão da Sildel.",
         href: "/our-story",
         cta: "A Nossa História",

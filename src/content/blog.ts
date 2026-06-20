@@ -33,7 +33,7 @@ export const posts: Post[] = [
     excerpt:
       "Why our practice moves at the speed of bark — and what that means for every piece that leaves the atelier.",
     image:
-      "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_1.webp",
+      "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
     imageAlt: "An ancient Portuguese cork oak with bark recently harvested.",
     author: "Isabel Silva",
     authorRole: "CEO & Founder",
@@ -74,7 +74,7 @@ export const posts: Post[] = [
     excerpt:
       "Six sculptors. Three rooms. A handful of tools older than any of us. A quiet tour of where each piece is finished.",
     image:
-      "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+      "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
     imageAlt: "Sildel atelier interior at golden hour.",
     author: "Sildel Atelier",
     authorRole: "Editorial",
@@ -88,7 +88,7 @@ export const posts: Post[] = [
       },
       {
         kind: "image",
-        src: "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_1.webp",
+        src: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
         alt: "Hands of a Portuguese craftsman shaping a cork sculpture under tungsten light.",
         caption: "Shaping a Crescent silhouette — hand tools only.",
       },
@@ -112,7 +112,7 @@ export const posts: Post[] = [
     excerpt:
       "Not all cork is equal. Here's why the third harvest, around year forty, is the only bark we sculpt with.",
     image:
-      "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_ warm_1.webp",
+      "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
     imageAlt: "Hands selecting a piece of fine even amadia cork bark.",
     author: "Sildel Atelier",
     authorRole: "Editorial",
@@ -144,7 +144,7 @@ export const posts: Post[] = [
     excerpt:
       "Signed, numbered, dated, and stamped. Why each Sildel treasure carries four small assurances — and what each one means.",
     image:
-      "/Slidel/Nano Banana 2 - Close-up macro of an artisan_s hand pressing a hot brass numbering stamp onto a fini_1.webp",
+      "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
     imageAlt: "Macro of a sculptor pressing a hot brass numbering stamp onto a finished cork piece.",
     author: "Isabel Silva",
     authorRole: "CEO & Founder",
@@ -172,7 +172,7 @@ export const posts: Post[] = [
     excerpt:
       "Outside the harvest season, the cork oak rests. We walked the Alentejo in January and found a forest holding its breath.",
     image:
-      "/Slidel/Nano Banana 2 - Tall stacks of freshly harvested cork sheets curing under cork oak trees_ golden hou_1.webp",
+      "/products/ALEXIS_MV_1032-89d7df8a82.webp",
     imageAlt: "Tall stacks of cork sheets curing under cork oak trees in winter light.",
     author: "Sildel Atelier",
     authorRole: "Editorial",
@@ -196,7 +196,7 @@ export const posts: Post[] = [
     excerpt:
       "On living with a Sildel piece — a letter from one of our earliest collectors, two years on.",
     image:
-      "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_2.webp",
+      "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
     imageAlt: "A Sildel cork sculpture on a marble pedestal.",
     author: "M. Cordeiro",
     authorRole: "Sildel Collector",

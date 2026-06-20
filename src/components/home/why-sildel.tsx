@@ -21,17 +21,17 @@ const PILLAR_DECOR = [
   {
     icon: Hammer,
     image:
-      "/Slidel/Nano Banana 2 - Hands of a Portuguese craftsman shaping a cork sculpture_ workshop inwarm tungsten l_3.webp",
+      "/products/SHELL_Fundo_PRETO__MGL2125-34aa8893f9.webp",
   },
   {
     icon: MapPin,
     image:
-      "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_2.webp",
+      "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
   },
   {
     icon: BadgeCheck,
     image:
-      "/Slidel/Nano Banana 2 - Close-up macro of an artisan_s hand pressing a hot brass numbering stamp onto a fini_1.webp",
+      "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
   },
 ] as const;
 

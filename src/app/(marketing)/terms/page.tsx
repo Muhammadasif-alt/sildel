@@ -28,7 +28,7 @@ export default async function TermsPage() {
   return (
     <LegalPage
       doc={getTerms(locale)}
-      heroImage="/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp"
+      heroImage="/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp"
       heroAlt={
         locale === "pt"
           ? "Atelier Sildel em Esmoriz — interior ao pôr-do-sol."

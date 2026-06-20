@@ -28,7 +28,7 @@ export default async function PrivacyPage() {
   return (
     <LegalPage
       doc={getPrivacy(locale)}
-      heroImage="/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp"
+      heroImage="/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp"
       heroAlt={
         locale === "pt"
           ? "Porta envelhecida do atelier Sildel ao pôr-do-sol."

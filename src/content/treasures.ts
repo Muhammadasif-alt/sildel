@@ -39,8 +39,6 @@ export function isWideTreasure(slug: string): boolean {
   return WIDE_TREASURE_SLUGS.has(slug);
 }
 
-/** Helper — keeps Nano Banana 2 paths readable. */
-const nb = (suffix: string) => `/Slidel/Nano Banana 2 - ${suffix}`;
 
 /** Real client product photography grouped by product (optimized to WebP). */
 const R = {
@@ -245,33 +243,6 @@ const R = {
   ],
 };
 
-/**
- * Reusable Nano Banana image groups (4 variants each). Only the three sets
- * referenced by products below survive — the rest were defined for products
- * that have since been wired through R (real client photos) and were dead
- * code. Removed June 2026 during the /Slidel/ audit; their orphaned files
- * were deleted in the same pass.
- */
-const G = {
-  flatlay: [
-    nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_1.webp"),
-    nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_2.webp"),
-    nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_3.webp"),
-    nb("Editorial overhead flat-lay of three sculptural cork art objects of varying sizes ar_4.webp"),
-  ],
-  vessel: [
-    nb("A large open vessel _ a piece of organic Portuguese cork bark with visiblenatural ai_1.webp"),
-    nb("A large open vessel _ a piece of organic Portuguese cork bark with visiblenatural ai_2.webp"),
-    nb("A large open vessel _ a piece of organic Portuguese cork bark with visiblenatural ai_3.webp"),
-    nb("A large open vessel _ a piece of organic Portuguese cork bark with visiblenatural ai_4.webp"),
-  ],
-  horizontalLamp: [
-    nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_1.webp"),
-    nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_2.webp"),
-    nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_3.webp"),
-    nb("A horizontally laid sculptural lamp built from thin pressed strips of authenticcork_4.webp"),
-  ],
-};
 
 export const products: Product[] = [
   {
@@ -289,7 +260,7 @@ export const products: Product[] = [
       "Each piece, separate, ready to reinvent itself in new compositions and functions.",
       "SHELL is a visual poem, an expression of versatility in constant transformation.",
     ],
-    image: "/Slidel/enhance/enhance-sculpture-06.webp",
+    image: "/products/ISLAND_Fundo_PRETO_07_01_01_FP-5432cd5483.webp",
     gallery: R.shell,
   },
   {
@@ -307,7 +278,7 @@ export const products: Product[] = [
       "The contrast between rough cork and polished marble underlines the dignity of each material.",
       "A unique sculptural object, signed and numbered, made to anchor a room.",
     ],
-    image: "/Slidel/enhance/enhance-sculpture-05.webp",
+    image: "/products/-SCAR_Fundo_PRETO__MGL3061-de1ed8741d.webp",
     gallery: R.abyss,
   },
   {
@@ -323,7 +294,7 @@ export const products: Product[] = [
     longDescription: [
       "Designed to live in considered homes — Alexis is a low table that converses with its surroundings rather than dominating them.",
     ],
-    image: "/Slidel/enhance/enhance-misc-01.webp",
+    image: "/products/ALEXIS_MV_1036-769ae6c3e3.webp",
     gallery: R.alexis,
   },
   {
@@ -356,7 +327,7 @@ export const products: Product[] = [
     material: "Authentic Cork on Stainless Steel",
     description:
       "Hot Spring is an earth-fired cork form rising from a slim steel stem — a sculptural object that doubles as a quiet sentinel in a room.",
-    image: "/Slidel/enhance/enhance-misc-10.webp",
+    image: "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-01_01-f3f538f873.webp",
     gallery: R.hotSpring,
   },
   {
@@ -369,7 +340,7 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Bond is a low cork table built from two raw cork slabs. It holds itself together with quiet tension — a piece that anchors a living room.",
-    image: "/Slidel/enhance/enhance-misc-45.webp",
+    image: "/products/BOND__MGL9181-67a8da8ab3.webp",
     gallery: R.bond,
   },
   {
@@ -382,7 +353,7 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Fragments of cork bark suspended in a horizontal line — Fireflies is part wall-piece, part light, part poem.",
-    image: "/Slidel/enhance/enhance-misc-12.webp",
+    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_01_FB-be389ff9a2.webp",
     gallery: R.fireflies,
   },
   {
@@ -409,7 +380,7 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Island is a single, sweeping piece of cork bark suspended above a small marble plinth — a horizon you can hold.",
-    image: "/Slidel/enhance/enhance-sculpture-04.webp",
+    image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
     gallery: R.island,
   },
   {
@@ -422,7 +393,7 @@ export const products: Product[] = [
     material: "Authentic Cork and Tempered Glass",
     description:
       "Two slabs of cork bark support a sheet of tempered glass — a coffee table that feels half-found, half-made.",
-    image: "/Slidel/enhance/enhance-tables-03.webp",
+    image: "/products/BOND__MGL9177-60b23d261e.webp",
     gallery: R.gibraltar,
   },
   {
@@ -436,7 +407,7 @@ export const products: Product[] = [
     material: "Authentic Cork on Brass",
     description:
       "Crescent is a long horizontal chandelier — cork rings strung on a brass rail. A signature piece for a dining table or hallway.",
-    image: "/Slidel/enhance/enhance-lighting-02.webp",
+    image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
     gallery: R.crescent,
   },
   {
@@ -450,7 +421,7 @@ export const products: Product[] = [
     material: "Authentic Cork and 24k Gold Leaf",
     description:
       "Carré d'Or lays 24-carat gold leaf against the authentic grain of Portuguese cork — geometry meets bark in a single, framed composition.",
-    image: "/Slidel/enhance/enhance-carre-dor-03.webp",
+    image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1494-e73b3ecee6.webp",
     gallery: R.carreDor,
   },
 
@@ -487,7 +458,7 @@ export const products: Product[] = [
       "W 122 × L 7 × H 47 cm, 2kg.",
       "Care: dust-proof cork; clean glass with microfiber, no abrasives.",
     ],
-    image: "/Slidel/enhance/enhance-fine-arts-01.webp",
+    image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
     gallery: R.sideBySide,
   },
   {
@@ -520,7 +491,7 @@ export const products: Product[] = [
     longDescription: [
       "W 74 × D 44 × H 29 cm (29.1\" × 17.3\" × 11.4\"), 5kg.",
     ],
-    image: "/Slidel/enhance/enhance-misc-20.webp",
+    image: "/products/BELIZE-fp_Fundo_PRETO__MGL2180-262f640287.webp",
     gallery: R.belize,
   },
   {
@@ -598,7 +569,7 @@ export const products: Product[] = [
     longDescription: [
       "38W × 61D × 31H cm.",
     ],
-    image: "/Slidel/enhance/enhance-fine-arts-03.webp",
+    image: "/products/HALLEY-600X300mm_Fundo_BRANCO__MGL2500-copy-aa578be52d.webp",
     gallery: R.halley,
   },
   {
@@ -709,11 +680,7 @@ export const products: Product[] = [
     material: "Authentic cork and glass",
     description:
       "An artistic piece celebrating the heritage of wine cork closures — cork paired with glass to form a continuous flow that turns each flower into a living masterpiece.",
-    // No dedicated atelier render yet — main image is a generic Nano
-    // Banana flatlay until the founder supplies a Vitaqua-specific
-    // enhance frame. Gallery omitted so the detail page falls back to
-    // just this hero rather than showing the rest of the unrelated set.
-    image: G.flatlay[0],
+    image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
   },
   {
     slug: "bonfire",
@@ -728,7 +695,7 @@ export const products: Product[] = [
     longDescription: [
       "W 450 × D 450 × H 120 mm, 0.4 kg.",
     ],
-    image: "/Slidel/enhance/enhance-misc-18.webp",
+    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_03_FB-24e02f3d62.webp",
     // Bonfire's single atelier render only — generic Nano Banana
     // placeholders removed because they showed unrelated cork pieces.
   },
@@ -745,7 +712,7 @@ export const products: Product[] = [
     longDescription: [
       "W 900 × D 50 × H 60 mm, 0.3 kg.",
     ],
-    image: "/Slidel/enhance/enhance-misc-08.webp",
+    image: "/products/CRESCENT---S_CRESCENT-1330x300mm_Fundo-Branco_Horizontal-Est-6e506606c0.webp",
     // Vitavele's single atelier render only — the generic horizontal-
     // lamp + flatlay placeholders showed unrelated cork-stopper pieces.
   },
@@ -849,7 +816,7 @@ export const treasures = {
         eyebrow: "The Studio",
         title: "Read our story",
         body: "Inside the atelier — the hands that shape every piece.",
-        image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+        image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
         imageAlt: "Sildel atelier interior at golden hour.",
         href: "/our-story",
         cta: "Our Story",
@@ -858,7 +825,7 @@ export const treasures = {
         eyebrow: "The Material",
         title: "About authentic cork",
         body: "Why cork — and what it took to get it here.",
-        image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_2.webp",
+        image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         imageAlt: "A Portuguese cork oak after harvest.",
         href: "/authentic-cork",
         cta: "Authentic Cork",
@@ -1107,7 +1074,7 @@ export const treasuresPt = {
     titleAccent: "e numerados.",
     intro:
       "Cada peça Sildel é única — acabada à mão, assinada e numerada em Portugal. Estes são os tesouros actuais.",
-    image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black.webp",
+    image: "/products/ECLIPSE_Fundo_BRANCO_silver_Candeeiro-02_MV_0337_1-e925f86f8b.webp",
     imageAlt: "Um tesouro Sildel em destaque sob luz quente direccional.",
     badge: { label: "Acabado à mão", value: "em Portugal" },
   },
@@ -1176,7 +1143,7 @@ export const treasuresPt = {
         eyebrow: "O Estúdio",
         title: "Ler a nossa história",
         body: "Dentro do atelier — as mãos que moldam cada peça.",
-        image: "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp",
+        image: "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp",
         imageAlt: "Interior do atelier Sildel ao pôr-do-sol.",
         href: "/our-story",
         cta: "A Nossa História",
@@ -1185,7 +1152,7 @@ export const treasuresPt = {
         eyebrow: "O Material",
         title: "Sobre a cortiça autêntica",
         body: "Porquê a cortiça — e o que foi preciso para a trazer até aqui.",
-        image: "/Slidel/Nano Banana 2 - Wide editorial shot of an ancient Portuguese cork oak tree with bark recently harves_2.webp",
+        image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         imageAlt: "Um sobreiro português após a colheita.",
         href: "/authentic-cork",
         cta: "Cortiça Autêntica",

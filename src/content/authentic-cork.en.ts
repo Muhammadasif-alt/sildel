@@ -5,7 +5,7 @@ export const authenticCorkEn = {
     titleAccent: "that breathes.",
     intro:
       "Cork is not a wood. It is a living bark, harvested from the Portuguese cork oak without ever harming the tree. Every Sildel treasure begins inside this rhythm.",
-    image: "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged.webp",
+    image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
     imageAlt: "Macro photograph of authentic Portuguese cork bark texture.",
   },
 
@@ -17,7 +17,7 @@ export const authenticCorkEn = {
       "Cork is the outer bark of Quercus suber — the Portuguese cork oak. Unlike timber, it is harvested without felling the tree: every nine years, the bark is stripped by hand and the oak grows it back, year after year, for two centuries.",
       "Inside, cork is a city of microscopic cells — 40 million of them per cubic centimeter — each filled with air. That structure is what makes cork warm, soft, and quietly impossible to imitate.",
     ],
-    image: "/Slidel/Nano Banana 2 - Extreme macro photograph of authentic Portuguese cork bark texture_ intricate ridged (1).webp",
+    image: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
     imageAlt: "Detail of cork cellular structure — bark close-up.",
     callout: { label: "Quercus Suber", value: "200 yrs" },
   },
@@ -64,15 +64,15 @@ export const authenticCorkEn = {
       "Harvesting cork is a craft passed down through generations. The first stripping happens when the tree is 25 years old. The bark grows back, and is taken again — every nine years — for two centuries.",
     images: [
       {
-        src: "/Slidel/Nano Banana 2 - Two young harvesters carefully lifting the very first bark off a 25-year-old cork oa_2.webp",
+        src: "/products/BOND__MGL9177-60b23d261e.webp",
         alt: "Two young harvesters lifting the first bark off a 25-year-old cork oak.",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of master cork harvester_s weathered hands gripping a curved axe against an_2.webp",
+        src: "/products/FIREFLIES_Fundo_BRANCO_14_01_03_FB-24e02f3d62.webp",
         alt: "Master cork harvester's weathered hands with a curved axe — the maiden cut.",
       },
       {
-        src: "/Slidel/Nano Banana 2 - Close-up of hands selecting a piece of fine even amadia cork bark from a stack_ warm_1.webp",
+        src: "/products/ABYSS_Fundo_PRETO_15.01.01_FP-54d7c855c4.webp",
         alt: "Hands selecting a piece of fine even amadia cork bark.",
       },
     ],
@@ -101,7 +101,7 @@ export const authenticCorkEn = {
     titleAccent: "to treasure.",
     body:
       "Once mature cork reaches the atelier, it begins a second life. We read its grain, study its tone, and shape it slowly — letting the bark guide the silhouette rather than the other way around.",
-    image: "/Slidel/Nano Banana 2 - A single sculptural cork art piece displayed on a marble pedestal in a minimalist bl_4.webp",
+    image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
     imageAlt: "Finished Sildel cork piece — bark transformed into a sculptural treasure.",
     points: [
       "Hand-selected for grain and density",
@@ -121,7 +121,7 @@ export const authenticCorkEn = {
         eyebrow: "The Collection",
         title: "See the treasures",
         body: "Cork, shaped by hand. Signed and numbered.",
-        image: "/Slidel/Nano Banana 2 - Sculptural cork art object_ soft directional warm light from upper left_matte black_3.webp",
+        image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1481-fe89adcd19.webp",
         imageAlt: "Sculptural cork art object in soft directional warm light.",
         href: "/treasures",
         cta: "Explore Treasures",
@@ -130,7 +130,7 @@ export const authenticCorkEn = {
         eyebrow: "The Studio",
         title: "Read our story",
         body: "Inside the atelier — the hands that shape every piece.",
-        image: "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp",
+        image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
         imageAlt: "A weathered Portuguese atelier doorway with the Sildel sign at golden hour.",
         href: "/our-story",
         cta: "Our Story",

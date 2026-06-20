@@ -28,7 +28,7 @@ export function ContactHeroBlock({ block, locale }: { block: Block; locale: Loca
   const badge = loc(block, "badge", locale);
   const image =
     str(block, "image") ||
-    "/Slidel/Nano Banana 2 - Wide cinematic shot of a Portuguese atelier interior at golden hour_ warm sunlight s.webp";
+    "/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp";
   const imageAlt = loc(block, "imageAlt", locale, "Sildel atelier interior at golden hour.");
 
   return (
@@ -112,7 +112,7 @@ export function ContactFormBlock({ block, locale }: { block: Block; locale: Loca
   const title = loc(block, "title", locale);
   const cardImage =
     str(block, "cardImage") ||
-    "/Slidel/Nano Banana 2 - A weathered Portuguese atelier doorway at golden hour_ hand-painted Sildel wooden si_1.webp";
+    "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp";
   const cardImageAlt = loc(block, "cardImageAlt", locale, "Sildel atelier doorway.");
   const cardEyebrow = loc(block, "cardEyebrow", locale, "Atelier Sildel");
   const cardLocation = loc(block, "cardLocation", locale, "Esmoriz, Portugal");
@@ -244,7 +244,7 @@ export function ContactVisitBlock({ block, locale }: { block: Block; locale: Loc
   const body = loc(block, "body", locale);
   const image =
     str(block, "image") ||
-    "/Slidel/Nano Banana 2 - Overhead top-down view of an artisan workbench in low warm tungsten light_ hand tool_1.webp";
+    "/products/ALEXIS_MV_1032-89d7df8a82.webp";
   const imageAlt = loc(block, "imageAlt", locale);
   const ctaLabel = loc(block, "ctaLabel", locale);
   const ctaHref = str(block, "ctaHref", "#contact-form-heading");
