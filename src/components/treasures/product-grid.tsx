@@ -1,10 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import type { Product } from "@/content/treasures";
 import { useTreasures } from "@/content/treasures-provider";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
@@ -15,9 +13,7 @@ import { ScrollReveal } from "@/components/motion/scroll-reveal";
  * Founder direction (June 2026, fifth pass): client wants the catalogue
  * to read like a printed feature — BIG images, with some pieces given
  * a full-width spread and others paired two-up. Every block of three
- * products renders as one hero single + one paired row. The pattern
- * resets per block so the rhythm holds even when filters change the
- * total count.
+ * products renders as one hero single + one paired row.
  *
  *   [          FULL-WIDTH HERO          ]      (item 1)
  *   [  PAIR ITEM 2  ][  PAIR ITEM 3  ]
@@ -27,34 +23,25 @@ import { ScrollReveal } from "@/components/motion/scroll-reveal";
  *
  * No card wrapper, no rounded card frame, no shadow — image at full
  * bleed with plain inline name + category + arrow beneath.
+ *
+ * Founder direction (June 2026, fourteenth pass): the category filter
+ * row was removed ("yh b khtm kr do") — small catalogue, the magazine
+ * flow itself is the navigation. State + useMemo deleted with it.
+ * Kept as a client component because the `useTreasures` provider
+ * context is client-only.
  */
 export function ProductGrid() {
-  const { content, products } = useTreasures();
-  const categories = content.categories.items;
-  const [activeSlug, setActiveSlug] = useState<string>("all");
+  const { products } = useTreasures();
 
-  const filtered = useMemo<Product[]>(() => {
-    if (activeSlug === "all") return products;
-    return products.filter(
-      (p) => p.category.toLowerCase() === activeSlug.replace(/-/g, " "),
-    );
-  }, [activeSlug, products]);
-
-  // Group products into blocks of [single, pair...] for the magazine
-  // rhythm. Each block starts with one full-width hero, then up to two
-  // paired tiles beneath.
-  const blocks = useMemo(() => {
-    const out: Array<{ single: Product; pair: Product[] }> = [];
-    for (let i = 0; i < filtered.length; i += 3) {
-      out.push({
-        single: filtered[i],
-        pair: [filtered[i + 1], filtered[i + 2]].filter(
-          (p): p is Product => Boolean(p),
-        ),
-      });
-    }
-    return out;
-  }, [filtered]);
+  const blocks: Array<{ single: Product; pair: Product[] }> = [];
+  for (let i = 0; i < products.length; i += 3) {
+    blocks.push({
+      single: products[i],
+      pair: [products[i + 1], products[i + 2]].filter(
+        (p): p is Product => Boolean(p),
+      ),
+    });
+  }
 
   return (
     <section
@@ -62,49 +49,8 @@ export function ProductGrid() {
       className="relative w-full bg-background"
       aria-label="Treasures catalogue"
     >
-      {/* Founder direction (June 2026, twelfth pass): full-bleed container,
-          no max-width cap, edge padding only — matches the home
-          FeaturedTreasures rhythm so the catalogue reads at the same scale
-          the client signed off on for the home page.
-
-          The inner eyebrow+title+body block was removed (founder feedback,
-          June 2026 thirteenth pass: "yh cheez khtm he kr do, buri lag rhi"
-          — the page-level intro above already says this, the inner repeat
-          was just dead weight pushing the grid down). `data.eyebrow/title/
-          body` from /content/treasures.ts intentionally unused here. */}
       <div className="w-full px-6 py-20 lg:px-12 lg:py-28 xl:px-16">
-        {/* Filter row — kept minimal so the catalogue itself is the focus. */}
-        <div
-          className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16 lg:mb-20"
-          role="tablist"
-          aria-label="Filter by category"
-        >
-          {categories.map((cat) => {
-            const active = activeSlug === cat.slug;
-            return (
-              <button
-                key={cat.slug}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                onClick={() => setActiveSlug(cat.slug)}
-                className={cn(
-                  "inline-flex items-center rounded-full px-5 md:px-6 py-2.5 md:py-3",
-                  "text-[11px] tracking-[0.32em] uppercase font-medium",
-                  "border transition-all duration-300 ease-out",
-                  "hover:-translate-y-0.5 cursor-pointer",
-                  active
-                    ? "bg-foreground text-background border-foreground"
-                    : "bg-transparent text-foreground border-border hover:border-foreground hover:bg-foreground hover:text-background",
-                )}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {filtered.length === 0 ? (
+        {products.length === 0 ? (
           <p className="text-center text-muted-foreground py-16">
             No treasures in this collection yet.
           </p>
@@ -146,11 +92,8 @@ function SingleTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Founder direction (June 2026, twelfth pass): big bold full-bleed
-          hero tile. 4:3 ratio (taller than the old 16:10) gives portrait
-          studio shots — most of /products/ is 1920×2880 — far more room
-          to breathe before object-cover crops them. No mat behind the
-          photo: the photo already carries its own studio backdrop. */}
+      {/* Big bold full-bleed hero tile, 4:3 portrait-friendly ratio so
+          1920×2880 studio shots breathe before object-cover crops them. */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={product.image}
@@ -188,10 +131,6 @@ function PairTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Portrait-leaning pair tile — most /products/ shots are 1920×2880
-          portrait, so a 3:4 frame fits them with almost no crop. The
-          earlier 3:2 landscape was clipping the top/bottom of tall pieces
-          (founder feedback, June 2026 twelfth pass). */}
       <div className="relative aspect-[3/4] w-full overflow-hidden">
         <Image
           src={product.image}
