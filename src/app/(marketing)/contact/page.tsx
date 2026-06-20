@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   buildMetadata,
   buildBreadcrumbJsonLd,
@@ -130,30 +131,52 @@ export default async function ContactPage() {
           headingId="contact-intro"
         />
 
-        {/* Form section — wider container, centered heading + form,
-            with a soft muted band so the page breathes between the
-            editorial row above and the map below. */}
+        {/* Form section — split layout: atelier image LEFT (full-bleed,
+            sticks while the form scrolls), heading + form RIGHT. Founder
+            direction (June 2026 fourteenth pass): no centered narrow
+            column — pair the form with a visual anchor so the page reads
+            editorially. The hero image is reused intentionally as a
+            "bookend" — atelier doorway opens the page and again invites
+            the visitor to write. */}
         <section
           aria-labelledby="contact-form-heading"
-          className="relative w-full border-y border-border/60 bg-muted/30"
+          className="relative w-full border-y border-border/60 bg-background"
         >
-          <div className="mx-auto max-w-5xl px-6 py-20 lg:px-12 lg:py-28">
-            <div className="mx-auto mb-14 max-w-3xl text-center">
-              <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
-                {content.form.eyebrow}
-              </p>
-              <h2
-                id="contact-form-heading"
-                className="font-serif text-3xl font-light leading-[1.04] tracking-tight md:text-4xl lg:text-5xl"
-              >
-                {content.form.heading}
-              </h2>
-              <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                {content.form.body}
-              </p>
+          <div className="grid grid-cols-1 items-stretch lg:grid-cols-[45%_55%]">
+            {/* Image column — full-bleed, sticky on desktop. */}
+            <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:min-h-0">
+              <Image
+                src={content.hero.image}
+                alt={content.hero.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
+              />
             </div>
-            <div className="mx-auto max-w-3xl">
-              <ContactForm />
+
+            {/* Form column — heading then form, generous padding. */}
+            <div className="flex flex-col justify-center px-6 py-20 lg:px-14 lg:py-28 xl:px-20">
+              <div className="mb-12 max-w-xl">
+                <p className="mb-5 text-[11px] uppercase tracking-[0.4em] text-primary">
+                  {content.form.eyebrow}
+                </p>
+                <h2
+                  id="contact-form-heading"
+                  className="font-serif text-3xl font-light leading-[1.04] tracking-tight md:text-4xl lg:text-5xl"
+                >
+                  {content.form.heading}
+                </h2>
+                <p className="mt-7 text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {content.form.body}
+                </p>
+              </div>
+              <div className="max-w-xl">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </section>
