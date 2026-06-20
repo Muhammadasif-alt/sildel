@@ -364,6 +364,8 @@ export function buildInitialContact(): EditorialContentDoc {
       eyebrow: pair(en.form.eyebrow, pt.form.eyebrow),
       heading: pair(en.form.heading, pt.form.heading),
       body: pair(en.form.body, pt.form.body),
+      image: en.form.image,
+      imageAlt: pair(en.form.imageAlt, pt.form.imageAlt),
     },
   };
 }

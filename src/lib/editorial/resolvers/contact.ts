@@ -12,7 +12,13 @@ import type {
 export type ContactRendered = {
   hero: { eyebrow: string; image: string; imageAlt: string };
   intro: StorySectionData;
-  form: { eyebrow: string; heading: string; body: string };
+  form: {
+    eyebrow: string;
+    heading: string;
+    body: string;
+    image: string;
+    imageAlt: string;
+  };
 };
 
 export async function resolveContact(locale: Locale): Promise<ContactRendered> {
@@ -64,6 +70,8 @@ function fromDb(db: EditorialContentDoc, locale: Locale): ContactRendered {
       eyebrow: t(form.eyebrow),
       heading: t(form.heading),
       body: t(form.body),
+      image: s(form.image),
+      imageAlt: t(form.imageAlt),
     },
   };
 }

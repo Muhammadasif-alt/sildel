@@ -42,11 +42,13 @@ export const contactSchema: EditorialSchema = {
     },
     {
       key: "form",
-      label: "Contact form heading",
+      label: "Contact form heading + side image",
       fields: [
         { key: "eyebrow", label: "Eyebrow", type: "text", localized: true },
         { key: "heading", label: "Heading", type: "text", localized: true },
         { key: "body", label: "Body (subtext under heading)", type: "textarea", localized: true },
+        { key: "image", label: "Side image (left column on /contact)", type: "image" },
+        { key: "imageAlt", label: "Side image alt", type: "text", localized: true },
       ],
     },
   ],

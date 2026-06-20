@@ -716,6 +716,33 @@ export const products: Product[] = [
     // Vitavele's single atelier render only — the generic horizontal-
     // lamp + flatlay placeholders showed unrelated cork-stopper pieces.
   },
+  {
+    // Pearl — pulled from sildel.pt because it was missing from the
+    // FOTOS PRODUTO folder the founder shared. Images temporarily
+    // sourced from the live WordPress (sildel.pt/wp-content/uploads/
+    // 2022/10/PX-PEARL-SILDEL.webp + Pearl2/3/4.jpg) and re-encoded
+    // via scripts/fetch-pearl.mjs into /public/products/.
+    slug: "pearl",
+    name: "Pearl",
+    tagline: "Marked by the harvest, shaped by the cut",
+    category: "Sculpture",
+    priceCents: 287500,
+    currency: "EUR",
+    material: "Authentic cork and glass",
+    description:
+      "The beauty of this piece begins long before it is made — in the cut of the cork oak during harvest. That mark leaves a permanent bubble in the bark, and from it the singular form of Pearl is born. A timeless decorative piece that fuses simplicity with elegance, cork with glass.",
+    longDescription: [
+      "Pearl serves whatever purpose its keeper imagines — a fruit bowl, a vessel for small treasures, an object of quiet contemplation.",
+      "W 750 × D 300 × H 30 mm.",
+    ],
+    image: "/products/PEARL_Fundo_BRANCO_Featured-497d89269d.webp",
+    gallery: [
+      "/products/PEARL_Fundo_BRANCO_Featured-497d89269d.webp",
+      "/products/PEARL_Detail_02-38ff881fc2.webp",
+      "/products/PEARL_Detail_03-ccd91a4ebd.webp",
+      "/products/PEARL_Detail_04-9feb11176f.webp",
+    ],
+  },
 ];
 
 export function findProduct(slug: string): Product | undefined {
@@ -1049,6 +1076,14 @@ const PRODUCT_TEXT_PT: Record<string, Partial<Pick<Product, "tagline" | "badge" 
     material: "Cortiça autêntica e vidro",
     description:
       "A cortiça autêntica funde-se com o vidro — uma dança de luz e calor que transforma cada vela num símbolo de serenidade.",
+  },
+  // Pearl — texto recuperado da página viva de sildel.pt e condensado
+  // para o ritmo das outras fichas (pt-PT, nunca pt-BR).
+  pearl: {
+    tagline: "Marcada pela colheita, esculpida pelo corte",
+    material: "Cortiça autêntica e vidro",
+    description:
+      "A beleza desta peça precede o seu fabrico — começa na extração da cortiça do sobreiro: ao ser golpeada, a árvore fica permanentemente marcada e desse golpe nasce uma bolha que dá origem à forma singular da Pearl. Uma peça decorativa intemporal, fusão de simplicidade e elegância, de cortiça e vidro.",
   },
 };
 

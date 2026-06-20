@@ -143,11 +143,13 @@ export default async function ContactPage() {
           className="relative w-full border-y border-border/60 bg-background"
         >
           <div className="grid grid-cols-1 items-stretch lg:grid-cols-[45%_55%]">
-            {/* Image column — full-bleed, sticky on desktop. */}
+            {/* Image column — full-bleed, sticky on desktop. Uses
+                form-specific photo so all three slots on /contact (hero,
+                intro, form) carry distinct frames. */}
             <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:min-h-0">
               <Image
-                src={content.hero.image}
-                alt={content.hero.imageAlt}
+                src={content.form.image}
+                alt={content.form.imageAlt}
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"

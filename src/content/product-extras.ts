@@ -58,6 +58,7 @@ const PLACEMENT_EN: Record<string, string> = {
   vitaqua: "on a dining table, a kitchen island, or an entry console",
   bonfire: "on a dining table or a low coffee table to hold candles (not included)",
   vitavele: "across a long dining table or low console with a row of small candles",
+  pearl: "on a console, sideboard, or low shelf as a sculptural fruit bowl or vessel for small objects",
 };
 
 const PLACEMENT_PT: Record<string, string> = {
@@ -91,6 +92,7 @@ const PLACEMENT_PT: Record<string, string> = {
   vitaqua: "sobre uma mesa de jantar, ilha de cozinha ou consola de entrada",
   bonfire: "sobre uma mesa de jantar ou de centro baixa para suportar velas (não incluídas)",
   vitavele: "ao longo de uma mesa de jantar ou consola baixa com uma fila de pequenas velas",
+  pearl: "sobre um console, aparador ou prateleira baixa, como fruteira escultural ou recipiente para pequenos objectos",
 };
 
 /** Per-product material / unique-detail snippet for FAQs. */
