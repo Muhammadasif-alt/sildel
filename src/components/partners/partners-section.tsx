@@ -27,7 +27,10 @@ export function PartnersSection({
       aria-labelledby="partners-heading"
       className="relative w-full bg-background"
     >
-      <div className="mx-auto max-w-[1480px] px-6 lg:px-12 py-16 lg:py-24">
+      {/* Founder direction (June 2026, fourteenth pass): full-bleed —
+          drop the 1480px cap and match the home/treasures rhythm so the
+          partner photography reads at the same scale. */}
+      <div className="w-full px-6 py-16 lg:px-12 lg:py-24 xl:px-16">
         {showHeader && (
           <div className="max-w-2xl mb-14 lg:mb-20">
             <p className="text-[11px] tracking-[0.4em] uppercase text-primary mb-5">
@@ -153,7 +156,7 @@ function FestivalMentalBand({
       {/* Hero band — single image + text */}
       <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
         <div className={cn("flex", flip ? "lg:order-2" : "lg:order-1")}>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] border border-border/60 bg-muted lg:min-h-[520px]">
+          <div className="relative aspect-[4/5] w-full overflow-hidden lg:min-h-[620px]">
             {heroImage && (
               <Image
                 src={heroImage.src}
@@ -193,11 +196,11 @@ function FestivalMentalBand({
 
       {/* Gallery grid below — square thumbnails, hover-zoom */}
       {galleryImages.length > 0 && (
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:gap-6">
+        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:gap-3">
           {galleryImages.map((img, i) => (
             <li
               key={i}
-              className="relative aspect-square overflow-hidden rounded-[20px] border border-border/60 bg-muted"
+              className="relative aspect-square overflow-hidden"
             >
               <Image
                 src={img.src}
@@ -214,16 +217,16 @@ function FestivalMentalBand({
   );
 }
 
-/** Products layout — transparent cutouts on light cards with captions. */
+/** Products layout — transparent cutouts on a neutral white panel.
+ *  Straight corners and no card border match the rest of the site
+ *  (founder direction: straight corners everywhere). The caption sits
+ *  beneath the image as an editorial label rather than a card foot. */
 function ProductGrid({ images, name }: { images: PartnerImage[]; name: string }) {
   return (
-    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
       {images.map((img, i) => (
-        <li
-          key={i}
-          className="flex flex-col overflow-hidden rounded-[20px] border border-border/60 bg-white shadow-sm"
-        >
-          <div className="relative aspect-[4/3] w-full">
+        <li key={i} className="flex flex-col">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-white">
             <Image
               src={img.src}
               alt={img.caption ? `${name} — ${img.caption}` : `${name} × Sildel`}
@@ -233,7 +236,7 @@ function ProductGrid({ images, name }: { images: PartnerImage[]; name: string })
             />
           </div>
           {img.caption && (
-            <p className="border-t border-border/60 px-4 py-2.5 text-[10px] tracking-[0.28em] uppercase text-muted-foreground">
+            <p className="mt-3 text-[10px] tracking-[0.32em] uppercase text-muted-foreground">
               {img.caption}
             </p>
           )}

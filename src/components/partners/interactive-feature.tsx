@@ -24,21 +24,25 @@ export function InteractiveFeature({
     images.length === 3 ? "grid-cols-3" : images.length === 5 ? "grid-cols-5" : "grid-cols-4";
 
   return (
-    <div className="flex h-full flex-col gap-3">
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] border border-border/60 bg-muted shadow-sm lg:aspect-auto lg:min-h-[420px] lg:flex-1">
+    // Bigger headline image + tighter row of thumbnails. Straight
+    // corners, no card border, no muted mat — the image bleeds clean
+    // (founder direction, June 2026 fourteenth pass: partner page must
+    // read at the same scale as the rest of the site).
+    <div className="flex h-full flex-col gap-2">
+      <div className="relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto lg:min-h-[560px] lg:flex-1">
         <Image
           key={active.src}
           src={active.src}
           alt={`${name} × Sildel`}
           fill
-          sizes="(min-width: 1024px) 45vw, 100vw"
+          sizes="(min-width: 1024px) 50vw, 100vw"
           className="object-cover transition-opacity duration-300"
           priority={selected === 0}
         />
       </div>
 
       {images.length > 1 && (
-        <ul className={cn("grid gap-3", colsClass)}>
+        <ul className={cn("grid gap-2", colsClass)}>
           {images.map((img, i) => {
             const isActive = i === selected;
             return (
@@ -49,10 +53,10 @@ export function InteractiveFeature({
                   aria-label={`${name} — view image ${i + 1}`}
                   aria-current={isActive}
                   className={cn(
-                    "relative block aspect-square w-full overflow-hidden rounded-[14px] border bg-muted transition cursor-pointer",
+                    "relative block aspect-square w-full overflow-hidden transition cursor-pointer",
                     isActive
-                      ? "border-primary ring-2 ring-primary/40"
-                      : "border-border/60 hover:border-foreground/40",
+                      ? "ring-2 ring-primary/70 ring-offset-2 ring-offset-background"
+                      : "opacity-80 hover:opacity-100",
                   )}
                 >
                   <Image
@@ -60,10 +64,7 @@ export function InteractiveFeature({
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 12vw, 25vw"
-                    className={cn(
-                      "object-cover transition-opacity",
-                      isActive ? "opacity-100" : "opacity-90 hover:opacity-100",
-                    )}
+                    className="object-cover transition-opacity"
                   />
                 </button>
               </li>
