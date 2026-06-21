@@ -1,0 +1,108 @@
+// Sildel — Prisma schema (MySQL).
+//
+// Only three tables: the admin-CRUD surfaces the founder actually uses
+// (Products, Blogs, Media). Everything else — editorial chrome, site
+// settings, contact submissions etc. — stays in static TS files for
+// the cPanel deploy (founder feedback, June 2026: "bas product add
+// krna hai, blogs add krna ho gay, baki ni krna kuch b").
+//
+// MySQL specifics:
+//  - Arrays + structured payloads (gallery, longDescription, blog body
+//    blocks) go in JSON columns. cPanel MySQL 5.7+ supports JSON natively.
+//  - Enums are Prisma enums (compiled to CHECK on most engines; MySQL
+//    accepts them as VARCHAR + Prisma-side validation).
+//  - Localized text (MediaAsset alt) is split into two columns rather
+//    than nested JSON so admin filters/search stay sargable.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+// Note: `url` reads from process.env at runtime. Prisma CLI loads it
+// from .env in the project root; for our setup we keep secrets in
+// .env.local instead and chain dotenv-cli in the npm scripts (see
+// "db:*" in package.json) so DATABASE_URL propagates correctly.
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProductCategory {
+  Sculpture
+  Tables
+  Lighting
+  FineArts // stored as "FineArts" — app maps to "Fine Arts" for display
+}
+
+enum BlogTag {
+  Atelier
+  Forest
+  Craft
+  Material
+  Collectors
+}
+
+model Product {
+  id              Int              @id @default(autoincrement())
+  slug            String           @unique @db.VarChar(120)
+  name            String           @db.VarChar(160)
+  tagline         String           @default("") @db.VarChar(255)
+  category        ProductCategory
+  priceCents      Int
+  currency        String           @default("EUR") @db.VarChar(8)
+  badge           String?          @db.VarChar(120)
+  material        String?          @db.VarChar(255)
+  description     String           @db.Text
+  longDescription Json             @default("[]") // string[]
+  image           String           @db.VarChar(500)
+  gallery         Json             @default("[]") // string[]
+  inStock         Boolean          @default(true)
+  editionSize     Int              @default(1)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([category])
+  @@index([inStock])
+}
+
+model Blog {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique @db.VarChar(160)
+  title       String   @db.VarChar(255)
+  excerpt     String   @db.Text
+  image       String   @db.VarChar(500)
+  imageAlt    String   @default("") @db.VarChar(255)
+  author      String   @db.VarChar(120)
+  authorRole  String   @default("") @db.VarChar(160)
+  date        DateTime
+  readMinutes Int      @default(5)
+  tag         BlogTag
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  body        Json     @default("[]") // Array of { kind, text?, author?, src?, alt?, caption? }
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([tag])
+  @@index([featured])
+  @@index([published])
+}
+
+model MediaAsset {
+  id        Int      @id @default(autoincrement())
+  url       String   @unique @db.VarChar(500)
+  filename  String   @db.VarChar(255)
+  mimeType  String   @db.VarChar(120)
+  size      Int      @default(0)
+  width     Int      @default(0)
+  height    Int      @default(0)
+  altPt     String   @default("") @db.VarChar(255)
+  altEn     String   @default("") @db.VarChar(255)
+  title     String   @default("") @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([mimeType])
+}

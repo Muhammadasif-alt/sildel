@@ -3,7 +3,8 @@ import {
   buildBreadcrumbJsonLd,
 } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
-import { treasures, getTreasures, getProducts } from "@/content/treasures";
+import { treasures, getTreasures } from "@/content/treasures";
+import { listProducts } from "@/lib/db/products-source";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
@@ -75,7 +76,9 @@ export default async function TreasuresPage() {
   // so the founder can edit it in /admin/editorial/treasures.
   const content = getTreasures(locale);
   const chrome = await resolveTreasuresChrome(locale);
-  const products = getProducts(locale);
+  // Products now come from MySQL via Prisma (live admin edits show within
+  // the page's 1-hour ISR window; admin save also calls revalidatePath).
+  const products = await listProducts(locale);
 
   const breadcrumbs = buildBreadcrumbJsonLd([
     { label: locale === "pt" ? "Início" : "Home", href: "/" },

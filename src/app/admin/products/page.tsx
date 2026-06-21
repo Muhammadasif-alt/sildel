@@ -1,14 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Plus, Pencil } from "lucide-react";
-import { connectDb } from "@/lib/db/connect";
-import { ProductModel } from "@/lib/models/product.model";
+import { prisma } from "@/lib/db/prisma";
+import { fromCategoryEnum } from "@/lib/db/product-category";
 import { formatPrice } from "@/content/treasures";
 import { DeleteProductButton } from "@/components/admin/delete-product-button";
 
 export default async function AdminProductsPage() {
-  await connectDb();
-  const products = await ProductModel.find().sort({ createdAt: -1 }).lean();
+  const products = await prisma.product.findMany({
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
     <div>
@@ -68,7 +69,9 @@ export default async function AdminProductsPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-muted-foreground">{p.category}</td>
+                  <td className="px-6 py-4 text-muted-foreground">
+                    {fromCategoryEnum(p.category)}
+                  </td>
                   <td className="px-6 py-4 tabular-nums text-foreground">
                     {formatPrice(p.priceCents)}
                   </td>

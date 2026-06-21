@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { connectDb } from "@/lib/db/connect";
-import { BlogModel } from "@/lib/models/blog.model";
+import { prisma } from "@/lib/db/prisma";
 import { BlogForm } from "@/components/admin/blog-form";
 import { updateBlog } from "../actions";
 
@@ -10,8 +9,7 @@ type Params = { params: Promise<{ slug: string }> };
 
 export default async function EditBlogPage({ params }: Params) {
   const { slug } = await params;
-  await connectDb();
-  const blog = await BlogModel.findOne({ slug }).lean();
+  const blog = await prisma.blog.findUnique({ where: { slug } });
   if (!blog) notFound();
 
   const action = updateBlog.bind(null, slug);

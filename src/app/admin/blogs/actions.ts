@@ -3,10 +3,16 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth/admin";
-import { connectDb } from "@/lib/db/connect";
-import { BlogModel, BLOG_TAGS } from "@/lib/models/blog.model";
+import { prisma } from "@/lib/db/prisma";
+import { BlogTag } from "@/generated/prisma";
 
-type BlogTag = (typeof BLOG_TAGS)[number];
+export const BLOG_TAGS = [
+  "Atelier",
+  "Forest",
+  "Craft",
+  "Material",
+  "Collectors",
+] as const;
 
 type BlockInput = {
   kind: "paragraph" | "heading" | "quote" | "image";
@@ -63,7 +69,7 @@ function readForm(formData: FormData) {
     authorRole,
     date: new Date(date),
     readMinutes,
-    tag: tag as BlogTag,
+    tag: tag as BlogTag, // labels match enum identifiers 1:1
     featured,
     published,
     body,
@@ -73,9 +79,8 @@ function readForm(formData: FormData) {
 // TODO-auth: should also enforce a CSRF token in production.
 export async function createBlog(formData: FormData) {
   await requireAdmin();
-  await connectDb();
   const data = readForm(formData);
-  await BlogModel.create(data);
+  await prisma.blog.create({ data });
   revalidatePath("/admin/blogs");
   revalidatePath("/blog");
   redirect("/admin/blogs");
@@ -83,9 +88,8 @@ export async function createBlog(formData: FormData) {
 
 export async function updateBlog(slug: string, formData: FormData) {
   await requireAdmin();
-  await connectDb();
   const data = readForm(formData);
-  await BlogModel.findOneAndUpdate({ slug }, data, { new: true });
+  await prisma.blog.update({ where: { slug }, data });
   revalidatePath("/admin/blogs");
   revalidatePath("/blog");
   revalidatePath(`/blog/${data.slug}`);
@@ -95,8 +99,7 @@ export async function updateBlog(slug: string, formData: FormData) {
 
 export async function deleteBlog(slug: string) {
   await requireAdmin();
-  await connectDb();
-  await BlogModel.deleteOne({ slug });
+  await prisma.blog.delete({ where: { slug } });
   revalidatePath("/admin/blogs");
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);

@@ -1,40 +1,24 @@
 import Link from "next/link";
-import { Package, ShoppingBag, Clock, Mail, ArrowUpRight } from "lucide-react";
-import { connectDb } from "@/lib/db/connect";
-import { ProductModel } from "@/lib/models/product.model";
-import { OrderModel, type LeanOrder } from "@/lib/models/order.model";
-import { SubscriberModel } from "@/lib/models/subscriber.model";
-import { formatPrice } from "@/content/treasures";
+import { Package, Newspaper, Images, ArrowUpRight } from "lucide-react";
+import { prisma } from "@/lib/db/prisma";
 
-function statusBadge(status: string) {
-  const map: Record<string, string> = {
-    pending: "bg-amber-500/10 text-amber-700 ring-amber-500/30 dark:text-amber-300",
-    paid: "bg-emerald-500/10 text-emerald-700 ring-emerald-500/30 dark:text-emerald-300",
-    preparing: "bg-sky-500/10 text-sky-700 ring-sky-500/30 dark:text-sky-300",
-    shipped: "bg-indigo-500/10 text-indigo-700 ring-indigo-500/30 dark:text-indigo-300",
-    delivered: "bg-muted text-muted-foreground ring-border",
-    cancelled: "bg-red-500/10 text-red-700 ring-red-500/30 dark:text-red-300",
-  };
-  return map[status] ?? "bg-muted text-muted-foreground ring-border";
-}
-
+/**
+ * Admin dashboard — scope reduced (June 2026) to the three surfaces the
+ * founder actually uses: Products, Blogs, Media. Orders/Subscribers/
+ * editorial stats were dropped along with the corresponding nav links
+ * once we moved off MongoDB and into MySQL.
+ */
 export default async function AdminDashboardPage() {
-  await connectDb();
-
-  const [productCount, orderCount, pendingCount, subscriberCount, recentOrders] =
-    await Promise.all([
-      ProductModel.countDocuments(),
-      OrderModel.countDocuments(),
-      OrderModel.countDocuments({ status: "pending" }),
-      SubscriberModel.countDocuments({ active: true }),
-      OrderModel.find().sort({ createdAt: -1 }).limit(6).lean<LeanOrder[]>(),
-    ]);
+  const [productCount, blogCount, mediaCount] = await Promise.all([
+    prisma.product.count(),
+    prisma.blog.count(),
+    prisma.mediaAsset.count(),
+  ]);
 
   const stats = [
     { label: "Products", value: productCount, icon: Package, href: "/admin/products" },
-    { label: "Total orders", value: orderCount, icon: ShoppingBag, href: "/admin/orders" },
-    { label: "Pending orders", value: pendingCount, icon: Clock, href: "/admin/orders?status=pending" },
-    { label: "Subscribers", value: subscriberCount, icon: Mail, href: "/admin/subscribers" },
+    { label: "Blog posts", value: blogCount, icon: Newspaper, href: "/admin/blogs" },
+    { label: "Media files", value: mediaCount, icon: Images, href: "/admin/media" },
   ];
 
   return (
@@ -42,12 +26,11 @@ export default async function AdminDashboardPage() {
       <header className="mb-10">
         <h1 className="font-serif text-3xl text-foreground md:text-4xl">Dashboard</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          A snapshot of the Sildel shop right now.
+          Manage the Sildel catalogue, journal and media library.
         </p>
       </header>
 
-      {/* Stat cards */}
-      <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {stats.map((s) => {
           const Icon = s.icon;
           return (
@@ -74,71 +57,35 @@ export default async function AdminDashboardPage() {
         })}
       </div>
 
-      {/* Recent orders */}
-      <section className="rounded-none border border-border bg-card">
-        <header className="flex items-center justify-between border-b border-border px-6 py-4">
-          <h2 className="font-serif text-xl text-foreground">Recent orders</h2>
+      <section className="rounded-none border border-border bg-card p-8">
+        <h2 className="font-serif text-xl text-foreground">Quick actions</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Add a new treasure to the catalogue, publish a journal post, or
+          upload images to the media library.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
           <Link
-            href="/admin/orders"
-            className="text-xs uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-primary"
+            href="/admin/products/new"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
           >
-            View all →
+            <Package className="h-4 w-4" strokeWidth={1.6} />
+            New product
           </Link>
-        </header>
-
-        {recentOrders.length === 0 ? (
-          <p className="px-6 py-12 text-center text-sm text-muted-foreground">
-            No orders yet — they'll appear here when a customer checks out.
-          </p>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-muted/40 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                <tr>
-                  <th className="px-6 py-3 font-medium">Order #</th>
-                  <th className="px-6 py-3 font-medium">Customer</th>
-                  <th className="px-6 py-3 font-medium">Total</th>
-                  <th className="px-6 py-3 font-medium">Status</th>
-                  <th className="px-6 py-3 font-medium">Placed</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {recentOrders.map((o) => (
-                  <tr key={String(o._id)} className="hover:bg-accent/40">
-                    <td className="px-6 py-4">
-                      <Link
-                        href={`/admin/orders/${o.orderNumber}`}
-                        className="font-mono text-primary hover:underline"
-                      >
-                        {o.orderNumber}
-                      </Link>
-                    </td>
-                    <td className="px-6 py-4 text-foreground">
-                      {o.customer.firstName} {o.customer.lastName}
-                      <div className="text-xs text-muted-foreground">{o.email}</div>
-                    </td>
-                    <td className="px-6 py-4 tabular-nums text-foreground">
-                      {formatPrice(o.totalCents)}
-                    </td>
-                    <td className="px-6 py-4">
-                      <span
-                        className={
-                          "rounded-full px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] ring-1 " +
-                          statusBadge(o.status)
-                        }
-                      >
-                        {o.status}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-xs text-muted-foreground">
-                      {o.createdAt ? new Date(o.createdAt).toLocaleString() : "—"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+          <Link
+            href="/admin/blogs/new"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary/40"
+          >
+            <Newspaper className="h-4 w-4" strokeWidth={1.6} />
+            New blog post
+          </Link>
+          <Link
+            href="/admin/media"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary/40"
+          >
+            <Images className="h-4 w-4" strokeWidth={1.6} />
+            Open media library
+          </Link>
+        </div>
       </section>
     </div>
   );

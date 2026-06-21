@@ -4,8 +4,7 @@
  */
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/auth/admin";
-import { connectDb } from "@/lib/db/connect";
-import { MediaAssetModel } from "@/lib/models/media-asset.model";
+import { prisma } from "@/lib/db/prisma";
 
 export const runtime = "nodejs";
 
@@ -20,17 +19,22 @@ export async function GET(req: Request) {
   const q = (searchParams.get("q") ?? "").trim();
 
   try {
-    await connectDb();
-    const filter = q
-      ? { $or: [{ filename: { $regex: q, $options: "i" } }, { title: { $regex: q, $options: "i" } }] }
+    const where = q
+      ? {
+          OR: [
+            { filename: { contains: q } },
+            { title: { contains: q } },
+          ],
+        }
       : {};
-    const docs = await MediaAssetModel.find(filter)
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .lean();
+    const docs = await prisma.mediaAsset.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
+      take: limit,
+    });
     return NextResponse.json({
       assets: docs.map((d) => ({
-        id: String(d._id),
+        id: String(d.id),
         url: d.url,
         filename: d.filename,
         mimeType: d.mimeType,

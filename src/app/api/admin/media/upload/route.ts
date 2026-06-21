@@ -11,8 +11,7 @@ import path from "path";
 import { mkdir, writeFile } from "fs/promises";
 import { randomBytes } from "crypto";
 import { getAdminSession } from "@/lib/auth/admin";
-import { connectDb } from "@/lib/db/connect";
-import { MediaAssetModel } from "@/lib/models/media-asset.model";
+import { prisma } from "@/lib/db/prisma";
 
 export const runtime = "nodejs";
 
@@ -97,12 +96,13 @@ export async function POST(req: Request) {
   const publicUrl = "/" + path.posix.join(relDir, filename);
 
   try {
-    await connectDb();
-    await MediaAssetModel.create({
-      url: publicUrl,
-      filename,
-      mimeType: file.type,
-      size: file.size,
+    await prisma.mediaAsset.create({
+      data: {
+        url: publicUrl,
+        filename,
+        mimeType: file.type,
+        size: file.size,
+      },
     });
   } catch {
     // Index write failure shouldn't block the upload; the file is still served.

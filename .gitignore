@@ -52,3 +52,5 @@ next-env.d.ts
 # under /public/partners-web/ is committed; regenerate via:
 #   node scripts/optimize-partners.mjs
 /public/PARTNERS/
+
+/src/generated/prisma

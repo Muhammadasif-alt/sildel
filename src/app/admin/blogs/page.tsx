@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { Plus, Newspaper, Star } from "lucide-react";
-import { connectDb } from "@/lib/db/connect";
-import { BlogModel } from "@/lib/models/blog.model";
+import { prisma } from "@/lib/db/prisma";
 import { DeleteBlogButton } from "@/components/admin/delete-blog-button";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminBlogsPage() {
-  await connectDb();
-  const blogs = await BlogModel.find().sort({ date: -1 }).lean();
+  const blogs = await prisma.blog.findMany({ orderBy: { date: "desc" } });
 
   return (
     <div>
@@ -50,7 +48,7 @@ export default async function AdminBlogsPage() {
             </thead>
             <tbody className="divide-y divide-border">
               {blogs.map((b) => (
-                <tr key={String(b._id)} className="text-foreground hover:bg-accent/40">
+                <tr key={b.slug} className="text-foreground hover:bg-accent/40">
                   <td className="px-6 py-4">
                     <Link
                       href={`/admin/blogs/${b.slug}`}

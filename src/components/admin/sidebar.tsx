@@ -6,14 +6,9 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Package,
-  ShoppingBag,
-  Mail,
   LogOut,
   Newspaper,
-  FileText,
-  Settings,
   Images,
-  Sparkles,
 } from "lucide-react";
 
 type NavItem = {
@@ -28,6 +23,12 @@ type NavGroup = {
   items: NavItem[];
 };
 
+// Founder direction (June 2026): admin scope reduced to "bas product
+// add krna hai, image change krni add krni delted krni, blogs add
+// krna ho gay, baki ni krna kuch b". Editorial pages, settings,
+// CMS block pages, orders + subscribers stay implemented under
+// src/app/admin/* (and routes still resolve if linked directly) but
+// the nav only exposes the three surfaces the founder actually uses.
 const GROUPS: NavGroup[] = [
   {
     title: "Overview",
@@ -36,26 +37,11 @@ const GROUPS: NavGroup[] = [
     ],
   },
   {
-    title: "Commerce",
+    title: "Catalogue",
     items: [
       { href: "/admin/products", label: "Products", icon: Package },
-      { href: "/admin/orders", label: "Orders", icon: ShoppingBag },
-      { href: "/admin/subscribers", label: "Subscribers", icon: Mail },
-    ],
-  },
-  {
-    title: "Content",
-    items: [
-      { href: "/admin/editorial", label: "Editorial pages", icon: Sparkles },
-      { href: "/admin/pages", label: "Pages (legacy)", icon: FileText },
       { href: "/admin/blogs", label: "Blogs", icon: Newspaper },
       { href: "/admin/media", label: "Media library", icon: Images },
-    ],
-  },
-  {
-    title: "Site",
-    items: [
-      { href: "/admin/settings", label: "Site settings", icon: Settings },
     ],
   },
 ];

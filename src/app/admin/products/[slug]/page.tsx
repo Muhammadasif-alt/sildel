@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { connectDb } from "@/lib/db/connect";
-import { ProductModel } from "@/lib/models/product.model";
+import { prisma } from "@/lib/db/prisma";
+import { fromCategoryEnum } from "@/lib/db/product-category";
 import { ProductForm } from "@/components/admin/product-form";
 import { updateProductAction } from "../actions";
 
@@ -10,8 +10,7 @@ type RouteContext = { params: Promise<{ slug: string }> };
 
 export default async function EditProductPage({ params }: RouteContext) {
   const { slug } = await params;
-  await connectDb();
-  const product = await ProductModel.findOne({ slug }).lean();
+  const product = await prisma.product.findUnique({ where: { slug } });
   if (!product) notFound();
 
   const update = updateProductAction.bind(null, slug);
@@ -35,7 +34,7 @@ export default async function EditProductPage({ params }: RouteContext) {
           slug: product.slug,
           name: product.name,
           tagline: product.tagline,
-          category: product.category,
+          category: fromCategoryEnum(product.category),
           priceCents: product.priceCents,
           badge: product.badge ?? undefined,
           material: product.material ?? undefined,

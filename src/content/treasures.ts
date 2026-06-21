@@ -868,7 +868,7 @@ export type TreasuresContent = typeof treasures;
 import type { Locale } from "@/lib/i18n/config";
 
 /** Per-product text overlay (PT). Keyed by slug. */
-const PRODUCT_TEXT_PT: Record<string, Partial<Pick<Product, "tagline" | "badge" | "material" | "description" | "longDescription">>> = {
+export const PRODUCT_TEXT_PT: Record<string, Partial<Pick<Product, "tagline" | "badge" | "material" | "description" | "longDescription">>> = {
   shell: {
     tagline: "Uma dança entre a natureza e a arte",
     badge: "Único & Exclusivo",

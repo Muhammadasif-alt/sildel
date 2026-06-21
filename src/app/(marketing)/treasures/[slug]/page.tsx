@@ -9,11 +9,7 @@ import {
   buildProductJsonLd,
   buildFaqJsonLd,
 } from "@/lib/seo";
-import {
-  products,
-  getFindProduct,
-  getProducts,
-} from "@/content/treasures";
+import { listProducts, listProductSlugs } from "@/lib/db/products-source";
 import { getProductExtras } from "@/content/product-extras";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getUi } from "@/lib/i18n/ui";
@@ -22,8 +18,9 @@ import { ProductHero } from "@/components/treasures/product-hero";
 import { ProductGallery } from "@/components/treasures/product-gallery";
 import { ProductFaqs } from "@/components/treasures/product-faqs";
 
-export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const slugs = await listProductSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 type Params = { params: Promise<{ slug: string }> };
@@ -33,7 +30,8 @@ export const revalidate = 3600;
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const locale = await getLocale();
-  const product = getFindProduct(locale)(slug);
+  const localizedProducts = await listProducts(locale);
+  const product = localizedProducts.find((p) => p.slug === slug);
   if (!product) {
     return buildMetadata({
       title: "Treasure not found",
@@ -95,7 +93,7 @@ export default async function ProductPage({ params }: Params) {
   const { slug } = await params;
   const locale = await getLocale();
   const ui = getUi(locale);
-  const localizedProducts = getProducts(locale);
+  const localizedProducts = await listProducts(locale);
   const product = localizedProducts.find((p) => p.slug === slug);
   if (!product) notFound();
 

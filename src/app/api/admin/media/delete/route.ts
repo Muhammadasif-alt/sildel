@@ -6,8 +6,7 @@ import { NextResponse } from "next/server";
 import path from "path";
 import { unlink } from "fs/promises";
 import { getAdminSession } from "@/lib/auth/admin";
-import { connectDb } from "@/lib/db/connect";
-import { MediaAssetModel } from "@/lib/models/media-asset.model";
+import { prisma } from "@/lib/db/prisma";
 
 export const runtime = "nodejs";
 
@@ -18,18 +17,18 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json().catch(() => null);
-  const id = typeof body?.id === "string" ? body.id : undefined;
+  const rawId = typeof body?.id === "string" ? body.id : undefined;
+  const id = rawId ? Number(rawId) : undefined;
   const url = typeof body?.url === "string" ? body.url : undefined;
 
-  if (!id && !url) {
+  if ((!id || Number.isNaN(id)) && !url) {
     return NextResponse.json({ error: "Missing id or url" }, { status: 400 });
   }
 
   try {
-    await connectDb();
     const doc = id
-      ? await MediaAssetModel.findById(id).lean()
-      : await MediaAssetModel.findOne({ url }).lean();
+      ? await prisma.mediaAsset.findUnique({ where: { id } })
+      : await prisma.mediaAsset.findUnique({ where: { url: url! } });
 
     if (doc) {
       // Only allow deleting files inside /public/uploads/
@@ -37,7 +36,7 @@ export async function POST(req: Request) {
         const abs = path.join(process.cwd(), "public", doc.url);
         await unlink(abs).catch(() => {});
       }
-      await MediaAssetModel.deleteOne({ _id: doc._id });
+      await prisma.mediaAsset.delete({ where: { id: doc.id } });
     }
     return NextResponse.json({ ok: true });
   } catch {

@@ -1,42 +1,42 @@
 /**
- * Blog reader — DB first, hardcoded fallback.
+ * Blog reader — MySQL (Prisma) first, static `/content/blog.ts` fallback.
  *
- * The /blog and /blog/[slug] pages call into this. If the DB has no published
- * posts yet (fresh install / seed not run), we fall back to the hardcoded
- * `src/content/blog.ts` posts so the marketing page never goes blank.
+ * /blog and /blog/[slug] read through here. If MySQL is unreachable or
+ * has no published rows yet (fresh install before `npm run db:seed`),
+ * we serve the hardcoded posts so the marketing page never goes blank.
  */
 import "server-only";
-import { connectDb } from "@/lib/db/connect";
-import { BlogModel } from "@/lib/models/blog.model";
+import { prisma } from "@/lib/db/prisma";
 import { posts as fallbackPosts, type Post } from "@/content/blog";
 
-function leanToPost(b: Record<string, unknown>): Post {
+type PrismaBlog = Awaited<
+  ReturnType<typeof prisma.blog.findMany>
+>[number];
+
+function rowToPost(b: PrismaBlog): Post {
   return {
-    slug: String(b.slug),
-    title: String(b.title),
-    excerpt: String(b.excerpt),
-    image: String(b.image),
-    imageAlt: String(b.imageAlt ?? ""),
-    author: String(b.author),
-    authorRole: String(b.authorRole ?? ""),
-    date: (b.date instanceof Date
-      ? b.date
-      : new Date(String(b.date))
-    ).toISOString(),
-    readMinutes: Number(b.readMinutes ?? 5),
-    tag: (b.tag as Post["tag"]) ?? "Atelier",
+    slug: b.slug,
+    title: b.title,
+    excerpt: b.excerpt,
+    image: b.image,
+    imageAlt: b.imageAlt,
+    author: b.author,
+    authorRole: b.authorRole,
+    date: b.date.toISOString(),
+    readMinutes: b.readMinutes,
+    tag: b.tag as Post["tag"],
     body: (Array.isArray(b.body) ? b.body : []) as Post["body"],
   };
 }
 
 export async function getAllPosts(): Promise<Post[]> {
   try {
-    await connectDb();
-    const docs = await BlogModel.find({ published: true })
-      .sort({ featured: -1, date: -1 })
-      .lean();
-    if (docs.length === 0) return fallbackPosts;
-    return docs.map(leanToPost);
+    const rows = await prisma.blog.findMany({
+      where: { published: true },
+      orderBy: [{ featured: "desc" }, { date: "desc" }],
+    });
+    if (rows.length === 0) return fallbackPosts;
+    return rows.map(rowToPost);
   } catch {
     return fallbackPosts;
   }
@@ -44,9 +44,10 @@ export async function getAllPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
-    await connectDb();
-    const doc = await BlogModel.findOne({ slug, published: true }).lean();
-    if (doc) return leanToPost(doc);
+    const row = await prisma.blog.findFirst({
+      where: { slug, published: true },
+    });
+    if (row) return rowToPost(row);
   } catch {
     // fall through to hardcoded
   }

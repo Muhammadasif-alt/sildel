@@ -1,15 +1,16 @@
-import { connectDb } from "@/lib/db/connect";
-import { MediaAssetModel } from "@/lib/models/media-asset.model";
+import { prisma } from "@/lib/db/prisma";
 import { MediaLibraryClient } from "./media-library-client";
 
 export const dynamic = "force-dynamic";
 
 async function loadAssets() {
   try {
-    await connectDb();
-    const docs = await MediaAssetModel.find().sort({ createdAt: -1 }).limit(200).lean();
+    const docs = await prisma.mediaAsset.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 200,
+    });
     return docs.map((d) => ({
-      id: String(d._id),
+      id: String(d.id),
       url: d.url,
       filename: d.filename,
       mimeType: d.mimeType,

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
-import { products } from "@/content/treasures";
+import { listProductSlugs } from "@/lib/db/products-source";
 import { AWARD_SLUGS } from "@/content/awards";
 import { getAllPosts } from "@/lib/content/blog";
 
@@ -39,19 +39,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  // Every product detail page
-  const productEntries: MetadataRoute.Sitemap = products.map((p) => ({
-    url: new URL(`/treasures/${p.slug}`, siteConfig.url).toString(),
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.75,
-    alternates: {
-      languages: {
-        "en-US": new URL(`/treasures/${p.slug}`, siteConfig.url).toString(),
-        "pt-PT": new URL(`/treasures/${p.slug}`, siteConfig.url).toString(),
+  // Every product detail page (read live from MySQL; fall back to empty
+  // list rather than failing the whole sitemap if the DB is unreachable
+  // at build time).
+  let productEntries: MetadataRoute.Sitemap = [];
+  try {
+    const slugs = await listProductSlugs();
+    productEntries = slugs.map((slug) => ({
+      url: new URL(`/treasures/${slug}`, siteConfig.url).toString(),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+      alternates: {
+        languages: {
+          "en-US": new URL(`/treasures/${slug}`, siteConfig.url).toString(),
+          "pt-PT": new URL(`/treasures/${slug}`, siteConfig.url).toString(),
+        },
       },
-    },
-  }));
+    }));
+  } catch {
+    // DB unreachable — sitemap still ships with static + award routes.
+  }
 
   // Every award detail page (3 international distinctions)
   const awardEntries: MetadataRoute.Sitemap = AWARD_SLUGS.map((slug) => ({
