@@ -11,15 +11,21 @@
 */
 
 :root {
-  /* Warm white canvas + deep warm charcoal ink. */
-  --background: oklch(0.985 0.004 85);
-  --foreground: oklch(0.2 0.006 60);
+  /* Founder direction (Isabel, June 2026): lighten the canvas so each
+     piece's grain, tone and irregularity reads at full strength —
+     "like in our Instagram posts". The warm chroma stays so the brand
+     keeps its atelier feel; only the luminance lifts. Background goes
+     from L 0.985 → 0.995 (almost pure white, a whisper of warmth);
+     --muted and --accent tighten in step so the existing tinted bands
+     don't suddenly read darker than the page they sit on. */
+  --background: oklch(0.995 0.003 85);
+  --foreground: oklch(0.18 0.006 60);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.006 60);
+  --card-foreground: oklch(0.18 0.006 60);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.006 60);
+  --popover-foreground: oklch(0.18 0.006 60);
 
   /* Primary = burnished gold — the brand accent. Used for eyebrows, rules,
      badges and accent CTAs. Deep enough (L 0.55) to stay legible as small
@@ -30,11 +36,11 @@
   --secondary: oklch(0.45 0.03 70);
   --secondary-foreground: oklch(0.99 0 0);
 
-  --muted: oklch(0.965 0.005 85);
+  --muted: oklch(0.975 0.004 85);
   --muted-foreground: oklch(0.44 0.012 70);
 
-  --accent: oklch(0.95 0.014 84);
-  --accent-foreground: oklch(0.2 0.006 60);
+  --accent: oklch(0.965 0.012 84);
+  --accent-foreground: oklch(0.18 0.006 60);
 
   /* Gold accent token — same burnished gold as --primary. */
   --accent-gold: oklch(0.6 0.11 78);
