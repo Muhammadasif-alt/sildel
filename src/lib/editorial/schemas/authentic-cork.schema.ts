@@ -130,6 +130,26 @@ export const authenticCorkSchema: EditorialSchema = {
       ],
     },
     {
+      key: "biodiversity",
+      label: "Biodiversity sanctuary (35 sanctuaries + 14M tons CO₂)",
+      description:
+        "Pull-quote, split row, fact strip. Sits between Properties and Cork-at-Sildel. Pulled from the live sildel.pt narrative.",
+      fields: [
+        { key: "eyebrow", label: "Eyebrow", type: "text", localized: true },
+        { key: "pullQuote", label: "Pull quote (italic, centred above)", type: "text", localized: true },
+        { key: "title", label: "Title", type: "text", localized: true },
+        {
+          key: "titleAccent",
+          label: "Title accent (italic part)",
+          type: "text",
+          localized: true,
+        },
+        { key: "body", label: "Body paragraphs", type: "paragraphs", localized: true },
+        { key: "image", label: "Image", type: "image" },
+        { key: "imageAlt", label: "Image alt", type: "text", localized: true },
+      ],
+    },
+    {
       key: "inSildel",
       label: "Cork at Sildel (final narrative row)",
       fields: [

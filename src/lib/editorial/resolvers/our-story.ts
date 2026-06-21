@@ -18,6 +18,9 @@ import type {
 export type OurStoryRendered = {
   hero: { eyebrow: string; image: string; imageAlt: string };
   sections: StorySectionData[];
+  // "Cork is a matter of love" — Isabel's signature beat. Rendered as
+  // a dedicated StorySection between origin and the first heritage row.
+  love: StorySectionData;
   bleeds: {
     afterOrigin: { src: string; alt: string };
     beforeAtelier: { src: string; alt: string };
@@ -102,6 +105,14 @@ function fromTs(locale: Locale): OurStoryRendered {
         imageAlt: c.symbol.imageAlt,
       },
     ],
+    love: {
+      eyebrow: c.love.eyebrow,
+      title: c.love.title,
+      titleAccent: c.love.titleAccent,
+      body: c.love.body,
+      image: c.love.image,
+      imageAlt: c.love.imageAlt,
+    },
     bleeds: {
       afterOrigin: {
         src: c.heritage.images[2].src,
@@ -147,6 +158,7 @@ function fromDb(
 
   const hero = db.hero ?? {};
   const origin = db.origin ?? {};
+  const love = db.love ?? {};
   const heritageOak = db.heritageOak ?? {};
   const heritageHands = db.heritageHands ?? {};
   const atelier = db.atelier ?? {};
@@ -202,6 +214,14 @@ function fromDb(
         imageAlt: t(symbol.imageAlt),
       },
     ],
+    love: {
+      eyebrow: t(love.eyebrow),
+      title: t(love.title),
+      titleAccent: t(love.titleAccent) || undefined,
+      body: p(love.body),
+      image: s(love.image),
+      imageAlt: t(love.imageAlt),
+    },
     bleeds: {
       afterOrigin: {
         src: s(bleedAfterOrigin.src),

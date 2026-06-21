@@ -95,6 +95,29 @@ export const authenticCorkPt = {
     ],
   },
 
+  // Santuário vivo — factos retirados de sildel.pt /a-cortica (feedback
+  // da fundadora, Junho 2026: trazer de volta os números específicos
+  // que ancoram a importância do sobreiral para o público 45-80). pt-PT.
+  biodiversity: {
+    eyebrow: "Um santuário vivo",
+    pullQuote: "A verdade pertence à natureza, a engenheira da criação.",
+    title: "Um dos trinta e cinco",
+    titleAccent: "santuários do mundo.",
+    body: [
+      "A floresta de sobro portuguesa é um dos apenas trinta e cinco santuários de biodiversidade do planeta — ao lado da Amazónia, da savana africana, dos Andes e do Bornéu. Companhia rara, mantida por uma razão rara: esta floresta está viva em todas as suas camadas.",
+      "Abriga mais de cento e sessenta espécies de aves, vinte e quatro répteis e anfíbios e trinta e sete mamíferos — entre eles o lince ibérico, a águia-imperial e a cegonha-preta. Algumas das suas residentes estão entre as mais ameaçadas do planeta. Outras vivem aqui, sem incómodo, há milénios.",
+      "E funciona. Todos os anos, o sobreiral fixa até catorze milhões de toneladas de CO₂. Arrefece o ar, trava a desertificação, segura o solo e mantém o lençol freático a respirar. A cortiça é a casca de uma árvore que, em silêncio, faz o trabalho de um continente.",
+    ],
+    image: "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
+    imageAlt:
+      "Luz do sol através das copas de um antigo sobreiral português no Alentejo.",
+    facts: [
+      { value: "35", label: "Santuários mundiais de biodiversidade" },
+      { value: "160+", label: "Espécies de aves abrigadas" },
+      { value: "14M", label: "Toneladas de CO₂ fixadas por ano" },
+    ],
+  },
+
   inSildel: {
     eyebrow: "A Cortiça na Sildel",
     title: "Da casca",

@@ -92,6 +92,16 @@ export default async function OurStoryPage() {
           headingId="story-origin"
         />
 
+        {/* "Cork is a matter of love" — Isabel's signature beat, in her
+            own words. Sits right after Origin so the visitor hears the
+            founder's voice before the heritage facts begin. Image RIGHT
+            so it mirrors the Origin row and creates a visual rhythm. */}
+        <StorySection
+          data={content.love}
+          mirror={true}
+          headingId="story-love"
+        />
+
         {/* Full-bleed: cork sheets curing in the open air */}
         <StoryBleed
           src={content.bleeds.afterOrigin.src}

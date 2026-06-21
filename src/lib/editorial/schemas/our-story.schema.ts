@@ -53,6 +53,25 @@ export const ourStorySchema: EditorialSchema = {
       ],
     },
     {
+      key: "love",
+      label: "“Cork is a matter of love” (founder voice — between Origin and Heritage)",
+      description:
+        "Isabel's signature beat in her own words. Image RIGHT, text LEFT.",
+      fields: [
+        { key: "eyebrow", label: "Eyebrow", type: "text", localized: true },
+        { key: "title", label: "Title", type: "text", localized: true },
+        {
+          key: "titleAccent",
+          label: "Title accent (italic part)",
+          type: "text",
+          localized: true,
+        },
+        { key: "body", label: "Body paragraphs", type: "paragraphs", localized: true },
+        { key: "image", label: "Image", type: "image" },
+        { key: "imageAlt", label: "Image alt", type: "text", localized: true },
+      ],
+    },
+    {
       key: "heritageOak",
       label: "Heritage — Quercus suber (second narrative row)",
       fields: [

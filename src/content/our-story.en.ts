@@ -21,14 +21,33 @@ export const ourStoryEn = {
     year: "Est. 2020",
   },
 
+  // "A matter of love" — Isabel's own words, lightly edited from the
+  // live sildel.pt /our-story page (founder feedback, June 2026: the
+  // site needs SILDEL's own pehchaan + emotional storytelling for the
+  // 45-80 audience; this is her signature line + the 40-year credibility
+  // marker that no competitor can claim).
+  love: {
+    eyebrow: "A matter of love",
+    title: "Cork is",
+    titleAccent: "a matter of love.",
+    body: [
+      "People who hold a Sildel piece often ask for our secret. There is none.",
+      "There is only a knowledge built over more than forty years — exclusively, only ever, in contact with cork: this small wonder of nature, still unknown to so many.",
+      "At a certain point the closeness becomes so absolute that we no longer know whether the cork is part of us, or whether we are the ones who belong to it.",
+      "The answer, in the end, is simple. Cork is a matter of love.",
+    ],
+    image: "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
+    imageAlt: "A Sildel cork sculpture at rest in soft atelier light.",
+  },
+
   symbol: {
     eyebrow: "Our Symbol",
     title: "The Iberian lynx —",
     titleAccent: "guardian of the cork.",
     body: [
-      "In the heart of the Iberian Peninsula, where cork oak trees stand majestically, Sildel was born — dedicated to honoring authentic cork. Nature and art intertwine here, just like the deep roots of the cork oak and the agility of the Iberian lynx, our symbol and inspiration.",
-      "The Iberian lynx, with its piercing gaze and graceful movements, roams the cork oak forests as a silent guardian of a unique ecosystem. It is in this environment — rich in biodiversity and history — that Sildel finds its essence.",
-      "At Sildel, we believe true art lies in honoring nature. The lynx, a symbol of resilience and rarity, reflects our commitment to preserving and elevating natural resources.",
+      "In the heart of the Iberian Peninsula, where cork oaks stand majestically, Sildel was born. Nature and art intertwine here, just like the deep roots of the oak and the agility of the Iberian lynx — our symbol and inspiration.",
+      "The lynx walks the cork forests with a piercing gaze and a noiseless step. A silent guardian of an ecosystem so rare it has been compared to the Amazon and the African savanna. Fewer than fifteen hundred of them remain in the wild. It is in this rare and patient world that Sildel finds its essence.",
+      "We chose the lynx for what it stands for: resilience and rarity. What the lynx is to the cork forest, we hope a Sildel piece is to the home that receives it — quiet, watchful, and made to outlast its keepers.",
     ],
     image: "/images/our-story/lynx-01.webp",
     imageAlt: "The Iberian lynx — Sildel's symbol and guardian of the cork oak ecosystem.",

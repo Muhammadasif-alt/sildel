@@ -56,6 +56,14 @@ export function buildInitialOurStory(): EditorialContentDoc {
       image: en.origin.image,
       imageAlt: pair(en.origin.imageAlt, pt.origin.imageAlt),
     },
+    love: {
+      eyebrow: pair(en.love.eyebrow, pt.love.eyebrow),
+      title: pair(en.love.title, pt.love.title),
+      titleAccent: pair(en.love.titleAccent, pt.love.titleAccent),
+      body: paragraphPair(en.love.body, pt.love.body),
+      image: en.love.image,
+      imageAlt: pair(en.love.imageAlt, pt.love.imageAlt),
+    },
     heritageOak: {
       eyebrow: pair(
         en.heritage.images[0].eyebrow,
@@ -208,6 +216,19 @@ export function buildInitialAuthenticCork(): EditorialContentDoc {
       ),
       image: en.inSildel.image,
       imageAlt: pair(en.inSildel.imageAlt, pt.inSildel.imageAlt),
+    },
+    biodiversity: {
+      eyebrow: pair(en.biodiversity.eyebrow, pt.biodiversity.eyebrow),
+      pullQuote: pair(en.biodiversity.pullQuote, pt.biodiversity.pullQuote),
+      title: pair(en.biodiversity.title, pt.biodiversity.title),
+      titleAccent: pair(en.biodiversity.titleAccent, pt.biodiversity.titleAccent),
+      body: paragraphPair(en.biodiversity.body, pt.biodiversity.body),
+      image: en.biodiversity.image,
+      imageAlt: pair(en.biodiversity.imageAlt, pt.biodiversity.imageAlt),
+      // Facts intentionally NOT seeded to the editorial doc — the
+      // FieldValue union doesn't carry a { value, label } shape and
+      // founder doesn't need to edit numeric stats from /admin in this
+      // pass. The page reads facts from the TS fallback directly.
     },
     cta: {
       eyebrow: pair(en.cta.eyebrow, pt.cta.eyebrow),

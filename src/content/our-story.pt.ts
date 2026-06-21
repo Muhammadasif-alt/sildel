@@ -21,14 +21,33 @@ export const ourStoryPt = {
     year: "Fundada em 2020",
   },
 
+  // "Uma questão de amor" — palavras da própria Isabel, retiradas da
+  // página /our-story de sildel.pt (feedback da fundadora, Junho 2026:
+  // o site precisa do cunho pessoal SILDEL + storytelling emocional;
+  // esta é a sua frase-assinatura + o marcador de credibilidade de 40
+  // anos que nenhum concorrente pode reivindicar). pt-PT estrito.
+  love: {
+    eyebrow: "Uma questão de amor",
+    title: "A cortiça é",
+    titleAccent: "uma questão de amor.",
+    body: [
+      "Frequentemente, quem conhece os nossos produtos quer saber o nosso segredo. Não há segredo.",
+      "Há um conhecimento de mais de quarenta anos, exclusivamente e unicamente em contacto com a cortiça — esta pequena maravilha da natureza, ainda desconhecida por tantos.",
+      "A certa altura, este envolvimento torna-se tão extraordinário que já não sabemos se a cortiça faz parte de nós, ou se somos nós que pertencemos a ela.",
+      "A resposta, no fim, é simples. A cortiça é uma questão de amor.",
+    ],
+    image: "/products/SHELL_Fundo_PRETO__MGL2103-743be0476e.webp",
+    imageAlt: "Uma escultura Sildel em cortiça em repouso, sob luz suave do atelier.",
+  },
+
   symbol: {
     eyebrow: "O Nosso Símbolo",
     title: "O lince ibérico —",
     titleAccent: "guardião da cortiça.",
     body: [
-      "No coração da Península Ibérica, onde os sobreiros se erguem majestosos, nasceu a Sildel — dedicada a honrar a cortiça autêntica. Aqui a natureza e a arte entrelaçam-se, tal como as raízes profundas do sobreiro e a agilidade do lince ibérico, nosso símbolo e inspiração.",
-      "O lince ibérico, com o seu olhar penetrante e movimentos graciosos, percorre os sobreirais como um guardião silencioso de um ecossistema único. É neste ambiente — rico em biodiversidade e história — que a Sildel encontra a sua essência.",
-      "Na Sildel, acreditamos que a verdadeira arte está em honrar a natureza. O lince, símbolo de resiliência e raridade, reflecte o nosso compromisso em preservar e elevar os recursos naturais.",
+      "No coração da Península Ibérica, onde os sobreiros se erguem majestosos, nasceu a Sildel. Aqui a natureza e a arte entrelaçam-se, tal como as raízes profundas do sobreiro e a agilidade do lince ibérico — o nosso símbolo e inspiração.",
+      "O lince percorre os sobreirais com o olhar penetrante e o passo silencioso. Um guardião discreto de um ecossistema tão raro que tem sido comparado à Amazónia e à savana africana. Restam menos de mil e quinhentos exemplares em estado selvagem. É neste mundo raro e paciente que a Sildel encontra a sua essência.",
+      "Escolhemos o lince pelo que ele representa: resiliência e raridade. O que o lince é para o sobreiral, esperamos que uma peça Sildel seja para a casa que a recebe — quieta, atenta, e feita para durar para além dos seus donos.",
     ],
     image: "/images/our-story/lynx-01.webp",
     imageAlt: "O lince ibérico — símbolo da Sildel e guardião do sobreiral.",

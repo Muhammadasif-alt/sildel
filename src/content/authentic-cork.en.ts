@@ -95,6 +95,29 @@ export const authenticCorkEn = {
     ],
   },
 
+  // Biodiversity sanctuary — facts pulled from sildel.pt /authentic-cork
+  // (founder feedback, June 2026: bring back Isabel's specific numbers
+  // that root the cork-oak forest's importance for a 45-80 audience).
+  biodiversity: {
+    eyebrow: "A living sanctuary",
+    pullQuote: "The truth belongs to nature, the engineer of creation.",
+    title: "One of the world's",
+    titleAccent: "thirty-five.",
+    body: [
+      "The Portuguese cork oak forest is one of only thirty-five biodiversity sanctuaries on Earth — held alongside the Amazon, the African savanna, the Andes and Borneo. A rare company, kept for a rare reason: this forest is alive in every layer.",
+      "It shelters more than one hundred and sixty bird species, twenty-four reptiles and amphibians, and thirty-seven mammals — among them the Iberian lynx, the Imperial eagle, and the Black stork. Some of its residents are the most endangered on the planet. Others have lived here, undisturbed, for millennia.",
+      "And it works. Every year, the cork-oak forest fixes up to fourteen million tons of CO₂. It cools the air, slows desertification, holds soil in place, and keeps the water table breathing. Cork is the bark of a tree that quietly does the work of a continent.",
+    ],
+    image: "/products/SHALE-COLLECTION_red_05_Ambiente-1a60456151.webp",
+    imageAlt:
+      "Sunlight through the canopy of an ancient Portuguese cork oak forest in the Alentejo.",
+    facts: [
+      { value: "35", label: "World biodiversity sanctuaries" },
+      { value: "160+", label: "Bird species sheltered" },
+      { value: "14M", label: "Tons of CO₂ fixed per year" },
+    ],
+  },
+
   inSildel: {
     eyebrow: "Cork at Sildel",
     title: "From bark",

@@ -15,6 +15,19 @@ export type AuthenticCorkRendered = {
   whatIsCork: StorySectionData;
   harvest: StorySectionData;
   inSildel: StorySectionData;
+  // "One of the world's thirty-five" — biodiversity + CO2 section
+  // pulled from sildel.pt /authentic-cork. Pull-quote on top, image
+  // + paragraphs in a split row, fact strip beneath.
+  biodiversity: {
+    eyebrow: string;
+    pullQuote: string;
+    title: string;
+    titleAccent?: string;
+    body: string[];
+    image: string;
+    imageAlt: string;
+    facts: Array<{ value: string; label: string }>;
+  };
   bleeds: {
     afterWhatIsCork: { src: string; alt: string };
     afterHarvest: { src: string; alt: string };
@@ -84,6 +97,16 @@ function fromTs(locale: Locale): AuthenticCorkRendered {
       image: c.inSildel.image,
       imageAlt: c.inSildel.imageAlt,
     },
+    biodiversity: {
+      eyebrow: c.biodiversity.eyebrow,
+      pullQuote: c.biodiversity.pullQuote,
+      title: c.biodiversity.title,
+      titleAccent: c.biodiversity.titleAccent,
+      body: c.biodiversity.body,
+      image: c.biodiversity.image,
+      imageAlt: c.biodiversity.imageAlt,
+      facts: c.biodiversity.facts.map((f) => ({ value: f.value, label: f.label })),
+    },
     bleeds: {
       afterWhatIsCork: {
         src: c.harvest.images[0].src,
@@ -142,6 +165,7 @@ function fromDb(
   const whatIsCork = db.whatIsCork ?? {};
   const harvest = db.harvest ?? {};
   const inSildel = db.inSildel ?? {};
+  const biodiversity = db.biodiversity ?? {};
   const properties = db.properties ?? {};
   const bleed1 = db.bleedAfterWhatIsCork ?? {};
   const bleed2 = db.bleedAfterHarvest ?? {};
@@ -177,6 +201,25 @@ function fromDb(
       body: p(inSildel.body),
       image: s(inSildel.image),
       imageAlt: t(inSildel.imageAlt),
+    },
+    biodiversity: {
+      eyebrow: t(biodiversity.eyebrow),
+      pullQuote: t(biodiversity.pullQuote),
+      title: t(biodiversity.title),
+      titleAccent: t(biodiversity.titleAccent) || undefined,
+      body: p(biodiversity.body),
+      image: s(biodiversity.image),
+      imageAlt: t(biodiversity.imageAlt),
+      facts: Array.isArray(biodiversity.facts)
+        ? (biodiversity.facts as Array<{ value?: unknown; label?: unknown }>).map((f) => ({
+            value: typeof f.value === "string" ? f.value : "",
+            label: typeof f.label === "object" && f.label !== null
+              ? readLocalizedText(f.label, locale)
+              : typeof f.label === "string"
+                ? f.label
+                : "",
+          }))
+        : [],
     },
     bleeds: {
       afterWhatIsCork: { src: s(bleed1.src), alt: t(bleed1.alt) },
