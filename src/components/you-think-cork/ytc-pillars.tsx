@@ -42,7 +42,7 @@ export function YtcPillars({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[92vh] lg:min-h-[760px]">
+      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-background lg:aspect-auto lg:h-[80vh] lg:min-h-[640px]">
         <Image
           src={imageSrc}
           alt={imageAlt}
