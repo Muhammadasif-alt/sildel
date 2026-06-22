@@ -171,21 +171,26 @@ export function HeroSlider({ slides }: { slides: readonly HeroSlide[] }) {
               )}
               aria-hidden={i !== index}
             >
-              <p className="mb-5 text-[11px] uppercase tracking-[0.45em] text-white/85">
+              {/* Eyebrow + italic tagline + CTAs hidden on mobile per
+                  founder direction (June 2026): mobile hero should read
+                  as image-first (Quinta Nova reference) — no buttons,
+                  no secondary type, just the photograph + the title at
+                  the bottom. Desktop keeps the full editorial stack. */}
+              <p className="mb-5 hidden text-[11px] uppercase tracking-[0.45em] text-white/85 md:block">
                 {slide.eyebrow}
               </p>
 
-              <h1 className="font-serif text-4xl font-light leading-[1.04] tracking-tight text-white md:text-6xl lg:text-7xl">
+              <h1 className="font-serif text-3xl font-light leading-[1.04] tracking-tight text-white md:text-6xl lg:text-7xl">
                 {slide.title}
               </h1>
 
-              <p className="mx-auto mt-6 max-w-2xl font-serif text-lg italic leading-snug text-white/90 md:text-xl lg:text-[1.4rem]">
+              <p className="mx-auto mt-6 hidden max-w-2xl font-serif text-lg italic leading-snug text-white/90 md:block md:text-xl lg:text-[1.4rem]">
                 {slide.titleAccent}
               </p>
 
               {/* Two flat rectangular CTAs side-by-side — Quinta do Crasto's
-                  olive-green primary + dark-inset secondary. */}
-              <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-0">
+                  olive-green primary + dark-inset secondary. Desktop only. */}
+              <div className="mt-10 hidden flex-col items-stretch justify-center gap-3 md:flex sm:flex-row sm:items-center sm:gap-0">
                 <Link
                   href={slide.cta.href}
                   className="inline-flex items-center justify-center bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
