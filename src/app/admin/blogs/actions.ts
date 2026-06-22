@@ -6,7 +6,7 @@ import { requireAdmin } from "@/lib/auth/admin";
 import { prisma } from "@/lib/db/prisma";
 import { BlogTag } from "@/generated/prisma";
 
-export const BLOG_TAGS = [
+const BLOG_TAGS = [
   "Atelier",
   "Forest",
   "Craft",
