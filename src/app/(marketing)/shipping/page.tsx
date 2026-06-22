@@ -50,15 +50,24 @@ export default async function ShippingPage() {
     );
   }
   const locale = await getLocale();
+  const isPt = locale === "pt";
   return (
     <LegalPage
       doc={getShipping(locale)}
       heroImage="/products/ALEXIS_MV_1032-89d7df8a82.webp"
       heroAlt={
-        locale === "pt"
+        isPt
           ? "Pilhas de cortiça portuguesa a curar ao ar livre, prontas para envio."
           : "Stacks of Portuguese cork curing in the open air, ready to be shipped."
       }
+      closingCta={{
+        eyebrow: isPt ? "Precisa de ajuda?" : "Need a hand?",
+        body: isPt
+          ? "A nossa equipa responde a todas as perguntas sobre envio em menos de 24 horas, dias úteis."
+          : "Our team answers every shipping enquiry within one working day.",
+        label: isPt ? "Falar com o atelier" : "Talk to the atelier",
+        href: "/contact",
+      }}
     />
   );
 }

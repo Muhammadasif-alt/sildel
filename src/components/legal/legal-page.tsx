@@ -1,5 +1,14 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { LegalDoc } from "@/content/legal";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
+
+export type LegalClosingCta = {
+  eyebrow: string;
+  body: string;
+  label: string;
+  href: string;
+};
 
 /**
  * Clean, readable layout for long-form legal / policy documents.
@@ -7,16 +16,20 @@ import { EditorialHero } from "@/components/editorial/editorial-hero";
  * Editorial pass (founder direction, June 2026: Quinta Nova History
  * page reference) — every legal page opens with an image-only hero
  * before the centered title block, so the policy pages share the
- * same opening rhythm as the narrative pages.
+ * same opening rhythm as the narrative pages. Pages that want to
+ * keep the visitor warm at the end (shipping, in particular) can
+ * pass `closingCta` to render the olive editorial CTA.
  */
 export function LegalPage({
   doc,
   heroImage,
   heroAlt,
+  closingCta,
 }: {
   doc: LegalDoc;
   heroImage?: string;
   heroAlt?: string;
+  closingCta?: LegalClosingCta;
 }) {
   return (
     <main className="flex flex-1 flex-col bg-background text-foreground">
@@ -87,6 +100,30 @@ export function LegalPage({
           ))}
         </div>
       </section>
+
+      {closingCta ? (
+        <section className="border-t border-border/60 bg-muted/30">
+          <div className="mx-auto max-w-4xl px-6 py-14 text-center lg:px-10 lg:py-16">
+            <p className="mb-3 text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
+              {closingCta.eyebrow}
+            </p>
+            <p className="font-serif text-2xl font-light leading-snug tracking-tight md:text-3xl">
+              {closingCta.body}
+            </p>
+            <Link
+              href={closingCta.href}
+              className="mt-8 inline-flex items-center justify-center gap-3 bg-[#5b6740] px-9 py-4 text-[11px] uppercase tracking-[0.32em] text-white transition-colors hover:bg-[#4a5530]"
+            >
+              {closingCta.label}
+              <ArrowRight
+                className="h-4 w-4"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+            </Link>
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 }

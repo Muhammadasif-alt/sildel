@@ -7,6 +7,7 @@ import {
 import { JsonLd } from "@/components/common/json-ld";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
+import { StoryBleed } from "@/components/our-story/story-bleed";
 import { resolveFaq } from "@/lib/editorial/resolvers/faq";
 
 const PAGE_PATH = "/faq";
@@ -116,6 +117,17 @@ export default async function FaqPage() {
             </ul>
           </div>
         </section>
+
+        {/* Quiet bleed before the CTA — a moment of breath between the
+            Q&A density and the call to action. */}
+        <StoryBleed
+          src="/products/EQUILIBRIUM_Equilibrium_Gibraltar_foto-ambiente-d561909279.webp"
+          alt={
+            isPt
+              ? "Atelier Sildel em Esmoriz — interior ao pôr-do-sol."
+              : "The Sildel atelier in Esmoriz at golden hour."
+          }
+        />
 
         {/* CTA */}
         <section className="border-t border-border/60 bg-muted/30">
