@@ -14,6 +14,7 @@ import { CorkProperties } from "@/components/authentic-cork/cork-properties";
 import { CorkClosing } from "@/components/authentic-cork/cork-closing";
 import { StorySection } from "@/components/our-story/story-section";
 import { StoryBleed } from "@/components/our-story/story-bleed";
+import { Sustainability } from "@/components/home/sustainability";
 import { resolveAuthenticCork } from "@/lib/editorial/resolvers/authentic-cork";
 
 const PAGE_PATH = "/authentic-cork";
@@ -266,6 +267,11 @@ export default async function AuthenticCorkPage() {
             ) : null}
           </div>
         </section>
+
+        {/* Sustainability — relocated from the home page (founder cut the
+            home section but the 9-year-harvest / regeneration narrative
+            and stats belong on the material-education page, not lost). */}
+        <Sustainability />
 
         {/* Full-bleed: weathered Sildel atelier doorway at golden hour */}
         <StoryBleed

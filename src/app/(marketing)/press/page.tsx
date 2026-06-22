@@ -10,6 +10,7 @@ import { getLocale } from "@/lib/i18n/get-locale";
 import { JsonLd } from "@/components/common/json-ld";
 import { EditorialHero } from "@/components/editorial/editorial-hero";
 import { PressAccordion } from "@/components/press/press-accordion";
+import { Newsletter } from "@/components/home/newsletter";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { pressEn } from "@/content/press";
 import { resolvePress } from "@/lib/editorial/resolvers/press";
@@ -156,6 +157,12 @@ export default async function PressPage() {
             ) : null}
           </ScrollReveal>
         </section>
+
+        {/* The Atelier Letter — relocated from the home page. Press
+            audiences (journalists, editors, collectors who land here)
+            are exactly who wants to follow Sildel's quiet release
+            cadence; once a month, never more. */}
+        <Newsletter />
       </main>
     </>
   );

@@ -13,6 +13,7 @@ import { StoryBleed } from "@/components/our-story/story-bleed";
 import { FounderEditorial } from "@/components/our-story/founder-editorial";
 import { StoryVideo } from "@/components/our-story/story-video";
 import { StoryClosing } from "@/components/our-story/story-closing";
+import { WhySildel } from "@/components/home/why-sildel";
 import { resolveOurStory } from "@/lib/editorial/resolvers/our-story";
 
 const PAGE_PATH = "/our-story";
@@ -144,6 +145,12 @@ export default async function OurStoryPage() {
 
         {/* Founder — portrait + pull quote (image RIGHT) */}
         <FounderEditorial founder={content.founder} mirror={true} />
+
+        {/* Why Sildel — three brand pillars (craft tempo, made in
+            Portugal, signed & numbered) + stats counter. Relocated
+            from the home page where the founder cut it; reads better
+            here anchoring the founder's voice with concrete pillars. */}
+        <WhySildel />
 
         {/* Cinematic video — kept from the previous design. */}
         <StoryVideo locale={locale} />
