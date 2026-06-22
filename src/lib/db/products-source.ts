@@ -20,6 +20,7 @@ import type { Locale } from "@/lib/i18n/config";
 import {
   type Product,
   PRODUCT_TEXT_PT,
+  products as fallbackProducts,
 } from "@/content/treasures";
 
 function rowToProduct(
@@ -47,25 +48,61 @@ function withPtOverlay(p: Product): Product {
   return { ...p, ...overlay };
 }
 
+/**
+ * Each of these wrappers tries MySQL first and silently falls back to the
+ * static `products` list in `/content/treasures.ts` on any failure.
+ *
+ * This keeps the marketing pages renderable even when:
+ *   - DATABASE_URL is not set (Vercel build before the env was configured),
+ *   - MySQL is unreachable (cPanel db not yet provisioned), or
+ *   - the products table is empty (fresh deploy before `npm run db:seed`).
+ *
+ * Mirrors the same fallback pattern used in `/lib/content/blog.ts`.
+ */
+
 export async function listProducts(locale: Locale): Promise<Product[]> {
-  const rows = await prisma.product.findMany({
-    orderBy: { createdAt: "asc" },
-  });
-  const items = rows.map(rowToProduct);
-  return locale === "pt" ? items.map(withPtOverlay) : items;
+  try {
+    const rows = await prisma.product.findMany({
+      orderBy: { createdAt: "asc" },
+    });
+    if (rows.length === 0) {
+      return locale === "pt"
+        ? fallbackProducts.map(withPtOverlay)
+        : fallbackProducts;
+    }
+    const items = rows.map(rowToProduct);
+    return locale === "pt" ? items.map(withPtOverlay) : items;
+  } catch {
+    return locale === "pt"
+      ? fallbackProducts.map(withPtOverlay)
+      : fallbackProducts;
+  }
 }
 
 export async function getProduct(
   locale: Locale,
   slug: string,
 ): Promise<Product | null> {
-  const row = await prisma.product.findUnique({ where: { slug } });
-  if (!row) return null;
-  const p = rowToProduct(row);
+  try {
+    const row = await prisma.product.findUnique({ where: { slug } });
+    if (row) {
+      const p = rowToProduct(row);
+      return locale === "pt" ? withPtOverlay(p) : p;
+    }
+  } catch {
+    // fall through to static lookup
+  }
+  const p = fallbackProducts.find((x) => x.slug === slug);
+  if (!p) return null;
   return locale === "pt" ? withPtOverlay(p) : p;
 }
 
 export async function listProductSlugs(): Promise<string[]> {
-  const rows = await prisma.product.findMany({ select: { slug: true } });
-  return rows.map((r) => r.slug);
+  try {
+    const rows = await prisma.product.findMany({ select: { slug: true } });
+    if (rows.length > 0) return rows.map((r) => r.slug);
+  } catch {
+    // fall through to static slugs
+  }
+  return fallbackProducts.map((p) => p.slug);
 }
