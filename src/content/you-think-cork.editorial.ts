@@ -25,8 +25,11 @@ const PEDESTAL_IMAGE =
 // Distinct from every image used above this point so the closing
 // form section reads as a fresh frame, not a repeat (founder
 // feedback, June 2026 fifteenth pass — same as /contact fix).
+// Swapped off HORIZON's studio shot (founder feedback, June 2026
+// twentieth pass: the piece read small against too much whitespace);
+// using an Alexis atelier shot so the closing frame fills.
 const CTA_IMAGE =
-  "/products/HORIZON_Fundo_BRANCO__MGL0462_1-9b8324db9e.webp";
+  "/products/ALEXIS_MV_1036-769ae6c3e3.webp";
 
 const en = {
   hero: {
@@ -87,7 +90,7 @@ const en = {
     heading: "Reach out and join us in shaping the future.",
     image: CTA_IMAGE,
     imageAlt:
-      "Horizon — a sculptural cork piece on a clean white backdrop, the curve suggesting a long view forward.",
+      "Alexis low table at rest in the Sildel atelier — a sculptural cork volume in soft daylight.",
   },
 };
 
@@ -150,7 +153,7 @@ const pt: typeof en = {
     heading: "Fale connosco e ajude-nos a moldar o futuro.",
     image: CTA_IMAGE,
     imageAlt:
-      "Horizon — escultura de cortiça sobre fundo branco; a curva sugere uma vista longa em frente.",
+      "Mesa baixa Alexis em descanso no atelier Sildel — volume escultórico em cortiça à luz suave do dia.",
   },
 };
 

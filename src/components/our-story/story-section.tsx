@@ -36,13 +36,20 @@ export function StorySection({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      <div className="group relative aspect-[4/3] w-full overflow-hidden bg-muted lg:aspect-auto lg:h-[88vh] lg:min-h-[720px]">
+      {/* bg-background (not bg-muted) so a product photo with a pure-white
+          backdrop blends seamlessly with the page canvas — Isabel's
+          tonality direction (June 2026): pieces should read against a
+          clear, light field so the cork's grain pops, "like in our
+          Instagram posts". Container height eased from 88vh / 720px min
+          to 75vh / 560px min so vertically-tall product shots don't
+          drift into an empty top half. */}
+      <div className="group relative aspect-[4/3] w-full overflow-hidden bg-background lg:aspect-auto lg:h-[75vh] lg:min-h-[560px]">
         <Image
           src={data.image}
           alt={data.imageAlt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
         />
       </div>
     </ScrollReveal>

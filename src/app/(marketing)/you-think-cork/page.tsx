@@ -136,7 +136,10 @@ export default async function YouThinkCorkPage() {
           className="relative w-full bg-background border-t border-border/60"
         >
           <div className="grid grid-cols-1 items-stretch lg:grid-cols-[45%_55%]">
-            <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:min-h-0">
+            {/* Image column eased from full-screen (lg:h-screen) to ~75vh
+                so atelier/product shots don't drift into an empty top
+                half on desktop (founder feedback, June 2026). */}
+            <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden lg:h-[75vh] lg:min-h-[560px]">
               <Image
                 src={content.contactCta.image}
                 alt={content.contactCta.imageAlt}

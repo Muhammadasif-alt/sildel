@@ -143,10 +143,11 @@ export default async function ContactPage() {
           className="relative w-full border-y border-border/60 bg-background"
         >
           <div className="grid grid-cols-1 items-stretch lg:grid-cols-[45%_55%]">
-            {/* Image column — full-bleed, sticky on desktop. Uses
-                form-specific photo so all three slots on /contact (hero,
-                intro, form) carry distinct frames. */}
-            <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:min-h-0">
+            {/* Image column eased from full-screen (lg:h-screen, sticky)
+                to a fixed ~75vh slab so atelier/product shots fill the
+                frame instead of drifting into an empty top half on
+                desktop (founder feedback, June 2026). */}
+            <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden lg:h-[75vh] lg:min-h-[560px]">
               <Image
                 src={content.form.image}
                 alt={content.form.imageAlt}
