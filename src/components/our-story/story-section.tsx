@@ -36,14 +36,12 @@ export function StorySection({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      {/* bg-background (not bg-muted) so a product photo with a pure-white
-          backdrop blends seamlessly with the page canvas — Isabel's
-          tonality direction (June 2026): pieces should read against a
-          clear, light field so the cork's grain pops, "like in our
-          Instagram posts". Container height eased from 88vh / 720px min
-          to 75vh / 560px min so vertically-tall product shots don't
-          drift into an empty top half. */}
-      <div className="group relative aspect-[4/3] w-full overflow-hidden bg-background lg:aspect-auto lg:h-[75vh] lg:min-h-[560px]">
+      {/* Pure aspect-driven container (June 2026, latest pass): viewport-
+          height (75vh / 88vh) was still cropping the top of portrait
+          product shots so the piece sat in the lower third. Locking to
+          a 4:5 aspect on every viewport lets each photo fill at its
+          natural composition — no top wash, no bottom dead-zone. */}
+      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-background">
         <Image
           src={data.image}
           alt={data.imageAlt}

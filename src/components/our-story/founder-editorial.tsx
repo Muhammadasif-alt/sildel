@@ -37,7 +37,7 @@ export function FounderEditorial({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-background lg:aspect-auto lg:h-[75vh] lg:min-h-[560px]">
+      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-background">
         <Image
           src={founder.image}
           alt={founder.imageAlt}
