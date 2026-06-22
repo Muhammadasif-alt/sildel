@@ -78,7 +78,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://i.ytimg.com" />
         <link rel="dns-prefetch" href="https://maps.google.com" />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-background text-foreground">
         <ReduxProvider>
           {!isAdmin && <SiteHeader />}
           <div

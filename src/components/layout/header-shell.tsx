@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { User } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-config";
 import { LanguageToggle } from "./language-toggle";
 import { MobileNav } from "./mobile-nav";
@@ -50,12 +49,8 @@ export function HeaderShell({
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <div className="flex h-20 items-center md:h-24">
-          {/* Mobile hamburger on the left */}
-          <div className="mr-3 md:hidden">
-            <MobileNav transparent={false} />
-          </div>
-
-          {/* Logo — flush left, bigger glyph (founder direction). */}
+          {/* Logo — flush left on every viewport (founder direction
+              June 2026: Quinta Nova reference — logo left, menu right). */}
           <Link
             href="/"
             className="group flex shrink-0 items-center"
@@ -91,7 +86,9 @@ export function HeaderShell({
             ))}
           </nav>
 
-          {/* Right controls — language picker + account icon. */}
+          {/* Right controls — language picker + account icon on desktop,
+              hamburger on mobile (founder direction, June 2026 — Quinta
+              Nova pattern: logo opposite menu). */}
           <div className="ml-auto flex shrink-0 items-center gap-3 md:gap-5">
             <LanguageToggle className="hidden md:flex" />
             <Link
@@ -101,8 +98,10 @@ export function HeaderShell({
             >
               <User className="h-[18px] w-[18px]" strokeWidth={1.6} />
             </Link>
-            {/* Mobile-only filler — keeps mobile right edge balanced */}
-            <div className="w-10 md:hidden" aria-hidden />
+            {/* Mobile hamburger — right side, mirrors Quinta Nova. */}
+            <div className="md:hidden">
+              <MobileNav transparent={false} />
+            </div>
           </div>
         </div>
       </div>
