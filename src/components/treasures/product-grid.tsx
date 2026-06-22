@@ -92,9 +92,11 @@ function SingleTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Big bold full-bleed hero tile, 4:3 portrait-friendly ratio so
-          1920×2880 studio shots breathe before object-cover crops them. */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
+      {/* Hero tile eased from 4:3 landscape to 4:5 portrait (June 2026)
+          so 1920×2880 studio shots fit without cropping the piece off
+          the top + bottom. bg-background keeps any Fundo_BRANCO bleed
+          flush with the canvas. */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-background">
         <Image
           src={product.image}
           alt={product.name}
@@ -131,7 +133,9 @@ function PairTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <div className="relative aspect-[3/4] w-full overflow-hidden">
+      {/* bg-background flush with the page canvas so a Fundo_BRANCO
+          tile reads as one continuous field (June 2026). */}
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-background">
         <Image
           src={product.image}
           alt={product.name}

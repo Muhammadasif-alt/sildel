@@ -48,16 +48,25 @@ export function ProductHero({
         className="object-cover object-center scale-105 transition-transform duration-[14000ms] ease-out hover:scale-110"
       />
 
-      {/* Left wash so bottom-left copy reads on any source frame, plus a
-          bottom wash so the lower text band has its own scrim. Matches
-          the home hero gradient recipe. */}
+      {/* Gradient stack — strengthened (June 2026) so a Fundo_BRANCO
+          studio shot doesn't dominate the frame as a flat white slab.
+          A near-black left wash + a radial vignette pull the piece
+          forward and give the bottom-left copy a calm dark canvas. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/15"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 30% 60%, transparent 0%, transparent 35%, rgba(0,0,0,0.45) 100%)",
+        }}
       />
 
       {/* Content — anchored bottom-left, same rhythm as the home hero. */}
