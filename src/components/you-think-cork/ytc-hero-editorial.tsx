@@ -17,20 +17,19 @@ export function YtcHeroEditorial({
   return (
     <section
       aria-label={eyebrow}
-      className="relative w-full overflow-hidden bg-muted"
+      className="relative w-full overflow-hidden bg-[#15110d]"
     >
-      <div className="relative h-[60vh] min-h-[420px] w-full md:h-[72vh] lg:h-[88vh] lg:min-h-[640px]">
+      {/* Same treatment as cork-hero-editorial (June 2026): show the
+          full source image in a dark gallery frame, eased height, no
+          Ken Burns. /you-think-cork hero is ABYSS_Fundo_PRETO too. */}
+      <div className="relative h-[55vh] min-h-[360px] w-full md:h-[65vh] lg:h-[70vh] lg:min-h-[520px]">
         <Image
           src={src}
           alt={alt}
           fill
           priority
           sizes="100vw"
-          className="object-cover"
-          style={{
-            animation:
-              "kenBurns 24s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate",
-          }}
+          className="object-contain"
         />
       </div>
     </section>
