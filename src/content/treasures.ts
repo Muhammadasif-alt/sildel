@@ -246,6 +246,10 @@ const R = {
 
 export const products: Product[] = [
   {
+    // CRITICAL FIX (founder feedback 2026-06-23): main image was
+    // mapped to an ISLAND_Fundo_PRETO photo — wrong piece, wrong
+    // background. Now points at SHELL's own white-backdrop photo so
+    // the piece reads as itself, with no fake base or noise.
     slug: "shell",
     name: "Shell",
     tagline: "A dance between nature and art",
@@ -260,7 +264,7 @@ export const products: Product[] = [
       "Each piece, separate, ready to reinvent itself in new compositions and functions.",
       "SHELL is a visual poem, an expression of versatility in constant transformation.",
     ],
-    image: "/products/ISLAND_Fundo_PRETO_07_01_01_FP-5432cd5483.webp",
+    image: "/products/SHELL_Fundo_BRANCO__MGL1443-4681c4db54.webp",
     gallery: R.shell,
   },
   {
@@ -278,7 +282,13 @@ export const products: Product[] = [
       "The contrast between rough cork and polished marble underlines the dignity of each material.",
       "A unique sculptural object, signed and numbered, made to anchor a room.",
     ],
-    image: "/products/-SCAR_Fundo_PRETO__MGL3061-de1ed8741d.webp",
+    // CRITICAL FIX (founder feedback 2026-06-23): main image was
+    // pointing at an ÓSCAR Fundo_PRETO photo — wrong product, wrong
+    // base. Isabel: "marble piece missing", "kaali base bilkul bhi
+    // sahi nahi hai". ABYSS rests on a white marble plinth; the new
+    // image is its own studio shot on white so the marble + cork
+    // are both visible.
+    image: "/products/ABYSS_Fundo_BRANCO_15.01.01_FB-f5af59fe33.webp",
     gallery: R.abyss,
   },
   {
@@ -380,7 +390,11 @@ export const products: Product[] = [
     material: "Authentic Cork",
     description:
       "Island is a single, sweeping piece of cork bark suspended above a small marble plinth — a horizon you can hold.",
-    image: "/products/ABYSS_Fundo_PRETO_15.02.02_FP-ac8a4e1aa0.webp",
+    // CRITICAL FIX (founder feedback 2026-06-23): main image was an
+    // ABYSS_Fundo_PRETO macro — wrong product entirely. Now points at
+    // Island's own white-backdrop shot so the cork bark + marble
+    // plinth read correctly.
+    image: "/products/ISLAND_Fundo_BRANCO_07_01_01_FB-2058bb9d73.webp",
     gallery: R.island,
   },
   {
@@ -393,7 +407,10 @@ export const products: Product[] = [
     material: "Authentic Cork and Tempered Glass",
     description:
       "Two slabs of cork bark support a sheet of tempered glass — a coffee table that feels half-found, half-made.",
-    image: "/products/BOND__MGL9177-60b23d261e.webp",
+    // CRITICAL FIX (founder feedback 2026-06-23): main image was a
+    // BOND photo, not Gibraltar at all. Now points at the real
+    // Gibraltar studio shot.
+    image: "/products/GIBRALTAR__MGL1908-2076b50b77.webp",
     gallery: R.gibraltar,
   },
   {
@@ -407,7 +424,10 @@ export const products: Product[] = [
     material: "Authentic Cork on Brass",
     description:
       "Crescent is a long horizontal chandelier — cork rings strung on a brass rail. A signature piece for a dining table or hallway.",
-    image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
+    // CRITICAL FIX (founder feedback 2026-06-23): main image was a
+    // GIBRALTAR ambiente shot, not Crescent. Now uses Crescent's own
+    // horizontal lamp studio shot from its real gallery.
+    image: R.crescent[0],
     gallery: R.crescent,
   },
   {
@@ -491,7 +511,10 @@ export const products: Product[] = [
     longDescription: [
       "W 74 × D 44 × H 29 cm (29.1\" × 17.3\" × 11.4\"), 5kg.",
     ],
-    image: "/products/BELIZE-fp_Fundo_PRETO__MGL2180-262f640287.webp",
+    // Switched from Fundo_PRETO (black backdrop hid the marble
+    // vessel) to Fundo_BRANCO so the cork + white marble both read
+    // clearly (founder feedback 2026-06-23).
+    image: "/products/BELIZE-fp_Fundo_BRANCO__MGL1410-0b939713cb.webp",
     gallery: R.belize,
   },
   {
@@ -670,52 +693,15 @@ export const products: Product[] = [
     image: R.shaleSilver[0],
     gallery: R.shaleSilver,
   },
-  {
-    slug: "vitaqua",
-    name: "Vitaqua",
-    tagline: "A tribute to the cork stopper",
-    category: "Fine Arts",
-    priceCents: 40300,
-    currency: "EUR",
-    material: "Authentic cork and glass",
-    description:
-      "An artistic piece celebrating the heritage of wine cork closures — cork paired with glass to form a continuous flow that turns each flower into a living masterpiece.",
-    image: "/products/ALEXIS_MV_1032-89d7df8a82.webp",
-  },
-  {
-    slug: "bonfire",
-    name: "Bonfire",
-    tagline: "Cork pieces cradling glass vessels",
-    category: "Fine Arts",
-    priceCents: 46000,
-    currency: "EUR",
-    material: "Authentic cork and glass",
-    description:
-      "Cork elements come together to form an organic foundation that holds glass candle vessels — the warm ambiance of a glowing bonfire (candles not included).",
-    longDescription: [
-      "W 450 × D 450 × H 120 mm, 0.4 kg.",
-    ],
-    image: "/products/FIREFLIES_Fundo_BRANCO_14_01_03_FB-24e02f3d62.webp",
-    // Bonfire's single atelier render only — generic Nano Banana
-    // placeholders removed because they showed unrelated cork pieces.
-  },
-  {
-    slug: "vitavele",
-    name: "Vitavele",
-    tagline: "A tribute to the cork stopper",
-    category: "Lighting",
-    priceCents: 40300,
-    currency: "EUR",
-    material: "Authentic cork and glass",
-    description:
-      "Authentic cork merges with glass — a dance of light and warmth that transforms each candle into a symbol of serenity.",
-    longDescription: [
-      "W 900 × D 50 × H 60 mm, 0.3 kg.",
-    ],
-    image: "/products/CRESCENT---S_CRESCENT-1330x300mm_Fundo-Branco_Horizontal-Est-6e506606c0.webp",
-    // Vitavele's single atelier render only — the generic horizontal-
-    // lamp + flatlay placeholders showed unrelated cork-stopper pieces.
-  },
+  // Vitaqua / Bonfire / Vitavele removed 2026-06-23. None of the
+  // three has its own folder inside `public/FOTOS PRODUTO/` (the
+  // photo set Isabel actually sent), so each one was placeholding
+  // with a photo of a different product (Alexis / Fireflies /
+  // Crescent). Isabel's feedback that day was explicit:
+  //   "Jo cheez exist hi nahi karti usse dikhana theek nahi —
+  //    yeh bechne ke liye galat hai."
+  // The honest fix is to drop them from the catalogue until she
+  // sends real product photography for these three pieces.
   {
     // Pearl — pulled from sildel.pt because it was missing from the
     // FOTOS PRODUTO folder the founder shared. Images temporarily
