@@ -321,7 +321,9 @@ export const products: Product[] = [
     longDescription: [
       "Each cork tile is hand-cut and placed to honor its natural grain. The resulting surface is warm, soft, and unrepeatable.",
     ],
-    image: "/images/treasures/granada.webp",
+    // Granada — pulled from sildel.pt 2026-06-23 (no folder inside
+    // FOTOS PRODUTO).
+    image: "/products/GRANADA_Fundo_BRANCO_Featured-903f52e7ff.webp",
     // No dedicated atelier renders yet — detail page falls back to the
     // hero image alone rather than padding the gallery with mismatched
     // generic placeholders (founder direction, June 2026, eighth pass).
@@ -693,15 +695,69 @@ export const products: Product[] = [
     image: R.shaleSilver[0],
     gallery: R.shaleSilver,
   },
-  // Vitaqua / Bonfire / Vitavele removed 2026-06-23. None of the
-  // three has its own folder inside `public/FOTOS PRODUTO/` (the
-  // photo set Isabel actually sent), so each one was placeholding
-  // with a photo of a different product (Alexis / Fireflies /
-  // Crescent). Isabel's feedback that day was explicit:
-  //   "Jo cheez exist hi nahi karti usse dikhana theek nahi —
-  //    yeh bechne ke liye galat hai."
-  // The honest fix is to drop them from the catalogue until she
-  // sends real product photography for these three pieces.
+  // Vitaqua / Vitavele / Bonfire — restored 2026-06-23 with their
+  // OWN photos pulled from sildel.pt (still live on the founder's
+  // WooCommerce). FOTOS PRODUTO didn't include them but the live
+  // site does, so removing them would have been the wrong call.
+  // scripts/fetch-missing.mjs handled the WP → /public/products/
+  // optimise round.
+  {
+    slug: "vitaqua",
+    name: "Vitaqua",
+    tagline: "A tribute to the cork stopper",
+    category: "Fine Arts",
+    priceCents: 40300,
+    currency: "EUR",
+    material: "Authentic cork and glass",
+    description:
+      "An artistic piece celebrating the heritage of wine cork closures — cork paired with glass to form a continuous flow that turns each flower into a living masterpiece.",
+    image: "/products/VITAQUA_Fundo_BRANCO_01-1e4cc7294b.webp",
+    gallery: [
+      "/products/VITAQUA_Fundo_BRANCO_01-1e4cc7294b.webp",
+      "/products/VITAQUA_Fundo_BRANCO_02-d5ce53ce1e.webp",
+      "/products/VITAQUA_Fundo_BRANCO_03-31b0b64c35.webp",
+    ],
+  },
+  {
+    slug: "vitavele",
+    name: "Vitavele",
+    tagline: "A tribute to the cork stopper",
+    category: "Lighting",
+    priceCents: 40300,
+    currency: "EUR",
+    material: "Authentic cork and glass",
+    description:
+      "Authentic cork merges with glass — a dance of light and warmth that transforms each candle into a symbol of serenity.",
+    longDescription: [
+      "W 900 × D 50 × H 60 mm, 0.3 kg.",
+    ],
+    image: "/products/VITAVELE_Fundo_BRANCO_01-87aa4d0496.webp",
+    gallery: [
+      "/products/VITAVELE_Fundo_BRANCO_01-87aa4d0496.webp",
+      "/products/VITAVELE_Fundo_BRANCO_02-6e75641555.webp",
+      "/products/VITAVELE_Fundo_BRANCO_03-90bbc17a2e.webp",
+    ],
+  },
+  {
+    slug: "bonfire",
+    name: "Bonfire",
+    tagline: "Cork pieces cradling glass vessels",
+    category: "Fine Arts",
+    priceCents: 46000,
+    currency: "EUR",
+    material: "Authentic cork and glass",
+    description:
+      "Cork elements come together to form an organic foundation that holds glass candle vessels — the warm ambiance of a glowing bonfire (candles not included).",
+    longDescription: [
+      "W 450 × D 450 × H 120 mm, 0.4 kg.",
+    ],
+    image: "/products/BONFIRE_Fundo_BRANCO_01-4ecb763ceb.webp",
+    gallery: [
+      "/products/BONFIRE_Fundo_BRANCO_01-4ecb763ceb.webp",
+      "/products/BONFIRE_Fundo_BRANCO_02-5e69c1f0dd.webp",
+      "/products/BONFIRE_Fundo_BRANCO_03-55cc91d736.webp",
+    ],
+  },
   {
     // Pearl — pulled from sildel.pt because it was missing from the
     // FOTOS PRODUTO folder the founder shared. Images temporarily
