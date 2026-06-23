@@ -92,17 +92,17 @@ function SingleTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Hero tile eased back to landscape 3:2 (June 2026) + object-
-          contain so the whole piece is always visible — no more top-
-          cropped Shell / Halley shots. bg-background blends any
-          Fundo_BRANCO bleed with the canvas. */}
+      {/* Hero tile — 3:2 landscape + object-cover (June 2026 latest
+          pass). object-contain made the piece float in its own black
+          backdrop; cover fills the tile so the piece dominates.
+          object-center keeps the cork piece anchored in view. */}
       <div className="relative aspect-[3/2] w-full overflow-hidden bg-background">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="100vw"
-          className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
+          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
         />
       </div>
 
@@ -133,15 +133,16 @@ function PairTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Square pair tile + object-contain (June 2026) — full piece
-          always visible, no crop, height stays moderate. */}
+      {/* Square pair tile + object-cover (June 2026 latest pass) —
+          piece zooms to fill the square instead of floating in its
+          own studio backdrop. */}
       <div className="relative aspect-[1/1] w-full overflow-hidden bg-background">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(min-width: 768px) 48vw, 100vw"
-          className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
         />
       </div>
 
