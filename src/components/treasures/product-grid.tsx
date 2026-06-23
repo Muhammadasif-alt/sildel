@@ -92,17 +92,17 @@ function SingleTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* Hero tile eased from 4:3 landscape to 4:5 portrait (June 2026)
-          so 1920×2880 studio shots fit without cropping the piece off
-          the top + bottom. bg-background keeps any Fundo_BRANCO bleed
-          flush with the canvas. */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-background">
+      {/* Hero tile eased back to landscape 3:2 (June 2026) + object-
+          contain so the whole piece is always visible — no more top-
+          cropped Shell / Halley shots. bg-background blends any
+          Fundo_BRANCO bleed with the canvas. */}
+      <div className="relative aspect-[3/2] w-full overflow-hidden bg-background">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="100vw"
-          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
+          className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
         />
       </div>
 
@@ -133,15 +133,15 @@ function PairTile({ product }: { product: Product }) {
       aria-label={`${product.name} — ${product.category}`}
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {/* bg-background flush with the page canvas so a Fundo_BRANCO
-          tile reads as one continuous field (June 2026). */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-background">
+      {/* Square pair tile + object-contain (June 2026) — full piece
+          always visible, no crop, height stays moderate. */}
+      <div className="relative aspect-[1/1] w-full overflow-hidden bg-background">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(min-width: 768px) 48vw, 100vw"
-          className="object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+          className="object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
         />
       </div>
 

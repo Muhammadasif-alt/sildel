@@ -36,12 +36,11 @@ export function StorySection({
       direction={mirror ? "right" : "left"}
       className={mirror ? "order-1 lg:order-2" : undefined}
     >
-      {/* Pure aspect-driven container (June 2026, latest pass): viewport-
-          height (75vh / 88vh) was still cropping the top of portrait
-          product shots so the piece sat in the lower third. Locking to
-          a 4:5 aspect on every viewport lets each photo fill at its
-          natural composition — no top wash, no bottom dead-zone. */}
-      <div className="group relative aspect-[4/5] w-full overflow-hidden bg-background">
+      {/* Square aspect (June 2026 latest pass — "hight kam kro"): 4:5
+          portrait was still too tall on landscape product shots. 1:1
+          square keeps height moderate, fits both portrait and landscape
+          source photos with minimal cropping. */}
+      <div className="group relative aspect-[1/1] w-full overflow-hidden bg-background">
         <Image
           src={data.image}
           alt={data.imageAlt}
