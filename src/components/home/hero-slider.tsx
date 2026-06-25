@@ -284,7 +284,11 @@ function HeroImageLayer({
           fetchPriority={priority ? "high" : "auto"}
           quality={priority ? 85 : 80}
           onError={() => setErrored(true)}
-          className="object-contain object-center"
+          className="object-cover object-center"
+          style={{
+            animation:
+              "kenBurns 24s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate",
+          }}
         />
       )}
     </div>

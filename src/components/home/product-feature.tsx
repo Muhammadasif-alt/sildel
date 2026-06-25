@@ -41,7 +41,7 @@ export function ProductFeature({
           alt={data.imageAlt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className="object-contain"
+          className="object-cover"
         />
       </div>
     </ScrollReveal>

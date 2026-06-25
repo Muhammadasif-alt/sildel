@@ -38,15 +38,14 @@ export function ProductHero({
       aria-labelledby="product-hero-heading"
       className="relative w-full overflow-hidden isolate min-h-[70svh] md:min-h-[88svh] bg-[#15110d]"
     >
-      {/* Single image — object-contain so the whole HD photo fits inside
-          the frame and nothing is cropped/spills out. */}
+      {/* Full-bleed image — object-cover fills the frame with no side gaps. */}
       <Image
         src={image}
         alt={imageAlt ?? `${name} — ${tagline}`}
         fill
         priority
         sizes="100vw"
-        className="object-contain object-center"
+        className="object-cover object-center"
       />
 
       {/* Gradient stack — strengthened (June 2026) so a Fundo_BRANCO
