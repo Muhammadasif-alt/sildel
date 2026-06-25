@@ -144,6 +144,9 @@ export default async function ProductPage({ params }: Params) {
     benefitsEyebrow: locale === "pt" ? "Porquê esta peça" : "Why this piece",
     benefitsTitle: locale === "pt" ? "Feita para" : "Made to",
     benefitsAccent: locale === "pt" ? "durar gerações." : "outlast trends.",
+    useCasesEyebrow: locale === "pt" ? "Como usar" : "How you'll use it",
+    useCasesTitle: locale === "pt" ? "Onde esta peça" : "Where this piece",
+    useCasesAccent: locale === "pt" ? "ganha vida." : "comes to life.",
     faqEyebrow: locale === "pt" ? "Perguntas" : "Questions",
     faqTitle: locale === "pt" ? "Tudo o que precisa" : "Everything you might",
     faqAccent: locale === "pt" ? "de saber." : "want to know.",
@@ -317,6 +320,56 @@ export default async function ProductPage({ params }: Params) {
             </ul>
           </div>
         </section>
+
+        {/* ─────────── USE CASES ─────────── */}
+        {/* Plain-language "how you'll use it" section (founder direction,
+            June 2026): brought back as text-only cards — three concrete
+            use cases per piece — so clients understand the product at a
+            glance, without the earlier mismatched-render mosaic. */}
+        {extras.useCases.length > 0 && (
+          <section
+            aria-labelledby="usecases-heading"
+            className="relative w-full bg-background border-t border-border/60"
+          >
+            <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-12 lg:py-28">
+              <div className="max-w-3xl mx-auto text-center mb-14 lg:mb-16">
+                <p className="text-xs tracking-[0.4em] uppercase text-primary mb-6">
+                  {i18n.useCasesEyebrow}
+                </p>
+                <h2
+                  id="usecases-heading"
+                  className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.04] tracking-tight"
+                >
+                  {i18n.useCasesTitle}{" "}
+                  <span className="italic text-primary">{i18n.useCasesAccent}</span>
+                </h2>
+                <div className="mx-auto h-px w-16 bg-primary/60 my-8" aria-hidden />
+              </div>
+
+              <ul className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+                {extras.useCases.map((uc, i) => (
+                  <li
+                    key={i}
+                    className="flex flex-col gap-4 rounded-sm border border-border bg-card p-7 lg:p-8"
+                  >
+                    <span
+                      aria-hidden
+                      className="font-serif text-3xl font-light leading-none text-primary/70"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-serif text-xl lg:text-2xl font-light tracking-tight text-foreground leading-snug">
+                      {uc.title}
+                    </h3>
+                    <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">
+                      {uc.body}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* ─────────── ABOUT THIS PIECE ─────────── */}
         <section

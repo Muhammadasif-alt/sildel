@@ -13,6 +13,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { findProduct, type Product } from "./treasures";
 
 export type ProductFaq = { q: string; a: string };
+export type ProductUseCase = { title: string; body: string };
 export type ProductStory = {
   eyebrow: string;
   title: string;
@@ -22,9 +23,100 @@ export type ProductStory = {
 };
 export type ProductExtras = {
   benefits: string[];
+  useCases: ProductUseCase[];
   faqs: ProductFaq[];
   story: ProductStory;
 };
+
+/**
+ * Three plain-language use cases per product, so a client can see at a glance
+ * how the piece actually fits into a home. The first card is always the
+ * concrete placement (reusing the PLACEMENT map above); the second is tuned to
+ * the product's category; the third is the universal "keep it / pass it on"
+ * collector angle. We build these instead of hand-writing 30 trios so they stay
+ * consistent and update automatically as products are added.
+ */
+function buildUseCasesEn(
+  name: string,
+  category: string | undefined,
+  placement: string,
+): ProductUseCase[] {
+  const where: ProductUseCase = {
+    title: "Where it lives best",
+    body: `Place ${name} ${placement} — it sits as both a functional object and a quiet sculptural anchor.`,
+  };
+  const keep: ProductUseCase = {
+    title: "A piece to keep",
+    body: `Signed and numbered within its edition, ${name} is made to be lived with for years and passed on.`,
+  };
+  switch (category) {
+    case "Tables":
+      return [
+        where,
+        { title: "Ready when you host", body: "A natural gathering point for drinks, books, and small objects the moment guests arrive." },
+        keep,
+      ];
+    case "Lighting":
+      return [
+        where,
+        { title: "Warm evening light", body: "Lit, the cork shade softens hard light into a golden glow — calm light for unwinding or for hosting." },
+        keep,
+      ];
+    case "Fine Arts":
+      return [
+        where,
+        { title: "A focal point for the room", body: "Gives a wall or surface a single, considered point of interest — an anchor a whole space can be built around." },
+        keep,
+      ];
+    default:
+      return [
+        where,
+        { title: "A conversation piece", body: "Its hand-worked grain invites a second look — a natural talking point the moment someone walks in." },
+        keep,
+      ];
+  }
+}
+
+function buildUseCasesPt(
+  name: string,
+  category: string | undefined,
+  placement: string,
+): ProductUseCase[] {
+  const where: ProductUseCase = {
+    title: "Onde fica melhor",
+    body: `Coloque a ${name} ${placement} — vive como objecto funcional e âncora escultural silenciosa.`,
+  };
+  const keep: ProductUseCase = {
+    title: "Uma peça para guardar",
+    body: `Assinada e numerada dentro da sua edição, a ${name} é feita para durar anos e ser passada de mão em mão.`,
+  };
+  switch (category) {
+    case "Tables":
+      return [
+        where,
+        { title: "Pronta para receber", body: "Um ponto de encontro natural para bebidas, livros e pequenos objectos assim que chegam convidados." },
+        keep,
+      ];
+    case "Lighting":
+      return [
+        where,
+        { title: "Luz quente ao fim do dia", body: "Acesa, o abajur de cortiça transforma a luz dura num brilho dourado e suave — luz calma para descansar ou para receber." },
+        keep,
+      ];
+    case "Fine Arts":
+      return [
+        where,
+        { title: "Um ponto focal para a sala", body: "Dá a uma parede ou superfície um único ponto de interesse — uma âncora à volta da qual o espaço se organiza." },
+        keep,
+      ];
+    default:
+      return [
+        where,
+        { title: "Uma peça de conversa", body: "O grão trabalhado à mão convida a um segundo olhar — um tema de conversa natural assim que alguém entra." },
+        keep,
+      ];
+  }
+}
 
 /** Where each product reads most beautifully — used in benefits + FAQ answers. */
 const PLACEMENT_EN: Record<string, string> = {
@@ -167,7 +259,9 @@ function buildEn(slug: string, name: string, product: Product | undefined): Prod
     ctaLabel: "Talk to us about this piece",
   };
 
-  return { benefits, faqs, story };
+  const useCases = buildUseCasesEn(name, product?.category, placement);
+
+  return { benefits, useCases, faqs, story };
 }
 
 function buildPt(slug: string, name: string, product: Product | undefined): ProductExtras {
@@ -225,5 +319,7 @@ function buildPt(slug: string, name: string, product: Product | undefined): Prod
     ctaLabel: "Fale connosco sobre esta peça",
   };
 
-  return { benefits, faqs, story };
+  const useCases = buildUseCasesPt(name, product?.category, placement);
+
+  return { benefits, useCases, faqs, story };
 }
