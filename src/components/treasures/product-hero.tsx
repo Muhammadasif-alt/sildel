@@ -38,14 +38,17 @@ export function ProductHero({
       aria-labelledby="product-hero-heading"
       className="relative w-full overflow-hidden isolate min-h-[70svh] md:min-h-[88svh] bg-[#15110d]"
     >
-      {/* Single full-bleed image — slow Ken Burns on mount. */}
+      {/* Single image, object-contain so the whole piece is always visible
+          — tall lamps and wide tables alike show in full instead of being
+          cropped top/bottom by the banner. The dark #15110d ground frames
+          contained shots cleanly. (Was object-cover, which cut tall pieces.) */}
       <Image
         src={image}
         alt={imageAlt ?? `${name} — ${tagline}`}
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center scale-105 transition-transform duration-[14000ms] ease-out hover:scale-110"
+        className="object-contain object-center"
       />
 
       {/* Gradient stack — strengthened (June 2026) so a Fundo_BRANCO
