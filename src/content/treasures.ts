@@ -244,7 +244,7 @@ const R = {
 };
 
 
-const PRODUCTS_RAW: Product[] = [
+export const products: Product[] = [
   {
     // CRITICAL FIX (founder feedback 2026-06-23): main image was
     // mapped to an ISLAND_Fundo_PRETO photo — wrong piece, wrong
@@ -786,56 +786,6 @@ const PRODUCTS_RAW: Product[] = [
     ],
   },
 ];
-
-/**
- * Primary-image overrides — the cork pieces were re-shot for the original
- * sildel.pt store with tight, flattering crops (the product fills the frame
- * instead of floating in studio black/white). We downloaded those exact
- * crops into /products/<slug>-old.webp and use them as each piece's main
- * image so the hero, listing, related rows and home reels all read the way
- * the old site did. The multi-angle studio `gallery` shots are kept as-is.
- */
-const OLD_SITE_IMAGE: Record<string, string> = {
-  shell: "/products/shell-old.webp",
-  abyss: "/products/abyss-old.webp",
-  alexis: "/products/alexis-old.webp",
-  granada: "/products/granada-old.webp",
-  "hot-spring": "/products/hot-spring-old.webp",
-  bond: "/products/bond-old.webp",
-  fireflies: "/products/fireflies-old.webp",
-  eclipse: "/products/eclipse-old.webp",
-  island: "/products/island-old.webp",
-  gibraltar: "/products/gibraltar-old.webp",
-  crescent: "/products/crescent-old.webp",
-  "carre-dor": "/products/carre-dor-old.webp",
-  "eclipse-copper": "/products/eclipse-copper-old.webp",
-  "side-by-side": "/products/side-by-side-old.webp",
-  "shale-coast": "/products/shale-coast-old.webp",
-  belize: "/products/belize-old.webp",
-  equilibrium: "/products/equilibrium-old.webp",
-  shale: "/products/shale-old.webp",
-  "leaf-golden": "/products/leaf-golden-old.webp",
-  "leaf-brown": "/products/leaf-brown-old.webp",
-  halley: "/products/halley-old.webp",
-  oscar: "/products/oscar-old.webp",
-  marlin: "/products/marlin-old.webp",
-  olympia: "/products/olympia-old.webp",
-  horizon: "/products/horizon-old.webp",
-  "shale-belly-red": "/products/shale-belly-red-old.webp",
-  "shale-belly-silver": "/products/shale-belly-silver-old.webp",
-  vitaqua: "/products/vitaqua-old.webp",
-  bonfire: "/products/bonfire-old.webp",
-  vitavele: "/products/vitavele-old.webp",
-};
-
-export const products: Product[] = PRODUCTS_RAW.map((p) => {
-  const old = OLD_SITE_IMAGE[p.slug];
-  if (!old) return p;
-  // Lead the gallery with the old-site crop too, so the detail gallery's
-  // first frame matches the hero; drop any duplicate further down.
-  const gallery = [old, ...(p.gallery ?? []).filter((g) => g !== old)];
-  return { ...p, image: old, gallery };
-});
 
 export function findProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);

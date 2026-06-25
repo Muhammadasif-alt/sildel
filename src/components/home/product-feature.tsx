@@ -3,9 +3,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import type { HomeContent } from "@/content/home";
-import IMAGE_SIZES from "@/content/image-sizes.json";
-
-const SIZES = IMAGE_SIZES as unknown as Record<string, [number, number]>;
 
 type Feature = HomeContent["productFeatures"][number];
 
@@ -33,11 +30,6 @@ export function ProductFeature({
   mirror?: boolean;
   headingId: string;
 }) {
-  // Portrait shots (tall lamp photos with a long pole) get anchored to the
-  // top so the cork piece itself stays fully in frame instead of being
-  // cropped through the middle; landscape shots keep a centre crop.
-  const [iw, ih] = SIZES[data.image] ?? [1600, 1067];
-  const portrait = ih > iw;
   const imageBlock = (
     <ScrollReveal
       direction={mirror ? "right" : "left"}
@@ -49,7 +41,7 @@ export function ProductFeature({
           alt={data.imageAlt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className={`object-cover ${portrait ? "object-top" : "object-center"}`}
+          className="object-contain"
         />
       </div>
     </ScrollReveal>

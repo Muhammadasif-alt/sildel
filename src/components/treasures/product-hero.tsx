@@ -38,10 +38,8 @@ export function ProductHero({
       aria-labelledby="product-hero-heading"
       className="relative w-full overflow-hidden isolate min-h-[70svh] md:min-h-[88svh] bg-[#15110d]"
     >
-      {/* Single image, object-contain so the whole piece is always visible
-          — tall lamps and wide tables alike show in full instead of being
-          cropped top/bottom by the banner. The dark #15110d ground frames
-          contained shots cleanly. (Was object-cover, which cut tall pieces.) */}
+      {/* Single image — object-contain so the whole HD photo fits inside
+          the frame and nothing is cropped/spills out. */}
       <Image
         src={image}
         alt={imageAlt ?? `${name} — ${tagline}`}

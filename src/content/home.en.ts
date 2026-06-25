@@ -28,7 +28,7 @@ export const homeEn = {
       titleAccent: "24-carat gold leaf meets the authentic grain of cork.",
       description:
         "Gold leaf against authentic cork — geometry in quiet conversation.",
-      image: "/products/carre-dor-old.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1481-fe89adcd19.webp",
       imageAlt: "Sculptural cork art object under soft warm light against a deep matte-black ground.",
       cta: { label: "Discover Carré d'Or", href: "/treasures/carre-dor" },
       cta2: { label: "All Limited", href: "/treasures?category=fine-arts" },
@@ -39,7 +39,7 @@ export const homeEn = {
       title: "Eclipse",
       titleAccent: "Sculptural cork that holds the warmth of the forest.",
       description: "Sculptural cork forms that hold the warmth of the forest.",
-      image: "/products/eclipse-copper-old.webp",
+      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
       imageAlt: "Eclipse — sculptural copper-toned cork lighting under soft directional atelier light.",
       cta: { label: "View Eclipse", href: "/treasures?q=eclipse" },
       cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
@@ -50,7 +50,7 @@ export const homeEn = {
       title: "Gibraltar",
       titleAccent: "A defining silhouette — designed to last decades.",
       description: "A defining silhouette — elegant lines designed to last decades.",
-      image: "/products/gibraltar-old.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt: "Gibraltar — Sildel signature cork table in a sun-lit Portuguese atelier with an arched alcove.",
       cta: { label: "Explore Gibraltar", href: "/treasures/gibraltar" },
       cta2: { label: "All Tables", href: "/treasures?category=tables" },
@@ -61,7 +61,7 @@ export const homeEn = {
       title: "Hot Spring",
       titleAccent: "An earth-fired cork form on a quiet plinth.",
       description: "An earth-fired cork form on a quiet plinth — sculpture, made to anchor a room.",
-      image: "/products/hot-spring-old.webp",
+      image: "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-01_01-f3f538f873.webp",
       imageAlt: "Hot Spring — an earth-fired cork sculpture on a quiet plinth under warm directional light.",
       cta: { label: "Explore Hot Spring", href: "/treasures/hot-spring" },
       cta2: { label: "All Sculpture", href: "/treasures?category=sculpture" },
@@ -72,7 +72,7 @@ export const homeEn = {
       title: "Side by Side",
       titleAccent: "Frosted glass meets the authentic grain of cork.",
       description: "Frosted glass meets the authentic grain of cork — a quiet wall piece, framed.",
-      image: "/products/side-by-side-old.webp",
+      image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
       imageAlt: "Side by Side — a framed cork-and-frosted-glass wall piece in soft directional light.",
       cta: { label: "Discover Side by Side", href: "/treasures/side-by-side" },
       cta2: { label: "All Fine Arts", href: "/treasures?category=fine-arts" },
@@ -95,7 +95,7 @@ export const homeEn = {
       "Each piece signed, numbered, never reissued",
       "Sustainably harvested — no trees ever felled",
     ],
-    image: "/products/gibraltar-old.webp",
+    image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
     imageAlt:
       "A Sildel cork table in a sun-lit Portuguese atelier interior with arched alcove and olive branch.",
     cta: { label: "Explore treasures", href: "/treasures" },
@@ -121,7 +121,7 @@ export const homeEn = {
       body:
         "A sculptural cork form on a stone plinth — earth-fired, perforated by hand, made to anchor a quiet room. Each piece is shaped and signed by Isabel in the Esmoriz atelier. Available in three formats.",
       cta: { label: "Discover Hot Spring", href: "/treasures/hot-spring" },
-      image: "/products/hot-spring-old.webp",
+      image: "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-02_01-d107d61c38.webp",
       imageAlt:
         "Hot Spring — a perforated cork sculpture on a stone podium, lit by warm directional atelier light.",
     },
@@ -131,7 +131,7 @@ export const homeEn = {
       body:
         "Twenty-four-carat gold leaf pressed against the untouched grain of Portuguese cork — geometry in quiet conversation with the raw bark of the forest. Limited edition, each square signed by the hand that finished it.",
       cta: { label: "Discover Carré d'Or", href: "/treasures/carre-dor" },
-      image: "/products/carre-dor-old.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1494-e73b3ecee6.webp",
       imageAlt:
         "Carré d'Or — Sildel cork treasure with 24-carat gold leaf, photographed in soft directional atelier light.",
     },
@@ -141,7 +141,7 @@ export const homeEn = {
       body:
         "A defining silhouette — cork supports under glass, elegant lines designed to last decades. A signature table that holds the weight of a room without ever raising its voice. Available in three lengths.",
       cta: { label: "Explore Gibraltar", href: "/treasures/gibraltar" },
-      image: "/products/gibraltar-old.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt:
         "Gibraltar — Sildel cork table in a sun-lit Portuguese atelier with an arched alcove.",
     },
@@ -151,7 +151,7 @@ export const homeEn = {
       body:
         "A sculptural cork form that holds the warmth of the forest in light. The grain becomes architecture; the light becomes mood. A new collection from the Sildel atelier in Esmoriz.",
       cta: { label: "Explore Eclipse", href: "/treasures/eclipse" },
-      image: "/products/eclipse-copper-old.webp",
+      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
       imageAlt:
         "Eclipse — sculptural cork lighting in a softly-lit Portuguese atelier.",
     },
@@ -331,7 +331,7 @@ export const homeEn = {
         name: "Hot Spring",
         tagline: "Earth-fired centerpieces",
         description: "Warmth and weight in every silhouette.",
-        image: "/products/hot-spring-old.webp",
+        image: "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-01_01-f3f538f873.webp",
         href: "/treasures/hot-spring",
       },
       {

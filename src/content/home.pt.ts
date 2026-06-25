@@ -27,7 +27,7 @@ export const homePt = {
       title: "Carré d'Or",
       titleAccent: "Folha de ouro de 24 quilates sobre o grão autêntico da cortiça.",
       description: "Folha de ouro sobre cortiça autêntica — geometria em diálogo silencioso.",
-      image: "/products/carre-dor-old.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1481-fe89adcd19.webp",
       imageAlt: "Objecto escultural em cortiça sob luz quente direccional, contra um fundo preto mate profundo.",
       cta: { label: "Descobrir Carré d'Or", href: "/treasures/carre-dor" },
       cta2: { label: "Todas Edições", href: "/treasures?category=fine-arts" },
@@ -38,7 +38,7 @@ export const homePt = {
       title: "Eclipse",
       titleAccent: "Cortiça escultural que guarda o calor da floresta.",
       description: "Formas esculturais em cortiça que guardam o calor da floresta.",
-      image: "/products/eclipse-copper-old.webp",
+      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
       imageAlt: "Eclipse — candeeiro escultural em cortiça cor de cobre, sob luz direccional suave de atelier.",
       cta: { label: "Ver Eclipse", href: "/treasures?q=eclipse" },
       cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
@@ -49,7 +49,7 @@ export const homePt = {
       title: "Gibraltar",
       titleAccent: "Uma silhueta marcante — desenhada para durar décadas.",
       description: "Uma silhueta marcante — linhas elegantes desenhadas para durar décadas.",
-      image: "/products/gibraltar-old.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt: "Gibraltar — mesa de cortiça de assinatura Sildel num atelier português iluminado pelo sol, com alcova em arco.",
       cta: { label: "Explorar Gibraltar", href: "/treasures/gibraltar" },
       cta2: { label: "Todas Mesas", href: "/treasures?category=tables" },
@@ -60,7 +60,7 @@ export const homePt = {
       title: "Hot Spring",
       titleAccent: "Uma forma de cortiça assente sobre um plinto silencioso.",
       description: "Uma forma de cortiça assente sobre um plinto silencioso — escultura, feita para ancorar uma sala.",
-      image: "/products/hot-spring-old.webp",
+      image: "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-01_01-f3f538f873.webp",
       imageAlt: "Hot Spring — escultura de cortiça queimada em terra sobre um plinto silencioso, sob luz quente direccional.",
       cta: { label: "Explorar Hot Spring", href: "/treasures/hot-spring" },
       cta2: { label: "Toda Escultura", href: "/treasures?category=sculpture" },
@@ -71,7 +71,7 @@ export const homePt = {
       title: "Side by Side",
       titleAccent: "Vidro fosco encontra-se com o grão autêntico da cortiça.",
       description: "Vidro fosco encontra-se com o grão autêntico da cortiça — uma peça de parede, emoldurada.",
-      image: "/products/side-by-side-old.webp",
+      image: "/products/SIDE-by-SIDE_Fundo_BRANCO__MGL1521-e8190a09d3.webp",
       imageAlt: "Side by Side — peça de parede em cortiça e vidro fosco, emoldurada, sob luz direccional suave.",
       cta: { label: "Descobrir Side by Side", href: "/treasures/side-by-side" },
       cta2: { label: "Todas Belas Artes", href: "/treasures?category=fine-arts" },
@@ -95,7 +95,7 @@ export const homePt = {
       "Cada peça assinada, numerada e nunca reeditada",
       "Extraída de forma sustentável — sem árvores abatidas",
     ],
-    image: "/products/gibraltar-old.webp",
+    image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
     imageAlt:
       "Uma mesa de cortiça Sildel no interior de um atelier português banhado pela luz solar, com nicho em arco e ramo de oliveira.",
     cta: { label: "Explorar tesouros", href: "/treasures" },
@@ -122,7 +122,7 @@ export const homePt = {
       body:
         "Uma forma escultural em cortiça sobre um plinto de pedra — cozida pela terra, perfurada à mão, feita para ancorar uma sala silenciosa. Cada peça é moldada e assinada pela Isabel no atelier de Esmoriz. Disponível em três formatos.",
       cta: { label: "Descobrir Hot Spring", href: "/treasures/hot-spring" },
-      image: "/products/hot-spring-old.webp",
+      image: "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-02_01-d107d61c38.webp",
       imageAlt:
         "Hot Spring — escultura em cortiça perfurada sobre um pódio de pedra, iluminada por luz direccional quente.",
     },
@@ -132,7 +132,7 @@ export const homePt = {
       body:
         "Folha de ouro de 24 quilates pressionada contra o veio puro da cortiça portuguesa — geometria em diálogo silencioso com a casca crua da floresta. Edição limitada, cada quadrado assinado pela mão que o terminou.",
       cta: { label: "Descobrir Carré d'Or", href: "/treasures/carre-dor" },
-      image: "/products/carre-dor-old.webp",
+      image: "/products/CARR--D-OR-fp_Fundo_BRANCO__MGL1494-e73b3ecee6.webp",
       imageAlt:
         "Carré d'Or — tesouro Sildel em cortiça com folha de ouro de 24 quilates, fotografado sob luz direccional suave de atelier.",
     },
@@ -142,7 +142,7 @@ export const homePt = {
       body:
         "Uma silhueta marcante — apoios em cortiça sob vidro, linhas elegantes desenhadas para durar décadas. Uma mesa de assinatura que sustenta o peso de uma sala sem nunca levantar a voz. Disponível em três comprimentos.",
       cta: { label: "Explorar Gibraltar", href: "/treasures/gibraltar" },
-      image: "/products/gibraltar-old.webp",
+      image: "/products/GIBRALTAR_Equilibrium_Gibraltar_foto-ambiente-0f37be0423.webp",
       imageAlt:
         "Gibraltar — mesa em cortiça num atelier português banhado pela luz solar, com nicho em arco.",
     },
@@ -152,7 +152,7 @@ export const homePt = {
       body:
         "Uma forma escultural em cortiça que guarda o calor da floresta em luz. O veio torna-se arquitectura; a luz torna-se atmosfera. Uma nova colecção do atelier Sildel em Esmoriz.",
       cta: { label: "Explorar Eclipse", href: "/treasures/eclipse" },
-      image: "/products/eclipse-copper-old.webp",
+      image: "/products/ECLIPSE_Fundo_BRANCO_copper_Candeeiro-01_MV_0376-copy_1-99d8e37972.webp",
       imageAlt:
         "Eclipse — candeeiro de cortiça escultural num atelier português suavemente iluminado.",
     },
@@ -332,7 +332,7 @@ export const homePt = {
         name: "Hot Spring",
         tagline: "Peças centrais cozidas pela terra",
         description: "Calor e peso em cada silhueta.",
-        image: "/products/hot-spring-old.webp",
+        image: "/products/HOT-SPRING-COLLECTION_Fundo_PRETO_Conj-10_candeeiro-01_01-f3f538f873.webp",
         href: "/treasures/hot-spring",
       },
       {
