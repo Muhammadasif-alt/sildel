@@ -10,16 +10,16 @@ export default async function AdminBlogsPage() {
 
   return (
     <div>
-      <header className="mb-8 flex items-end justify-between gap-4">
+      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="font-serif text-3xl text-foreground md:text-4xl">Blogs</h1>
+          <h1 className="font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">Blogs</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Manage journal posts shown at /blog.
           </p>
         </div>
         <Link
           href="/admin/blogs/new"
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
+          className="inline-flex w-fit items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
         >
           <Plus className="h-4 w-4" strokeWidth={2} />
           New post
@@ -35,7 +35,8 @@ export default async function AdminBlogsPage() {
         </div>
       ) : (
         <div className="overflow-hidden rounded-none border border-border bg-card">
-          <table className="w-full text-left text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[720px] text-left text-sm">
             <thead className="bg-muted/40 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               <tr>
                 <th className="px-6 py-3 font-medium">Title</th>
@@ -98,6 +99,7 @@ export default async function AdminBlogsPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </div>

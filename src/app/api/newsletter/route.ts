@@ -1,20 +1,16 @@
 /**
  * POST /api/newsletter — subscribe an email to the Sildel newsletter.
  *
- * Idempotent: re-submitting an existing email just re-activates it instead of
- * throwing a duplicate-key error.
+ * Idempotent: re-submitting an existing email is a no-op.
  *
  * Body: { email: string, source?: string }
  */
 import { NextResponse } from "next/server";
-import { connectDb } from "@/lib/db/connect";
-import { SubscriberModel } from "@/lib/models/subscriber.model";
+import { prisma } from "@/lib/db/prisma";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
-  await connectDb();
-
   try {
     const body = await req.json();
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
@@ -25,11 +21,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Please provide a valid email" }, { status: 400 });
     }
 
-    const subscriber = await SubscriberModel.findOneAndUpdate(
-      { email },
-      { email, source, active: true },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
-    );
+    const subscriber = await prisma.subscriber.upsert({
+      where: { email },
+      update: { source },
+      create: { email, source },
+    });
 
     return NextResponse.json({ subscribed: true, subscriber }, { status: 201 });
   } catch (err) {

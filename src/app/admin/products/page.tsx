@@ -13,16 +13,16 @@ export default async function AdminProductsPage() {
 
   return (
     <div>
-      <header className="mb-8 flex items-center justify-between">
+      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-serif text-3xl text-foreground md:text-4xl">Products</h1>
+          <h1 className="font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">Products</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             {products.length} {products.length === 1 ? "treasure" : "treasures"} in the catalog.
           </p>
         </div>
         <Link
           href="/admin/products/new"
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
+          className="inline-flex w-fit items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
         >
           <Plus className="h-4 w-4" strokeWidth={2} />
           Add product
@@ -35,7 +35,8 @@ export default async function AdminProductsPage() {
             No products yet. Click <em>Add product</em> or run <code>npm run seed</code>.
           </p>
         ) : (
-          <table className="w-full text-left text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px] text-left text-sm">
             <thead className="bg-muted/40 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               <tr>
                 <th className="px-6 py-3 font-medium">Product</th>
@@ -103,6 +104,7 @@ export default async function AdminProductsPage() {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
     </div>

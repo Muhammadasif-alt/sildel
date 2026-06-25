@@ -3,7 +3,16 @@
     "allow": [
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(48\\).toString\\('hex'\\)\\)\")",
       "Bash(npm ls *)",
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "mcp__novamira-sildel-pt__mcp-adapter-execute-ability",
+      "Bash(git reset *)",
+      "Bash(grep -c \"Open menu\\\\|Admin navigation\" /tmp/admin-products.html /tmp/admin-shell.html /tmp/admin-dashboard.html 2>&1)",
+      "Read(//tmp/**)",
+      "Bash(NODE_OPTIONS=--use-system-ca vercel --prod)",
+      "Bash(NODE_OPTIONS=--use-system-ca vercel ls)"
     ]
   }
 }

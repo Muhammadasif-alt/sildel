@@ -10,9 +10,9 @@ import { prisma } from "@/lib/db/prisma";
  */
 export default async function AdminDashboardPage() {
   const [productCount, blogCount, mediaCount] = await Promise.all([
-    prisma.product.count(),
-    prisma.blog.count(),
-    prisma.mediaAsset.count(),
+    prisma.product.count().catch(() => 0),
+    prisma.blog.count().catch(() => 0),
+    prisma.mediaAsset.count().catch(() => 0),
   ]);
 
   const stats = [
@@ -24,7 +24,7 @@ export default async function AdminDashboardPage() {
   return (
     <div>
       <header className="mb-10">
-        <h1 className="font-serif text-3xl text-foreground md:text-4xl">Dashboard</h1>
+        <h1 className="font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">Dashboard</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Manage the Sildel catalogue, journal and media library.
         </p>
@@ -57,7 +57,7 @@ export default async function AdminDashboardPage() {
         })}
       </div>
 
-      <section className="rounded-none border border-border bg-card p-8">
+      <section className="rounded-none border border-border bg-card p-5 sm:p-8">
         <h2 className="font-serif text-xl text-foreground">Quick actions</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           Add a new treasure to the catalogue, publish a journal post, or

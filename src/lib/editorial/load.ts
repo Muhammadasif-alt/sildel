@@ -1,22 +1,15 @@
 import "server-only";
-import { connectDb } from "@/lib/db/connect";
-import { EditorialContentModel } from "@/lib/models/editorial-content.model";
 import type { EditorialContentDoc } from "./types";
 
 /**
- * Load the stored editorial content for a page. Returns `null` if the
- * page hasn't been edited in admin yet (in which case the public route
- * should fall back to its TS file).
+ * Editorial overrides used to live in MongoDB. After the 2026-06-24 Mongo
+ * cleanup the editorial-block CMS was retired in favour of the simpler
+ * /admin/pages field editor backed by Prisma. Resolvers still call this
+ * helper for forwards-compatibility — it just returns null so every
+ * marketing page falls back to its TS-file content.
  */
 export async function loadEditorialContent(
-  pageKey: string,
+  _pageKey: string,
 ): Promise<EditorialContentDoc | null> {
-  try {
-    await connectDb();
-    const doc = await EditorialContentModel.findOne({ pageKey }).lean();
-    if (!doc || !doc.content) return null;
-    return doc.content as EditorialContentDoc;
-  } catch {
-    return null;
-  }
+  return null;
 }

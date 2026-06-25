@@ -1,20 +1,16 @@
 /**
- * GET /api/health — sanity check that the API is up and MongoDB is reachable.
- *
- * Use this to verify your .env.local is wired correctly. Open
- * http://localhost:3000/api/health in a browser.
+ * GET /api/health — sanity check that the API is up and MySQL is reachable.
  */
 import { NextResponse } from "next/server";
-import { connectDb } from "@/lib/db/connect";
+import { prisma } from "@/lib/db/prisma";
 
 export async function GET() {
   try {
-    const conn = await connectDb();
+    const ping = await prisma.$queryRaw<Array<{ ok: number }>>`SELECT 1 AS ok`;
     return NextResponse.json({
       status: "ok",
       db: "connected",
-      database: conn.connection.name,
-      readyState: conn.connection.readyState,
+      ping: ping?.[0]?.ok === 1 ? "pong" : "no-rows",
     });
   } catch (err) {
     return NextResponse.json(

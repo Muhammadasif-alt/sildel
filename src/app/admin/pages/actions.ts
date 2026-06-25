@@ -3,8 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { randomUUID } from "crypto";
 import { requireAdmin } from "@/lib/auth/admin";
-import { connectDb } from "@/lib/db/connect";
-import { PageContentModel } from "@/lib/models/page-content.model";
+import { prisma } from "@/lib/db/prisma";
 import { findPage } from "@/lib/content/page-list";
 import { findBlockType } from "@/lib/blocks/registry";
 import type { Block, StoredPage } from "@/lib/blocks/types";
@@ -26,8 +25,6 @@ export async function savePageBlocks(
   await requireAdmin();
   if (!findPage(pageKey)) throw new Error(`Unknown page: ${pageKey}`);
 
-  await connectDb();
-
   const blocks = (payload.blocks ?? [])
     .filter((b) => findBlockType(b.type))
     .map((b, i) => ({
@@ -38,18 +35,56 @@ export async function savePageBlocks(
       content: b.content && typeof b.content === "object" ? b.content : {},
     }));
 
-  await PageContentModel.findOneAndUpdate(
-    { pageKey },
-    {
-      pageKey,
-      blocks,
-      seo: payload.seo ?? {
-        title: { pt: "", en: "" },
-        description: { pt: "", en: "" },
-      },
+  const seo = payload.seo ?? {
+    title: { pt: "", en: "" },
+    description: { pt: "", en: "" },
+  };
+
+  await prisma.pageContent.upsert({
+    where: { pageKey },
+    update: {
+      blocks: blocks as never,
+      seo: seo as never,
     },
-    { upsert: true, new: true }
-  );
+    create: {
+      pageKey,
+      blocks: blocks as never,
+      seo: seo as never,
+    },
+  });
+
+  revalidateForPage(pageKey);
+  return { ok: true };
+}
+
+/**
+ * Save all fields for a page in one shot. The simple editor sends the full
+ * sections/fields tree on each save.
+ *
+ * Shape: { [sectionKey]: { [fieldKey]: string } }
+ */
+export async function savePageContentAction(
+  pageKey: string,
+  values: Record<string, Record<string, string>>,
+): Promise<{ ok: true }> {
+  await requireAdmin();
+  if (!findPage(pageKey)) throw new Error(`Unknown page: ${pageKey}`);
+
+  const sections: Record<string, { fields: Record<string, string> }> = {};
+  for (const [sectionKey, fields] of Object.entries(values ?? {})) {
+    if (!fields || typeof fields !== "object") continue;
+    const clean: Record<string, string> = {};
+    for (const [fk, fv] of Object.entries(fields)) {
+      if (typeof fv === "string") clean[fk] = fv;
+    }
+    sections[sectionKey] = { fields: clean };
+  }
+
+  await prisma.pageContent.upsert({
+    where: { pageKey },
+    update: { sections },
+    create: { pageKey, sections },
+  });
 
   revalidateForPage(pageKey);
   return { ok: true };

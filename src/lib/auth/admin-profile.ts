@@ -1,10 +1,9 @@
 /**
- * Helper to fetch (and lazily upsert) the current admin's profile doc.
+ * Helper to fetch (and lazily upsert) the current admin's profile row.
  * Used by the admin layout to feed avatar/displayName into the topbar.
  */
 import "server-only";
-import { connectDb } from "@/lib/db/connect";
-import { AdminProfileModel } from "@/lib/models/admin-profile.model";
+import { prisma } from "@/lib/db/prisma";
 
 export type AdminProfileView = {
   email: string;
@@ -13,17 +12,17 @@ export type AdminProfileView = {
 };
 
 export async function getAdminProfile(email: string): Promise<AdminProfileView> {
+  const normalized = email.toLowerCase();
   try {
-    await connectDb();
-    const doc = await AdminProfileModel.findOneAndUpdate(
-      { email: email.toLowerCase() },
-      { $setOnInsert: { email: email.toLowerCase() } },
-      { upsert: true, new: true }
-    ).lean();
+    const row = await prisma.adminProfile.upsert({
+      where: { email: normalized },
+      update: {},
+      create: { email: normalized },
+    });
     return {
       email,
-      displayName: doc?.displayName ?? "",
-      avatarUrl: doc?.avatarUrl ?? "",
+      displayName: row.displayName,
+      avatarUrl: row.avatarUrl,
     };
   } catch {
     return { email, displayName: "", avatarUrl: "" };

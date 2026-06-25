@@ -5,8 +5,7 @@
 import { headers } from "next/headers";
 import { requireAdmin } from "@/lib/auth/admin";
 import { getAdminProfile } from "@/lib/auth/admin-profile";
-import { AdminSidebar } from "@/components/admin/sidebar";
-import { AdminTopbar } from "@/components/admin/topbar";
+import { AdminShell } from "@/components/admin/admin-shell";
 import { AdminThemeProvider } from "@/components/admin/theme-provider";
 
 export const metadata = {
@@ -40,21 +39,13 @@ export default async function AdminLayout({
 
   return (
     <AdminThemeProvider initial={theme}>
-      <div className="flex min-h-dvh bg-background text-foreground">
-        <AdminSidebar adminEmail={session.email} />
-        <div className="flex min-h-dvh flex-1 flex-col overflow-x-hidden">
-          <AdminTopbar
-            adminEmail={session.email}
-            displayName={profile.displayName}
-            avatarUrl={profile.avatarUrl}
-          />
-          <main className="flex-1">
-            <div className="mx-auto max-w-[1700px] px-6 py-8 lg:px-10 lg:py-10">
-              {children}
-            </div>
-          </main>
-        </div>
-      </div>
+      <AdminShell
+        adminEmail={session.email}
+        displayName={profile.displayName}
+        avatarUrl={profile.avatarUrl}
+      >
+        {children}
+      </AdminShell>
     </AdminThemeProvider>
   );
 }

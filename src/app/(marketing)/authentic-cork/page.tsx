@@ -71,8 +71,9 @@ export const metadata = buildMetadata({
 
 export default async function AuthenticCorkPage() {
   const locale = await getLocale();
-  // Resolved from Mongo if the founder has edited the page in admin,
-  // otherwise from the TS file fallback. Same shape either way.
+  // Resolved from the static content layer — the editorial CMS reader
+  // (loadEditorialContent) now always returns null after the Mongo
+  // cleanup, so this is effectively the TS fallback.
   const content = await resolveAuthenticCork(locale);
 
   const breadcrumbs = buildBreadcrumbJsonLd([

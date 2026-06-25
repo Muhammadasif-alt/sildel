@@ -7,7 +7,7 @@
  *   import { prisma } from "@/lib/db/prisma";
  *   const products = await prisma.product.findMany();
  */
-import { PrismaClient } from "@/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 
 declare global {
   // eslint-disable-next-line no-var

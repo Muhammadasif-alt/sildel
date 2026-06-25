@@ -39,7 +39,6 @@ export async function SiteHeader() {
     <HeaderShell
       navItems={navItems}
       logoDark={logoDark}
-      accountLabel={ui.header.account}
       homeLabel={ui.nav.home}
     />
   );

@@ -1,17 +1,31 @@
 import Link from "next/link";
 import { ArrowRight, FileText } from "lucide-react";
 import { PAGES } from "@/lib/content/page-list";
-import { connectDb } from "@/lib/db/connect";
-import { PageContentModel } from "@/lib/models/page-content.model";
+import { prisma } from "@/lib/db/prisma";
 
 export const dynamic = "force-dynamic";
 
-async function loadBlockCounts(): Promise<Record<string, number>> {
+type SectionsShape = Record<string, { fields?: Record<string, string> }>;
+
+async function loadEditedCounts(): Promise<Record<string, number>> {
   try {
-    await connectDb();
-    const docs = await PageContentModel.find({}, { pageKey: 1, blocks: 1 }).lean();
+    const rows = await prisma.pageContent.findMany({
+      select: { pageKey: true, sections: true },
+    });
     const out: Record<string, number> = {};
-    for (const d of docs) out[d.pageKey] = Array.isArray(d.blocks) ? d.blocks.length : 0;
+    for (const r of rows) {
+      let count = 0;
+      const sections =
+        r.sections && typeof r.sections === "object" && !Array.isArray(r.sections)
+          ? (r.sections as SectionsShape)
+          : {};
+      for (const s of Object.values(sections)) {
+        for (const v of Object.values(s.fields ?? {})) {
+          if (typeof v === "string" && v.trim().length > 0) count++;
+        }
+      }
+      out[r.pageKey] = count;
+    }
     return out;
   } catch {
     return {};
@@ -19,14 +33,15 @@ async function loadBlockCounts(): Promise<Record<string, number>> {
 }
 
 export default async function AdminPagesIndex() {
-  const counts = await loadBlockCounts();
+  const counts = await loadEditedCounts();
 
   return (
     <div>
       <header className="mb-8">
-        <h1 className="font-serif text-3xl text-foreground md:text-4xl">Pages</h1>
+        <h1 className="font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">Pages</h1>
         <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-          Edit any page on the website. Add, reorder, hide, or delete sections — all changes are saved per page.
+          Pick a page to edit its text content and images. Changes save per
+          field and update the live site immediately.
         </p>
       </header>
 
@@ -49,7 +64,7 @@ export default async function AdminPagesIndex() {
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">{p.description}</p>
                 <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">
-                  {count} {count === 1 ? "block" : "blocks"} · {p.publicPath}
+                  {count} edited · {p.publicPath}
                 </p>
               </div>
             </Link>

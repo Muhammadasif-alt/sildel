@@ -1,10 +1,6 @@
 "use server";
 
-import { connectDb } from "@/lib/db/connect";
-import {
-  CONTACT_TOPIC_VALUES,
-  ContactMessageModel,
-} from "@/lib/models/contact-message.model";
+import { prisma } from "@/lib/db/prisma";
 
 export type ContactFormState = {
   ok: boolean;
@@ -29,8 +25,9 @@ export async function sendContactMessage(
   const name = asString(formData.get("name"));
   const email = asString(formData.get("email")).toLowerCase();
   const phone = asString(formData.get("phone"));
-  const topicRaw = asString(formData.get("topic"));
+  const subject = asString(formData.get("topic")) || asString(formData.get("subject"));
   const message = asString(formData.get("message"));
+  const locale = asString(formData.get("locale")) || "en";
 
   if (name.length < 2) {
     return { ok: false, message: "Please enter your name." };
@@ -42,18 +39,9 @@ export async function sendContactMessage(
     return { ok: false, message: "Please write a message of at least 10 characters." };
   }
 
-  const topic = (CONTACT_TOPIC_VALUES as readonly string[]).includes(topicRaw)
-    ? (topicRaw as (typeof CONTACT_TOPIC_VALUES)[number])
-    : "general";
-
   try {
-    await connectDb();
-    await ContactMessageModel.create({
-      name,
-      email,
-      phone: phone || undefined,
-      topic,
-      message,
+    await prisma.contactMessage.create({
+      data: { name, email, phone, subject, message, locale },
     });
     return { ok: true, message: "Thank you — we'll be in touch within two working days." };
   } catch {

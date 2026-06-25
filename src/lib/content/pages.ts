@@ -12,13 +12,12 @@
  *      `await getPageField("home", "hero", "heading", "The cork that…")`.
  */
 import "server-only";
-import { connectDb } from "@/lib/db/connect";
-import { PageContentModel } from "@/lib/models/page-content.model";
+import { prisma } from "@/lib/db/prisma";
 
 export type FieldDef = {
   key: string;
   label: string;
-  type: "text" | "textarea";
+  type: "text" | "textarea" | "image";
   hint?: string;
 };
 
@@ -75,6 +74,7 @@ export const PAGE_SCHEMAS: PageSchema[] = [
           { key: "eyebrow", label: "Eyebrow", type: "text" },
           { key: "heading", label: "Heading", type: "textarea" },
           { key: "body", label: "Intro paragraph", type: "textarea" },
+          { key: "image", label: "Hero image", type: "image" },
         ],
       },
     ],
@@ -91,6 +91,7 @@ export const PAGE_SCHEMAS: PageSchema[] = [
           { key: "eyebrow", label: "Eyebrow", type: "text" },
           { key: "heading", label: "Heading", type: "textarea" },
           { key: "body", label: "Intro paragraph", type: "textarea" },
+          { key: "image", label: "Hero image", type: "image" },
         ],
       },
     ],
@@ -107,6 +108,7 @@ export const PAGE_SCHEMAS: PageSchema[] = [
           { key: "eyebrow", label: "Eyebrow", type: "text" },
           { key: "heading", label: "Heading", type: "textarea" },
           { key: "body", label: "Intro paragraph", type: "textarea" },
+          { key: "image", label: "Hero image", type: "image" },
         ],
       },
     ],
@@ -123,6 +125,7 @@ export const PAGE_SCHEMAS: PageSchema[] = [
           { key: "eyebrow", label: "Eyebrow", type: "text" },
           { key: "heading", label: "Heading", type: "textarea" },
           { key: "body", label: "Intro paragraph", type: "textarea" },
+          { key: "image", label: "Hero image", type: "image" },
         ],
       },
     ],
@@ -139,6 +142,7 @@ export const PAGE_SCHEMAS: PageSchema[] = [
           { key: "eyebrow", label: "Eyebrow", type: "text" },
           { key: "heading", label: "Heading", type: "textarea" },
           { key: "body", label: "Intro paragraph", type: "textarea" },
+          { key: "image", label: "Hero image", type: "image" },
         ],
       },
       {
@@ -209,25 +213,22 @@ export async function getPageContent(
   pageKey: string
 ): Promise<StoredSections> {
   try {
-    await connectDb();
-    const doc = await PageContentModel.findOne({ pageKey }).lean();
-    if (!doc?.sections) return {};
-    // Mongoose Map -> plain object
+    const row = await prisma.pageContent.findUnique({
+      where: { pageKey },
+      select: { sections: true },
+    });
+    const raw = row?.sections;
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+
     const out: StoredSections = {};
-    const sections =
-      doc.sections instanceof Map
-        ? Object.fromEntries(doc.sections)
-        : (doc.sections as unknown as StoredSections);
-    for (const [k, v] of Object.entries(sections)) {
-      const fields =
-        v && typeof v === "object" && "fields" in v
-          ? (v as { fields: unknown }).fields
-          : undefined;
+    for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
+      if (!v || typeof v !== "object") continue;
+      const fields = (v as { fields?: unknown }).fields;
       out[k] = {
         fields:
-          fields instanceof Map
-            ? Object.fromEntries(fields)
-            : ((fields ?? {}) as Record<string, string>),
+          fields && typeof fields === "object" && !Array.isArray(fields)
+            ? (fields as Record<string, string>)
+            : {},
       };
     }
     return out;

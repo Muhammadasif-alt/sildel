@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { User } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { LanguageToggle } from "./language-toggle";
 import { MobileNav } from "./mobile-nav";
@@ -31,16 +30,11 @@ type NavItem = { label: string; href: string };
 export function HeaderShell({
   navItems,
   logoDark,
-  accountLabel,
   homeLabel,
 }: {
   navItems: readonly NavItem[];
   /** Dark/full-colour logo glyph — used in every state now. */
   logoDark: string;
-  /** Kept in the server wrapper's props but no longer wired here, since
-   *  the always-solid header never renders the light variant. Removed
-   *  from this signature so TypeScript stops asking what to do with it. */
-  accountLabel: string;
   homeLabel: string;
 }) {
   return (
@@ -91,13 +85,6 @@ export function HeaderShell({
               Nova pattern: logo opposite menu). */}
           <div className="ml-auto flex shrink-0 items-center gap-3 md:gap-5">
             <LanguageToggle className="hidden md:flex" />
-            <Link
-              href="/account"
-              aria-label={accountLabel}
-              className="hidden h-10 w-10 items-center justify-center text-foreground/80 transition-colors hover:text-foreground md:inline-flex"
-            >
-              <User className="h-[18px] w-[18px]" strokeWidth={1.6} />
-            </Link>
             {/* Mobile hamburger — right side, mirrors Quinta Nova. */}
             <div className="md:hidden">
               <MobileNav transparent={false} />

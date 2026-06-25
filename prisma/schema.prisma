@@ -16,7 +16,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 // Note: `url` reads from process.env at runtime. Prisma CLI loads it
@@ -105,4 +104,63 @@ model MediaAsset {
   updatedAt DateTime @updatedAt
 
   @@index([mimeType])
+}
+
+// Marketing pages CMS overrides. One row per pageKey ("home", "our-story",
+// etc.). Holds BOTH the block-based editor state (`blocks` + `seo`) and
+// the schema-driven field overrides (`sections`) used by simple read-only
+// pages like /privacy, /terms, /shipping.
+model PageContent {
+  id        Int      @id @default(autoincrement())
+  pageKey   String   @unique @db.VarChar(80)
+  sections  Json     @default("{}")
+  blocks    Json     @default("[]")
+  seo       Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Singleton config edited via /admin/settings. Use `singletonKey = "main"`.
+// All shape fields (brand, nav, footer, social, contact, brandVideo) live
+// in the JSON column so we can evolve the shape without migrations.
+model SiteSettings {
+  id           Int      @id @default(autoincrement())
+  singletonKey String   @unique @default("main") @db.VarChar(40)
+  data         Json     @default("{}")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// One row per admin email (we only have one admin in practice).
+model AdminProfile {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique @db.VarChar(255)
+  displayName String   @default("") @db.VarChar(160)
+  avatarUrl   String   @default("") @db.VarChar(500)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Newsletter signups (from the public footer form).
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(255)
+  source    String   @default("footer") @db.VarChar(60)
+  createdAt DateTime @default(now())
+
+  @@index([source])
+}
+
+// Contact form submissions (from /contact).
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(120)
+  email     String   @db.VarChar(255)
+  phone     String   @default("") @db.VarChar(60)
+  subject   String   @default("") @db.VarChar(255)
+  message   String   @db.Text
+  locale    String   @default("en") @db.VarChar(8)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
 }

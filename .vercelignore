@@ -1,0 +1,21 @@
+# Raw client photography (originals, ~2GB). Only the WebP-optimized output
+# under /public/products/ is committed.
+/public/FOTOS PRODUTO/
+
+# Raw partner material (~430MB). Only WebP-optimized output ships.
+/public/PARTNERS/
+
+# Local build artefacts
+/.next/
+/node_modules/
+
+# Misc
+.DS_Store
+*.tsbuildinfo
+/scripts/.fotos-mapping.json
+/scripts/.fetch-missing-mapping.json
+/scripts/.fetch-pearl-mapping.json
+
+# Env files — Vercel uses dashboard env vars
+.env*
+!.env.local.example

@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
-  // Mongoose only runs on the server. Mark it external so Next.js never tries
-  // to bundle it for the client (which fails on Node-only deps like `tls`).
-  serverExternalPackages: ["mongoose"],
   // Tree-shake the icon + motion imports so only the icons we actually use
   // ship to the client. Lucide alone can be 100KB+ otherwise.
   experimental: {

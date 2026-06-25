@@ -24,7 +24,7 @@ export default async function EditProductPage({ params }: RouteContext) {
         <ArrowLeft className="h-3.5 w-3.5" />
         All products
       </Link>
-      <h1 className="mb-8 font-serif text-3xl text-foreground md:text-4xl">
+      <h1 className="mb-8 break-words font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
         Edit · {product.name}
       </h1>
       <ProductForm

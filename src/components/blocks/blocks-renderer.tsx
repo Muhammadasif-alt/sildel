@@ -4,8 +4,7 @@
  * productShowcase blocks in a single round-trip.
  */
 import { getPageBlocks } from "@/lib/content/page-blocks";
-import { connectDb } from "@/lib/db/connect";
-import { ProductModel } from "@/lib/models/product.model";
+import { prisma } from "@/lib/db/prisma";
 import { getLocale } from "@/lib/i18n/get-locale";
 import type { Block, Locale } from "@/lib/blocks/types";
 
@@ -123,12 +122,19 @@ async function loadShowcaseProducts(blocks: Block[]): Promise<Map<string, Showca
   if (slugs.size === 0) return new Map();
 
   try {
-    await connectDb();
-    const docs = await ProductModel.find({ slug: { $in: Array.from(slugs) } })
-      .select({ slug: 1, name: 1, tagline: 1, image: 1, priceCents: 1, currency: 1 })
-      .lean();
+    const rows = await prisma.product.findMany({
+      where: { slug: { in: Array.from(slugs) } },
+      select: {
+        slug: true,
+        name: true,
+        tagline: true,
+        image: true,
+        priceCents: true,
+        currency: true,
+      },
+    });
     const map = new Map<string, ShowcaseProduct>();
-    for (const d of docs) {
+    for (const d of rows) {
       map.set(d.slug, {
         slug: d.slug,
         name: d.name,

@@ -4,7 +4,7 @@
  * source of truth for the label list so admin forms, filters and
  * product type-checks all stay aligned.
  */
-import { ProductCategory } from "@/generated/prisma";
+import { ProductCategory } from "@prisma/client";
 
 export const PRODUCT_CATEGORIES = [
   "Sculpture",

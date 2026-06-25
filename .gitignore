@@ -54,3 +54,5 @@ next-env.d.ts
 /public/PARTNERS/
 
 /src/generated/prisma
+
+.vercel

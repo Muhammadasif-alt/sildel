@@ -10,7 +10,7 @@
  * dotenv-cli (wired in package.json) loads .env.local before this runs,
  * so DATABASE_URL is picked up automatically.
  */
-import { PrismaClient, ProductCategory, BlogTag } from "../src/generated/prisma";
+import { PrismaClient, ProductCategory, BlogTag } from "@prisma/client";
 import { products as staticProducts } from "../src/content/treasures";
 import { posts as staticPosts } from "../src/content/blog";
 

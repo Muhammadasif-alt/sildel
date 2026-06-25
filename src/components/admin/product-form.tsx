@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ImageIcon, X, Plus } from "lucide-react";
-import { PRODUCT_CATEGORIES } from "@/lib/models/constants";
+import { PRODUCT_CATEGORIES } from "@/lib/db/product-category";
 import { MediaPicker } from "@/app/admin/pages/[key]/media-picker";
 
 type FormValues = {
@@ -48,6 +48,17 @@ export function ProductForm({
       for (const url of gallery) form.append("gallery", url);
       await action(form);
     } catch (err) {
+      // Server actions throw a special NEXT_REDIRECT error on `redirect()`.
+      // That's not a real failure — let it bubble so Next handles navigation.
+      if (
+        err &&
+        typeof err === "object" &&
+        "digest" in err &&
+        typeof (err as { digest: unknown }).digest === "string" &&
+        (err as { digest: string }).digest.startsWith("NEXT_REDIRECT")
+      ) {
+        throw err;
+      }
       setError(err instanceof Error ? err.message : "Save failed");
       setSubmitting(false);
     }

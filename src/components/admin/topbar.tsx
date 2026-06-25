@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { User, LogOut, ChevronDown, UserCircle2 } from "lucide-react";
+import { User, LogOut, ChevronDown, UserCircle2, Menu } from "lucide-react";
 
 const PAGE_TITLES: { match: RegExp; title: string }[] = [
   { match: /^\/admin\/blogs\/new$/, title: "New blog post" },
@@ -40,10 +40,12 @@ export function AdminTopbar({
   adminEmail,
   displayName,
   avatarUrl,
+  onMenuClick,
 }: {
   adminEmail: string;
   displayName?: string;
   avatarUrl?: string;
+  onMenuClick?: () => void;
 }) {
   const pathname = usePathname();
   const pageTitle = titleFromPath(pathname);
@@ -77,9 +79,26 @@ export function AdminTopbar({
     adminEmail.split("@")[0].replace(/\./g, " ").replace(/^\w/, (c) => c.toUpperCase());
 
   return (
-    <header className="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-border bg-background/80 px-6 backdrop-blur-md lg:px-8">
-      <div className="flex items-center gap-4">
-        <Link href="/admin" className="relative block h-10 w-[120px]" aria-label="Sildel">
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-3 border-b border-border bg-background/80 px-4 backdrop-blur-md sm:h-20 sm:px-6 lg:px-8">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+        {/* Hamburger — mobile only */}
+        {onMenuClick && (
+          <button
+            type="button"
+            onClick={onMenuClick}
+            aria-label="Open menu"
+            className="-ml-1.5 rounded-md p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground md:hidden"
+          >
+            <Menu className="h-5 w-5" strokeWidth={1.8} />
+          </button>
+        )}
+
+        {/* Logo — hidden on mobile (sidebar drawer carries the brand) */}
+        <Link
+          href="/admin"
+          className="relative hidden h-10 w-[120px] md:block"
+          aria-label="Sildel"
+        >
           <Image
             src="/images/og/sildel-logo-dark.png"
             alt="Sildel"
@@ -98,11 +117,11 @@ export function AdminTopbar({
           />
         </Link>
         <span aria-hidden className="hidden h-8 w-px bg-border md:block" />
-        <div className="flex flex-col">
-          <span className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+        <div className="flex min-w-0 flex-col">
+          <span className="hidden text-[10px] uppercase tracking-[0.32em] text-muted-foreground sm:block">
             Admin
           </span>
-          <h1 className="font-serif text-lg text-foreground md:text-xl">
+          <h1 className="truncate font-serif text-base text-foreground sm:text-lg md:text-xl">
             {pageTitle}
           </h1>
         </div>
